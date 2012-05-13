@@ -124,3 +124,15 @@ JB :
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
   
+safe: true
+pygments: true
+auto: true
+server: true
+
+permalink: date
+source: .
+destination: ./_site
+ 
+paginate: 20
+
+lsi: false
