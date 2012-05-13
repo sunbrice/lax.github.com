@@ -1,0 +1,7 @@
+---
+layout: post
+name: varnish-setup-in-steps
+title: Varnish Setup in Steps
+time: 2010-06-08 14:44:00.000000000 +08:00
+---
+<pre>配置与编译<br>./autogen.sh<br>./configure<br>make<br><br>测试<br>cd bin/varnishtest &amp;&amp; ./varnishtest tests/*.vtc<br><br>安装<br>make install<br><br>启动<br>/data/varnish/sbin/varnishd -a <a href="http://0.0.0.0:80">0.0.0.0:80</a> -s file,/data/vcache/varnish_cache.data,20g -f /data/varnish/etc/vcl.conf -p thread_pool_max=1500 -p thread_pools=8 -p listen_depth=512 -P /data/varnish/sbin/varnish.pid<br> </pre>重新载入<br>kill -HUP `cat /data/varnish/sbin/varnish.pid`<br><br>关闭<br clear="all">killall varnishd<br><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>  <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-2499494717203567834?l=liulantao.blogspot.com' alt='' /></div>

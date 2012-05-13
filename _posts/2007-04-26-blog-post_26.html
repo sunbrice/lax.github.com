@@ -1,0 +1,7 @@
+---
+layout: post
+name: blog-post_26
+title: 关于由递推公式求数列的通项
+time: 2007-04-26 11:49:00.000000000 +08:00
+---
+<DIV>方法1、</DIV>  <DIV>配方法。</DIV>  <DIV>配方后换元，减少递推公式中项的数目，简化运算。</DIV>  <DIV>a[n] = 2a[n-1] - a[n-2]&nbsp;</DIV>  <DIV>a[n] - a[n-1] = a[n-1] - a[n-2]</DIV>  <DIV>设b[n] = a[n] - a[n-1]</DIV>  <DIV>则b[n] = b[n-1]，为等差数列。然后可以根据初始条件进行计算。</DIV>  <DIV>&nbsp;</DIV>  <DIV>方法2、</DIV>  <DIV>特征方程。</DIV>  <DIV>&nbsp;</DIV>  <DIV>方法3、</DIV>  <DIV>生成函数。</DIV>  <DIV>A = a[0] + a[1]x + a[2]x^2 + … + a[n]x^n + ...</DIV>  <DIV>kxA = ...</DIV>  <DIV>(1 + kx)A = a[0] + { a[2] + a[1]k }x + ...</DIV>  <DIV>若一直a[n] + a[n-1]k = 0，则后面所有项为0。</DIV>  <DIV>可求得A = a[0] / (1 + kx )。</DIV>  <DIV>a[1] = A'(x)/1!, a[2] = A''(x)/2!, ......</DIV>  <DIV>可求出其通项a[n] = A(x)^(n) / n!</DIV>  <DIV>&nbsp;</DIV><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-6410384480631714204?l=liulantao.blogspot.com' alt='' /></div>

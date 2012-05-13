@@ -7,6 +7,6 @@ permalink: date
 source: .
 destination: ./_site
  
-paginate: 16
+paginate: 32
 
 lsi: false
