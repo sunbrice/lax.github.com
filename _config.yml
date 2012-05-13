@@ -1,0 +1,12 @@
+safe: true
+pygments: true
+auto: true
+server: true
+
+permalink: date
+source: .
+destination: ./_site
+ 
+paginate: 20
+
+lsi: false
