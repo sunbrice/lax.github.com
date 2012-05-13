@@ -1,0 +1,7 @@
+---
+layout: post
+name: linux-problems-solved-today-20071008
+title: Linux problems solved today - 20071008
+time: 2007-10-08 17:13:00.000000000 +08:00
+---
+Linux problems solved today - 20071008<p><br>1、关于GNOME里中文字体的问题。<p>先通过yum发现已经安装的字体列表。<p>#yum list *fonts* |more<p>然后一次卸载掉每个已经安装的字体，启动到GNOME中，用firefox打开常用的几个中文网页，发现以下两个字体文件的作用。<p>cjkunifonts-ukai  楷体<p>cjkunifonts-uming  宋体<p>于是卸载掉其它的字体，安装cjkunifonts-ukai，于是所有中文都是漂亮的楷体了；然后将cjkunifongt-uming，<br>系统上有了宋体。<p>2、Fedora升级到Rawhide后普通用户没法听到声音。<p>原来一直以为是驱动或者内核的问题，还因此downgrade到了fedora 7了。<p>今天早上偶尔发现用Soundcard Detection能够听到测试声音。于是确认声卡和内核都是好的。<p>于是从alsa上面找问题。发现用root帐户能够正常播放音乐并且使用正常的音量调节。<p>从网络上搜索到少数几个关于debian上同样现象的解决方案，都提到要在/etc/groups中将自己的帐户加到audio组中。<p>而fedora中并没有这个用户组。这个方案不可行。<p>又找到一篇中提到将/dev/dsp和/dev/audio/中的文件修改为622。因为没有/dev/audio，所以修改了/dev/dsp，而实际效果并不好。<p>下午又在弄的时候发现有个/dev/mixer的文件。早先弄的时候对mixer进行了搜索，见到了这个文件，这个文件的权限修改后普通用户能够对音量进行调节了。<p>因为刚开始用root调节音量的时候使用了alsamixer，应该音量调节的接口就是这个mixer文件了。<p>搜索的时候还发现几个关于mixer编程的话题，应该很有趣。<p><br>-- <br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-3134898894860208222?l=liulantao.blogspot.com' alt='' /></div>
