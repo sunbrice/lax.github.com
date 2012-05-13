@@ -132,7 +132,8 @@ server: true
 permalink: date
 source: .
 destination: ./_site
+exclude: ./_draft
  
-paginate: 32
+paginate: 48
 
 lsi: false
