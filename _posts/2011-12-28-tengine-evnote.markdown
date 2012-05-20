@@ -27,22 +27,16 @@ Tengine基于目前很流行的Nginx，在Nginx基础上整合了一些第三方
 
 	
   * access_log/error_log支持file/pipe/syslog
-
 	
   * worker_processes和worker_cpu_affinity自动设置
-
 	
   * expires_by_types
-
 	
   * stub_status增加了响应时间
-
 	
   * sysguard
-
 	
   * limit_req和forbid_action
-
 
 
 
@@ -52,13 +46,9 @@ tengine对log部分做了较大改变，在原有的文件作为输出目标基�
 
 syslog的配置语法为：
 
+    access_log  syslog:user::debug  main;
 
-access_log  syslog:user::debug  main;
-
-
-
-
-access_log  syslog:user::192.168.10.10:514  main;
+    access_log  syslog:user::192.168.10.10:514  main;
 
 
 配置之后需要对syslogd的配置文件做一些修改。虽然部署很方便，但是syslog的方案比较鸡肋，因为现在已经有比较多的更“现代”的方法来进行分布式数据的收集，比如scribe。
@@ -70,12 +60,8 @@ access_log  syslog:user::192.168.10.10:514  main;
 配置文件是这样的：
 
 
-# 将日志实时发送到远程主机192.168.10.10的8000端口，使用TCP协议
-
-
-
-
-access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
+    # 将日志实时发送到远程主机192.168.10.10的8000端口，使用TCP协议
+    access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
 
 
 在此我选用了便于脚本化且功能强大的netcat。你也可以把其它工具来进行整合，比如与gzip组合使用，进行压缩以降低传输的流量。
