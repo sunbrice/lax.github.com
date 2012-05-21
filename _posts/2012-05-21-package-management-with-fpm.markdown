@@ -11,6 +11,14 @@ tags:
 ---
 [fpm](https://github.com/jordansissel/fpm)是一款支持多平台的打包管理工具。支持的平台包括：rpm, deb, tar, solaris等。
 
+fpm的目标：
+
+1.   无痛创建软件包
+
+2.   修改已有的软件包
+
+3.   抽取已有软件包中的脚本
+
 ## 安装
 可以通过gem直接安装
 
