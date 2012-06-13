@@ -31,12 +31,16 @@ tags:
 
 确保configure成功后，执行
 
-   qmake install
+    qmake install
 
+创建必要的目录
+
+    cd /opt/smokeping-2.6.8/ && mkdir cache var data
 
 安装rrdtool，httpd和mod_fcgid
 
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+
     yum install rrdtool httpd mod_fcgid -y
 
 配置httpd。创建配置文件/etc/httpd/conf.d/smokeping.conf，内容如下
@@ -56,12 +60,20 @@ tags:
         Allow from all
     </Directory>
 
+修复cache目录权限，否则查看页面会报错。
+
+    chown apache /opt/smokeping-2.6.8/cache/
+
 启动smokeping
+
     [root@lax-iPad smokeping-2.6.8]# ./bin/smokeping
     Note: logging to syslog as local0/info.
     Daemonizing ./bin/smokeping ...
+
 启动httpd
+
     # service httpd start
 
 在浏览器中查看
+
     http://localhost/smokeping/smokeping.fcgi.dist
