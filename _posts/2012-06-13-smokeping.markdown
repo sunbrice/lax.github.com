@@ -34,10 +34,10 @@ tags:
    qmake install
 
 
-安装httpd 和 mod_fcgid
+安装rrdtool，httpd和mod_fcgid
 
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
-    yum install httpd mod_fcgid -y
+    yum install rrdtool httpd mod_fcgid -y
 
 配置httpd。创建配置文件/etc/httpd/conf.d/smokeping.conf，内容如下
 
