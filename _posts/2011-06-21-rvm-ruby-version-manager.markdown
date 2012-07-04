@@ -18,4 +18,15 @@ tags:
 
 你一定受够了服务器上默认版本与本地开发环境版本不一致的痛苦，试一下吧。
 
-另外，python也有类似工具。
+Setup steps:
+
+    $ echo insecure >> .curlrc
+    $ curl -L https://get.rvm.io | bash -s stable --ruby
+
+Usage:
+
+    $ rvm list
+    $ rvm use system
+    $ rvm use 1.9.2
+
+另外，python也有类似工具(virtualenv)。
