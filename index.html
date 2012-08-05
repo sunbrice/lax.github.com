@@ -11,13 +11,13 @@ title: Lax
       <a href="/page{{paginator.previous_page}}" class="previous">&laquo; Previous </a>
     {% endif %}
   {% else %}
-    <span class="previous">&laquo; Previous </span>
+    <a href="#" class="previous">&laquo; Previous </a>
   {% endif %}
   <span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
   {% if paginator.next_page %}
     <a href="/page{{paginator.next_page}}" class="next "> Next &raquo; </a>
   {% else %}
-    <span class="next ">Next &raquo; </span>
+    <a href="#" class="next "> Next &raquo; </a>
   {% endif %}
 </div>
 
