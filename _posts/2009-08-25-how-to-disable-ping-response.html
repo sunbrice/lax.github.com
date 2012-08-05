@@ -1,0 +1,7 @@
+---
+layout: post
+name: how-to-disable-ping-response
+title: ! 'How-to: disable the PING response.'
+time: 2009-08-25 11:42:00.000000000 +08:00
+---
+To disable the PING response, add the following line to your init script for the network:<br>echo 1 &gt;/proc/sys/net/ipv4/icmp_echo_ignore_all<br><br>To reenable the PING response do this:<br>echo 0 &gt;/proc/sys/net/ipv4/icmp_echo_ignore_all<br> <br>To make the change PERMANENT add the following line to /etc/sysctl.conf:<br>net.ipv4.icmp_echo_ignore_all=1<br>and execute this command<br>sysctl -p<br><br>It is better to use firewall for these purposes, so that you can optionally enable ping from some systems, esp monitoring systems<br> iptables -t filter -I INPUT -p icmp --icmp-type echo-request -s monitoring_system -j ACCEPT<br>iptables -t filter -I INPUT -p icmp --icmp-type echo-request -j DROP<br><br>Just in case it&#39;s not obvious to iptables newbies, replace &quot;monitoring_system&quot; with the IP/range of the server(s) which should be able to ping the server. All other ping requests will be silenty dropped.<br> <br><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-8673785730320933311?l=sandshoots.blogspot.com' alt='' /></div>

@@ -1,0 +1,21 @@
+---
+date: '2011-09-13 13:32:17'
+layout: post
+slug: tac
+status: publish
+title: tac - concatenate and print files in reverse
+wordpress_id: '100'
+categories:
+- Technology
+tags:
+- cat
+- Linux
+- linux command
+- tac
+---
+
+tac - concatenate and print files in reverse
+
+cat是一个查看文件内容的工具，能够将文件内容发送到标准输出。有时候为了按行反序查看一个文件的内容，可以试试tac
+
+

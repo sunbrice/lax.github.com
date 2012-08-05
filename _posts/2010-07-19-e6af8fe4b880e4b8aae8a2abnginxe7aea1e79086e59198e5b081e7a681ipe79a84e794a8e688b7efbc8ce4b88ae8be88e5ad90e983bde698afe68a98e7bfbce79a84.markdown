@@ -1,0 +1,46 @@
+---
+date: '2010-07-19 19:13:23'
+layout: post
+slug: '%e6%af%8f%e4%b8%80%e4%b8%aa%e8%a2%abnginx%e7%ae%a1%e7%90%86%e5%91%98%e5%b0%81%e7%a6%81ip%e7%9a%84%e7%94%a8%e6%88%b7%ef%bc%8c%e4%b8%8a%e8%be%88%e5%ad%90%e9%83%bd%e6%98%af%e6%8a%98%e7%bf%bc%e7%9a%84'
+status: publish
+title: 每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使
+wordpress_id: '10'
+categories:
+- Technology
+tags:
+- GeoIP
+- Nginx
+---
+
+每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使
+
+方案一、
+
+deny  120.7.0.1/16
+
+方案二、
+
+http {
+......
+geo $ban {
+default         0;  # 默认关闭
+127.0.0.0/16    1;  # 针对网段打开；可以设置多行。
+}
+......
+server {
+......
+# 在Server或Location里设置
+location / {
+if ($ban = 1) {
+return 500;  # 返回500 code
+}
+......
+}
+......
+}
+
+......
+}
+
+该配置使用了nginx的geo模块，该模块是nginx标准模块，默认编译是开启的。需要机器上安装有GeoIP支持库。
+了解更多点击http://wiki.nginx.org/NginxHttpGeoModule
