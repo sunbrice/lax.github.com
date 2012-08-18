@@ -3,8 +3,7 @@ layout: post
 name: gnome-shell-xinerama
 title: GNOME3多显示器配置
 time: 2012-06-19 13:50:00 +08:00
-category:
-- SysAdmin
+categories: [SysAdmin]
 tags:
 - gnome-shell
 - xinerama

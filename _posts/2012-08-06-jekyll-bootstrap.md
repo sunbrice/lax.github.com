@@ -2,7 +2,7 @@
 layout: post
 title: "切换到jekyll bootstrap"
 description: ""
-category: 
+categories: [Technology]
 tags: [jekyll, jekyll-bootstrap]
 ---
 {% include JB/setup %}

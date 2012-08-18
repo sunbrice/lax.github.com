@@ -5,8 +5,7 @@ slug: heroku-java-play-framework
 status: publish
 title: Heroku开始支持Java，Play框架！
 wordpress_id: '113'
-categories:
-- Technology
+categories: [Technology, Ruby]
 tags:
 - facebook
 - heroku

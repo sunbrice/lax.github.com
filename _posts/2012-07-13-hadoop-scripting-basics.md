@@ -3,8 +3,7 @@ layout: post
 name: hadoop-scripting-basics
 title: Hadoop scripting basics (draft)
 time: 2012-07-13 10:56:00 +08:00
-category:
-- SysAdmin
+categories: [SysAdmin]
 tags:
 - Hadoop
 - Streaming

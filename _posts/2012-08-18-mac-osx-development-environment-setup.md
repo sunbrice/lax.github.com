@@ -2,8 +2,8 @@
 layout: post
 title: "Mac OSX development environment setup"
 description: ""
-category: 
-tags: 
+categories: [Technology]
+tags: [xcode, git, homebrew, rvm, textmate, macruby]
 ---
 {% include JB/setup %}
 
@@ -38,9 +38,11 @@ Install other tools related to git:
 Homebrew
 --------
 Simple installation with one-line-command: 
+
     ruby <(curl -fsSkL raw.github.com/mxcl/homebrew/go)
 
 Usage example: 
+
     brew search textmate
     brew install ninja  # need when building textmate
     brew install wget
@@ -51,12 +53,15 @@ RVM
 [RVM](https://rvm.io) is short for Ruby Version Manager, not Ruby Virtual Machine. 
 
 Install stable version with default ruby[-1.9.3] 
+
     curl -kL https://get.rvm.io | bash -s stable --ruby
 
 When every thing reports ok, run this command to see installed versions of ruby in a new term: 
+
     rvm list
 
 Switch to system version 
+
     rvm use system
     rvm use system --default
 
@@ -66,14 +71,17 @@ textmate
 I choose build textmate from source. follow [this document](https://github.com/textmate/textmate/#building) 
 
 First, install dependencies 
+
     brew install ragel boost multimarkdown hg ninja
 
 Get and prepare source code 
+
     git clone git://github.com/textmate/textmate.git
     cd textmate
     git submodule update --init
 
 Configure and build 
+
     ./configure && ninja
 
 
@@ -82,6 +90,7 @@ macruby
 [MacRuby](http://macruby.org) is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies. 
 
 Install with rvm 
+
     rvm install macruby-head
 
 [RubyMotion](http://www.rubymotion.com) for iOS development. 

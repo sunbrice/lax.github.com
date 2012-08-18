@@ -3,8 +3,7 @@ layout: post
 name: network-monitor-with-smokeping
 title: 使用smokeping监控网络质量
 time: 2012-06-13 17:50:00 +08:00
-category:
-- SysAdmin
+categories: [SysAdmin]
 tags:
 - smokeping
 - rrdtool
