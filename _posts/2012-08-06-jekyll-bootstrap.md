@@ -3,7 +3,7 @@ layout: post
 title: "切换到jekyll bootstrap"
 description: ""
 category: 
-tags: []
+tags: [jekyll, jekyll-bootstrap]
 ---
 {% include JB/setup %}
 
