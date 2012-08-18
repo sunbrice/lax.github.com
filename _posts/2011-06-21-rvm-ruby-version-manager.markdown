@@ -5,8 +5,7 @@ slug: rvm-ruby-version-manager
 status: publish
 title: 'RVM: Ruby Version Manager'
 wordpress_id: '69'
-categories:
-- Technology
+categories: [Technology, Ruby]
 tags:
 - ruby
 - rvm

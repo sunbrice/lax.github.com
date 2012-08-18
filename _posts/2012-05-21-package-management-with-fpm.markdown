@@ -3,8 +3,7 @@ layout: post
 name: package-management-with-fpm
 title: 使用fpm管理软件打包
 time: 2012-05-21 16:15:00 +08:00
-category:
-- Technology
+categories: [Technology, Ruby]
 tags:
 - fpm
 - rpm

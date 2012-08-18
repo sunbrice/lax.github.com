@@ -6,6 +6,7 @@ status: publish
 title: 关于RubyGems/RUBYOPT【一】
 wordpress_id: '176'
 categories:
+- Technology
 - Ruby
 post_format:
 - Standard
@@ -19,13 +20,9 @@ tags:
 
 编程语言的标准库，是该种语言的每种实现中都按例提供的库，大多数语言的标准库包含以下组件，以实现一些基本功能：
 
-
-
-  1. 算法
-
-  2. 数据结构
-
-  3. 与操作系统交互
+1   算法 
+2   数据结构 
+3   与操作系统交互 
 
 
 ruby标准库可以在源码的lib目录中找到。可以看的ruby标准库包含从文件操作到网络库，从多语言支持到测试工具，从多线程到日期处理等，基本能满足简单使用的需要。

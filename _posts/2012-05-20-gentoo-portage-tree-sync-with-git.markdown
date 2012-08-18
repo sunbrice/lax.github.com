@@ -3,7 +3,7 @@ layout: post
 name: gentoo-portage-tree-sync-with-git
 title: 使用git同步更新portage
 time: 2012-05-20 21:45:44 +08:00
-category:
+categories:
 - Technology
 tags:
 - Gentoo

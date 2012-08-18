@@ -5,8 +5,7 @@ status: publish
 title: 在Ruby中利用C/C++代码：为Ruby开发扩展
 date: '2012-02-25 00:06:29'
 wordpress_id: '180'
-categories:
-- Technology
+categories: [Technology, Ruby]
 tags:
 - C++
 - ruby

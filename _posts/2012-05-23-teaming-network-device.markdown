@@ -2,7 +2,7 @@
 layout: blog
 name: teaming-network-device
 title: Teaming
-category:
+categories:
 - Technology
 ---
 Read documents bellow.

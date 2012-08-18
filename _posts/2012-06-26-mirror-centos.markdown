@@ -3,8 +3,7 @@ layout: post
 name: mirror-centos
 title: CentOS镜像攻略
 time: 2012-06-26 20:28:00 +08:00
-category:
-- SysAdmin
+categories: [SysAdmin]
 tags:
 - CentOS
 - mirror

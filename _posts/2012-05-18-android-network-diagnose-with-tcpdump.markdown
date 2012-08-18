@@ -3,7 +3,7 @@ layout: post
 name: android-network-diagnose-with-tcpdump
 title: Android网络问题检查（使用TCPDUMP）
 time: 2012-05-18 19:00:00.000000000 +08:00
-category:
+categories:
 - Technology
 tags:
 - android

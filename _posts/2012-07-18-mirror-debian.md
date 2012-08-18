@@ -3,7 +3,7 @@ layout: post
 name: mirror-debian
 title: Debian镜像攻略
 time: 2012-06-26 20:28:00 +08:00
-category:
+categories:
 - SysAdmin
 tags:
 - Debian
