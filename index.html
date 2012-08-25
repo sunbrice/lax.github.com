@@ -25,13 +25,11 @@ title: Lax
 <ul>
 {% for post in paginator.posts %}
   <li>
-    <abbr class="published" title="{{ post.date }}">{{ post.date | date_to_string }}</abbr>
-    <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
-    (
   {% for category in post.categories %}
-    <a href="/categories/{{ category }}" title="{{ category }}" rel="category tag">{{ category }}</a>
+    [<a href="/categories/{{ category }}" title="{{ category }}" rel="category tag">{{ category }}</a>]
   {% endfor %}
-    )
+    <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
+    <abbr class="published" title="{{ post.date | date_to_string }}">{{ post.date | date_to_string }}</abbr>
   </li>
 {% endfor %}
 </ul>

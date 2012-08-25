@@ -3,5 +3,7 @@ layout: post
 name: rubylogstringsplitregexpmatch
 title: 使用Ruby进行Log分析：放弃String.split，使用Regexp.match
 time: 2010-04-21 16:33:00.000000000 +08:00
+categories: [Technology]
+tags: [Ruby]
 ---
 使用Ruby进行log分析，它的性能成为一个瓶颈。<br>传统在perl中通过split的方式进行字段抽取的工作，在ruby中性能变的极差。<br>对一个32万行的log文件进行统计，抽取其中一个字段进行累加。<br>原有采用split方式，脚本运行时间在12~13s，且CPU占用较高。这种情况下，进行实施数据分析的消耗巨大，无法大范围部署。<br>而让这一状况得以改观的是，采用Regexp.match(str)进行抽取，计算速度有了非常大的改善，在2s内完成了计划的任务。<br> <br>－－－－－－－－－－－－－－－<br>lax@mib ~ $ cat accounting_total_reqs.rb <br>#!/usr/bin/env ruby<br><br>f = File.open(&quot;NginxAccounting.log&quot;)<br>regex = Regexp.new(/req_total:(\d+)/)<br><br>tp = 0<br>while(f.gets)<br>    $_.scan(regex)<br>     tp += $1.to_i if $1<br>end<br>puts tp<br>－－－－－－－－－－－－－－－<br><br>采用str.scan(regex)，速度比较满意：<br>lax@mib ~ $ time ruby accounting_total_reqs.rb <br>12437322629<br><br>real    0m1.786s<br>user    0m1.753s<br>sys    0m0.031s<br> <br>调整为regex.match(str)方法后，速度又有少量提升：<br><br>lax@mib ~ $ time ruby 5.rb <br>12437322629<br><br>real    0m1.603s<br>user    0m1.570s<br>sys    0m0.031s<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4221053633967927849?l=sandshoots.blogspot.com' alt='' /></div>

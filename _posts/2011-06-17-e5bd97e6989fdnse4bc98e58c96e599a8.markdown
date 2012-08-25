@@ -5,6 +5,7 @@ slug: '%e5%bd%97%e6%98%9fdns%e4%bc%98%e5%8c%96%e5%99%a8'
 status: publish
 title: 彗星DNS优化器
 wordpress_id: '65'
+categories: [Technology]
 ---
 
 最近参与了不少联系用户的工作，发现DNS设置错误，导致访问网站有性能问题的情况比较多。
