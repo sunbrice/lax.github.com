@@ -134,6 +134,6 @@ source: .
 destination: ./_site
 exclude: ./_draft
  
-paginate: 8
+paginate: 48
 
 lsi: false
