@@ -7,11 +7,14 @@ tags: [ Gerrit, Git, Code Review ]
 ---
 {% include JB/setup %}
 
+* toc
+{:toc}
+
 ## Gerrit背景
 
 Android作为移动平台上兴起的大型开源操作系统项目，管理大量代码提交者的代码是个复杂的工程。我们来看一下Android项目使用的协作平台Gerrit。
 
-Gerrit是Andriod工程中发展起来的源代码review工具，基于[git](http://www.kernel.org/pub/software/scm/git/)，利用了git的branch和merge机制。已经有很多著名的开源项目在使用这个工具来协调代码提交流程，比如CloudFoundry、OpenStack，LibreOffice等开源项目。
+Gerrit是Andriod工程中发展起来的源代码review工具，基于[git](http://www.kernel.org/pub/software/scm/git/)，利用了git的branch和merge机制。已经有很多著名的开源项目在使用这个工具来协调代码提交流程，比如Eclipse，CloudFoundry，OpenStack，LibreOffice等开源项目。
 
 ## 协作流程简介
 在Gerrit的流程中，代码提交经过以下步骤
