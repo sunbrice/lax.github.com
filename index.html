@@ -6,19 +6,53 @@ title: Lax
 
 <!-- Pagination links -->
 {% if paginator.total_pages > 1 %}
-  {% include paginator.html %}
+  {% include pager.html %}
 {% endif %}
 
-<div id="post">
-<ul>
 {% for post in paginator.posts %}
-  <li>
-  {% for category in post.categories %}
-    [<a href="/categories/{{ category }}" title="{{ category }}" rel="category tag">{{ category }}</a>]
-  {% endfor %}
-    <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
-    <abbr class="published" title="{{ post.date | date_to_string }}">{{ post.date | date_to_string }}</abbr>
-  </li>
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        {{ post.author }}
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        {{ post.content | truncatehtml: 840 }}
+        <a href="{{ post.url }}" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="{{ post.date }}">{{ post.date | date_to_string }}</abbr>
+        </span>
+        {% if post.categories %}
+        <span>
+          Posted in&nbsp;
+          <ul>
+          {% for category in post.categories %}
+            <li><a href="/categories.html#{{ category }}-ref" title="{{ category }}" rel="category tag">{{ category }}</a></li>
+          {% endfor %}
+          </ul>
+        </span>
+        {% endif %}
+        {% unless post.tags == empty %}
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          {% assign tags_list = post.tags %}
+          {% include JB/tags_list %}
+          </ul>
+        {% endunless %} 
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
 {% endfor %}
-</ul>
-</div>
+
+{% if paginator.total_pages > 1 %}
+  {% include paginator.html %}
+{% endif %}
