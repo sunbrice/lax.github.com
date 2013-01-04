@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Build Rack-based application on Heroku</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Build Rack-based application on Heroku <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <h2 id="heroku">heroku</h2>
+
+<p>heroku是目前最方便使用的PaaS系统，是大部分开发者部署ruby服务的首选，基于git的部署工具带给它比google appengine更好的便捷性。</p>
+
+<p>在heroku创建一个rails程序是非常简单的，基本步骤（只是基本步骤，具体命令需要查rails和git的使用说明）：</p>
+
+<pre><code>rails create myapp
+heroku create
+cd myapp &amp;&amp; git init .
+git commit &amp;&amp; git push
+</code></pre>
+
+<p>搞出这样的开发流程，是造福广大程序员的伟大事业。</p>
+
+<h2 id="why-rack--datamapper-on-heroku">Why Rack + DataMapper on heroku</h2>
+
+<p>Rails + ActiveRecord可以算作一种标配，引领了Ruby开发的潮流。这次尝试Ruby off <del>Rails</del>，选用了Rack + DataMapper的组合。</p>
+
+<p>大部分ruby web框架都支持rack规范，如主流的rails、sinatra、merb。rack定义了一系列规范，类似java的servlet。遵循规范的结果，使得大量rack容器被开发出来。heroku目前默认的容器是thin。</p>
+
+<p>从heroku的文档中看出，heroku使用了postgresql数据库。对于大部分ruby程序而言，使用mysql或pgsql或sqlite都不会影响部署——因为引入数据库抽象层已成惯例，比如ActiveRecord、DataMapper和Sequeel等。</p>
+
+<h2 id="first-thing-first-rack">First thing first： 部署一个简单的Rack程序</h2>
+
+<p>在heroku上部署基于Rack的程序，也是非常简单的。</p>
+
+<p>最简单的config.ru内容如下</p>
+
+<p>map &ldquo;/&rdquo; do
+    run Proc.new {|env| [200, {&ldquo;Content-Type&rdquo; =&gt; &ldquo;text/html&rdquo;}, StringIO.new(&ldquo;sysadmin 0.1&rdquo;)] }
+ end</p>
+
+<p>本地直接用rackup即可执行。</p>
+
+<p>如果在heroku上部署，需要额外的Gemfile文件来指明服务器端需要的rubygem。最简单的Gemfile内容为：</p>
+
+<p>gem &lsquo;rack&rsquo;</p>
+
+<p>以上例子是一个最基本的Rack应用，将这两个文件提交后，通过git push到heroku，就能在http://myapp.heroku.com看到页面，显示&rdquo;sysadmin 0.1&rdquo;。
+到此最简单的部署完成。</p>
+
+<h2 id="setup-datamapper">Setup DataMapper</h2>
+
+<p>require &lsquo;data_mapper&rsquo;</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>DataMapper.setup(:default, ENV[&lsquo;DATABASE_URL&rsquo;]</td>
+      <td>&nbsp;</td>
+      <td>&lsquo;sqlite::memory:&rsquo;)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>class Tweet
+   include DataMapper::Resource</p>
+
+<p>property :id,   Serial
+   property :name, String
+   property :value, Text
+   property :created_at, DateTime
+ end</p>
+
+<p>DataMapper.finalize
+ DataMapper.auto_upgrade!</p>
+
+<p>经过这一操作，我们就有了一个class：Tweet，并且在数据库中有相应的表生成。一个基于DataMapper进行数据操作的应用就此诞生。</p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/Ruby/2011/09/28/heroku-java-play-framework.html" title="Heroku开始支持Java，Play框架！">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/Technology/2011/10/19/nginx-log_format-abc.html" title="Nginx log_format设置ABC">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>28 September 2011</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#DataMapper-ref">DataMapper <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#heroku-ref">heroku <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#PaaS-ref">PaaS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rack-ref">rack <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

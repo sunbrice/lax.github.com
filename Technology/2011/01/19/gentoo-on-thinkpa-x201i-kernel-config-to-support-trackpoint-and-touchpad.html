@@ -1,0 +1,340 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gentoo on Thinkpad X201i, kernel config to support trackpoint and touchpad.</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Gentoo on Thinkpad X201i, kernel config to support trackpoint and touchpad. <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <p>前段时间一直在xorg.conf中想办法支持小红点，未果。昨晚在内核配置选项中随手搜索了一下，发现有一个PS2驱动是可以支持小红点的。于是知道原来的方向就是错的。</p>
+
+<p>CONFIG_MOUSE_PS2=y
+CONFIG_MOUSE_PS2_SYNAPTICS=y
+CONFIG_MOUSE_PS2_TRACKPOINT=y</p>
+
+<p>重新配置后再编译一下内核，小红点的生效了。</p>
+
+<p>顺便把synaptics驱动也装上了。感觉x201i的12寸身躯，配上一个小尺寸的触控板是完全多余，触控板要很大尺寸，用起来才爽，在此羡慕mackook一下。</p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/2010/10/26/rails-3-0-e79a84e696b0e9b29ce789b9e680a7efbc88e4b880efbc89.html" title="Rails 3.0 的新鲜特性（一）">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/Technology/2011/01/19/wordpress-child-theme.html" title="wordpress child-theme">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>19 January 2011</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#kernel-ref">kernel <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#synaptics-ref">synaptics <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#thinkpad-ref">thinkpad <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#trackpoint-ref">trackpoint <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#x201i-ref">x201i <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

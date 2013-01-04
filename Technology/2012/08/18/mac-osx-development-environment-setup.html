@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mac OSX development environment setup</title>
+    <meta name="description" content="">
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Mac OSX development environment setup <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<h1 id="what-to-setup">What to setup?</h1>
+
+<ul>
+  <li>xcode</li>
+  <li>git</li>
+  <li>Homebrew</li>
+  <li>RVM: Ruby Version Manager</li>
+  <li>textmate: popular code editor</li>
+  <li>macruby</li>
+</ul>
+
+<h1 id="progressing">PROGRESSING</h1>
+
+<h2 id="xcode">xcode</h2>
+<p>Install from App Store. This very difficulty is that it takes too long to download, especially in China.</p>
+
+<p>I swithed my local DNS to a Taiwan host (168.95.1.1), so it finished in serveral hours.</p>
+
+<h2 id="git">git</h2>
+<p>Download recent stable release of git for mac from <a href="http://git-scm.com/downloads">git-scm.com</a></p>
+
+<p>Install other tools related to git: 
+*  <a href="http://mac.github.com">GitHub for Mac</a> 
+*  <a href="https://github.com/trybeee/GitStats">GitStats</a>: generate stats web pages for your project  </p>
+
+<h2 id="homebrew">Homebrew</h2>
+<p>Simple installation with one-line-command: </p>
+
+<pre><code>ruby &lt;(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+</code></pre>
+
+<p>Usage example: </p>
+
+<pre><code>brew search textmate
+brew install ninja  # need when building textmate
+brew install wget
+</code></pre>
+
+<h2 id="rvm">RVM</h2>
+<p><a href="https://rvm.io">RVM</a> is short for Ruby Version Manager, not Ruby Virtual Machine. </p>
+
+<p>Install stable version with default ruby[-1.9.3] </p>
+
+<pre><code>curl -kL https://get.rvm.io | bash -s stable --ruby
+</code></pre>
+
+<p>When every thing reports ok, run this command to see installed versions of ruby in a new term: </p>
+
+<pre><code>rvm list
+</code></pre>
+
+<p>Switch to system version </p>
+
+<pre><code>rvm use system
+rvm use system --default
+</code></pre>
+
+<h2 id="textmate">textmate</h2>
+<p>I choose build textmate from source. follow <a href="https://github.com/textmate/textmate/#building">this document</a> </p>
+
+<p>First, install dependencies </p>
+
+<pre><code>brew install ragel boost multimarkdown hg ninja
+</code></pre>
+
+<p>Get and prepare source code </p>
+
+<pre><code>git clone git://github.com/textmate/textmate.git
+cd textmate
+git submodule update --init
+</code></pre>
+
+<p>Configure and build </p>
+
+<pre><code>./configure &amp;&amp; ninja
+</code></pre>
+
+<h2 id="macruby">macruby</h2>
+<p><a href="http://macruby.org">MacRuby</a> is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies. </p>
+
+<p>Install with rvm </p>
+
+<pre><code>rvm install macruby-head
+</code></pre>
+
+<p><a href="http://www.rubymotion.com">RubyMotion</a> for iOS development. </p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/2012/08/06/jekyll-bootstrap.html" title="切换到jekyll bootstrap">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/Technology/2012/08/26/index-page-update.html" title="减少首页文字量">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>18 August 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#xcode-ref">xcode <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#homebrew-ref">homebrew <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rvm-ref">rvm <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#textmate-ref">textmate <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#macruby-ref">macruby <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

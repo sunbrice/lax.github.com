@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>路由器MTU与ISP不匹配导致无法上传文件</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>路由器MTU与ISP不匹配导致无法上传文件 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <h2 class="title title-single">路由器MTU与ISP不匹配导致无法上传文件</h2><p>(1) 症状/问题表现<br> 网站不能正常连接，或者连接上非常慢，或者无法上传或无法发送大文件。</p> <p>(2) 关于MTU<br> MTU（Maximum Transmission Unit）是网络上传送的最大数据包，MTU的单位是字节。<br> MTU设置的标准是1500，大部分网络设备的MTU也都设置为1500，这样可以使的数据包在网络传输上获得最佳效率。<br> 如果网络上某一个节点的MTU设置被人为调小(比如1460)，导致标准大小的数据包(1500)在这一节点被拆开来传送，这样会产生很多数据包碎片，增 加丢包率，降低网络速度。而天朝的实际情况是，某些网络服务提供商会修改某些节点的MTU，以达到限制用户通过路由器共享带宽的目的。</p> <p>把电脑或路由器的MTU调整为与网络服务提供商设备的MTU相同或稍小，就可以减少这种拆分，提供网络访问质量。一般情况下我们只需要设置路由器的 MTU值即可。</p> <p>(3) 检查网络服务提供商设备的MTU值<br>  开始菜单–程序–附件–命令提示符，输入以下命令：<br> 　ping -f – l 1500 <a href="http://www.renren.com">www.renren.com</a><br> 其中：<br> -l 1500  发送一个定长数据包，1500是测试数据包的大小；<br> –f   通知路由器不能私自更改该数据包大小。</p> <p>在1500以下调整测试数据包的大小，观察反馈结果的变化并判断电信服务商设备的MTU值。<br> 如果出现"Packet needs to be fragmented but DF set"，表示数据包需要被拆开来发送。<br> 减少测试数据包长度，再执行上面的ping命令。重复几次，直到前面的提示消失，记下当时测试数据包的长度。<br> 把测试数据包长度加上数据包头28字节，就得到MTU的值。</p> <p>(4) 修改路由器MTU<br> 在路由器的管理界面（怎么进入管理界面？看一下说明书吧），一般在"WAN设置"/"广域网设置"及其"高级设置"中，可以看到MTU设置。修改MTU为 合适的数值（等于或稍小于网络服务提供商的MTU）后，保存设置重启路由器。</p> <p>重启后，进入图片上传的网页（<a href="http://upload.renren.com/addphoto.do">http://upload.renren.com/addphoto.do</a>），传一张图片试试能不能成功。</p><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/portal">http://www.liulantao.com/portal</a> .<br>  <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-7679880555819417210?l=sandshoots.blogspot.com' alt='' /></div>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/2010/06/08/varnish-setup-in-steps.html" title="Varnish Setup in Steps">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2010/07/19/hello-world.html" title="Hello world!">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>17 July 2010</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#MTU-ref">MTU <span>2</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

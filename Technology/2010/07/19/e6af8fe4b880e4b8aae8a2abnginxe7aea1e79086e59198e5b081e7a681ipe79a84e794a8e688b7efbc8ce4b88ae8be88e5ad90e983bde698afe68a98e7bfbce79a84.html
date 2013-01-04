@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <p>每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使</p>
+
+<p>方案一、</p>
+
+<p>deny  120.7.0.1/16</p>
+
+<p>方案二、</p>
+
+<p>http {
+&hellip;&hellip;
+geo $ban {
+default         0;  # 默认关闭
+127.0.0.0/16    1;  # 针对网段打开；可以设置多行。
+}
+&hellip;&hellip;
+server {
+&hellip;&hellip;
+# 在Server或Location里设置
+location / {
+if ($ban = 1) {
+return 500;  # 返回500 code
+}
+&hellip;&hellip;
+}
+&hellip;&hellip;
+}</p>
+
+<p>&hellip;&hellip;
+}</p>
+
+<p>该配置使用了nginx的geo模块，该模块是nginx标准模块，默认编译是开启的。需要机器上安装有GeoIP支持库。
+了解更多点击http://wiki.nginx.org/NginxHttpGeoModule</p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/2010/07/19/e88bb1e8afade8af8de585b8e6b5b7e8af8de5aea2e688b7e7abafflashe78988efbc88flexe7a88be5ba8fe5a4aanbe595a6efbc89.html" title="英语词典海词客户端Flash版（Flex程序太NB啦）">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/Technology/2010/07/19/e69599e4bda0e79b91e68ea7nginxe69c8de58aa1efbc9ae69687e4bbb6e4b88ae4bca0e69c8de58aa1loge9858de7bdae.html" title="教你监控Nginx服务：文件上传服务log配置">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>19 July 2010</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#GeoIP-ref">GeoIP <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

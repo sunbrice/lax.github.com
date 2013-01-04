@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Object C Programming Notes 1 - Objects, Classes and Messaging</title>
+    <meta name="description" content="">
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Object C Programming Notes 1 - Objects, Classes and Messaging <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<h2 id="section">消息机制</h2>
+
+<p>类似函数调用，Object C中采用消息机制，基本调用语法如下：    </p>
+
+<pre><code>[receiver message]
+</code></pre>
+
+<p>接收方receiver是一个对象，传递的消息通知该对象进行操作的方法名。消息传递的方法名经常叫做selector。  </p>
+
+<p>可以使用点(.)操作符访问对象的accessor方法。</p>
+
+<p>给nil发消息是允许的——在运行时它仅仅是没有任何效果：消息发送给nil并返回nil。</p>
+
+<p>消息传递的方法对接收方的实例变量有访问权限。</p>
+
+<p>多态：不同类对象有相同的方法。</p>
+
+<h2 id="section-1">方法调用与消息的区别</h2>
+
+<p>方法调用：在编译阶段就已确定其方法和参数；  </p>
+
+<p>消息：运行阶段消息发送时才有运行时环境确定。Dynamic binding / Dynamic Method Resolution</p>
+
+<h2 id="dot-syntax">Dot Syntax</h2>
+
+<p>点（.）操作符与消息的使用<br />
+    myInstance.value = 10;
+    [myInstance setValue:10];</p>
+
+<h1 id="nsobject">NSObject</h1>
+
+<p>继承(Inheriting Methods)</p>
+
+<p>覆盖继承来的方法，但是不能覆盖继承来的变量（因为继承时内存已分配）。</p>
+
+<p>抽象类（Abstract Classes）</p>
+
+<h1 id="class-types">Class Types</h1>
+
+<h2 id="static-typing">静态类型Static Typing</h2>
+
+<p>编译器可以做类型检查</p>
+
+<h2 id="type-introspection">内省Type Introspection</h2>
+<p>运行时获知类型等信息。</p>
+
+<h1 id="class-objects">Class Objects</h1>
+
+<p>A class definition contains various kinds of information, much of it about instances of the class:<br />
+-    The name of the class and its superclass
+-    A template describing a set of instance variables
+-    The declarations of method names and their return and parameter types
+-    The method implementations</p>
+
+<h2 id="class-methods-vs-instance-methods">Class Methods vs. Instance Methods</h2>
+
+<pre><code>int versionNumber = [Rectangle version];
+
+id aClass = [anObject class];
+id rectClass = [Rectangle class];
+
+Class aClass = [anObject class];
+Class rectClass = [Rectangle class];
+</code></pre>
+
+<p>Cloass Objects的类型都是Class。</p>
+
+<h1 id="section-2">创建实例</h1>
+
+<pre><code>id  myRectangle;
+
+myRectangle = [Rectangle alloc];
+</code></pre>
+
+<p>初始化实例状态<br />
+    myRectangle = [[Rectangle alloc] init];</p>
+
+<p>变量</p>
+
+<p><a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocObjectsClasses.html">The Objective-C Programming Language</a></p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/2012/08/26/index-page-update.html" title="减少首页文字量">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/Technology/Linux/2012/09/14/edac.html" title="EDAC">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>06 September 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#Object C-ref">Object C <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Mac OSX-ref">Mac OSX <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Programming-ref">Programming <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Language-ref">Language <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

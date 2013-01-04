@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>使用smokeping监控网络质量</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>使用smokeping监控网络质量 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <p><a href="http://oss.oetiker.ch/smokeping">smokeping</a>是一款网络质量检测软件，用perl写成，使用rrdtool保存数据。</p>
+
+<p>它的优势是轻量，易于安装，可定制性强。</p>
+
+<h3 id="section">安装过程</h3>
+
+<p>下载安装包：<a href="http://oss.oetiker.ch/smokeping/pub/">下载页面</a></p>
+
+<p>写作此文时最新版本为2.6.8。</p>
+
+<p>解压后进入目录，执行命令</p>
+
+<pre><code>./setup/build-perl-modules.sh /opt/smokeping-2.6.8/thirdparty
+
+./configure
+</code></pre>
+
+<p>如果提示有模块安装失败，可以从CPAN安装。</p>
+
+<pre><code>perl -MCPAN -e 'install FCGI'
+</code></pre>
+
+<p>确保configure成功后，执行</p>
+
+<pre><code>qmake install
+</code></pre>
+
+<p>创建必要的目录</p>
+
+<pre><code>cd /opt/smokeping-2.6.8/ &amp;&amp; mkdir cache var data
+</code></pre>
+
+<p>安装rrdtool，httpd和mod_fcgid</p>
+
+<pre><code>rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+
+yum install rrdtool httpd mod_fcgid -y
+</code></pre>
+
+<p>配置httpd。创建配置文件/etc/httpd/conf.d/smokeping.conf，内容如下</p>
+
+<pre><code>alias	/smokeping/cache	/opt/smokeping-2.6.8/cache/
+alias	/smokeping	/opt/smokeping-2.6.8/htdocs/
+
+&lt;Directory /opt/smokeping-2.6.8/cache/&gt;
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+&lt;Directory /opt/smokeping-2.6.8/htdocs/&gt;
+    #SetHandler fcgid-script
+    Options +ExecCGI
+
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+</code></pre>
+
+<p>修复cache目录权限，否则查看页面会报错。</p>
+
+<pre><code>chown apache /opt/smokeping-2.6.8/cache/
+</code></pre>
+
+<p>启动smokeping</p>
+
+<pre><code>[root@lax-iPad smokeping-2.6.8]# ./bin/smokeping
+Note: logging to syslog as local0/info.
+Daemonizing ./bin/smokeping ...
+</code></pre>
+
+<p>启动httpd</p>
+
+<pre><code># service httpd start
+</code></pre>
+
+<p>在浏览器中查看</p>
+
+<pre><code>http://localhost/smokeping/smokeping.fcgi.dist
+</code></pre>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/2012/05/23/teaming-network-device.html" title="Teaming">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" title="GNOME3多显示器配置">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>13 June 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#smokeping-ref">smokeping <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rrdtool-ref">rrdtool <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,394 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>在Ruby中利用C/C++代码：为Ruby开发扩展</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>在Ruby中利用C/C++代码：为Ruby开发扩展 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <p>在一个程序里使用多种语言进行开发，出发点有若干种：</p>
+
+<ul>
+  <li>为了性能，嵌入低级语言的代码进行优化。</li>
+  <li>为了开发效率，嵌入高级语言减少代码行数。</li>
+  <li>重用一些成熟的工具和库文件。</li>
+  <li>DSL简化配置，降低维护成本。</li>
+</ul>
+
+<p>最近因为要重用一段C++代码，遇到了原来代码逻辑比较复杂的问题。新项目是一段测试程序，首选是一种解释语言。想在脚本中重用这些功能，完全重写的代价比较高，需要花费精力理清原来程序的逻辑。好在输入和输出的内容都很简单，而Ruby提供了可以方便利用的接口，写一个功能扩展来调用旧的C++代码似乎是一个说得过去的选择。</p>
+
+<p>C++的接口为：</p>
+
+<pre><code>std::string PrivateUtil::getInfo(std::string);
+</code></pre>
+
+<p>首先创建一个文件private_util.cc，包含头文件ruby.h</p>
+
+<pre><code>#include &lt;ruby.h&gt;
+#include "album_util.h"
+</code></pre>
+
+<p>然后声明所有要实现的功能，与ruby脚本通讯：</p>
+
+<pre><code>VALUE getInfo(VALUE input_str);
+</code></pre>
+
+<p>下一步，开始进入模块功能注册，也是这个文件的核心。定义一个Ruby的Module，名字为PrivateUtil；另外定义一个getInfo的方法，并且用刚才声明的getInfo与之对应。</p>
+
+<pre><code>extern "C" void Init_foo()
+{
+    VALUE private_util = rb_define_module("PrivateUtil");
+    rb_define_module_function(private_util, "getInfo", RUBY_METHOD_FUNC(getInfo), 2);
+}
+</code></pre>
+
+<p>现在可以去实现getInfo的具体逻辑了。getInfo的实现也很简单，调用了旧代码的接口，返回一个ruby_str即可。这个返回值需要是ruby的数据类型，以便在脚本中直接使用。</p>
+
+<pre><code>VALUE getInfo(VALUE input_str)
+{
+    return ruby_str_new2(PrivateUtil::getInfo(input_str));
+}
+</code></pre>
+
+<p>到此步骤，c++文件基本完成。</p>
+
+<p>下面开始，建立extconf.rb</p>
+
+<pre><code>require 'mkmf'
+$libs = '-lstdc++'
+create_makefile 'private_util'
+</code></pre>
+
+<p>执行</p>
+
+<pre><code>ruby extconf.rb &amp;&amp; make
+</code></pre>
+
+<p>自动生成一个Makefile文件。make后生成了可供ruby脚本调用的so文件：private_util.so。</p>
+
+<p>直接在ruby中调用private_util:</p>
+
+<pre><code>irb &gt; require 'private_util'
+true
+irb &gt; PrivateUtils::getInfo("abc")
+"abc"
+</code></pre>
+
+<p>如果想在系统全局使用，可以执行make install，这样就能在其它脚本里方面调用。</p>
+
+<p>欢迎交流使用心得。http://www.liulantao.com/</p>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/2011/12/28/tengine-evnote.html" title="Tengine试用手记">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2012/03/15/e4babae4babae7bd91e68b9be88198e7b3bbe7bb9fe5b7a5e7a88be5b888.html" title="人人网招聘系统工程师">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>25 February 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#C++-ref">C++ <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

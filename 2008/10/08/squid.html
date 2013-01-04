@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>基于多端口控制的Squid二级代理设置方法</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>基于多端口控制的Squid二级代理设置方法 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <div dir="ltr">基于端口的二级代理 by&nbsp;Liu&nbsp;Lantao<br>转载请注明出处<a href="http://www.liulantao.com">www.liulantao.com</a><br><br>学校的网络限制了免费访问的范围，校园网以外的内容访问很不方便。有了一台代理服务器G之后，平时的上网问题可以解决了。过程如图<br>+--------------+-----------------+<br>个人电脑------代理G-----------外网<br> <br>可是G在学校机房里，访问的ip范围受到限制。于是想到改造上面的方式，通过设置二级代理的方式来访问那些受限网站。<br>这个解决方案的结构很简单(假设增加的代理L端口为80)：<br>+-------------+-------------+-------------+<br>个人电脑-----代理G-------代理L:80-------受限ip<br><br>因为通过了代理P，访问速度会受到影响，所以不希望一直使用它。于是要保留两个访问通路。<br> 两个通路通过不同端口来区别。传统的3128端口不做改变，而增加一个自定义的19999端口。<br>+-------------+-----------------+<br> 个人电脑----代理G:3128------外网<br> +-------------+-------------------+-------------+<br> 个人电脑----代理G:19999----代理L:80-------受限ip<br><br>下面是在默认配置文件增加的内容，其中第一部分是3128端口直接连接的设置，第二部分是19999端口二级代理的设置：<br>#######################<br># Part I<br>acl lax src <a href="http://172.16.120.1/24">172.16.120.1/24</a><br>http_access allow lax<br> <br>#######################<br># Part II<br>http_port 19999<br>acl out-lax myport 19999<br>cache_peer <a href="http://www.liulantao.com">www.liulantao.com</a> parent 80 0 no-query<br>cache_peer_access <a href="http://www.liulantao.com">www.liulantao.com</a> allow out-lax<br> cache_peer_access <a href="http://www.liulantao.com">www.liulantao.com</a> deny !lax<br>#######################<br><br>如果有任何问题，发邮件给我。<br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> </div> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5162608152246984047?l=lltaichi.blogspot.com' alt='' /></div>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2008/09/30/bashforin.html" title="bash入门：条件语句for...in...">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2008/10/13/2008.html" title="2008年国庆相册-与父母在天安门、王府井">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>08 October 2008</span></div>
+
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Lax</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+
+<!-- Pagination links -->
+
+  <ul class="pager">
+
+  <li class="previous">
+  
+    <a href="/page11">&larr; Previous</a>
+  
+  </li>
+
+
+
+  <li class="next">
+    <a href="/page13">Next &rarr;</a>
+  </li>
+
+</ul>
+
+
+
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2009/01/20/railsmysql.html" title="Rails开发中的MySQL中文问题以及简单解决方式" rel="bookmark">Rails开发中的MySQL中文问题以及简单解决方式</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        Rails2.2.2对中文的支持是不错的，当然不仅仅是中文，所有多字节文字都能够很好得被支持。<br />对于一个有很高本地化l10n和国际化i18n需求的网站，多语言支持的实现方式很多，最常用的是采用gettext来实现。<br /><br />在网页生成过程中，初学者最容易出问题的就是数据库连接的编码问题。最便捷的解决方式是采用utf8编码方式。<br />Rails应用中config/database.yml中可以在数据库段中设置encoding: utf8如下：<br />----------------<br />development:<br />  adapter: mysql<br />  encoding: utf8<br />  database: project_development<br />  pool: 5<br />  username: root<br />  password:<br />  host: localhost<br />----------------<br />对于使用MySQL数据库的应用，只要设置/etc/my.cnf就可以保证正确的存取utf8数据了。<br /><br />检查/etc/my.cnf文件，保证里面有如下两段内容，如果没有则添加进去：<br />--------------<br />[client]<br />default-character-set=utf8<br /><br />[mysqld]<br />default-character-set=utf8<br />init_connect='SET NAMES utf8'<br />--------------<br />修改保存之后，重启服务器即可。<br />--<br />Liu Lantao<br />College of Information Science and Technology, Beijing Normal University<br />EMAIL: liulantao ( at ) gmail ( dot ) com ;<br />WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br />------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3186825106336885203?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2009/01/20/railsmysql.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2009-01-20 00:00:00 +0800">20 Jan 2009</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2009/01/19/rake-railsfreezegems-version222.html" title="# rake rails:freeze:gems VERSION=2.2.2" rel="bookmark"># rake rails:freeze:gems VERSION=2.2.2</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <ol class="dp-bash" start="1"><li class=""><div style="width: 422px;" class="">rake&nbsp;rails:freeze:gems&nbsp;<span class="vars">VERSION=</span><span>2.2.2&nbsp; </span></div></li></ol><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-4620965334961364128?l=liulantao.blogspot.com' alt='' /></div>
+
+        <a href="/2009/01/19/rake-railsfreezegems-version222.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2009-01-19 00:00:00 +0800">19 Jan 2009</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2009/01/17/ror-development-with-radrails-in.html" title="ROR development with RadRails in Eclipse" rel="bookmark">ROR development with RadRails in Eclipse</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        安装Eclips。<br>菜单：Help - Software Updates - Available Software - Add Sites, <a href="http://radrails.sourceforge.net/update">http://radrails.sourceforge.net/update</a>,  <a href="http://updatesite.rubypeople.org/release">http://updatesite.rubypeople.org/release</a><br> ------------参考文章-------------------<br>installing RadRails on Eclipse ...........<br><br>I could not find a proper answer when i wanted to install RadRails on eclipse . This is how it is done , .... in the Eclipse menu go to<br> Help--&gt;Software Updates --&gt; Find and Install....<br>then in the pop - up window which appears ,..<br>Search for new features to install<br>and then click next and then u will have to add 2 new remote sites, .. the details for the sites are the ones which were very difficult to obtain , they are<br> site 1 :<br>Name :RadRails<br>URL : <a href="http://radrails.sourceforge.net/update">http://radrails.sourceforge.net/update</a><br>site 2 :<br>Name :RDT<br>URL : <a href="http://updatesite.rubypeople.org/release">http://updatesite.rubypeople.org/release</a><br> then click on finish , u are almost done with the installation , u have to just follow the instructions from here on to finish the installation .<br clear="all"><br>Original link：<a href="http://satisheerpini.blogspot.com/2008/05/installing-radrails-on-eclipse.html">http://satisheerpini.blogspot.com/2008/05/installing-radrails-on-eclipse.html</a><br> -------------------------------<br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2713110014899246446?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2009/01/17/ror-development-with-radrails-in.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2009-01-17 00:00:00 +0800">17 Jan 2009</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2009/01/06/scaffoldrails.html" title="从“Rails 2.2 / Scaffold功能增强”看Rails敏捷性的提高" rel="bookmark">从“Rails 2.2 / Scaffold功能增强”看Rails敏捷性的提高</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        这几天看《Agile Web Development With Rails, 2nd Edition》（AWDWR），体验一下rails开发的敏捷。<br>不料第一个例子就卡住了。原来书上的例子所需要使用的方法是在rails1.2中有效的，而在rails2.2不被默认支持了。<br><br><br>我遇到的这个东西就是那个scaffold！从网上搜索发现大家都说要装plugin才能够使用，可是找到plugin的老巢也没看出什么门道。<br> 于是打开AWDWR,3rd edition beta电子书来看，才发现这个东西已经是可以直接作为script/generate的对象来使用了。<br><br><br>下面是成功的使用方式，创建一个product的scaffold：<br>---------------------------------------------<br>depot&gt; ruby script/generate scaffold product \<br> &gt; title:string description:text image_url:string<br>exists app/models/<br>exists app/controllers/<br>exists app/helpers/<br>create app/views/products<br>exists app/views/layouts/<br>exists test/functional/<br>exists test/unit/<br> exists public/stylesheets/<br>create app/views/products/index.html.erb<br>create app/views/products/show.html.erb<br>create app/views/products/new.html.erb<br>create app/views/products/edit.html.erb<br>create app/views/layouts/products.html.erb<br> create public/stylesheets/scaffold.css<br>create app/controllers/products_controller.rb<br>create test/functional/products_controller_test.rb<br>create app/helpers/products_helper.rb<br>route map.resources :products<br>dependency model<br> exists app/models/<br>exists test/unit/<br>exists test/fixtures/<br>create app/models/product.rb<br>create test/unit/product_test.rb<br>create test/fixtures/products.yml<br>create db/migrate<br>create db/migrate/20080601000001_create_products.rb<br> -------------------------------------------------------<br>从上面的输出可以看出，这个命令已经整合起原来的命令方式。<br><br>下面是原来的方式：<br>------------------------<br>script/generate model product 并且修改db/migrate下的任务<br>script/generate controller admin&nbsp; 并且修改app/controllers/admin下的admin_controller.rb，增加scaffold :product<br> ------------------------<br><br>下面的迁移任务还是同以前一样操作：<br>--------------------------------------------------------<br>depot&gt; rake db:migrate<br>(in /Users/rubys/work/depot)<br>== 20080601000001 CreateProducts: migrating ===================================<br> -- create_table(:products)<br>-&gt; 0.0027s<br>== 20080601000001 CreateProducts: migrated (0.0028s) ==========================<br>----------------------------------------------------<br><br>可以查看数据的版本：<br>----------------------------------------------------<br> depot&gt; sqlite3 db/development.sqlite3 &quot;select version from schema_migrations&quot;<br>20080601000001<br>---------------------------------------------------<br><br>启动服务器：<br>---------------------------------------------------<br> depot&gt; ruby script/server<br>=&gt; Booting WEBrick...<br>=&gt; Rails application started on <a href="http://0.0.0.0:3000">http://0.0.0.0:3000</a><br>=&gt; Ctrl-C to shutdown server; call with --help for options<br>[2008-03-27 11:54:55] INFO WEBrick 1.3.1<br> [2008-03-27 11:54:55] INFO ruby 1.8.6 (2007-09-24) [i486-linux]<br>[2008-03-27 11:54:55] INFO WEBrick::HTTPServer#start: pid=6200 port=3000<br>----------------------------------------------------<br><br>对比下两个版本中操作的便捷程度：<br> rails 1.2中， 输入命令 5 次，修改文件 2 处，<br>rails 2.2中，输入命令 3 次，修改文件 0 处。<br>可以明显看出新版的效率有了如此大的改进，真是让人欣喜。现在Rails仍然处于一个高速发展的阶段，相信不久它很快还能为我们带来更加便捷的开发方式。<br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-9013035094256112247?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2009/01/06/scaffoldrails.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2009-01-06 00:00:00 +0800">06 Jan 2009</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2008/12/31/msys.html" title="MSYS的搭建及参数设置" rel="bookmark">MSYS的搭建及参数设置</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        MSYS、Qt编译环境的搭建及参数设置<br>liulantao (at) <a href="http://gmail.com">gmail.com</a><br>--------------------------<br><br>目标：在WindowsXP中搭建MSYS/MinGW环境，并安装Qt库，编译LinQ。<br><br>步骤及注意事项：<br>一、按照<a href="http://linq.sourceforge.net/compile.php">http://linq.sourceforge.net/compile.php</a>安装MinGW、MSYS、Qt和Win32 OpenSSL。<br> MinGW安装目录E:\MinGW；<br>MSYS安装目录E:\MSYS。安装后要进行设置，指定MinGW的目录；<br>Qt安装目录E:\Qt。安装过程中要指定MinGW的目录；<br>OpenSSL安装目录D:\OpenSSL。并且要安装一个Visual C++ 2008 Redistributables的东西，openssl下载页面有链接，只有1.7M。<br><br>二、系统变量System variables中需要设置：<br> 1、QTDIR为QT安装目录；<br>2、Path中添加E:\MinGW\bin;<br>3、如果需要，在Path中添加Qt的路径。<br><br>三、在MSYS环境下解压linq源代码包并进入目录，执行configure。<br>按照linq网页提示，加 --enable-debug选项。<br><br>四、在Qt Command Prompt中之行qmake和mingw32-make。<br>1、为什么在Qt command prompt中呢？&nbsp; 答：因为它会自动添加几个系统变量，make的时候用。如果在Path里添加过那几个变量，则用系统的命令提示符界面亦可。<br> 2、因为前面已经添加MinGW安装路径到Path中，所以可以直接之行这个命令。<br><br>五、如果编译过程中提示缺少QtXmld4、QtGuiNetworkd、QtGuid、QtCored4等，可以到E:\Qt\4.2.0\lib中将libQtXml4.a、libQtGui4.a、libNetwork4.a、libQtCore4.a复制并命名为libQtXmld4.a、libQtGuid4.a、libQtNetworkd4.a、libQtCored4.a。<br> <br>六、编译完成后，linq.exe就在目录中出现了。如果提示缺少QtCore4.dll、QtGui4.dll、QtNetwork4.dll、QtXml4.dll，到E:\Qt\4.2.0\bin下复制相应文件到linq目录即可。<br><br>七、因为编译是有--enable-debug选项，所以会有一个debug窗口出现。正式发布软件的时候可以去掉该选项。<br><br><br><br clear="all"><br>-- <br> Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>  <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7781010113416794104?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2008/12/31/msys.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2008-12-31 00:00:00 +0800">31 Dec 2008</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2008/11/19/fedora-10.html" title="“升级到Fedora 10后键盘鼠标输入没反应”及解决办法。" rel="bookmark">“升级到Fedora 10后键盘鼠标输入没反应”及解决办法。</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        "升级到Fedora 10后键盘鼠标输入没反应"及解决办法<br><br>最近把fedora升级到Release 10(Cambridge)。这个版本的软件要比以前的丰富很多，比如Eclipse之外，又加入来了NetBeans，当然也假如不少有趣的游戏。<br><br>但是重启之后，启动X后鼠标无法移动，键盘也无法操作。<br><br>再次启动直接进入控制台下，启动gpm之后鼠标可以控制，键盘输入也没有问题。所以不太可能驱动问题。将synaptics驱动重新安装，也不会有效果。<br clear="all"> <br>现在看一看启动x之后的信息，<br>&lt;code&gt;<br>[lax@liulantao-com ~]$ startx<br>xauth:&nbsp; creating new authority file /home/lax/.serverauth.3071<br><br><br>X.Org X Server 1.5.3<br>Release Date: 5 November 2008<br>X Protocol Version 11, Revision 0<br> Build Operating System: Linux 2.6.18-92.1.10.el5 i686 <br>Current Operating System: Linux <a href="http://liulantao-com.liulantao.com">liulantao-com.liulantao.com</a> 2.6.27.5-113.fc10.i686 #1 SMP Mon Nov 17 04:45:06 EST 2008 i686<br> Build Date: 16 November 2008&nbsp; 08:29:02PM<br>Build ID: xorg-x11-server 1.5.3-5.fc10 <br>&nbsp;&nbsp;&nbsp; Before reporting problems, check <a href="http://wiki.x.org">http://wiki.x.org</a><br>&nbsp;&nbsp;&nbsp; to make sure that you have the latest version.<br> Markers: (--) probed, (**) from config file, (==) default setting,<br>&nbsp;&nbsp;&nbsp; (++) from command line, (!!) notice, (II) informational,<br>&nbsp;&nbsp;&nbsp; (WW) warning, (EE) error, (NI) not implemented, (??) unknown.<br>(==) Log file: &quot;/var/log/Xorg.0.log&quot;, Time: Wed Nov 19 13:13:27 2008<br> (==) Using config file: &quot;/etc/X11/xorg.conf&quot;<br>(EE) intel(0): Failed to set tiling on front buffer: rejected by kernel<br>(EE) intel(0): Failed to set tiling on back buffer: rejected by kernel<br>(EE) intel(0): Failed to set tiling on depth buffer: rejected by kernel<br> (EE) config/hal: couldn&#39;t initialise context: (null) ((null))<br>imsettings information<br>==========================<br>Is DBus enabled: yes<br>Is imsettings enabled: yes<br>Is GTK+ supported: no<br>Is Qt supported: no<br> DESKTOP_SESSION: <br>DISABLE_IMSETTINGS: <br>IMSETTINGS_DISABLE_DESKTOP_CHECK: <br>DBUS_SESSION_BUS_ADDRESS: unix:abstract=/tmp/dbus-mSWs6t3lXM,guid=18340f0cccc68cdd14c249a44923a07c<br>GTK_IM_MODULE: xim<br>QT_IM_MODULE: xim<br> XMODIFIERS: @im=imsettings<br>IMSETTINGS_MODULE: SCIM<br><br>..................<br>&lt;/code&gt;<br>发现有一行：(EE) config/hal: couldn&#39;t initialise context: (null) ((null))<br>原来haldaemon没能启动，手工重启一下，显示失败。所以现在的关键是吧这个服务启动起来。<br> 回想这次装系统之后没有将selinux禁用，也许是这家伙在搞鬼吧，于是修改/etc/selinux/config，将SELINUX=enforcing改为SELINUX=disabled。<br>重启之后，启动X就OK了，鼠标键盘又活起来。<br><br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2650925981371593399?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2008/11/19/fedora-10.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2008-11-19 00:00:00 +0800">19 Nov 2008</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2008/10/28/fuse-sshfs-mount.html" title="fuse-sshfs: 安全mount 远程目录" rel="bookmark">fuse-sshfs: 安全mount 远程目录</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        &gt;sudo yum install -y fuse-sshfs ; <br>&gt;sshfs hostname: mountpoint<br>&gt;df -h<br>&gt;fusermount -u mountpoint<br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8842663503074270884?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2008/10/28/fuse-sshfs-mount.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2008-10-28 00:00:00 +0800">28 Oct 2008</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2008/10/25/10_25.html" title="转：10个最吃香的网站开发技术" rel="bookmark">转：10个最吃香的网站开发技术</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        看起来这些技术都是心在最热门的一些应用，比如facebook开放接口的入选。当然有些就比较传统而且充满技巧性和经验的要求，比如CMS的theme和plugin开发。<br>而framework则面临着迅速变化的境地，竞争也日趋激烈。最终谁能统御市场还难下定论，但是它里面蕴涵的机遇则是谁也不能否认的。<br><br><br>－－－－－－－－－－－－以下为原文－－－－－－－－－－－－－－－<br>10个最吃香的网站开发技术<br><a href="http://www.cnbeta.com/articles/67944.htm">http://www.cnbeta.com/articles/67944.htm</a><br> -------------------------------------------<br><br>尽管美国经济出现危机，但是网站开发领域还是很繁荣的，因为不论是现在或者将来，网络必定是人们日常生活中不可缺少的组成部分。NETTUTS上列出10个最吃香的网站开发技术。作为网站开发工程师，如果你精通这些技术，即便在经济不景气的时候，仍然很容易找到一份好工作。<br><br>1. Framework knowledge (架构知识)<br> 架构是大型网站开发的重要部分。开发者已经从Rails, Django等公司提供的网站架构工具中收益，因为架构工具可以帮助完成那些需要一定编程知识的重复性的任务。如果你拥有领先的架构技术(像Rails, Django, CakePHP, Symfony等)，你的择业面将非常广阔。<br><br>2. Widget Development (窗体小部件开发)<br>窗体小部件(Widgets)是一个嵌入网页的迷你应用程序，通常也可以下载到Windows或者Mac桌面下运行。它让数据变得便与携带而且更具交互性。比较出名的像Yahoo Widgets 和AOL Music Widgets。窗体小部件开发除了需要掌握网络应用程序开发所需的语言知识，还需要精通Javascript和Flash知识。<br> <br>3. Custom CMS themes (内容管理系统主题定制)<br>如今越来越多人开始使用CMS(内容管理系统，例如Wordpress和Drupal)来构建他们的网站。可以想象不可能大家都用CMS提供的默认主题，为了让自己的CMS网站在外观设计上独树一帜，就需要一些专门给CMS开发主题的技术人员。<br><br>4. CMS Customizations and plugin development (内容管理系统的定制以及插件开发)<br> 同样随着CMS的流行，对CMS的功能定制以及插件开发的需求也越来越大。<br><br>5. PSD to XHTML services (PSD转换XHTML的服务）<br>在建站中，许多公司是先用Photoshop设计好网站的外观原图，然后再转换成XHTML。这需要很强的CSS/HTML知识。<br><br>6. Javascript Plugin creation(Javascript的插件开发)<br>Javascript的Framework非常流行，因为它使Javascript的代码开发变得简单。就比如说现在流行的Javascript Framework - jQuery，如果你在它的基础上开发优秀的插件，那么你的插件也会跟着流行起来。<br> <br>7. Facebook/MySpace applications (Facebook/MySpace 应用程序开发)<br>Facebook/MySpace两大社交网站在美国红遍半边天。给他们开发应用程序，不用说一定是相当热门的。<br><br>8. iPhone applications (iPhone 应用程序开发)<br>同样给iPhone开发应用程序，也一直都可以被大量下载，因此也是很赚钱的活。<br><br>9. E-commerce integration (电子商务一体化)<br> 如今电子商务网站(像Ebay，Amazon)与在线银行服务系统(像Paypal和Google Checkout的)之间的配合越来越紧密，因此电子商务交易平台的开发也是相当有前途的。<br><br>10. Flash and Actionscript Knowledge (Flash和Actionscript知识)<br>越来越多的公司采用Flash来制作自己的网站、展现自己的产品，因为精美的动画总是容易吸引人们的眼球。因此Flash动画技术也必然迅速发展。<br clear="all"> －－－－－－－－－－原文结束－－－－－－－－－－－－<br><br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5435392028412098407?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2008/10/25/10_25.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2008-10-25 00:00:00 +0800">25 Oct 2008</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+
+
+  <div id="post-pagination" class="pagination pagination-centered">
+  <ul class="pages nav nav-pills">
+
+  
+    <li>
+    
+      <a href="/page11">Previous</a>
+    
+    </li>
+  
+
+  
+    <li class="page">
+      <a href="/">1</a>
+    </li>
+  
+
+  
+    
+    <li class="page">
+      <a href="/page2">2</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page3">3</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page4">4</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page5">5</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page6">6</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page7">7</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page8">8</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page9">9</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page10">10</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page11">11</a>
+    </li>
+    
+  
+    
+    <li class="page active">
+      <a href="#">12</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page13">13</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page14">14</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page15">15</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page16">16</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page17">17</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page18">18</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page19">19</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page20">20</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page21">21</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page22">22</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page23">23</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page24">24</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page25">25</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page26">26</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page27">27</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page28">28</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page30">30</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page31">31</a>
+    </li>
+    
+  
+
+  
+    <li>
+      <a href="/page13">Next</a>
+    </li>
+  
+
+  </ul>
+</div>
+
+
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

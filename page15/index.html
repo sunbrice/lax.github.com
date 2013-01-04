@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Lax</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+
+<!-- Pagination links -->
+
+  <ul class="pager">
+
+  <li class="previous">
+  
+    <a href="/page14">&larr; Previous</a>
+  
+  </li>
+
+
+
+  <li class="next">
+    <a href="/page16">Next &rarr;</a>
+  </li>
+
+</ul>
+
+
+
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2008/01/10/freebsdfluxbox.html" title="freebsd+fluxbox中文输入法不能启动的设置方法" rel="bookmark">freebsd+fluxbox中文输入法不能启动的设置方法</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        freebsd+fluxbox中文输入法不能启动的设置方法<br>------<br>我用的是freebsd+fluxbox，当然其它环境也有类似的配置。<p>通过ports安装，网上也有不少介绍。安装过程很简单了，进入各个目录make install clean。<br>需要安装的有x11/xorg，x11-wm/fluxbox，chinese/scim。<p>正确配置xorg.conf，确保正常启动图形界面。不要这个文件是能够启动的，但是会有鼠标之类的不可用。配置过程是比较玄妙的一件事情，一般不能启动的时候都是和显卡有关的驱动加载问题，我运行xorgconfig配置之后，显卡成了vga了，死活提示启动有问题。后来手动修改为vesa才可以。看造化吧，因为我在中英文的论坛中搜索答案的时候发现关于这个文件的文章不是很够用。<p>下面就是和输入法有关的了。先启动图形界面，打开一个term运行scim -d，如果有反应则说明安装成功了，然后就可以在~/.xinitrc中添加<br>------<br>scim -d &amp;<br>exec fluxbox<br>------<br>正常情况下可以看到任务栏上的输入法图标了。但是很让人郁闷的是，没法在任何程序中调用它。<p>运行locale命令，查看输出结果，如果LC_CTYPE未被设置，则需要需要手动设置。<br>如果是csh/tcsh，则运行setenv LC_CTYPE zh_CN.UTF-8，<br>如果是sh/bash，则运行export LC_CYTPE=zh_CN.UTF-8。<br>如果不想每次都手动设定，可以修改~/.cshrc（或~/.bashrc，看你用哪个shell了）<br>------<br>lax@liulantao-com&gt;  echo &quot;setenv LC_CTYPE zh_CN.UTF-8&quot; &gt;&gt; ~/.cshrc<p>lax@liulantao-com$   echo &quot;export LC_CYTPE=zh_CN.UTF-8&quot; &gt;&gt; ~/.bashrc<br>------<br>经测试，这个变量设置之后就能够正确启动输入法了。<p>-- <br>作者：刘兰涛  Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>转载请注明出处。<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7753736560692750141?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2008/01/10/freebsdfluxbox.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2008-01-10 00:00:00 +0800">10 Jan 2008</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/11/30/bash.html" title="通过bash脚本批量创建用户并设置密码" rel="bookmark">通过bash脚本批量创建用户并设置密码</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        Create Users And Change Passwords With A Bash Script<br>通过脚本批量创建用户并设置密码<p>First create a file which contains all the user name.<br>首先创建一个包还所有用户名的文件，格式如下：<br>------------------------<br>nurealam<br>nayeem<br>mrahman<br>farid<br>rubi<br>sankar<br>------------------------<br>Save the file as userlist.txt. Now create the following bash file:<br>把该文件保存为userlist.txt。现在创建如下的bash文件：<br>------------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>adduser $i<br>done<br>---------------------------<br>保存文件为useradd.sh。<br>运行该脚本文件：<br>--------------------<br>[lax@liulantao-com ~]# sh useradd.sh<br>---------------------<br>This will add all the users to the system. Now we have to change the<br>passwords. Let&#39;s say we want username123 as password. So for user<br>nayeem the password will be nayeem123, rubi123 for user rubi and so<br>on.----www.liulantao.com-----<br />结果是添加了所有用户名到系统中。现在必须修改密码了。假设我们用使用username123为密码。比如rubi的密码将是rubi123，依此类推。<br>Create another bash file as follows:<br>创建下面的脚本文件：<br>-------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>echo $i&quot;123&quot; | passwd –-stdin &quot;$i&quot;<br>echo; echo &quot;User $username&#39;s password changed!&quot;<br>done<br>--------------------<br>保存为userpasswd.sh。<br>-------------<br>[lax@liulantao-com ~]# sh userpasswd.sh<br>------------<br>Run the file. All the passwords are changed.<br>运行该文件。所有的密码被修改<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>转载本网站文章请保留这一行和以上所有文字，谢谢。<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7596269751548084725?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/11/30/bash.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-11-30 00:00:00 +0800">30 Nov 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/11/25/blog-post.html" title="国立北京师范大学校歌" rel="bookmark">国立北京师范大学校歌</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        前年社团文化节开幕式的时候合唱了这首歌，歌词和配的曲子，让人感觉很有历史责任感。<br>闲话不多说，歌词奉上：<p>------------------------------<br>国立北京师范大学校歌<br>范源廉 作歌<br>冯孝思 作曲<br>------------------------------<p>往者文化世所荣<br>将来事业更无穷<br>开来继往 师道贯其中<br>师道 师道 谁兴立<br>责无旁贷在藐躬<p>皇皇兮首都<br>巍巍兮学府<br>一堂相聚志相同<br>朝研夕讨乐融融<br>宏我教化<br>昌我民治<br>共矢此愿务成功<p>------------------------------------------------------------<br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<p>---------- 转载本网站所有文章，请注明出处 ---------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4762123815007214058?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/11/25/blog-post.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-11-25 00:00:00 +0800">25 Nov 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/11/13/fluxbox_13.html" title="fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案" rel="bookmark">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <div xmlns='http://www.w3.org/1999/xhtml'>关于如何设置菜单，请参考网络上其他朋友的文档。<br/>本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。<br/><br/>一、请确认你安装了中文的字体。<br/>方法1、<br/>首先在终端运行fc-list命令：<br/><br/>[lax@liulantao .fluxbox]$ fc-list<br/><br/>从中找到支持中文的字体，记下字体名字：<br/><br/>AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium<br/>AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular<br/><br/>本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。<br/>如果要使用其它字体，替换成相应的名称。<br/>方法2、<br/>打开firefox，点击View - &amp;gt; Preferences -&amp;gt; Content ，看Default font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。<br/><br/>二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：<br/><blockquote>[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation<br/>Password: ******</blockquote><br/><br/>找到：<br/><br/><blockquote>window.font: lucidasans-10<br/>window.justify: right</blockquote><br/><br/>注释掉window.font行，修改为：<br/><br/><blockquote>#window.font: lucidasans-10<br/>window.font: AR PL ZenKai Uni-10<br/>window.justify: right</blockquote><br/><br/>保存退出，reload config就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。<br/><br/>设置其它位置的字体，可以修改相应的font。<br/><br/><br/><br/>Technorati Tags: <a rel='tag' href='http://technorati.com/tag/linux%20fluxbox%20%E4%B8%AD%E6%96%87%20%E5%AD%97%E4%BD%93%20%E6%98%BE%E7%A4%BA%20%E6%96%87%E9%BC%8E%20fc-list' class='performancingtags'>linux fluxbox 中文 字体 显示 文鼎 fc-list</a><br/><br/><p class='poweredbyperformancing'>Powered by <a href='http://scribefire.com/'>ScribeFire</a>.</p></div><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6403968958837271573?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/11/13/fluxbox_13.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/11/13/fluxbox.html" title="fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案" rel="bookmark">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        关于如何设置菜单，请参考网络上其他朋友的文档。<br>本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。<p>一、请确认你安装了中文的字体。<br>方法1、<br>首先在终端运行fc-list命令：<br>&lt;code&gt;<br>[lax@liulantao .fluxbox]$ fc-list<br>&lt;/code&gt;<br>从中找到支持中文的字体，记下字体名字：<br>&lt;code&gt;<br>AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium<br>AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular<br>&lt;/code&gt;<br>本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。<br>如果要使用其它字体，替换成相应的名称。<br>方法2、<br>打开firefox，点击View - &amp;gt; Preferences -&amp;gt; Content ，看Default<br>font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。<p>二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：<br>[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation<br>Password:  ******<p>找到下面一行：<br>&lt;code&gt;<br>window.font:                    lucidasans-10<br>&lt;/code&gt;<br>注释掉window.font行，修改为：<br>&lt;code&gt;<br>#window.font:                    lucidasans-10<br>window.font:                    AR PL ZenKai Uni-10<br>&lt;/code&gt;<p>保存退出，reload config或者重新启动fluxbox就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。<p>设置其它位置的字体，可以修改相应的font。<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2941371565744535162?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/11/13/fluxbox.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/11/13/fedora-8.html" title="fedora 8 声音问题解决方案" rel="bookmark">fedora 8 声音问题解决方案</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        fedora 8 声音问题解决方案<p>症状：<br>1、通过system-config-soundcard测试，可以正确识别声卡。<br>2、普通用户无法调节音量，无法播放声音文件。<p>解决方法：<p>[lax@liulantao ~]$ sudo less /etc/security/console.perms.d/50-default.perms<br>Password:<p>添加以下内容<p>    #lax defined<br>    #lax defined<br>    &lt;laxaudio&gt;=/dev/dsp* /dev/snd/*<br>    &lt;console&gt; 0666 &lt;laxaudio&gt; 0600 root<p>重启系统，ok。<p>参考文章：<a href="http://home.nyc.rr.com/computertaijutsu/rhsound.html">http://home.nyc.rr.com/computertaijutsu/rhsound.html</a><p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-595768438268884869?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/11/13/fedora-8.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/11/06/c_06.html" title="计算两个整数最大公约数和最小公倍数的算法：C++语言实现" rel="bookmark">计算两个整数最大公约数和最小公倍数的算法：C++语言实现</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        计算两个整数最大公约数和最小公倍数的算法：C++语言实现<p>#include &lt;iostream&gt;<br>using namespace std;<br>int gcd(int a, int b) //最大公约数<br>{<br> while(a!=b)<br> { a&gt;b ? a -= a/b * b : b -= b/a * a; }<br> return a;<br>}<br>int lcm(int a, int b) //最小公倍数<br>{<br> return a * b / gcd(a,b);<br>}<br>int main()<br>{<br>int x, y;<br>cout &lt;&lt; &quot;请输入两个正整数：&quot; &lt;&lt;endl;<br>cin &gt;&gt; x &gt;&gt; y;<br>cout &lt;&lt; &quot;最大公约数： &quot; &lt;&lt; gcd(x,y) &lt;&lt; &quot; ； 最小公倍数： &quot; &lt;&lt; lcm(x,y) &lt;&lt; endl;<br>return 0;<br>}<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5986079122463533873?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/11/06/c_06.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-11-06 00:00:00 +0800">06 Nov 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/10/08/linux-problems-solved-today-20071008.html" title="Linux problems solved today - 20071008" rel="bookmark">Linux problems solved today - 20071008</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        Linux problems solved today - 20071008<p><br>1、关于GNOME里中文字体的问题。<p>先通过yum发现已经安装的字体列表。<p>#yum list *fonts* |more<p>然后一次卸载掉每个已经安装的字体，启动到GNOME中，用firefox打开常用的几个中文网页，发现以下两个字体文件的作用。<p>cjkunifonts-ukai  楷体<p>cjkunifonts-uming  宋体<p>于是卸载掉其它的字体，安装cjkunifonts-ukai，于是所有中文都是漂亮的楷体了；然后将cjkunifongt-uming，<br>系统上有了宋体。<p>2、Fedora升级到Rawhide后普通用户没法听到声音。<p>原来一直以为是驱动或者内核的问题，还因此downgrade到了fedora 7了。<p>今天早上偶尔发现用Soundcard Detection能够听到测试声音。于是确认声卡和内核都是好的。<p>于是从alsa上面找问题。发现用root帐户能够正常播放音乐并且使用正常的音量调节。<p>从网络上搜索到少数几个关于debian上同样现象的解决方案，都提到要在/etc/groups中将自己的帐户加到audio组中。<p>而fedora中并没有这个用户组。这个方案不可行。<p>又找到一篇中提到将/dev/dsp和/dev/audio/中的文件修改为622。因为没有/dev/audio，所以修改了/dev/dsp，而实际效果并不好。<p>下午又在弄的时候发现有个/dev/mixer的文件。早先弄的时候对mixer进行了搜索，见到了这个文件，这个文件的权限修改后普通用户能够对音量进行调节了。<p>因为刚开始用root调节音量的时候使用了alsamixer，应该音量调节的接口就是这个mixer文件了。<p>搜索的时候还发现几个关于mixer编程的话题，应该很有趣。<p><br>-- <br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3134898894860208222?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/10/08/linux-problems-solved-today-20071008.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-10-08 00:00:00 +0800">08 Oct 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+
+
+  <div id="post-pagination" class="pagination pagination-centered">
+  <ul class="pages nav nav-pills">
+
+  
+    <li>
+    
+      <a href="/page14">Previous</a>
+    
+    </li>
+  
+
+  
+    <li class="page">
+      <a href="/">1</a>
+    </li>
+  
+
+  
+    
+    <li class="page">
+      <a href="/page2">2</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page3">3</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page4">4</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page5">5</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page6">6</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page7">7</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page8">8</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page9">9</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page10">10</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page11">11</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page12">12</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page13">13</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page14">14</a>
+    </li>
+    
+  
+    
+    <li class="page active">
+      <a href="#">15</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page16">16</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page17">17</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page18">18</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page19">19</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page20">20</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page21">21</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page22">22</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page23">23</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page24">24</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page25">25</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page26">26</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page27">27</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page28">28</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page30">30</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page31">31</a>
+    </li>
+    
+  
+
+  
+    <li>
+      <a href="/page16">Next</a>
+    </li>
+  
+
+  </ul>
+</div>
+
+
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

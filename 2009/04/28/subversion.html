@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Subversion主干-分支开发的流程。</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Subversion主干-分支开发的流程。 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    使用Subversion辅助开发，有一个重要的概念就是主干与分支。<br>采用主干与分支的开发方法，可以有几种不同的策略：<br>1、主干上开发，分支上发布。发布之后，如果分支有BUG（主干可能也是有的），则在分支上修改BUG。然后合并到主干。分支的发布 继续进行。这个一般适用于客户化软件工程的。<br> 2、主干保持一个最新的稳定版本，保证随时能提供稳定的发布版本。而所有的新功能、新技术实验全放在分支上去做开发，进行新技术的验证实验。等分支相对稳定以后，再合并到主干上形成稳定的发布版本。此 时就要更新主干，进行主干版本的升级。很多开源软件基本采取这种策略。<br> 3、还有一种就是这两者的混合，结合两者的优点，即保证随时可以有稳定的版本发布，又能保证客户化的版本分支开发<span href="http://bbs.iusesvn.com/tag.php?name=%E5%8A%9F%E8%83%BD" onclick="tagshow(event)" class="t_tag">功能</span>及其客 户化版本的维护。<br><br>下面介绍采用第2中策略的详细步骤和命令。<br>以trunk为主干目录，branches下为分支目录。在分支进行开发，稳定后合并入主干。<br><br>首先，从主干创建开发分支：<br>[lax@liulantao-com ~]$ svn cp <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk/</a> <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a> -m &quot;Creating branch: 20090428.&quot;<br> Committed revision 10.<br><br>然后，获取分支代码，进行新特性的开发工作。<br>[lax@liulantao-com ~]$ svn co <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a><br> <br>之后，则进入本地的www.myshu.org_20090428目录中进行开发，所有改动直接提交，直至新功能稳定并完成。<br>[lax@liulantao-com ~]$ cd www.myshu.org_20090428/<br>[lax@liulantao-com ~]$ [change the code]......<br>[lax@liulantao-com ~/www.myshu.org_20090248/]$ svn ci -m &quot;Changing something.&quot;<br clear="all"> <br>分支开发完成后，检查分支的历史，获得创建时所在的版本。<br>[lax@liulantao-com www.myshu.org_20090428]$ svn log --stop-on-copy -q <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a><br> ------------------------------------------------------------------------<br>r10 | lax | 2009-04-28 11:46:02 +0800 (Tue, 28 Apr 2009)<br>------------------------------------------------------------------------<br>数值最小的版本号是我们需要合并的版本。本例中是r10。记下这个数值。<br> <br>获取主干的代码。<br> [lax@liulantao-com ~]$ svn co <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk</a><br> [lax@liulantao-com ~]$ cd trunk/<br><br>接着将开发分支合并入刚获取的主干代码上。<br>[lax@liulantao-com trunk/]$ svn merge -r 10:HEAD <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a><br> <br>然后查看合并后主干代码的状态。<br>[lax@liulantao-com trunk/]$ svn status<br><br>如果没有冲突(conflict)，则可以提交了新的主干了。<br>[lax@liulantao-com trunk/]$ svn ci -m &quot;Adding new features.&quot;<br><br>现在，主干已经形成一个新的状态。在整个过程中，主干的代码一直保持着稳定可用的状态，而分支代码则处于开发状态。<br> <br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-1769061075706569319?l=lltaichi.blogspot.com' alt='' /></div>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2009/04/25/linuxsunbuild-sunpinyin-on-gnulinux.html" title="在Linux上编译安装SUN拼音输入法｜Build SunPinyin on GNU/Linux (CentOS/Redhat/Fedora).">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2009/05/12/working-productively-in-bashs-vi.html" title="Working Productively in Bash’s Vi Command Line Editing Mode (with Cheat Sheet)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>28 April 2009</span></div>
+
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

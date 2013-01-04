@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Installing Chromium Web Browser on Fedora 11.</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Installing Chromium Web Browser on Fedora 11. <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    [lax@homex ~]$ sudo vim /etc/yum.repos.d/chromium.repo <br>[chromium]<br>name=Chromium Test Packages<br>baseurl=<a href="http://spot.fedorapeople.org/chromium/F$releasever/">http://spot.fedorapeople.org/chromium/F$releasever/</a><br> enabled=0<br>gpgcheck=0<br><br>[lax@homex ~]$ sudo yum install *chromium* --enablerepo=chromium<br>Loaded plugins: aliases, fastestmirror, refresh-packagekit<br>Loading mirror speeds from cached hostfile<br> * fedora: <a href="http://ftp.cuhk.edu.hk">ftp.cuhk.edu.hk</a><br>  * rpmfusion-free: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br> * rpmfusion-free-updates: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br> * rpmfusion-nonfree: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br>  * rpmfusion-nonfree-updates: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br> * updates: <a href="http://ftp.cuhk.edu.hk">ftp.cuhk.edu.hk</a><br>Setting up Install Process<br>Resolving Dependencies<br>--&gt; Running transaction check<br> ---&gt; Package chromium.i586 0:4.0.204.0-0.1.20090827svn24640.fc11 set to be updated<br>--&gt; Processing Dependency: libv8.so.1 for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br>--&gt; Processing Dependency: libminizip.so.1 for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br> --&gt; Processing Dependency: nss-mdns(x86-32) for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br>--&gt; Running transaction check<br>---&gt; Package minizip.i586 0:1.2.3-22.fc11 set to be updated<br>---&gt; Package nss-mdns.i586 0:0.10-7.fc11 set to be updated<br> ---&gt; Package v8.i586 0:1.3.8-1.20090827svn2777.fc11 set to be updated<br>--&gt; Finished Dependency Resolution<br><br>Dependencies Resolved<br><br>================================================================================<br>  Package     Arch    Version                                  Repository   Size<br>================================================================================<br>Installing:<br> chromium    i586    4.0.204.0-0.1.20090827svn24640.fc11      chromium     15 M<br> Installing for dependencies:<br> minizip     i586    1.2.3-22.fc11                            fedora       25 k<br> nss-mdns    i586    0.10-7.fc11                              fedora       25 k<br> v8          i586    1.3.8-1.20090827svn2777.fc11             chromium    914 k<br> <br>Transaction Summary<br>================================================================================<br>Install      4 Package(s)         <br>Update       0 Package(s)         <br>Remove       0 Package(s)         <br> <br>Total download size: 16 M<br>Is this ok [y/N]: y<br>Downloading Packages:<br>(1/4): chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586 |  15 MB     02:15     <br>(2/4): minizip-1.2.3-22.fc11.i586.rpm                    |  25 kB     00:01     <br> (3/4): nss-mdns-0.10-7.fc11.i586.rpm                     |  25 kB     00:00     <br>(4/4): v8-1.3.8-1.20090827svn2777.fc11.i586.rpm          | 914 kB     00:09     <br>--------------------------------------------------------------------------------<br> Total                                           100 kB/s |  16 MB     02:43     <br>Running rpm_check_debug<br>Running Transaction Test<br>Finished Transaction Test<br>Transaction Test Succeeded<br>Running Transaction<br>   Installing     : v8-1.3.8-1.20090827svn2777.fc11.i586                     1/4 <br>  Installing     : minizip-1.2.3-22.fc11.i586                               2/4 <br>  Installing     : nss-mdns-0.10-7.fc11.i586                                3/4 <br>   Installing     : chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586        4/4 <br><br>Installed:<br>  chromium.i586 0:4.0.204.0-0.1.20090827svn24640.fc11                           <br><br>Dependency Installed:<br>  minizip.i586 0:1.2.3-22.fc11                 nss-mdns.i586 0:0.10-7.fc11      <br>   v8.i586 0:1.3.8-1.20090827svn2777.fc11      <br><br>Complete!<br><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-3503778054796519936?l=sandshoots.blogspot.com' alt='' /></div>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2009/09/06/blog-post.html" title="西四新开的一家奶酪魏">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2009/09/07/output-of-array-to-sentence-ruby-way.html" title="Output of an Array to sentence, the ruby way">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>07 September 2009</span></div>
+
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

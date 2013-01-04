@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gerrit Review System - Setup notes</title>
+    <meta name="description" content="">
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Gerrit Review System - Setup notes <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<ul id="markdown-toc">
+  <li><a href="#gerrit">Gerrit背景</a></li>
+  <li><a href="#section">协作流程简介</a></li>
+  <li><a href="#gerrit-1">自定义Gerrit安装</a></li>
+  <li><a href="#section-1">创建新项目</a></li>
+  <li><a href="#gerrit-2">应用gerrit进行代码管理</a></li>
+  <li><a href="#section-2">常见问题处理</a>    <ul>
+      <li><a href="#forge-committer-identity">Forge Committer Identity</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="gerrit">Gerrit背景</h2>
+
+<p>Android作为移动平台上兴起的大型开源操作系统项目，管理大量代码提交者的代码是个复杂的工程。我们来看一下Android项目使用的协作平台Gerrit。</p>
+
+<p>Gerrit是Andriod工程中发展起来的源代码review工具，基于<a href="http://www.kernel.org/pub/software/scm/git/">git</a>，利用了git的branch和merge机制。已经有很多著名的开源项目在使用这个工具来协调代码提交流程，比如Eclipse，CloudFoundry，OpenStack，LibreOffice等开源项目。</p>
+
+<h2 id="section">协作流程简介</h2>
+<p>在Gerrit的流程中，代码提交经过以下步骤</p>
+
+<ul>
+  <li>Push ：代码提交</li>
+  <li>Code Review ： 看代码，确定是否合理</li>
+  <li>Verify ： 应用代码，确认是否能正确执行</li>
+  <li>Submit Patch ： 与已发布版本合并，成功后合并到master分支</li>
+  <li>Rollback ：以上每个步骤都可能失败，并进行相应的流程回退</li>
+</ul>
+
+<p>从Android项目的代码提交流程图，可以看到开发者提供一个patch的生命周期。虽然看起来有些复杂，但是这些步骤都在一个web界面中完成。</p>
+
+<p><img src="http://source.android.com/images/workflow-0.png" /></p>
+
+<h2 id="gerrit-1">自定义Gerrit安装</h2>
+
+<p>可喜的是我们能够应该gerrit在自有的管理流程中，按照文档可快速把gerrit搭建起来。gerrit源码中自带的安装文档中有详细的安装过程和注意事项<a href="http://code.google.com/p/gerrit/source/browse/Documentation/install.txt">Documentation/install.txt</a></p>
+
+<p>身份验证方面，默认支持使用OpenID，HTTP或者LDAP验证。对于其它需要比如Kerberos，需要进行一些特殊调整，这在文档中还没有完整说明。</p>
+
+<p>比如在Kerberos方式身份验证部署时，部署httpd作为反向代理，同时采用httpd内置的kerberos模块进行身份验证。配置httpd可以将kerberos登录后的username通过一个http头传给后端的gerrit服务器，实现免密码登陆。关于httpd的配置可以参考<a href="http://www.mailinglistarchive.com/html/repo-discuss@googlegroups.com/2012-01/msg00168.html">这个文档</a>。注意需要配置keytab文件，以及传递用户名的Header名。</p>
+
+<p>数据库选择方面，默认使用内置的H2快速搭建。对于希望长期使用并扩展的系统，应该选择MySQL或PostgreSQL。安装文档中有详细操作说明。</p>
+
+<p>从<a href="http://code.google.com/p/gerrit/downloads/list">google code</a>下载最新版本war包，安装java环境，根据提示设置数据库。身份验证方式选择HTTP（与上文提到Kerberos有关，根据情况可选择OpenID和LDAP等）。</p>
+
+<p>配置反向代理时，登陆页面/login/会跳转到/login/null#null并死循环。在配置文件gerrit.config设置canonicalWebUrl选项可以解决。</p>
+
+<pre><code>[gerrit]
+	canonicalWebUrl = http://&lt;address of httpd&gt;/review/
+</code></pre>
+
+<p>邮件功能可以选择关闭，在gerrit.config将sendemail设置enabled=false即可关闭。关闭后不能使用邮件功能，包括用户注册的确认邮件。</p>
+
+<pre><code>[sendemail]
+	enabled = false
+</code></pre>
+
+<p>代码提交步骤依赖用户注册时填写的email地址。关闭sendemail功能时，需要在数据库中直接修改accounts中用户的preferred_email字段。</p>
+
+<h2 id="section-1">创建新项目</h2>
+
+<p>在Gerrit页面上Projects项目下，可以创建项目。安装后默认已有一个叫做All Projects的项目，新项目默认继承这个项目的属性。</p>
+
+<h2 id="gerrit-2">应用gerrit进行代码管理</h2>
+
+<p>gerrit服务端部署成功后，客户端的部署相对简单很多。推荐使用gerrit-cli工具。</p>
+
+<p>gerrit-cli安装方法：</p>
+
+<pre><code>yum install ruby rubygems -y
+gem install gerrit-cli
+</code></pre>
+
+<p>安装完毕后即可使用gerrit命令。</p>
+
+<pre><code>cd /tmp/
+gerrit clone ssh://&lt;username&gt;@&lt;ip address&gt;:29418/&lt;repo name&gt;.git
+# cd repo dir &amp;&amp; make changes
+git commit -a
+gerrit push
+</code></pre>
+
+<p>执行push命令成功后，即可在gerrit页面上看到提交的代码开始了review流程。</p>
+
+<h2 id="section-2">常见问题处理</h2>
+
+<h3 id="forge-committer-identity">Forge Committer Identity</h3>
+
+<p>使用gerrit push命令提交修改时，如果提交历史中有其它人的commit（mirror项目代码时一般是这种情况），会提示email不一致。设置Forge Committer Identity权限可以解决。</p>
+
+<p>操作方法：Projects -&gt; List -&gt; All-Projects -&gt; Access，打开权限编辑页面，点Edit按钮。
+在Reference: refs/*部分，Add Permission -&gt; Forge Commiter Identity，Allow -&gt; Registered Users。保存后即可正常提交。</p>
+
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/Technology/Linux/2012/10/22/squid-ulimit-n.html" title="ulimit -n的重要性">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/Technology/2012/12/30/raspberry-pi-launches-pi-store.html" title="Raspberry Pi上的AppStrore：Pi Store">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>28 December 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#Gerrit-ref">Gerrit <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Git-ref">Git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Code Review-ref">Code Review <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Nginx访问日志统计：按时间计数</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>Nginx访问日志统计：按时间计数 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    $ grep &quot;GET / &quot; access.log | awk &#39;{print substr($4,2,14)}&#39; | uniq -c<br><br>   4275 04/Aug/2009 14<br>  11484 04/Aug/2009 15<br>  10145 04/Aug/2009 16<br>   9718 04/Aug/2009 17<br>   7522 04/Aug/2009 18<br>    8169 04/Aug/2009 19<br>   8385 04/Aug/2009 20<br>   9033 04/Aug/2009 21<br>   8356 04/Aug/2009 22<br>   6144 04/Aug/2009 23<br>   3457 05/Aug/2009 00<br>   1698 05/Aug/2009 01<br>    853 05/Aug/2009 02<br>    534 05/Aug/2009 03<br>     393 05/Aug/2009 04<br>    380 05/Aug/2009 05<br>    725 05/Aug/2009 06<br>   1672 05/Aug/2009 07<br>   5352 05/Aug/2009 08<br>   6786 05/Aug/2009 09<br>   5742 05/Aug/2009 10<br>   5686 05/Aug/2009 11<br>   6102 05/Aug/2009 12<br>    5435 05/Aug/2009 13<br>   4852 05/Aug/2009 14<br>   4645 05/Aug/2009 15<br>   4911 05/Aug/2009 16<br>   4479 05/Aug/2009 17<br>   3816 05/Aug/2009 18<br>   3532 05/Aug/2009 19<br>   3645 05/Aug/2009 20<br>   3958 05/Aug/2009 21<br>    3864 05/Aug/2009 22<br>   2653 05/Aug/2009 23<br>   1531 06/Aug/2009 00<br>    775 06/Aug/2009 01<br>    449 06/Aug/2009 02<br>    256 06/Aug/2009 03<br>    222 06/Aug/2009 04<br>    234 06/Aug/2009 05<br>    393 06/Aug/2009 06<br>     966 06/Aug/2009 07<br>   2615 06/Aug/2009 08<br>   3456 06/Aug/2009 09<br>   3349 06/Aug/2009 10<br>   3496 06/Aug/2009 11<br>   3863 06/Aug/2009 12<br>   3362 06/Aug/2009 13<br>   3022 06/Aug/2009 14<br>   2937 06/Aug/2009 15<br>    3763 06/Aug/2009 16<br>   2893 06/Aug/2009 17<br>   2603 06/Aug/2009 18<br>   2757 06/Aug/2009 19<br>   3500 06/Aug/2009 20<br>   3931 06/Aug/2009 21<br>   3683 06/Aug/2009 22<br>   2400 06/Aug/2009 23<br>   1435 07/Aug/2009 00<br>     647 07/Aug/2009 01<br>    351 07/Aug/2009 02<br>    200 07/Aug/2009 03<br>    157 07/Aug/2009 04<br>    192 07/Aug/2009 05<br>    275 07/Aug/2009 06<br>    696 07/Aug/2009 07<br>   1937 07/Aug/2009 08<br>   2616 07/Aug/2009 09<br>    2677 07/Aug/2009 10<br>   2473 07/Aug/2009 11<br>   2541 07/Aug/2009 12<br>   2350 07/Aug/2009 13<br>   2161 07/Aug/2009 14<br>   1738 07/Aug/2009 15<br><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-391699956879506830?l=sandshoots.blogspot.com' alt='' /></div>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2009/07/28/something-about-xulrunner-and-xpcom.html" title="something about xulrunner and xpcom">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2009/08/14/sed-i-sstr1rep1sstr2rep2sstrnrepn.html" title="sed -i 's/str1/rep1/;s/str2/rep2/;...;s/strN/repN/' urfile">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>07 August 2009</span></div>
+
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

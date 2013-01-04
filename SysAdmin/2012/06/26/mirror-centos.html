@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CentOS镜像攻略</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>CentOS镜像攻略 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <p>这篇文章讲述了通过rsync协议来进行CentOS软件仓库镜像的技术，如果你觉得实用我的目的就达到了。</p>
+
+<p>先从<a href="http://www.centos.org/modules/tinycontent/index.php?id=30">这个页面</a>找到一个支持rsync协议的镜像站点，我选择了<a href="http://www.kernel.org/">Linux Kernel Archives</a>，当然你可以根据情况选择其它站点。</p>
+
+<p>之后是准备磁盘空间，创建目录。</p>
+
+<pre><code>mkdir -p /data/mirrors/centos/{5.8,6.2}
+</code></pre>
+
+<p>接着就可以开始进行同步。</p>
+
+<pre><code>rsync  -avSHP --delete --exclude "local*" --exclude "isos" rsync://mirrors.kernel.org/centos/5.8/ /data/mirrors/centos/5.8/
+
+rsync  -avSHP --delete --exclude "local*" --exclude "isos" rsync://mirrors.kernel.org/centos/6.2/ /data/mirrors/centos/6.2/
+</code></pre>
+
+<p>CentOS的版本号是由一个主版本号和一个次版本号组成。实际使用yum访问软件仓库时，一般根据主版本号来查找各自的目录，比如CentOS 5.8的系统通过5而不是5.8来查找仓库的目录。因此需要为这两个主版本号创建软连接。</p>
+
+<pre><code>cd /data/mirrors/centos/ &amp;&amp; ln -s 5.8 5 &amp;&amp; ln -s 6.2 6
+</code></pre>
+
+<p>之后是修改yum的配置文件，即/etc/yum.repos.d/CentOS-Base.repo。下面给出base仓库的示例。类似可以配置
+- addons
+- centosplus
+- contrib
+- cr
+- extras
+- fasttrack
+- os
+- updates</p>
+
+<pre><code>[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os
+baseurl=http://mirrors.renren.com/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+</code></pre>
+
+<p>为了方便部署，我写了一个更强壮的脚本，<a href="https://raw.github.com/Lax/SA/master/centos/rsync-centos">点击获取</a>。通过为该脚本创建软连接，可以在不传参数的情况下更新不同版本的仓库目录。软连接的格式有要求，需要是rsync-centos-VER（VER是完整版本号）</p>
+
+<pre><code>ln -s rsync-centos rsync-centos-5.8
+
+ln -s rsync-centos rsync-centos-6.2
+</code></pre>
+
+<p>放入计划任务中每天凌晨执行（对于国外的服务器，北京时间的凌晨执行并不是一个好主意）</p>
+
+<pre><code>0 2 * * *  cd /path/to/scripts/ &amp;&amp; sh rsync-centos-6.2 &amp;&amp; rsync-centos-5.8
+</code></pre>
+
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" title="GNOME3多显示器配置">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/SysAdmin/2012/07/13/hadoop-scripting-basics.html" title="Hadoop scripting basics (draft)">Next &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>26 June 2012</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#CentOS-ref">CentOS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#mirror-ref">mirror <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Shell-ref">Shell <span>2</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+

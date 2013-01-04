@@ -1,0 +1,1234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Lax</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+
+<!-- Pagination links -->
+
+  <ul class="pager">
+
+  <li class="previous">
+  
+    <a href="/page2">&larr; Previous</a>
+  
+  </li>
+
+
+
+  <li class="next">
+    <a href="/page4">Next &rarr;</a>
+  </li>
+
+</ul>
+
+
+
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" title="Android网络问题检查（使用TCPDUMP）" rel="bookmark">Android网络问题检查（使用TCPDUMP）</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>随着智能手机的增长，智能平台（Andorid，iOS）的装机量也在飞速增加。为开发者带来很大商机。</p>
+
+<p>开发者对android平台的重视，意味着支持部门也要与这个系统打更多的交道，技术人员需要将已有的经验迁移到新的平台中。在传统的PC web中，网络相关问题已经有比较完善的方法和流程来进行定位和追踪，而移动设备端的相关软件还需要进行整合与优化。</p>
+
+<p>最近遇到开发人员报告的问题，需要确定问题发生时网络通讯是否正常。为此测试设计了两种方案，分别用模拟器和实际设备配合网络工具进行网络状况调试和分析。</p>
+
+<h2 id="android-sdk">方案一 使用Android SDK包含的模拟器进行调试</h2>
+
+<h3 id="android-sdk-1">准备Android SDK环境</h3>
+
+<p>从Android开发者网站下载相应开发平台的<a href="http://developer.android.com/sdk/index.html">Android SDK</a>，我下载了Linux版SDK，版本为<a href="http://dl.google.com/android/android-sdk_r18-linux.tgz">r18</a>。</p>
+
+<p>如果是Windows平台，下载安装包直接双击即可，可以跳过本段。如果你和我一样用Linux，可按以下操作。</p>
+
+<p>以下假设安装目录为~/apps/，请根据情况创建目录或修改命令参数。</p>
+
+<p>解压</p>
+
+<pre><code>tar zxvf /path/to/android-sdk_r18-linux.tgz
+</code></pre>
+
+<p>将解压的文件移动到目标目录</p>
+
+<pre><code>mv android-sdk-linux/ ~/apps/android-sdk-linux
+</code></pre>
+
+<p>为方便使用，配置环境变量。在~/.bashrc中增加以下内容。</p>
+
+<pre><code># Android SDK
+ADT=$HOME/apps/android-sdk-linux
+PATH=${PATH}:${ADT}/tools:${ADT}/platform-tools
+</code></pre>
+
+<p>退出当前终端并重新登陆，或执行以下命令。</p>
+
+<pre><code>source ~/.bashrc
+</code></pre>
+
+<h3 id="sdk">用SDK安装所需的虚拟镜像</h3>
+<p>执行以下命令，带开Android SDK Manager。</p>
+
+<pre><code>android
+</code></pre>
+
+<p>选择安装Android SDK Tools和Android SDK Platfor-tools，选择安装Android 2.3.3下的SDK Platform和Google APIs。</p>
+
+<h3 id="section">创建虚拟设备</h3>
+<p>执行以下命令，带开Android Virtual Device Manager。</p>
+
+<pre><code>android avd
+</code></pre>
+
+<p>点击New，开始新建设备。输入设备名称为android，Target选择2.3.3，SD卡大小设置为512MiB。</p>
+
+<p>创建完毕。</p>
+
+<h3 id="apk">启动虚拟设备和相关工具，安装apk</h3>
+
+<pre><code>emulator -netfast -debug proxy @android
+
+sudo `which adb` start-server
+
+adb install xxx.apk
+</code></pre>
+
+<h3 id="section-1">开始调试</h3>
+
+<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
+
+<s>由于我们在启动模拟器时，指定了调试网络代理，因此操作软件时的网络交互可以在模拟器的终端下看到调试信息。</s>
+<p>&mdash;实际测试时使用了squid作为代理。重复测试发现没有重现输出内容，需要验证。</p>
+
+<h2 id="tcpdump">方案二 使用TCPDUMP进行实机测试</h2>
+
+<p>准备Android环境的方法前面已经介绍。</p>
+
+<h3 id="section-2">设备准备</h3>
+
+<p>原则上任何安装Android系统的手机、平板电脑都可以进行此次调试。由于本次测试需求，需要ROOT并开启开发者模式。操作方法在此不再做介绍（网上太多相关文章了）。</p>
+
+<p>我测试用的是一台HP TouchPad，安装CM9。</p>
+
+<h3 id="section-3">软件</h3>
+
+<p>下载<a href="http://www.eecs.umich.edu/~timuralp/tcpdump-arm">tcpdump-arm</a></p>
+
+<p>将tcpdump-arm传到设备上</p>
+
+<pre><code>adb push tcpdump-arm /data/local/
+</code></pre>
+
+<p>登入设备，设置文件权限</p>
+
+<pre><code>adb shell
+
+cd /data/local/
+
+chmod 777 tcpdump-arm
+</code></pre>
+
+<p>安装程序包</p>
+
+<pre><code>adb install xxx.apk
+</code></pre>
+
+<h3 id="section-4">开始调试</h3>
+
+<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
+
+<p>仍然使用电脑进入adb shell中，启动tcpdump-arm，开始抓取数据包。</p>
+
+<pre><code>./tcpdump-arm -s 1500 -n -w result.cap
+</code></pre>
+
+<p>以上命令使用-w参数，将抓包结果保存到文件，方便后续进行进一步分析。</p>
+
+<p>从设备中把结果文件复制出来</p>
+
+<pre><code>adb pull /data/local/result.cap ./
+</code></pre>
+
+<p>使用wireshark查看</p>
+
+<pre><code>wireshark result.cap
+</code></pre>
+
+        <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-05-18 00:00:00 +0800">18 May 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#android-ref">android <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#tcpdump-ref">tcpdump <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2012/05/13/hello_jekyll.html" title="Hello, jekyll" rel="bookmark">Hello, jekyll</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        Hello, Jekyll.
+
+把blog迁移到github。Cheer!
+
+        <a href="/2012/05/13/hello_jekyll.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-05-13 00:00:00 +0800">13 May 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" title="关于RubyGems/RUBYOPT【一】" rel="bookmark">关于RubyGems/RUBYOPT【一】</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>什么是RubyGems/RubyOPT？什么情况要设置RUBYOPT？</p>
+
+<p><strong>关于标准库，第三方库</strong></p>
+
+<p>编程语言的标准库，是该种语言的每种实现中都按例提供的库，大多数语言的标准库包含以下组件，以实现一些基本功能：</p>
+
+<p>1   算法 
+2   数据结构 
+3   与操作系统交互 </p>
+
+<p>ruby标准库可以在源码的lib目录中找到。可以看的ruby标准库包含从文件操作到网络库，从多语言支持到测试工具，从多线程到日期处理等，基本能满足简单使用的需要。</p>
+
+<p>除了标准库的功能，应用开发者希望共享一些代码，这些代码在特定场合经常使用，却没有或不适合加入标准库中，于是就产生约定了格式和使用方式的第三方库，方便管理，分享和搜索。</p>
+
+<p>你可以下载第三方代码，在自己的程序中通过完整的路径来引用相关功能。但是便捷性太差，一个包管理的框架成为必需品。rubygem在这种情况下出现。</p>
+
+<p>怎么确定是否使用rubygems或其它第三方库提供的软件包呢？Ruby中的一个环境变量起到了这个作用，这就是RUBYOPT变量。使用RUBYOPT变量的效果与在ruby命令行中增加参数是相同的。</p>
+
+        <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-03-25 13:41:39 +0800">25 Mar 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+            <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2012/03/15/e4babae4babae7bd91e68b9be88198e7b3bbe7bb9fe5b7a5e7a88be5b888.html" title="人人网招聘系统工程师" rel="bookmark">人人网招聘系统工程师</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>人人网系统运维部招聘系统工程师，欢迎有志之士加入。</p>
+
+<p>如果你有一技之长，对网站运维有深刻理解，或者有牛B的想法想要付诸实践，请发简历到lantao.liu at renren-inc.com。</p>
+
+<p>我们的日常工作包括两个方向：
+1  系统运维：CDN、存储、LVS集群的运维管理，保障服务稳定；管理系统维护与监控方案实施。
+2  技术支持：负责人人公司旗下人人网的系统运维技术支持。为业务开发部门、产品及运营部门提供网络与系统技术支持及运营数据支持，改善支持效率。</p>
+
+<p>除日常工作外，可以对网站优化的各个方向进行研究（性能、流程、用户体验等），制定并推动实施优化方案。</p>
+
+<p>另外需要有经验的c/c++开发工程师做基础软件开发，以及内核优化方面的专家。如果你想换个工作环境，可加qq:103074在线交流。</p>
+
+<p>人人网
+系统工程师</p>
+
+<p>工作地点： 北京 工作类别： 技术类</p>
+
+<p>工作描述：</p>
+
+<p>1 CDN全局流量调度系统，监控、管理系统的开发与运维；
+2 响应用户/业务团队的技术支持需求，推动技术产品方案的优化与实施；
+3 服务器监控系统开发与配置，及时响应业务线监控需求；
+4 分布式存储系统的管理、优化及管理工具开发；
+5 实施系统/网络参数优化，改进系统效率。</p>
+
+<p>岗位要求：</p>
+
+<p>1 具备Linux操作系统管理经验，了解Nginx/Squid等常用软件的管理与优化；
+2 熟悉负载均衡技术原理，了解分布式系统的设计与实现；
+3 网络基础扎实，熟悉TCP/IP协议的原理及应用；
+4 Php/Python/Perl/C/Ruby等语言，能使用其中一种在Linux下熟练开发；
+5 有强烈的服务意识，能够7x24响应处理紧急事件；
+6 有大型互联网公司运维/开发经验者优先；
+7 有数据分析/数据挖掘相关经验者优先。</p>
+
+
+        <a href="/2012/03/15/e4babae4babae7bd91e68b9be88198e7b3bbe7bb9fe5b7a5e7a88be5b888.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-03-15 15:36:28 +0800">15 Mar 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/Ruby/2012/02/25/ruby-c-cxx-extention.html" title="在Ruby中利用C/C++代码：为Ruby开发扩展" rel="bookmark">在Ruby中利用C/C++代码：为Ruby开发扩展</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>在一个程序里使用多种语言进行开发，出发点有若干种：</p>
+
+<ul>
+  <li>为了性能，嵌入低级语言的代码进行优化。</li>
+  <li>为了开发效率，嵌入高级语言减少代码行数。</li>
+  <li>重用一些成熟的工具和库文件。</li>
+  <li>DSL简化配置，降低维护成本。</li>
+</ul>
+
+<p>最近因为要重用一段C++代码，遇到了原来代码逻辑比较复杂的问题。新项目是一段测试程序，首选是一种解释语言。想在脚本中重用这些功能，完全重写的代价比较高，需要花费精力理清原来程序的逻辑。好在输入和输出的内容都很简单，而Ruby提供了可以方便利用的接口，写一个功能扩展来调用旧的C++代码似乎是一个说得过去的选择。</p>
+
+<p>C++的接口为：</p>
+
+<pre><code>std::string PrivateUtil::getInfo(std::string);
+</code></pre>
+
+<p>首先创建一个文件private_util.cc，包含头文件ruby.h</p>
+
+<pre><code>#include &lt;ruby.h&gt;
+#include "album_util.h"
+</code></pre>
+
+<p>然后声明所有要实现的功能，与ruby脚本通讯：</p>
+
+<pre><code>VALUE getInfo(VALUE input_str);
+</code></pre>
+
+<p>下一步，开始进入模块功能注册，也是这个文件的核心。定义一个Ruby的Module，名字为PrivateUtil；另外定义一个getInfo的方法，并且用刚才声明的getInfo与之对应。</p>
+
+<pre><code>extern "C" void Init_foo()
+{
+    VALUE private_util = rb_define_module("PrivateUtil");
+    rb_define_module_function(private_util, "getInfo", RUBY_METHOD_FUNC(getInfo), 2);
+}
+</code></pre>
+
+<p>现在可以去实现getInfo的具体逻辑了。getInfo的实现也很简单，调用了旧代码的接口，返回一个ruby_str即可。这个返回值需要是ruby的数据类型，以便在脚本中直接使用。</p>
+
+<pre><code>VALUE getInfo(VALUE input_str)
+{
+    return ruby_str_new2(PrivateUtil::getInfo(input_str));
+}
+</code></pre>
+
+<p>到此步骤，c++文件基本完成。</p>
+
+<p>下面开始，建立extconf.rb</p>
+
+<pre><code>require 'mkmf'
+$libs = '-lstdc++'
+create_makefile 'private_util'
+</code></pre>
+
+<p>执行</p>
+
+<pre><code>ruby extconf.rb &amp;&amp; make
+</code></pre>
+
+<p>自动生成一个Makefile文件。make后生成了可供ruby脚本调用的so文件：private_util.so。</p>
+
+<p>直接在ruby中调用private_util:</p>
+
+<pre><code>irb &gt; require 'private_util'
+true
+irb &gt; PrivateUtils::getInfo("abc")
+"abc"
+</code></pre>
+
+<p>如果想在系统全局使用，可以执行make install，这样就能在其它脚本里方面调用。</p>
+
+<p>欢迎交流使用心得。http://www.liulantao.com/</p>
+
+        <a href="/Technology/Ruby/2012/02/25/ruby-c-cxx-extention.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-02-25 00:06:29 +0800">25 Feb 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+            <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#C++-ref">C++ <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/2011/12/28/tengine-evnote.html" title="Tengine试用手记" rel="bookmark">Tengine试用手记</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>taobao技术团队最近把<a href="http://tengine.taobao.org">Tengine</a>开放出来了。</p>
+
+<p>Tengine基于目前很流行的Nginx，在Nginx基础上整合了一些第三方模块，并加入taobao团队研发的一些模块。由于Nginx有设计精美的模块机制，使得整合与模块开发非常方便，在此之前taobao团队开放的另一个项目openresty就是在Nginx基础上完成的。</p>
+
+<p>最新版本的tengine基于nginx-1.0.10稳定版（最新的nginx稳定版是1.0.11）。我在试用时加入了人人网系统运维团队开发的<a href="https://github.com/xiaonei/ngx_http_consistent_hash">ngx_http_accounting_module</a>和<a href="https://github.com/xiaonei/ngx_http_accounting_module">http_upstream_consistent_hash_module</a>，并按照部署需求进行了RPM包的制作，这个流程与Nginx官方版本一致性很高，几乎不用做修改就能整合到现在的工作流。</p>
+
+<p>可以看出为适应大规模运维的需求，tengine对nginx做了一些修改：</p>
+
+<ul>
+  <li>
+    <p>access_log/error_log支持file/pipe/syslog</p>
+  </li>
+  <li>
+    <p>worker_processes和worker_cpu_affinity自动设置</p>
+  </li>
+  <li>
+    <p>expires_by_types</p>
+  </li>
+  <li>
+    <p>stub_status增加了响应时间</p>
+  </li>
+  <li>
+    <p>sysguard</p>
+  </li>
+  <li>
+    <p>limit_req和forbid_action</p>
+  </li>
+</ul>
+
+<p>我们关注一下log部分的变化。</p>
+
+<p>tengine对log部分做了较大改变，在原有的文件作为输出目标基础上，增加了syslog和pipe功能。syslog作为日志输出，在nginx-0.6.35时就有过一个patch，但是由于种种原因被拒绝加入官方代码（这可能也是taobao撇开nginx.org另立山头的原因之一）。</p>
+
+<p>syslog的配置语法为：</p>
+
+<pre><code>access_log  syslog:user::debug  main;
+
+access_log  syslog:user::192.168.10.10:514  main;
+</code></pre>
+
+<p>配置之后需要对syslogd的配置文件做一些修改。虽然部署很方便，但是syslog的方案比较鸡肋，因为现在已经有比较多的更“现代”的方法来进行分布式数据的收集，比如scribe。</p>
+
+<p>使用pipe方式则可以方便地与scribe等系统进行整合。</p>
+
+<p>测试中我使用了更简单的一个方案：通过netcat将管道中的日志发送到远程日志收集端。</p>
+
+<p>配置文件是这样的：</p>
+
+<pre><code># 将日志实时发送到远程主机192.168.10.10的8000端口，使用TCP协议
+access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
+</code></pre>
+
+<p>在此我选用了便于脚本化且功能强大的netcat。你也可以把其它工具来进行整合，比如与gzip组合使用，进行压缩以降低传输的流量。</p>
+
+<p>pipe方式的日志方式，使得无数想法成为可能，大大提高了运维的灵活性。</p>
+
+<p>关于提到的其它特性更详细的使用说明，可以参考<a href="http://tengine.taobao.org">Tengine</a>官方网站的文档。</p>
+
+<p>欢迎留言交流。<a href="http://www.renren.com/g/277881218">@我#renren.com</a> <a href="http://weibo.com/1653644220">@我#weibo.com</a></p>
+
+        <a href="/Technology/2011/12/28/tengine-evnote.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2011-12-28 17:49:58 +0800">28 Dec 2011</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#NC-ref">NC <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#Tengine-ref">Tengine <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/2011/12/22/load-balancer-for-cdn-cache-cluster.html" title="关于选择缓存集群负载均衡调度算法的一些想法" rel="bookmark">关于选择缓存集群负载均衡调度算法的一些想法</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>最近两天我维护的一组缓存服务器遇到一些情况。在处理过程中对集群的调度算法进行了一些思考。欢迎各位看官拍砖。</p>
+
+<p>先说一下背景。</p>
+
+<p>这个缓存集群有30多台缓存节点，缓存目标是大小为2-5k的图片文件。</p>
+
+<p>最早的部署方案是将这些缓存节点分成六组（G1-G6），每组4-6个节点。根据文件名特征，将每个文件对应到六组之一；而在组内则采取轮询的方式选择节点进行访问，比较随机。
+访问文件在选择的节点中MISS时，选择的缓存节点会从源站或同组内其它节点读取文件，放入自己的缓存，并返回给查询方。
+当节点访问出错时（如DOWN机，断网等），文件访问的发起方被轮询算法调度到同组的另外一个节点。
+这种方案会造成同组内保存了同一文件的多个副本，这既是好事有事坏事：好的方面是能解决单个缓存节点失效的问题；不好的方面是重复文件使集群的空间利用率不高，对源站造成一定的压力。</p>
+
+<p>之后开始实施了一种改进方案，在负载均衡器中使用一致性哈希算法进行调度。一致性哈希的简单原理为：
+1、所有缓存节点通过一种哈希算法计算，根据哈希值被分布到一个虚拟的环上，每个缓存节点对应环中的一个节点（改进的算法中会生成多个节点，以提高随机性）；
+2、将查询的文件名使用相同的哈希算法计算，得到索引值；
+3、使用索引值在环上查找。如果索引值正好是一个节点的值，则直接选择对应的缓存节点；否则从索引值所在位置顺着环的方向寻找下一个缓存节点。
+4、根据上一步选择的结果，对相应缓存节点进行文件存取操作。</p>
+
+<p>根据实际部署需求我们在一个开源的负载均衡模块进行开发。由于缓存节点的能力基本均等，我们通过多组测试选择了更好的哈希算法来提高均衡性，防止个别节点过热；为了处理节点失效的情形，我们开发了响应的调度功能，当某个缓存节点失效时，环上相邻缓存节点会被选择。</p>
+
+<p>至此，这种方案的雏形就完成了。既能解决有效利用容量的需求，又能处理节点失效。由于使用一致性哈希后不在需要进行分组管理，这种方案也带来运维成本的降低。</p>
+
+<p>（未完）
+&raquo;多个负载均衡器的情况下，缓存失效时的调度算法</p>
+
+        <a href="/Technology/2011/12/22/load-balancer-for-cdn-cache-cluster.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2011-12-22 00:45:27 +0800">22 Dec 2011</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#CDN-ref">CDN <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#一致性哈希-ref">一致性哈希 <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#缓存-ref">缓存 <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#负载均衡-ref">负载均衡 <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/2011/11/23/pypy-1-7-released.html" title="PyPy 1.7 released" rel="bookmark">PyPy 1.7 released</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>pypy是一个高效的python解释器。由于采用了JIT编译器，它的速度快于传统的解释器。</p>
+
+<p>据称这次发布的PyPy 1.7的整体性能性能比1.6提升30%。</p>
+
+<p>用python重新了JSON编码器。新的编码器性能二倍于CPython中C扩展，比1.6版本性能提升高达20倍！</p>
+
+<p><a href="http://www.liulantao.com/portal/2011/11/23/pypy-1-7-released/pypy/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/11/pypy.jpg" alt="" /></a></p>
+
+<p>还有一些其它改变，如numpypy。有些特性列入了1.8版本的计划中，包括PowerPC和ARM处理器的JIT汇编器后端。</p>
+
+<p><a href="https://lwn.net/Articles/468661/">PyPy 1.7 released [LWN.net]</a>.</p>
+
+        <a href="/Technology/2011/11/23/pypy-1-7-released.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2011-11-23 09:22:44 +0800">23 Nov 2011</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#pypy-ref">pypy <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#python-ref">python <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+
+
+  <div id="post-pagination" class="pagination pagination-centered">
+  <ul class="pages nav nav-pills">
+
+  
+    <li>
+    
+      <a href="/page2">Previous</a>
+    
+    </li>
+  
+
+  
+    <li class="page">
+      <a href="/">1</a>
+    </li>
+  
+
+  
+    
+    <li class="page">
+      <a href="/page2">2</a>
+    </li>
+    
+  
+    
+    <li class="page active">
+      <a href="#">3</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page4">4</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page5">5</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page6">6</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page7">7</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page8">8</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page9">9</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page10">10</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page11">11</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page12">12</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page13">13</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page14">14</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page15">15</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page16">16</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page17">17</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page18">18</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page19">19</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page20">20</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page21">21</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page22">22</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page23">23</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page24">24</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page25">25</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page26">26</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page27">27</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page28">28</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page30">30</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page31">31</a>
+    </li>
+    
+  
+
+  
+    <li>
+      <a href="/page4">Next</a>
+    </li>
+  
+
+  </ul>
+</div>
+
+
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  </body>
+</html>
+
