@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Emerge抱怨gcc不能工作啦！</title>
+    <title>Gentoo</title>
     
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
@@ -221,22 +221,40 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>Emerge抱怨gcc不能工作啦！ <small></small></h1>
+  <h1>Gentoo <small></small></h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    Emerge抱怨gcc不能工作啦！<br><br>平时gentoo自动更新，省心也省力。结果聪明反被聪明误，遇到了搞不清道不明的依赖关系，有个东西是装也装不上，卸也卸不下，只好动手挨着理出来。<br>一次舒爽的emerge --depclean之后，系统里多余的小家伙挨个儿离开了。<br>重启，再来试试revdep-rebuild（系统推荐的步骤是emerge --update --deep --newuse world, emerge --depclean, then revdep-rebuild）。<br> 不好，突然停住了，看看输出的提示，找到红绿交界的地方，看到如下文字：<br><br>-------code-------<br>checking whether the C compiler (gcc  ) works... no <br> configure: error: installation or configuration problem: C compiler <br> cannot create executables. <br clear="all">--------end-------<br><br>糟糕，我的GCC挂了？貌似刚才的操作没有惹到它老人家吧！<br><br>没办法，找找吧。<br><br>$ which gcc<br>发现它好端端的躺在/usr/bin/gcc，乖乖不得了。<br><br>看看配置吧，gcc-config -l一下，貌似这唯一的一条不是默认的选择。<br>------------------<br>lax@mib ~/empty/gentoo $ gcc-config -l<br>  [1] i686-pc-linux-gnu-4.4.3<br>------------------<br><br>试试修改一下：<br>$ sudo gcc-config 1<br> * Switching native-compiler to i686-pc-linux-gnu-4.4.3 ...                   [ ok ]<br><br>它OK，我也OK，再来Emerge一下，终于走下去啦。<br><br>-- <br> Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2870561956598449910?l=sandshoots.blogspot.com' alt='' /></div>
+    <p>算来使用Linux作为桌面系统，连续下来已经达到5年，如果算上第一次下载刻盘并安装红帽，已经超过8年了。
+这些时间中，一半是在Fedora系统上，几个月时间在用Freebsd、debian，以及短暂的使用ubuntu等。有一年时间在使用Gentoo，也是目前觉得最稳定的发行版。</p>
+
+<p>使用Gentoo，虽然每次emerge安装软件都需要进行编译，但是这些都与其它现代发行版的包管理工具没有使用难度方面的差异。</p>
+
+<p>但是使用Gentoo作为桌面的第一个壁垒是内核编译。没有声音，图形不正常等现象，问题的核心大都在内核选项配置。虽然Gentoo.org的文档水平一流，但是选择正确的内核编译选项仍然需要提前做很多功课。</p>
+
+<p>第一门功课是了解硬件型号。
+你可以找回电脑的配置单，可以从其它正常工作的系统里查一下。当然一般情况下只需要记下主要硬件的品牌即可。需要关注的硬件列表包含：CPU，网卡、显卡，声卡，键盘鼠标，摄像头及其它外设。</p>
+
+<p>第二门功课是了解内核配置方法。
+emerge sys-kernel/gentoo-sources之后，在/usr/src/linux目录下执行make menuconfig命令。
+在Device Drivers中选择你的硬件对应的驱动，如果不清楚型号可以把同品牌的驱动都选上。
+一些配置的默认值与电脑的实际情况不同，需要修改。如CPU的个数，就需要按照实际情况修改。这点要小心，我前几天就遇到个问题，最后才发现是CPU个数少配置了2个。</p>
+
+<p>第三门功课是学习make.conf中USE的配置方法。
+在/usr/portage/profiles/use.desc中有所有USE标签的介绍。系统范围的USE标签在make.conf文件中配置，对单个软件有效的USE标签在/etc/portage/package.use中。</p>
+
+<p>了解这些之后，可以安装软件啦。桌面建议安装gnome-light。</p>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html" title="使用Ruby进行Log分析：放弃String.split，使用Regexp.match">&larr; Previous</a></li>
+        <li class="prev"><a href="/Technology/2011/08/12/selinux-faq.html" title="SELinux FAQ">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/Technology/2010/06/02/flex-hello-world-example.html" title="Flex Hello-world example.">Next &rarr;</a></li>
+        <li class="next"><a href="/Technology/Ruby/2011/09/28/heroku-java-play-framework.html" title="Heroku开始支持Java，Play框架！">Next &rarr;</a></li>
       
       </ul>
     </div>
@@ -266,7 +284,7 @@ window.WBComment.init({
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>11 May 2010</span></div>
+    <div class="date"><span>11 September 2011</span></div>
 
   
     <h4>Tags</h4>
@@ -279,7 +297,13 @@ window.WBComment.init({
      
     	<li><a href="/tags.html#Gentoo-ref">Gentoo <span>4</span></a></li>
      
-    	<li><a href="/tags.html#emerge-ref">emerge <span>1</span></a></li>
+    	<li><a href="/tags.html#kernel-ref">kernel <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#Portage-ref">Portage <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#USE-ref">USE <span>1</span></a></li>
     
   
 

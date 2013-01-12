@@ -531,6 +531,85 @@ git commit &amp;&amp; git push
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/Technology/2011/09/11/gentoo.html" title="Gentoo" rel="bookmark">Gentoo</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>算来使用Linux作为桌面系统，连续下来已经达到5年，如果算上第一次下载刻盘并安装红帽，已经超过8年了。
+这些时间中，一半是在Fedora系统上，几个月时间在用Freebsd、debian，以及短暂的使用ubuntu等。有一年时间在使用Gentoo，也是目前觉得最稳定的发行版。</p>
+
+<p>使用Gentoo，虽然每次emerge安装软件都需要进行编译，但是这些都与其它现代发行版的包管理工具没有使用难度方面的差异。</p>
+
+<p>但是使用Gentoo作为桌面的第一个壁垒是内核编译。没有声音，图形不正常等现象，问题的核心大都在内核选项配置。虽然Gentoo.org的文档水平一流，但是选择正确的内核编译选项仍然需要提前做很多功课。</p>
+
+<p>第一门功课是了解硬件型号。
+你可以找回电脑的配置单，可以从其它正常工作的系统里查一下。当然一般情况下只需要记下主要硬件的品牌即可。需要关注的硬件列表包含：CPU，网卡、显卡，声卡，键盘鼠标，摄像头及其它外设。</p>
+
+<p>第二门功课是了解内核配置方法。
+emerge sys-kernel/gentoo-sources之后，在/usr/src/linux目录下执行make menuconfig命令。
+在Device Drivers中选择你的硬件对应的驱动，如果不清楚型号可以把同品牌的驱动都选上。
+一些配置的默认值与电脑的实际情况不同，需要修改。如CPU的个数，就需要按照实际情况修改。这点要小心，我前几天就遇到个问题，最后才发现是CPU个数少配置了2个。</p>
+
+<p>第三门功课是学习make.conf中USE的配置方法。
+在/usr/portage/profiles/use.desc中有所有USE标签的介绍。系统范围的USE标签在make.conf文件中配置，对单个软件有效的USE标签在/etc/portage/package.use中。</p>
+
+<p>了解这些之后，可以安装软件啦。桌面建议安装gnome-light。</p>
+
+        <a href="/Technology/2011/09/11/gentoo.html" class="read_more span2 pull-right">继续阅读……</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2011-09-11 11:27:40 +0800">11 Sep 2011</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Gentoo-ref">Gentoo <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#kernel-ref">kernel <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#Portage-ref">Portage <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#USE-ref">USE <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/Technology/2011/08/12/selinux-faq.html" title="SELinux FAQ" rel="bookmark">SELinux FAQ</a>
     </h1>
     <p class="alt-font tight">
@@ -572,7 +651,7 @@ git commit &amp;&amp; git push
      
     	<li><a href="/tags.html#Fedora-ref">Fedora <span>1</span></a></li>
      
-    	<li><a href="/tags.html#Linux-ref">Linux <span>4</span></a></li>
+    	<li><a href="/tags.html#Linux-ref">Linux <span>5</span></a></li>
      
     	<li><a href="/tags.html#selinux-ref">selinux <span>1</span></a></li>
     
@@ -705,7 +784,7 @@ iPad: 0.26% </p>
      
     	<li><a href="/tags.html#ipad-ref">ipad <span>1</span></a></li>
      
-    	<li><a href="/tags.html#Linux-ref">Linux <span>4</span></a></li>
+    	<li><a href="/tags.html#Linux-ref">Linux <span>5</span></a></li>
      
     	<li><a href="/tags.html#macintosh-ref">macintosh <span>1</span></a></li>
      
@@ -794,76 +873,6 @@ $ rvm use 1.9.2
 
 
           </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2011/06/20/always-wrap-your-file-paths-in-quotes.html" title="Always wrap your file paths in quotes" rel="bookmark">Always wrap your file paths in quotes</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p><a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6#diff-1">Commit a047be85247755cdbe0acce6f1dafc8beb84f2ac to MrMEEE/bumblebee - GitHub</a>.</p>
-
-<p>一个空格，导致血淋淋悲剧的发生，因引发了程序员们对于代码质量的反思。</p>
-
-<p>一个小项目的安装文件，做了小小的bugfix，具体为：</p>
-
-<blockquote>
-
-</blockquote>
-
-<blockquote>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>@@ -348,7 +348,7 @@ case "$DISTRO" in</code></p>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>-  rm -rf /usr /lib/nvidia-current/xorg/xorg</code></p>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>+  rm -rf /usr/lib/nvidia-current/xorg/xorg</code></p>
-
-</blockquote>
-
-<p>关于code review，大家的评论热烈非常。</p>
-
-
-        <a href="/Technology/2011/06/20/always-wrap-your-file-paths-in-quotes.html" class="read_more span2 pull-right">继续阅读……</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2011-06-20 14:44:58 +0800">20 Jun 2011</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
          
       </div>
     </div>

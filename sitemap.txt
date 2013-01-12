@@ -96,6 +96,7 @@ http://lax.github.com/Technology/2011/11/23/pypy-1-7-released.html
 http://lax.github.com/Technology/2011/10/19/nginx-log_format-abc.html
 http://lax.github.com/Technology/2011/09/28/build-rack-based-application-on-heroku.html
 http://lax.github.com/Technology/Ruby/2011/09/28/heroku-java-play-framework.html
+http://lax.github.com/Technology/2011/09/11/gentoo.html
 http://lax.github.com/Technology/2011/08/12/selinux-faq.html
 http://lax.github.com/Technology/2011/07/20/e6b58fe8a788e599a8e4bbbde9a29de7bb9fe8aea1-20110720.html
 http://lax.github.com/Technology/2011/06/30/e6938de4bd9ce7b3bbe7bb9fe6af94e4be8be7bb9fe8aea1-20110630.html
