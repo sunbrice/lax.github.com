@@ -207,6 +207,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -244,6 +248,116 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/Technology/2010/02/23/gentoo-setup-scim-in-gnome.html" title="Gentoo: setup scim in GNOME" rel="bookmark">Gentoo: setup scim in GNOME</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        1 add USE flags: <br><meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 15px; line-height: 22px;"><pre style="padding: 1em; border: 1px dashed rgb(47, 111, 171); color: black; background-color: rgb(249, 249, 249); line-height: 1.1em;"> USE=&quot;${USE} scim unicode nls&quot;</pre></span></span><br>2 <meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 15px; line-height: 22px;"><div style="background-color: rgb(255, 224, 224); color: rgb(0, 0, 0); padding: 0.05em 0.5em; margin: 0.5em; border-width: 1px 1px 1px 10px; border-style: solid; border-color: rgb(204, 102, 102); font-size: 11px; white-space: pre; font-family: monospace; width: 492px;"> emerge -avuDN world</div></span></span><br>3  #  vim /etc/locale.gen; <br>    #  locale-gen<br>    #  env-update ; source  /etc/profile<br><br>4  add LANG=&quot;en_US.UTF-8&quot; to <meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 14px; line-height: 22px;">/etc/env.d/02locale</span></span><br> <br>5  set environment inf /etc/source of ~/.xinitrc<br><meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 15px; line-height: 22px;"><pre style="padding: 1em; border: 1px dashed rgb(47, 111, 171); color: black; background-color: rgb(249, 249, 249); line-height: 1.1em;"> export XMODIFIERS=@im=SCIM export GTK_IM_MODULE=scim export QT_IM_MODULE=scim</pre></span></span>6  Sometimes: add line &quot;scim -d &amp;&quot; to ~/.xinitrc<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>  <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-1997028008038567418?l=sandshoots.blogspot.com' alt='' /></div>
+
+        <a href="/Technology/2010/02/23/gentoo-setup-scim-in-gnome.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2010-02-23 00:00:00 +0800">23 Feb 2010</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Gentoo-ref">Gentoo <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#SCIM-ref">SCIM <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#GNOME-ref">GNOME <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/2010/02/11/c.html" title="C++构造函数私有的有趣问题" rel="bookmark">C++构造函数私有的有趣问题</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        C++构造函数私有的有趣问题<br><br>很多情况下，一个类的构造函数是按照public权限作为接口，当构造对象时默认来执行一些初始化功能。但是当构造函数出现在private中时，对类进行实例化时，会无法取得构造函数的权限，于是不能通过这种方式构造对象实例。疑问出现了：如果不能通过构造函数对类进行实例化，那么这个类还有用处吗？<br><br>其实，构造函数私有并不违背C++的语法规则，我们也大可不必为这个问题担心。解决之道呢，一般来说有两种方法。<br> 第一种方法，使用class的static成员来进行实例化工作。因为他们独立于class的对象，所以不必实例化也能够使用它来进行一些private操作，当然就可以调用那个害羞的构造函数。<br>第二种方法，当然可以通过一些朋友们来绕过这个权限控制，也就是我们都很熟悉的友元函数/友元类。<br><br>追究原因，因为这类class不能被任意调用创建实例，于是适合构造一些需要进行对象控制的类。<br clear="all"><br>-- <br> Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-823527332954063861?l=sandshoots.blogspot.com' alt='' /></div>
+
+        <a href="/Technology/2010/02/11/c.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2010-02-11 00:00:00 +0800">11 Feb 2010</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#C-ref">C <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/2010/01/24/nvidia.html" title="Compiz-fusion on Thinkpad SL400, NVIDIA Card." rel="bookmark">Compiz-fusion on Thinkpad SL400, NVIDIA Card.</a>
     </h1>
     <p class="alt-font tight">
@@ -255,7 +369,7 @@
       <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
         <div><br></div><div>1 - Set USE flags</div><div><br></div><div><div>x11-libs/libX11 and media-libs/mesa with xcb enabled.</div><div>x11-libs/cairo with glitz, xcb and svg enabled.</div><div>x11-wm/compiz-fusion with emerald enabled.</div> <div><br></div><div>2 - Keywords</div><div><br></div><div><div>dev-python/compizconfig-python </div><div>x11-wm/compiz </div><div>x11-wm/compiz-fusion </div><div>x11-plugins/compiz-plugins-main </div><div>x11-plugins/compiz-plugins-extra </div> <div>x11-plugins/compiz-plugins-unsupported </div><div>x11-wm/emerald </div><div>x11-themes/emerald-themes </div><div>x11-apps/ccsm </div><div>x11-libs/libcompizconfig </div><div>x11-libs/compizconfig-backend-gconf </div> <div>x11-libs/compizconfig-backend-kconfig </div><div>x11-libs/compiz-bcop</div><div><br></div><div><br></div><div>3 - Emerge</div><div><br></div><div>emerge compiz-fusion</div></div></div><div><br></div><div>4 - Usage for nvidia card</div> <div><br></div><div><div>LIBGL_ALWAYS_INDIRECT=1 INTEL_BATCH=1 compiz --replace --indirect-rendering --sm-disable ccp</div><div><br></div><div>5 - GNOME setting</div><div><br></div><div><div>Navigate to System &gt; Preferences &gt; Startup Applications</div> <div>Add a new Program to the session list named Compiz-Fusion and path /usr/bin/compiz-manager</div><div>Add a new Program to the session list named Emerald and in command &quot;emerald --replace&quot;</div><div>Save the settings and relog to test.</div> <div><br></div></div></div><div><br></div>reference: <a href="http://en.gentoo-wiki.com/wiki/Compiz-Fusion">http://en.gentoo-wiki.com/wiki/Compiz-Fusion</a><div><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> </div> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-1290607663100171099?l=sandshoots.blogspot.com' alt='' /></div>
 
-        <a href="/2010/01/24/nvidia.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2010/01/24/nvidia.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -290,7 +404,7 @@
       <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
         <font style="font-size: 14px;">日子滴滴嗒嗒，缓缓急急，入盛夏过深秋到寒冬。<br> <br> 半年的新生活，渐渐地，习惯了朝九晚九的新节奏，在一个狭小的区域里，每天摆来又摆去，重复着不变的节奏。 却疏远了深夜的麻辣烫，黄昏乌鸦鸣叫的校园，还有近郊香山高处的风与景。在这里，生活繁琐而艰难，每天面对各种诱惑，然后以各种路过的姿态，回归自己正常 的方向<span style="border-collapse: separate; color: rgb(0, 0, 0); font-family: Ar pL UKai Cn; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span style="font-family: Arial; font-size: 14px; line-height: 24px; text-align: left;">。<br>   <br> 一个烦躁不安的日子，翻阅着半年来几个月里朋友们的文字，那些远走他处享受生活的，那些</span></span><span style="border-collapse: separate; color: rgb(0, 0, 0); font-family: Ar pL UKai Cn; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span style="font-family: Arial; font-size: 14px; line-height: 24px; text-align: left;">仍 在这个水泥都市里奋斗的，那些消失许久后又现身的，都在各自的经历之后，发出了大大小小的满意的声音。印象里的一个个充满精力彻夜狂欢着的形象，顿显 成熟的影子。年轻人们的话题，那些飞扬的梦想，大概都伴随那时的日记本放进了尘封的储物箱中了。<br> <br> 在熙熙攘攘的人群中穿梭，在齐整划一的办公间拼搏，在深夜的孤 灯熄灭处栖身，每天又每天之后，终于，我们对周围的一切心满意足。</span></span></font><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>  <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4728715475917082246?l=sandshoots.blogspot.com' alt='' /></div>
 
-        <a href="/2010/01/18/blog-post.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2010/01/18/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -325,7 +439,7 @@
       <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
         <div><br></div><div>在最近工作的几个项目中，我有意无意的采用了Ruby语言。作为一种介于主流与非主流之间的动态语言（TIOBE排名10左右），采用ruby的开发者群体在一度暴涨之后，一直处于一个相当稳定的水平。</div><div><br></div><div>从效率来看，ruby确实不是一个让人完全满意的选择。在我以前一个项目中实现的一个搜索项目，最先采用了一个PHP的版本，运行起来显示了php一贯的高效和稳定特性。后来采用了ruby进行功能扩展，开发的过程让人愉悦，少量的代码实现了全部功能，并且增加了灵活性，但是在数据量急遽增加的时候，ruby的表现并不如php那样轻松自在。jruby等正在尝试通过新的手段来对这个方面进行改进，前面的路还有很长，值得期待。</div> <div><br></div><div>而抛开这个瑕疵，Ruby语言本身的优雅简洁，却能将开发者吸引到它的圈子。</div><div><br></div><div>ruby强调代码的质量，在ruby的世界里，到处看到的是短小精悍的代码，寥寥几行，可以清晰看到进程的脉络。那比较负责的任务怎么实现呢？Ruby的解决方案是将问题分解，在单独的块里实现复杂的功能。其实这个单独的块也是一个清晰的框架，复杂的功能还会继续分块下去，直到所有的功能的实现都在一个简洁的块中实现。不用卖弄任何技巧，问题在逐步自然而优雅的分解过程中，已经有了一个完美的解决。</div> <div>大多数语言支持完善的函数，大都有代码重用的机制。而Ruby所特有的灵活高效的block机制，让它出类拔萃。在你需要的时候，方便地def你的方法；采用block/closure，对进程进行有效的控制。通过引入这种灵活性，使Ruby的代码更加简洁。开发者会发现这种语言不会因为严格的语法规则来限制他/她的思维，怎么能不爱它呢？<br clear="all"><br></div><div>Ruby的社区也比其它的社区更为友善一些，很少能看到其它社区常见的那句RTFM。这一方面可以归因于ruby是个后起之秀，很多问题都在解决之中，文档中并没有成熟的解决方案。而另一方面，ruby开发者一直处于一种愉悦的开发心情中，大都应该不会以那种暴躁的方式来对待有相同兴趣的吧。</div> <div><br></div><div><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> </div> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-1948535049163342013?l=sandshoots.blogspot.com' alt='' /></div>
 
-        <a href="/2009/12/10/ruby.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2009/12/10/ruby.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -360,7 +474,7 @@
       <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
         TDD steps:<br><br>1, Write a test that describes some shortcoming or missing feature in the code. <br><br>2, Run the tests.<br><br>3, Write just enough code to make this test pass. <br><br>4, Run the tests again. <br><br>5, Refactor.<br> <br>6, Write a test to define a new feature and start the process all over again.<br><br><br>Always remember:<br><br>1, Code doesn&#39;t exist yet until it&#39;s tested. <br><br>2, Run tests religiously. <br><br><br>see more:<br> 1, <a href="http://ruby.about.com/od/advancedruby/a/tdd.htm">http://ruby.about.com/od/advancedruby/a/tdd.htm</a><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-5639782625791163843?l=sandshoots.blogspot.com' alt='' /></div>
 
-        <a href="/2009/09/25/what-is-test-driven-development-in-ruby.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2009/09/25/what-is-test-driven-development-in-ruby.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -395,7 +509,7 @@
       <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
         <br clear="all"><div>lax@homex ~ $ host <a href="http://www.liulantao.com">www.liulantao.com</a></div><div><a href="http://www.liulantao.com">www.liulantao.com</a> has address 203.166.178.9</div><div>lax@homex ~ $ curl -4 --head -H &quot;Host 203.166.178.9&quot; <a href="http://www.liulantao.com/images/lax_shetou.gif">http://www.liulantao.com/images/lax_shetou.gif</a></div> <div>HTTP/1.1 200 OK</div><div>Date: Fri, 25 Sep 2009 13:19:45 GMT</div><div>Server: Apache/2.0.52 (Red Hat)</div><div>Last-Modified: Sat, 07 Feb 2009 07:30:15 GMT</div><div>ETag: &quot;1208ae-16be-1bc9efc0&quot;</div><div> Accept-Ranges: bytes</div><div>Content-Length: 5822</div><div>Connection: close</div><div>Content-Type: image/gif</div><div><br></div>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-1476410669648052340?l=sandshoots.blogspot.com' alt='' /></div>
 
-        <a href="/2009/09/25/head-h-host-2031661789.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2009/09/25/head-h-host-2031661789.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -430,82 +544,12 @@
       <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
         &gt;rake db:drop <br>Couldn&#39;t drop db/development.sqlite3 : #&lt;Errno::EACCES: Permission denied - db/development.sqlite3&gt;<br><br>maybe you run script/console and didn&#39;t exit.<br clear="all"><br>-- <br>Liu Lantao<br> College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-7787423515687806798?l=sandshoots.blogspot.com' alt='' /></div>
 
-        <a href="/2009/09/24/rake-dbdrop-with-permission-denied.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2009/09/24/rake-dbdrop-with-permission-denied.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
         <span class="date full-date">
           <abbr class="published" title="2009-09-24 00:00:00 +0800">24 Sep 2009</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2009/09/16/journey-to-gentoo-intel-video-card-and.html" title="A journey to Gentoo: Intel video card and xorg installed." rel="bookmark">A journey to Gentoo: Intel video card and xorg installed.</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        config intel video card on Gentoo Linux.<br><br>first, make sure the kernel module option, &quot;Device Drivers --&gt; Graphics support --&gt; Direct Rendering Manager --&gt; Intel 810&quot; should be checked for my i810 card.<br> <br>then set  VIDEO_CARDS=&quot;intel&quot;  in /etc/make.conf.<br clear="all"><br>now, reinstall xorg-x11:  # sudo emerge -uDNva xorg-x11.<br><br>when all above steps were finished, remove /etc/X11/xorg.conf, run $ startx, and everything is fine. <br> <br>Though, there is neither any input method nor web browser installed, a easy journey to go.<br><br>-- <br>Liu Lantao, Oaks Pacific Corp.<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4876074992862163302?l=sandshoots.blogspot.com' alt='' /></div>
-
-        <a href="/2009/09/16/journey-to-gentoo-intel-video-card-and.html" class="read_more span2 pull-right">继续阅读……</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2009-09-16 00:00:00 +0800">16 Sep 2009</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2009/09/07/output-of-array-to-sentence-ruby-way.html" title="Output of an Array to sentence, the ruby way" rel="bookmark">Output of an Array to sentence, the ruby way</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <pre>@contacts.collect{<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>s<span class="moz-txt-tag">|</span></code> <a href="http://s.name">s.name</a>}.to_sentence.concat(&quot;.&quot;)<br></pre><br clear="all"> <br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-26549371631330249?l=sandshoots.blogspot.com' alt='' /></div>
-
-        <a href="/2009/09/07/output-of-array-to-sentence-ruby-way.html" class="read_more span2 pull-right">继续阅读……</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2009-09-07 00:00:00 +0800">07 Sep 2009</abbr>
         </span>
         
         <span>
@@ -719,6 +763,12 @@
     
     <li class="page">
       <a href="/page31">31</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page32">32</a>
     </li>
     
   

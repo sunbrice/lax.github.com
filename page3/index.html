@@ -207,6 +207,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -241,6 +245,169 @@
 
 
 
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/Ruby/2012/05/21/package-management-with-fpm.html" title="使用fpm管理软件打包" rel="bookmark">使用fpm管理软件打包</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p><a href="https://github.com/jordansissel/fpm">fpm</a>是一款支持多平台的打包管理工具。支持的平台包括：rpm, deb, tar, solaris等。</p>
+
+<p>fpm的目标：</p>
+
+<ol>
+  <li>
+    <p>无痛创建软件包</p>
+  </li>
+  <li>
+    <p>修改已有的软件包</p>
+  </li>
+  <li>
+    <p>抽取已有软件包中的脚本</p>
+  </li>
+</ol>
+
+<h2 id="section">安装</h2>
+<p>可以通过gem直接安装</p>
+
+<pre><code>gem install fpm
+</code></pre>
+
+<p>如果失败，需要确保rubygems和ruby-devel已经安装</p>
+
+<pre><code># yum install rubygems ruby-devel -y
+</code></pre>
+
+<h2 id="squid">一个简单示例：打包squid</h2>
+
+<p>我们的squid安装在/opt/squid/目录下。</p>
+
+<pre><code>fpm -s dir -t rpm -n squid -v 0.1 --post-install /opt/squid/bin/initVar.sh /opt/squid/
+</code></pre>
+
+<p>运行后会在当前目录生成squid-0.1-1.rpm。</p>
+
+<p>在创建rpm文件时，我们增加了一个参数&ndash;post-install，指定了当安装完成时执行的脚本，可以利用这个功能来完成软件初始化工作。类似的参数还有&ndash;pre-install/&ndash;post-uninstall/&ndash;pre-uninstall等。</p>
+
+        <a href="/Technology/Ruby/2012/05/21/package-management-with-fpm.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-05-21 00:00:00 +0800">21 May 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+            <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#fpm-ref">fpm <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rpm-ref">rpm <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/2012/05/20/gentoo-portage-tree-sync-with-git.html" title="使用git同步更新portage" rel="bookmark">使用git同步更新portage</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>Gentoo的Portage默认使用rsync进行同步，网速不好时每次操作至少要几分钟的等待。幸好Gentoo开发者之一<a href="http://www.funtoo.org/wiki/User:Drobbins">Daniel Robbins</a>维护了<a href="http://www.funtoo.org">Funtoo</a>，使用github来分发portage树，并且有一个<a href="https://github.com/funtoo/portage">Gentoo portage的快照</a>，每天同步两次。</p>
+
+<p>使用起来很简单，只需简单的命令</p>
+
+<pre><code>git clone git://github.com/funtoo/portage.git &amp;&amp; cd portage &amp;&amp; git checkout gentoo.org 
+</code></pre>
+
+<p>之后将取回的portage目录替换原来的/usr/portage/即可。</p>
+
+<p>速度问题应该由来已久，不明白这群极客为什么不早些采用Git。</p>
+
+<p>从Gentoo讨论区看到，开发者还没有将用户同步Portage的方式迁移到git的计划（开发者的Portage树由CVS迁移到Git的工作已经列入计划）。</p>
+
+        <a href="/Technology/2012/05/20/gentoo-portage-tree-sync-with-git.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-05-20 00:00:00 +0800">20 May 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Gentoo-ref">Gentoo <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#Portage-ref">Portage <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Git-ref">Git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Funtoo-ref">Funtoo <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
@@ -379,7 +546,7 @@ chmod 777 tcpdump-arm
 <pre><code>wireshark result.cap
 </code></pre>
 
-        <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -436,7 +603,7 @@ chmod 777 tcpdump-arm
 
 把blog迁移到github。Cheer!
 
-        <a href="/2012/05/13/hello_jekyll.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2012/05/13/hello_jekyll.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -487,7 +654,7 @@ chmod 777 tcpdump-arm
 
 <p>怎么确定是否使用rubygems或其它第三方库提供的软件包呢？Ruby中的一个环境变量起到了这个作用，这就是RUBYOPT变量。使用RUBYOPT变量的效果与在ruby命令行中增加参数是相同的。</p>
 
-        <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -576,7 +743,7 @@ chmod 777 tcpdump-arm
 7 有数据分析/数据挖掘相关经验者优先。</p>
 
 
-        <a href="/2012/03/15/e4babae4babae7bd91e68b9be88198e7b3bbe7bb9fe5b7a5e7a88be5b888.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/2012/03/15/e4babae4babae7bd91e68b9be88198e7b3bbe7bb9fe5b7a5e7a88be5b888.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -681,7 +848,7 @@ irb &gt; PrivateUtils::getInfo("abc")
 
 <p>欢迎交流使用心得。http://www.liulantao.com/</p>
 
-        <a href="/Technology/Ruby/2012/02/25/ruby-c-cxx-extention.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/Technology/Ruby/2012/02/25/ruby-c-cxx-extention.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -796,7 +963,7 @@ access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
 
 <p>欢迎留言交流。<a href="http://www.renren.com/g/277881218">@我#renren.com</a> <a href="http://weibo.com/1653644220">@我#weibo.com</a></p>
 
-        <a href="/Technology/2011/12/28/tengine-evnote.html" class="read_more span2 pull-right">继续阅读……</a>
+        <a href="/Technology/2011/12/28/tengine-evnote.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">
@@ -827,154 +994,6 @@ access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
     	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
      
     	<li><a href="/tags.html#Tengine-ref">Tengine <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2011/12/22/load-balancer-for-cdn-cache-cluster.html" title="关于选择缓存集群负载均衡调度算法的一些想法" rel="bookmark">关于选择缓存集群负载均衡调度算法的一些想法</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>最近两天我维护的一组缓存服务器遇到一些情况。在处理过程中对集群的调度算法进行了一些思考。欢迎各位看官拍砖。</p>
-
-<p>先说一下背景。</p>
-
-<p>这个缓存集群有30多台缓存节点，缓存目标是大小为2-5k的图片文件。</p>
-
-<p>最早的部署方案是将这些缓存节点分成六组（G1-G6），每组4-6个节点。根据文件名特征，将每个文件对应到六组之一；而在组内则采取轮询的方式选择节点进行访问，比较随机。
-访问文件在选择的节点中MISS时，选择的缓存节点会从源站或同组内其它节点读取文件，放入自己的缓存，并返回给查询方。
-当节点访问出错时（如DOWN机，断网等），文件访问的发起方被轮询算法调度到同组的另外一个节点。
-这种方案会造成同组内保存了同一文件的多个副本，这既是好事有事坏事：好的方面是能解决单个缓存节点失效的问题；不好的方面是重复文件使集群的空间利用率不高，对源站造成一定的压力。</p>
-
-<p>之后开始实施了一种改进方案，在负载均衡器中使用一致性哈希算法进行调度。一致性哈希的简单原理为：
-1、所有缓存节点通过一种哈希算法计算，根据哈希值被分布到一个虚拟的环上，每个缓存节点对应环中的一个节点（改进的算法中会生成多个节点，以提高随机性）；
-2、将查询的文件名使用相同的哈希算法计算，得到索引值；
-3、使用索引值在环上查找。如果索引值正好是一个节点的值，则直接选择对应的缓存节点；否则从索引值所在位置顺着环的方向寻找下一个缓存节点。
-4、根据上一步选择的结果，对相应缓存节点进行文件存取操作。</p>
-
-<p>根据实际部署需求我们在一个开源的负载均衡模块进行开发。由于缓存节点的能力基本均等，我们通过多组测试选择了更好的哈希算法来提高均衡性，防止个别节点过热；为了处理节点失效的情形，我们开发了响应的调度功能，当某个缓存节点失效时，环上相邻缓存节点会被选择。</p>
-
-<p>至此，这种方案的雏形就完成了。既能解决有效利用容量的需求，又能处理节点失效。由于使用一致性哈希后不在需要进行分组管理，这种方案也带来运维成本的降低。</p>
-
-<p>（未完）
-&raquo;多个负载均衡器的情况下，缓存失效时的调度算法</p>
-
-        <a href="/Technology/2011/12/22/load-balancer-for-cdn-cache-cluster.html" class="read_more span2 pull-right">继续阅读……</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2011-12-22 00:45:27 +0800">22 Dec 2011</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#CDN-ref">CDN <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
-     
-    	<li><a href="/tags.html#一致性哈希-ref">一致性哈希 <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#缓存-ref">缓存 <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#负载均衡-ref">负载均衡 <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2011/11/23/pypy-1-7-released.html" title="PyPy 1.7 released" rel="bookmark">PyPy 1.7 released</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>pypy是一个高效的python解释器。由于采用了JIT编译器，它的速度快于传统的解释器。</p>
-
-<p>据称这次发布的PyPy 1.7的整体性能性能比1.6提升30%。</p>
-
-<p>用python重新了JSON编码器。新的编码器性能二倍于CPython中C扩展，比1.6版本性能提升高达20倍！</p>
-
-<p><a href="http://www.liulantao.com/portal/2011/11/23/pypy-1-7-released/pypy/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/11/pypy.jpg" alt="" /></a></p>
-
-<p>还有一些其它改变，如numpypy。有些特性列入了1.8版本的计划中，包括PowerPC和ARM处理器的JIT汇编器后端。</p>
-
-<p><a href="https://lwn.net/Articles/468661/">PyPy 1.7 released [LWN.net]</a>.</p>
-
-        <a href="/Technology/2011/11/23/pypy-1-7-released.html" class="read_more span2 pull-right">继续阅读……</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2011-11-23 09:22:44 +0800">23 Nov 2011</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#pypy-ref">pypy <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#python-ref">python <span>1</span></a></li>
     
   
 
@@ -1185,6 +1204,12 @@ access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
     
     <li class="page">
       <a href="/page31">31</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page32">32</a>
     </li>
     
   

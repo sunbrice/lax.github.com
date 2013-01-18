@@ -4,13 +4,65 @@
  <title>Lax's Blog</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-12T10:59:08+08:00</updated>
+ <updated>2013-01-18T23:06:39+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
    <email>liulantao@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>有趣的开源项目</title>
+   <link href="http://lax.github.com/Technology/2013/01/18/funny-opensource-projects.html"/>
+   <updated>2013-01-18T00:00:00+08:00</updated>
+   <id>http://lax.github.com/Technology/2013/01/18/funny-opensource-projects</id>
+   <content type="html">
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#octopresshttpsgithubcomimathisoctopress&quot;&gt;&lt;a href=&quot;https://github.com/imathis/octopress&quot;&gt;Octopress&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ktaphttpsgithubcomktapktap&quot;&gt;&lt;a href=&quot;https://github.com/ktap/ktap&quot;&gt;ktap&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;octopresshttpsgithubcomimathisoctopress&quot;&gt;&lt;a href=&quot;https://github.com/imathis/octopress&quot;&gt;Octopress&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;这是又一个基于jekyll的博客程序，类似Jekyll-Bootstrap。和JB相比，默认界面风格更有传统blog系统的韵味，对于代码的支持也宣称做的更好，实在是众多码农码神的利器。&lt;/p&gt;
+
+&lt;p&gt;Octopress is Jekyll blogging at its finest.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Octopress sports a clean responsive theme written in semantic HTML5, focused on readability and friendliness toward mobile devices.&lt;/li&gt;
+  &lt;li&gt;Code blogging is easy and beautiful. Embed code (with Solarized styling) in your posts from gists, jsFiddle or from your filesystem.&lt;/li&gt;
+  &lt;li&gt;Third party integration is simple with built-in support for Twitter, Pinboard, Delicious, GitHub Repositories, Disqus Comments and Google Analytics.&lt;/li&gt;
+  &lt;li&gt;It&amp;rsquo;s easy to use. A collection of rake tasks simplifies development and makes deploying a cinch.&lt;/li&gt;
+  &lt;li&gt;Ships with great plug-ins some original and others from the Jekyll community — tested and improved.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;ktaphttpsgithubcomktapktap&quot;&gt;&lt;a href=&quot;https://github.com/ktap/ktap&quot;&gt;ktap&lt;/a&gt;&lt;/h1&gt;
+
+&lt;p&gt;与DTrace、SystemTap类似的追踪程序，用于对系统和程序的调用栈进行追踪调试。目前这个软件还在开发的初始阶段。&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>微博更新记录 20130107-20130113</title>
+   <link href="http://lax.github.com/2013/01/12/weibo-update-20130107-20130113.html"/>
+   <updated>2013-01-12T00:00:00+08:00</updated>
+   <id>http://lax.github.com/2013/01/12/weibo-update-20130107-20130113</id>
+   <content type="html">
+&lt;p&gt;本周内核方面值得关注的两个改进：mempressure cgroup（内存用尽之前，内核通知应用程序释放内存http://t.cn/zjB4Ahc）和zswap（内存用尽发生后，swap i/o有一层内存缓冲，减少实际磁盘操作 http://t.cn/zjB4AhV）
+1月11日15:54來自未通过审核应用&lt;/p&gt;
+
+&lt;p&gt;不能赞成更多啦 //@Laruence 其实学Linux Shell, 最最重要的就是领会: &amp;ldquo;各司其职, 协同合作, 解决问题. &amp;ldquo; , 所谓各司其职, 就是学习那些最最基本不过的命令, 他们都很简单, 好像不能解决你的实际问题. 所谓协同合作, 就是理解&amp;rdquo;|&amp;rdquo;的设计, 每一个工具只要关注自己的部分,组合起来却威力无穷. 这个也是软件设计的一个基本思想.
+1月10日10:34來自新浪微博&lt;/p&gt;
+
+&lt;p&gt;看京剧，发现能看懂剧情了。记得年轻时去看戏从来不关心戏台上老生的咿咿呀呀，满心思都是旁边的小玩具小人书和小零食，偶尔跑到后台凑热闹。。。#爱藕丝#
+1月8日22:09來自未通过审核应用&lt;/p&gt;
+
+&lt;p&gt;继Android、Ubuntu之后，Open webOS也运行在了Google Nexus 7上，在其它项目的基础上，Simon &amp;ldquo;morphis&amp;rdquo; Busch用一周时间完成。N7成为近期各家基于Linux的操作系统社区的宠儿http://t.cn/zjmvlTu #爱藕丝#
+1月7日10:27來自未通过审核应用&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Raspberry Pi上的AppStrore：Pi Store</title>
@@ -1307,7 +1359,7 @@ git commit &amp;amp;&amp;amp; git push
  </entry>
  
  <entry>
-   <title>Gentoo</title>
+   <title>Gentoo安装准备知识概要</title>
    <link href="http://lax.github.com/Technology/2011/09/11/gentoo.html"/>
    <updated>2011-09-11T11:27:40+08:00</updated>
    <id>http://lax.github.com/Technology/2011/09/11/gentoo</id>
