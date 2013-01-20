@@ -248,6 +248,67 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/Technology/2010/07/19/e88bb1e8afade8af8de585b8e6b5b7e8af8de5aea2e688b7e7abafflashe78988efbc88flexe7a88be5ba8fe5a4aanbe595a6efbc89.html" title="英语词典海词客户端Flash版（Flex程序太NB啦）" rel="bookmark">英语词典海词客户端Flash版（Flex程序太NB啦）</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>英语词典海词客户端Flash版（Flex程序太NB啦）</p>
+
+<p>昨晚看到了小妹的文章: http://args.cn/post/2009/01/course-sea-term-api-applications-word-query /，觉得有必要自己实现一个，以便日后查词典使用。</p>
+
+<p>程序地址：http://liulantao.com/flex/dict.swf</p>
+
+        <a href="/Technology/2010/07/19/e88bb1e8afade8af8de585b8e6b5b7e8af8de5aea2e688b7e7abafflashe78988efbc88flexe7a88be5ba8fe5a4aanbe595a6efbc89.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2010-07-19 19:11:22 +0800">19 Jul 2010</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Dict-ref">Dict <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Flash-ref">Flash <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Flex-ref">Flex <span>2</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/Technology/2010/07/19/efbcbbe4bdbfe794a8e8b7afe794b1e599a8e5bf85e79c8befbcbdefbcbbe697a0e6b395e4b88ae4bca0e69687e4bbb6e5bf85e79c8befbcbde585b3e4ba8emtu.html" title="［使用路由器必看］［无法上传文件必看］关于MTU的那点事儿" rel="bookmark">［使用路由器必看］［无法上传文件必看］关于MTU的那点事儿</a>
     </h1>
     <p class="alt-font tight">
@@ -631,59 +692,6 @@ make
         使用Ruby进行log分析，它的性能成为一个瓶颈。<br>传统在perl中通过split的方式进行字段抽取的工作，在ruby中性能变的极差。<br>对一个32万行的log文件进行统计，抽取其中一个字段进行累加。<br>原有采用split方式，脚本运行时间在12~13s，且CPU占用较高。这种情况下，进行实施数据分析的消耗巨大，无法大范围部署。<br>而让这一状况得以改观的是，采用Regexp.match(str)进行抽取，计算速度有了非常大的改善，在2s内完成了计划的任务。<br> <br>－－－－－－－－－－－－－－－<br>lax@mib ~ $ cat accounting_total_reqs.rb <br>#!/usr/bin/env ruby<br><br>f = File.open(&quot;NginxAccounting.log&quot;)<br>regex = Regexp.new(/req_total:(\d+)/)<br><br>tp = 0<br>while(f.gets)<br>    $_.scan(regex)<br>     tp += $1.to_i if $1<br>end<br>puts tp<br>－－－－－－－－－－－－－－－<br><br>采用str.scan(regex)，速度比较满意：<br>lax@mib ~ $ time ruby accounting_total_reqs.rb <br>12437322629<br><br>real    0m1.786s<br>user    0m1.753s<br>sys    0m0.031s<br> <br>调整为regex.match(str)方法后，速度又有少量提升：<br><br>lax@mib ~ $ time ruby 5.rb <br>12437322629<br><br>real    0m1.603s<br>user    0m1.570s<br>sys    0m0.031s<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4221053633967927849?l=sandshoots.blogspot.com' alt='' /></div>
 
         <a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2010-04-21 00:00:00 +0800">21 Apr 2010</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#Ruby-ref">Ruby <span>2</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2010/04/21/rubylog.html" title="补充：使用Ruby进行Log分析" rel="bookmark">补充：使用Ruby进行Log分析</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <br>补充：<br>使用str.split方法，分析同一个文件需要的时间：<br>lax@mib ~ $ time ruby accounting_total_reqs.rb <br>4820147812<br><br>real    0m8.272s<br>user    0m8.105s<br>sys    0m0.148s<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2376461025494498877?l=sandshoots.blogspot.com' alt='' /></div>
-
-        <a href="/Technology/2010/04/21/rubylog.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">

@@ -71,6 +71,7 @@ http://lax.github.com/page30/index.html
 http://lax.github.com/page31/index.html
 http://lax.github.com/page32/index.html
 
+http://lax.github.com/2013/01/20/view-documents-on-github-pages-the-ugly-way.html
 http://lax.github.com/Technology/2013/01/18/funny-opensource-projects.html
 http://lax.github.com/2013/01/12/weibo-update-20130107-20130113.html
 http://lax.github.com/Technology/2012/12/30/raspberry-pi-launches-pi-store.html

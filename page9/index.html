@@ -248,6 +248,41 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/2009/09/24/rake-dbdrop-with-permission-denied.html" title="rake db:drop with permission denied error." rel="bookmark">rake db:drop with permission denied error.</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        &gt;rake db:drop <br>Couldn&#39;t drop db/development.sqlite3 : #&lt;Errno::EACCES: Permission denied - db/development.sqlite3&gt;<br><br>maybe you run script/console and didn&#39;t exit.<br clear="all"><br>-- <br>Liu Lantao<br> College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-7787423515687806798?l=sandshoots.blogspot.com' alt='' /></div>
+
+        <a href="/2009/09/24/rake-dbdrop-with-permission-denied.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2009-09-24 00:00:00 +0800">24 Sep 2009</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/2009/09/16/journey-to-gentoo-intel-video-card-and.html" title="A journey to Gentoo: Intel video card and xorg installed." rel="bookmark">A journey to Gentoo: Intel video card and xorg installed.</a>
     </h1>
     <p class="alt-font tight">
@@ -470,41 +505,6 @@
         To disable the PING response, add the following line to your init script for the network:<br>echo 1 &gt;/proc/sys/net/ipv4/icmp_echo_ignore_all<br><br>To reenable the PING response do this:<br>echo 0 &gt;/proc/sys/net/ipv4/icmp_echo_ignore_all<br> <br>To make the change PERMANENT add the following line to /etc/sysctl.conf:<br>net.ipv4.icmp_echo_ignore_all=1<br>and execute this command<br>sysctl -p<br><br>It is better to use firewall for these purposes, so that you can optionally enable ping from some systems, esp monitoring systems<br> iptables -t filter -I INPUT -p icmp --icmp-type echo-request -s monitoring_system -j ACCEPT<br>iptables -t filter -I INPUT -p icmp --icmp-type echo-request -j DROP<br><br>Just in case it&#39;s not obvious to iptables newbies, replace &quot;monitoring_system&quot; with the IP/range of the server(s) which should be able to ping the server. All other ping requests will be silenty dropped.<br> <br><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-8673785730320933311?l=sandshoots.blogspot.com' alt='' /></div>
 
         <a href="/2009/08/25/how-to-disable-ping-response.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2009-08-25 00:00:00 +0800">25 Aug 2009</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2009/08/25/google-sets-is-cool.html" title="Google Sets is cool!" rel="bookmark">Google Sets is cool!</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        Use Google Sets to expand a list of a few items, into a list with many items. For example let&#39;s suppose you want a set (or list) of Star Wars characters, but can only think of a few. Enter a the ones you can think of, and Google sets will return a whole list.<br> <br>links: <a href="http://labs.google.com/sets">http://labs.google.com/sets</a><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-6300252633817885750?l=sandshoots.blogspot.com' alt='' /></div>
-
-        <a href="/2009/08/25/google-sets-is-cool.html" class="read_more span2 pull-right">[ Read More ]</a>
         <div class="clear"></div>
       </div>
       <div class="span3">

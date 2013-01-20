@@ -4,13 +4,66 @@
  <title>Lax's Blog</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-18T23:06:39+08:00</updated>
+ <updated>2013-01-20T16:50:30+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
    <email>liulantao@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>查看github pages中文档的方式</title>
+   <link href="http://lax.github.com/2013/01/20/view-documents-on-github-pages-the-ugly-way.html"/>
+   <updated>2013-01-20T00:00:00+08:00</updated>
+   <id>http://lax.github.com/2013/01/20/view-documents-on-github-pages-the-ugly-way</id>
+   <content type="html">
+&lt;h2 id=&quot;section&quot;&gt;背景&lt;/h2&gt;
+
+&lt;p&gt;由于&lt;a href=&quot;https://github.com/iccfish/12306_ticket_helper/issues/16&quot;&gt;抢票插件事件&lt;/a&gt;，近期github pages不能正常访问。作为一个普通码农，严重依赖部署在github的项目，这些项目也几乎都以github pages提供文档。缺乏文档确实很不方便，各地的有证与无证码农们已经在weibo等渠道表达不满。&lt;/p&gt;
+
+&lt;p&gt;抱怨归抱怨，仍然要想办法看到这些文档，为周末生活找点儿乐趣——&lt;strong&gt;尤其今天这雪后的雾霾天气&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;方法&lt;/h2&gt;
+
+&lt;p&gt;Github pages使用的是一套基于Jekyll的模版系统，原则上只要把各项目的文档源码checkout到本地，重新生成一遍即可。幸运的是这些项目仍可以访问。&lt;/p&gt;
+
+&lt;p&gt;以bootstrap库为例来说明一下。&lt;/p&gt;
+
+&lt;p&gt;首先获取代码到本地&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone git://github.com/twitter/bootstrap.git
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;进入代码目录，切换到gh-pages分支&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd bootstrap
+git checkout gh-pages
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;启动jekyll本地服务器&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jekyll --server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在浏览器查看&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;open http://127.0.0.1:4000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;jekyll是一个ruby工具，你需要先安装ruby和rubygems。&lt;/p&gt;
+
+&lt;p&gt;安装RVM:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl -L https://get.rvm.io | bash -s stable
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;安装Jekyll:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gem install jekyll
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+ </entry>
  
  <entry>
    <title>有趣的开源项目</title>

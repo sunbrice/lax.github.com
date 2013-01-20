@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>切换到jekyll bootstrap</title>
+    <title>查看github pages中文档的方式</title>
     <meta name="description" content="">
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
@@ -225,33 +225,66 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>切换到jekyll bootstrap <small></small></h1>
+  <h1>查看github pages中文档的方式 <small></small></h1>
 </div>
 
 <div class="row">
   <div class="span8">
     
-<p>把博客程序切换的<a href="http://jekyllbootstrap.com">jekyll-bootstrap</a>。切换的原因是看中了它的几个优点：</p>
+<h2 id="section">背景</h2>
 
-<ul>
-  <li>有命令行工具。可以通过rake post命令创建日志。    </li>
-  <li>支持插件。使用命令行控制plugin安装，更方便利用别人制作的插件，这点很重要。    </li>
-  <li>可以定义页面风格，快速切换themes。    </li>
-  <li>从头开始学习jekyll太耗费时间和精力。    </li>
-</ul>
+<p>由于<a href="https://github.com/iccfish/12306_ticket_helper/issues/16">抢票插件事件</a>，近期github pages不能正常访问。作为一个普通码农，严重依赖部署在github的项目，这些项目也几乎都以github pages提供文档。缺乏文档确实很不方便，各地的有证与无证码农们已经在weibo等渠道表达不满。</p>
 
-<p>切换的过程比较顺利，执行git merge，只有6个文件需要手工合并，而且没有严重冲突。合并完毕将代码提交到github即可。</p>
+<p>抱怨归抱怨，仍然要想办法看到这些文档，为周末生活找点儿乐趣——<strong>尤其今天这雪后的雾霾天气</strong>。</p>
 
+<h2 id="section-1">方法</h2>
+
+<p>Github pages使用的是一套基于Jekyll的模版系统，原则上只要把各项目的文档源码checkout到本地，重新生成一遍即可。幸运的是这些项目仍可以访问。</p>
+
+<p>以bootstrap库为例来说明一下。</p>
+
+<p>首先获取代码到本地</p>
+
+<pre><code>git clone git://github.com/twitter/bootstrap.git
+</code></pre>
+
+<p>进入代码目录，切换到gh-pages分支</p>
+
+<pre><code>cd bootstrap
+git checkout gh-pages
+</code></pre>
+
+<p>启动jekyll本地服务器</p>
+
+<pre><code>jekyll --server
+</code></pre>
+
+<p>在浏览器查看</p>
+
+<pre><code>open http://127.0.0.1:4000
+</code></pre>
+
+<p>jekyll是一个ruby工具，你需要先安装ruby和rubygems。</p>
+
+<p>安装RVM:</p>
+
+<pre><code>curl -L https://get.rvm.io | bash -s stable
+</code></pre>
+
+<p>安装Jekyll:</p>
+
+<pre><code>gem install jekyll
+</code></pre>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/SysAdmin/2012/07/18/mirror-debian.html" title="Debian镜像攻略">&larr; Previous</a></li>
+        <li class="prev"><a href="/Technology/2013/01/18/funny-opensource-projects.html" title="有趣的开源项目">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/Technology/2012/08/18/mac-osx-development-environment-setup.html" title="Mac OSX development environment setup">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
@@ -281,7 +314,7 @@ window.WBComment.init({
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>06 August 2012</span></div>
+    <div class="date"><span>20 January 2013</span></div>
 
   
     <h4>Tags</h4>
@@ -292,9 +325,11 @@ window.WBComment.init({
 
   
      
-    	<li><a href="/tags.html#jekyll-ref">jekyll <span>2</span></a></li>
+    	<li><a href="/tags.html#github-ref">github <span>1</span></a></li>
      
-    	<li><a href="/tags.html#jekyll-bootstrap-ref">jekyll-bootstrap <span>1</span></a></li>
+    	<li><a href="/tags.html#rvm-ref">rvm <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#jekyll-ref">jekyll <span>2</span></a></li>
     
   
 

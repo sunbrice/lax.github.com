@@ -248,6 +248,121 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/Technology/2011/12/28/tengine-evnote.html" title="Tengine试用手记" rel="bookmark">Tengine试用手记</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>taobao技术团队最近把<a href="http://tengine.taobao.org">Tengine</a>开放出来了。</p>
+
+<p>Tengine基于目前很流行的Nginx，在Nginx基础上整合了一些第三方模块，并加入taobao团队研发的一些模块。由于Nginx有设计精美的模块机制，使得整合与模块开发非常方便，在此之前taobao团队开放的另一个项目openresty就是在Nginx基础上完成的。</p>
+
+<p>最新版本的tengine基于nginx-1.0.10稳定版（最新的nginx稳定版是1.0.11）。我在试用时加入了人人网系统运维团队开发的<a href="https://github.com/xiaonei/ngx_http_consistent_hash">ngx_http_accounting_module</a>和<a href="https://github.com/xiaonei/ngx_http_accounting_module">http_upstream_consistent_hash_module</a>，并按照部署需求进行了RPM包的制作，这个流程与Nginx官方版本一致性很高，几乎不用做修改就能整合到现在的工作流。</p>
+
+<p>可以看出为适应大规模运维的需求，tengine对nginx做了一些修改：</p>
+
+<ul>
+  <li>
+    <p>access_log/error_log支持file/pipe/syslog</p>
+  </li>
+  <li>
+    <p>worker_processes和worker_cpu_affinity自动设置</p>
+  </li>
+  <li>
+    <p>expires_by_types</p>
+  </li>
+  <li>
+    <p>stub_status增加了响应时间</p>
+  </li>
+  <li>
+    <p>sysguard</p>
+  </li>
+  <li>
+    <p>limit_req和forbid_action</p>
+  </li>
+</ul>
+
+<p>我们关注一下log部分的变化。</p>
+
+<p>tengine对log部分做了较大改变，在原有的文件作为输出目标基础上，增加了syslog和pipe功能。syslog作为日志输出，在nginx-0.6.35时就有过一个patch，但是由于种种原因被拒绝加入官方代码（这可能也是taobao撇开nginx.org另立山头的原因之一）。</p>
+
+<p>syslog的配置语法为：</p>
+
+<pre><code>access_log  syslog:user::debug  main;
+
+access_log  syslog:user::192.168.10.10:514  main;
+</code></pre>
+
+<p>配置之后需要对syslogd的配置文件做一些修改。虽然部署很方便，但是syslog的方案比较鸡肋，因为现在已经有比较多的更“现代”的方法来进行分布式数据的收集，比如scribe。</p>
+
+<p>使用pipe方式则可以方便地与scribe等系统进行整合。</p>
+
+<p>测试中我使用了更简单的一个方案：通过netcat将管道中的日志发送到远程日志收集端。</p>
+
+<p>配置文件是这样的：</p>
+
+<pre><code># 将日志实时发送到远程主机192.168.10.10的8000端口，使用TCP协议
+access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
+</code></pre>
+
+<p>在此我选用了便于脚本化且功能强大的netcat。你也可以把其它工具来进行整合，比如与gzip组合使用，进行压缩以降低传输的流量。</p>
+
+<p>pipe方式的日志方式，使得无数想法成为可能，大大提高了运维的灵活性。</p>
+
+<p>关于提到的其它特性更详细的使用说明，可以参考<a href="http://tengine.taobao.org">Tengine</a>官方网站的文档。</p>
+
+<p>欢迎留言交流。<a href="http://www.renren.com/g/277881218">@我#renren.com</a> <a href="http://weibo.com/1653644220">@我#weibo.com</a></p>
+
+        <a href="/Technology/2011/12/28/tengine-evnote.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2011-12-28 17:49:58 +0800">28 Dec 2011</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#NC-ref">NC <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#Tengine-ref">Tengine <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/Technology/2011/12/22/load-balancer-for-cdn-cache-cluster.html" title="关于选择缓存集群负载均衡调度算法的一些想法" rel="bookmark">关于选择缓存集群负载均衡调度算法的一些想法</a>
     </h1>
     <p class="alt-font tight">
@@ -806,69 +921,6 @@ emerge sys-kernel/gentoo-sources之后，在/usr/src/linux目录下执行make me
     	<li><a href="/tags.html#Linux-ref">Linux <span>5</span></a></li>
      
     	<li><a href="/tags.html#selinux-ref">selinux <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2011/07/20/e6b58fe8a788e599a8e4bbbde9a29de7bb9fe8aea1-20110720.html" title="浏览器份额统计-20110720" rel="bookmark">浏览器份额统计-20110720</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>2011年7月20日最新发布，根据某SNS网站用户群统计。</p>
-
-<p><a href="http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-2/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/06/browser.2.jpg" alt="" /></a><a href="http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-3/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/06/browser.3.jpg" alt="" /></a></p>
-
-<p>浏览器内核，IE7是大赢家。使用360浏览器的用户，更倾向于安装较新的浏览器核心。</p>
-
-<p><a href="http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-7/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.7.jpg" alt="" /></a><a href="http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-6/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.6.jpg" alt="" /></a>多核浏览器，webkit份额过半，优势明显。</p>
-
-<p><a href="http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-9/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.9.jpg" alt="" /></a><a href="http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-8/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.8.jpg" alt="" /></a></p>
-
-        <a href="/Technology/2011/07/20/e6b58fe8a788e599a8e4bbbde9a29de7bb9fe8aea1-20110720.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2011-07-20 11:39:40 +0800">20 Jul 2011</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#browser-ref">browser <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#WebKit-ref">WebKit <span>1</span></a></li>
     
   
 
