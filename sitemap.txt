@@ -8,6 +8,7 @@ http://lax.github.com/pages/sr3000-auth-ios/index.html
 http://lax.github.com/pages.html
 http://lax.github.com/sitemap.txt
 http://lax.github.com/tags.html
+http://lax.github.com/urls_for_nerd.html
 http://lax.github.com/page2/index.html
 http://lax.github.com/page3/index.html
 http://lax.github.com/page4/index.html
