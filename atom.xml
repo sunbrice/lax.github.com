@@ -4,13 +4,56 @@
  <title>Lax's Blog</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-25T10:41:54+08:00</updated>
+ <updated>2013-01-25T17:16:20+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
    <email>liulantao@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>每周语录 2013年第四周</title>
+   <link href="http://lax.github.com/Quotes/2013/01/25/quotes-weekly-2013w4.html"/>
+   <updated>2013-01-25T00:00:00+08:00</updated>
+   <id>http://lax.github.com/Quotes/2013/01/25/quotes-weekly-2013w4</id>
+   <content type="html">
+&lt;p&gt;点评：本周语录充满了各种各样的牢骚和抱怨，难道这是开发者们刚休完年假的普遍心态？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Alan Cox&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;I&amp;rsquo;m leaving the Linux world and Intel for a bit for family reasons. I&amp;rsquo;m aware that &amp;ldquo;family reasons&amp;rdquo; is usually management speak for &amp;ldquo;I think the boss is an asshole&amp;rdquo; but I&amp;rsquo;d like to assure everyone that while I frequently think Linus is an asshole (and therefore very good as kernel dictator) I am departing quite genuinely for family reasons and not because I&amp;rsquo;ve fallen out with Linus or Intel or anyone else.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Steven Rostedt&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Yes, it&amp;rsquo;s very unlikely, but we are in the business of dealing with the very unlikely. That&amp;rsquo;s because in our business, the very unlikely is very likely. Damn, I need to buy a lotto ticket!&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tom St Denis&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;About the only thing Kernel developers agree on is they use C and don&amp;rsquo;t comment their code.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Arnd Bergmann&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Documentation is generally considered a good thing, but few people can be bothered to write it, and few of the other people that should read it actually do.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/public/qrcode_for_gh_9329e4243e67_258.jpg&quot; alt=&quot;关注微信公共号 Linux&quot; /&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>使用HAML构建WEB页面</title>

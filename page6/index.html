@@ -253,6 +253,77 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/Technology/2011/01/19/gentoo-on-thinkpa-x201i-kernel-config-to-support-trackpoint-and-touchpad.html" title="Gentoo on Thinkpad X201i, kernel config to support trackpoint and touchpad." rel="bookmark">Gentoo on Thinkpad X201i, kernel config to support trackpoint and touchpad.</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>前段时间一直在xorg.conf中想办法支持小红点，未果。昨晚在内核配置选项中随手搜索了一下，发现有一个PS2驱动是可以支持小红点的。于是知道原来的方向就是错的。</p>
+
+<p>CONFIG_MOUSE_PS2=y
+CONFIG_MOUSE_PS2_SYNAPTICS=y
+CONFIG_MOUSE_PS2_TRACKPOINT=y</p>
+
+<p>重新配置后再编译一下内核，小红点的生效了。</p>
+
+<p>顺便把synaptics驱动也装上了。感觉x201i的12寸身躯，配上一个小尺寸的触控板是完全多余，触控板要很大尺寸，用起来才爽，在此羡慕mackook一下。</p>
+
+        <a href="/Technology/2011/01/19/gentoo-on-thinkpa-x201i-kernel-config-to-support-trackpoint-and-touchpad.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2011-01-19 10:06:17 +0800">19 Jan 2011</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#kernel-ref">kernel <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#synaptics-ref">synaptics <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#thinkpad-ref">thinkpad <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#trackpoint-ref">trackpoint <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#x201i-ref">x201i <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/Technology/2010/10/26/rails-3-0-e79a84e696b0e9b29ce789b9e680a7efbc88e4b880efbc89.html" title="Rails 3.0 的新鲜特性（一）" rel="bookmark">Rails 3.0 的新鲜特性（一）</a>
     </h1>
     <p class="alt-font tight">
@@ -628,73 +699,6 @@ Murder：（Python/Ruby）<a href="http://github.com/lg/murder">http://github.co
   
      
     	<li><a href="/tags.html#Linux-ref">Linux <span>5</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2010/07/19/e69599e4bda0e79b91e68ea7nginxe69c8de58aa1efbc9ae69687e4bbb6e4b88ae4bca0e69c8de58aa1loge9858de7bdae.html" title="教你监控Nginx服务：文件上传服务log配置" rel="bookmark">教你监控Nginx服务：文件上传服务log配置</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>教你监控Nginx服务：文件上传服务log配置</p>
-
-<p>log_format upload ‘[$time_local] $status $host $upstream_addr $upstream_response_time $request_time $remote_addr $request_length $bytes_sent’;
-access_log logs/upload.log upload;</p>
-
-<p>变量说明：
-$time_local  本地时间
-$status           状态码
-$host              主机名
-$upstream_addr    后端地址
-$upstream_response_time   后端响应时间
-$request_time         请求时间
-$remote_addr         用户地址
-$request_length     请求长度
-$bytes_sent             返回长度</p>
-
-        <a href="/Technology/2010/07/19/e69599e4bda0e79b91e68ea7nginxe69c8de58aa1efbc9ae69687e4bbb6e4b88ae4bca0e69c8de58aa1loge9858de7bdae.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2010-07-19 19:14:30 +0800">19 Jul 2010</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
     
   
 

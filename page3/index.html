@@ -253,6 +253,72 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" title="GNOME3多显示器配置" rel="bookmark">GNOME3多显示器配置</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>gnome3多显示器默认只有mirror模式工作正常。使用扩展模式，则导致整个屏幕横跨两个显示器，工具条和窗口被拆分。</p>
+
+<p>经检查资料，发现需要配置USE flag： xinerama。</p>
+
+<pre><code># File: /etc/make.conf
+
+USE="$USE xinerama"
+</code></pre>
+
+<p>修改后需要重新emerge一下已安装的软件包，之后重启X</p>
+
+<p><a href="http://en.gentoo-wiki.com/wiki/X.Org/Dual_Monitors#Xinerama">Xinerama</a></p>
+
+        <a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-06-19 00:00:00 +0800">19 Jun 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#gnome-shell-ref">gnome-shell <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#xinerama-ref">xinerama <span>1</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/SysAdmin/2012/06/13/smokeping.html" title="使用smokeping监控网络质量" rel="bookmark">使用smokeping监控网络质量</a>
     </h1>
     <p class="alt-font tight">
@@ -873,75 +939,6 @@ chmod 777 tcpdump-arm
 
 
           </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2012/03/15/e4babae4babae7bd91e68b9be88198e7b3bbe7bb9fe5b7a5e7a88be5b888.html" title="人人网招聘系统工程师" rel="bookmark">人人网招聘系统工程师</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>人人网系统运维部招聘系统工程师，欢迎有志之士加入。</p>
-
-<p>如果你有一技之长，对网站运维有深刻理解，或者有牛B的想法想要付诸实践，请发简历到lantao.liu at renren-inc.com。</p>
-
-<p>我们的日常工作包括两个方向：
-1  系统运维：CDN、存储、LVS集群的运维管理，保障服务稳定；管理系统维护与监控方案实施。
-2  技术支持：负责人人公司旗下人人网的系统运维技术支持。为业务开发部门、产品及运营部门提供网络与系统技术支持及运营数据支持，改善支持效率。</p>
-
-<p>除日常工作外，可以对网站优化的各个方向进行研究（性能、流程、用户体验等），制定并推动实施优化方案。</p>
-
-<p>另外需要有经验的c/c++开发工程师做基础软件开发，以及内核优化方面的专家。如果你想换个工作环境，可加qq:103074在线交流。</p>
-
-<p>人人网
-系统工程师</p>
-
-<p>工作地点： 北京 工作类别： 技术类</p>
-
-<p>工作描述：</p>
-
-<p>1 CDN全局流量调度系统，监控、管理系统的开发与运维；
-2 响应用户/业务团队的技术支持需求，推动技术产品方案的优化与实施；
-3 服务器监控系统开发与配置，及时响应业务线监控需求；
-4 分布式存储系统的管理、优化及管理工具开发；
-5 实施系统/网络参数优化，改进系统效率。</p>
-
-<p>岗位要求：</p>
-
-<p>1 具备Linux操作系统管理经验，了解Nginx/Squid等常用软件的管理与优化；
-2 熟悉负载均衡技术原理，了解分布式系统的设计与实现；
-3 网络基础扎实，熟悉TCP/IP协议的原理及应用；
-4 Php/Python/Perl/C/Ruby等语言，能使用其中一种在Linux下熟练开发；
-5 有强烈的服务意识，能够7x24响应处理紧急事件；
-6 有大型互联网公司运维/开发经验者优先；
-7 有数据分析/数据挖掘相关经验者优先。</p>
-
-
-        <a href="/2012/03/15/e4babae4babae7bd91e68b9be88198e7b3bbe7bb9fe5b7a5e7a88be5b888.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-03-15 15:36:28 +0800">15 Mar 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
          
       </div>
     </div>
