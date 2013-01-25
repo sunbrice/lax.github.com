@@ -24,6 +24,7 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
   </head>
 
   <body>
@@ -249,6 +250,41 @@
 
 
 
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/11/13/fluxbox_13.html" title="fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案" rel="bookmark">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <div xmlns='http://www.w3.org/1999/xhtml'>关于如何设置菜单，请参考网络上其他朋友的文档。<br/>本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。<br/><br/>一、请确认你安装了中文的字体。<br/>方法1、<br/>首先在终端运行fc-list命令：<br/><br/>[lax@liulantao .fluxbox]$ fc-list<br/><br/>从中找到支持中文的字体，记下字体名字：<br/><br/>AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium<br/>AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular<br/><br/>本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。<br/>如果要使用其它字体，替换成相应的名称。<br/>方法2、<br/>打开firefox，点击View - &amp;gt; Preferences -&amp;gt; Content ，看Default font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。<br/><br/>二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：<br/><blockquote>[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation<br/>Password: ******</blockquote><br/><br/>找到：<br/><br/><blockquote>window.font: lucidasans-10<br/>window.justify: right</blockquote><br/><br/>注释掉window.font行，修改为：<br/><br/><blockquote>#window.font: lucidasans-10<br/>window.font: AR PL ZenKai Uni-10<br/>window.justify: right</blockquote><br/><br/>保存退出，reload config就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。<br/><br/>设置其它位置的字体，可以修改相应的font。<br/><br/><br/><br/>Technorati Tags: <a rel='tag' href='http://technorati.com/tag/linux%20fluxbox%20%E4%B8%AD%E6%96%87%20%E5%AD%97%E4%BD%93%20%E6%98%BE%E7%A4%BA%20%E6%96%87%E9%BC%8E%20fc-list' class='performancingtags'>linux fluxbox 中文 字体 显示 文鼎 fc-list</a><br/><br/><p class='poweredbyperformancing'>Powered by <a href='http://scribefire.com/'>ScribeFire</a>.</p></div><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6403968958837271573?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/11/13/fluxbox_13.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
@@ -479,41 +515,6 @@
       <div class="span3">
         <span class="date full-date">
           <abbr class="published" title="2007-09-21 00:00:00 +0800">21 Sep 2007</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/09/05/2008_05.html" title="课程表2007-2008-第一学期" rel="bookmark">课程表2007-2008-第一学期</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/images/quote/lax_course_07-08.1.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 320px;" src="http://www.liulantao.com/images/quote/lax_course_07-08.1.jpg" alt="" border="0" /></a><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3445871259352950282?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/09/05/2008_05.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-09-05 00:00:00 +0800">05 Sep 2007</abbr>
         </span>
         
         <span>
@@ -777,6 +778,8 @@
 
 
 
+  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
 

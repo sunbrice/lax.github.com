@@ -4,13 +4,189 @@
  <title>Lax's Blog</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-25T00:09:49+08:00</updated>
+ <updated>2013-01-25T10:41:54+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
    <email>liulantao@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>使用HAML构建WEB页面</title>
+   <link href="http://lax.github.com/Technology/2013/01/25/build-page-with-haml.html"/>
+   <updated>2013-01-25T00:00:00+08:00</updated>
+   <id>http://lax.github.com/Technology/2013/01/25/build-page-with-haml</id>
+   <content type="html">
+&lt;p&gt;&lt;img src=&quot;http://haml.info/images/img-hero-boat.png&quot; alt=&quot;&quot; /&gt;  &lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;在日常系统运维工作中，经常需要为各种系统构建页面，提炼常用的操作放到&lt;strong&gt;&lt;em&gt;仪表盘&lt;/em&gt;&lt;/strong&gt;，以提高日常工作效率。&lt;/p&gt;
+
+&lt;p&gt;在WEB逻辑层的选择，Ruby中有便捷优雅的Sinatra，Perl中有Dancer，Python有web.py。&lt;/p&gt;
+
+&lt;p&gt;页面展现层的开发主要考虑两个方面  &lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;构建页面框架&lt;/p&gt;
+
+    &lt;p&gt;这个方面考虑构建页面的快速和可重复性。如果仍停留在手工写html页面的阶段，那就太落伍啦。&lt;/p&gt;
+
+    &lt;p&gt;常用的方案是基于模版生成HTML代码。PHP本身就是一种模版。&lt;/p&gt;
+
+    &lt;p&gt;另外还有ERB，Markdown等轻量级的标记语言，由于Markdown对于语法变量支持不容易集成到动态页面，因此主要用于静态页面构建。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;页面样式和交互管理&lt;/p&gt;
+
+    &lt;p&gt;jQuery无疑是交互管理的首选。如果有较多的数据图表展现，可以选用DDD等框架。&lt;/p&gt;
+
+    &lt;p&gt;页面样式方面，可以参考&lt;a href=&quot;http://jqueryui.com&quot;&gt;jQuery UI&lt;/a&gt;, &lt;a href=&quot;http://yuilibrary.com&quot;&gt;YUI&lt;/a&gt;。&lt;/p&gt;
+
+    &lt;p&gt;从易用的角度，jQuery结合&lt;a href=&quot;http://twitter.github.com/bootstrap/&quot;&gt;Twitter Bootstrap&lt;/a&gt;是个好选择。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;本文主要介绍其中&lt;code&gt;构建页面框架&lt;/code&gt;的方案选择，即用HAML替代ERB。  &lt;/p&gt;
+
+&lt;h2 id=&quot;hamlerb&quot;&gt;haml与erb的对比&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://haml.info&quot;&gt;HAML&lt;/a&gt; 是一种简单的html模版语言。它的最大特点是短小精干整洁。  &lt;/p&gt;
+
+&lt;p&gt;在HAML项目首页有一项简单的对比，在此引用一下&lt;/p&gt;
+
+&lt;p&gt;使用ERB生成的页面代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;section class=”container”&amp;gt;
+  &amp;lt;h1&amp;gt;&amp;lt;%= post.title %&amp;gt;&amp;lt;/h1&amp;gt;
+  &amp;lt;h2&amp;gt;&amp;lt;%= post.subtitle %&amp;gt;&amp;lt;/h2&amp;gt;
+  &amp;lt;div class=”content”&amp;gt;
+    &amp;lt;%= post.content %&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用HAML生成的页面代码&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;%section.container
+  %h1= post.title
+  %h2= post.subtitle
+  .content
+    = post.content
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;通过对比可以看出一些特点&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;对比项目&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;ERB&lt;/strong&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;&lt;strong&gt;HAML&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;代码行数&lt;/td&gt;
+      &lt;td&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;关闭标签&lt;/td&gt;
+      &lt;td&gt;需要关闭&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;不需要关闭&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;逻辑层级&lt;/td&gt;
+      &lt;td&gt;与ruby语法相同&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;按空格缩进&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;变量&lt;/td&gt;
+      &lt;td&gt;ruby变量&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;ruby变量&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;其中haml&lt;strong&gt;不需要关闭&lt;/strong&gt;和&lt;strong&gt;按空格缩进&lt;/strong&gt;两项特性，与Python的风格有几分相似（ruby代码中满屏end的现象，一直受到诟病。python用强迫症式的方案解决了这个问题）——HTML也需要关闭标签。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;实际项目中的应用&lt;/h2&gt;
+
+&lt;p&gt;以下示例以HAML构建了一个简单的导航页面&lt;/p&gt;
+
+&lt;h3 id=&quot;haml&quot;&gt;示例haml文件&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;-# coding: UTF-8
+!!!
+%html(xml:lang='zh-cn' lang='zh-cn' xmlns='http://www.w3.org/1999/xhtml')
+  %head
+    %meta(content='text/html;charset=UTF-8' http-equiv='content-type')
+    %link{:href =&amp;gt; &quot;/css/bootstrap.min.css&quot;, :rel =&amp;gt;&quot;stylesheet&quot;, :type =&amp;gt; &quot;text/css&quot;, :media =&amp;gt; &quot;screen&quot; }
+  %body
+    .container
+      %h1 支持系统
+      %ul.inline
+        %li
+          %a.btn{:href =&amp;gt; '#'} Wiki
+        %li
+          %a.btn{:href =&amp;gt; '#'} Tracker
+        %li
+          %a.btn{:href =&amp;gt; '/ganglia'} Ganglia
+        %li
+          %a.btn{:href =&amp;gt; '/nagios/'} Nagios
+
+      %h3 查询
+      %form{:action =&amp;gt; &quot;/tools/?&quot;, :method =&amp;gt; &quot;GET&quot;, :name =&amp;gt; &quot;dnsinfo_form&quot;}
+        %input#suggest_dns{:type =&amp;gt; &quot;text&quot;, :size =&amp;gt; 25, :name =&amp;gt; &quot;q&quot;, :onmouseover =&amp;gt; &quot;this.focus()&quot;, :onfocus =&amp;gt; &quot;this.select()&quot;, :title =&amp;gt; &quot;关键字: 域名、IP、域名列表或IP列表(,号或空格分隔)&quot;, :autocomplete =&amp;gt; &quot;off&quot;, :class =&amp;gt; &quot;ac_input&quot;}
+        %input{:type =&amp;gt; &quot;submit&quot;, :value =&amp;gt; &quot;查询&quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;html&quot;&gt;示例html文件&lt;/h3&gt;
+
+&lt;p&gt;使用haml命令生成文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;haml index.haml &amp;gt; index.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;文件内容&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&amp;gt;
+&amp;lt;html lang='zh-cn' xml:lang='zh-cn' xmlns='http://www.w3.org/1999/xhtml'&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;meta content='text/html;charset=UTF-8' http-equiv='content-type' /&amp;gt;
+    &amp;lt;link href='/css/bootstrap.min.css' media='screen' rel='stylesheet' type='text/css' /&amp;gt;
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;div class='container'&amp;gt;
+      &amp;lt;h1&amp;gt;支持系统&amp;lt;/h1&amp;gt;
+      &amp;lt;ul class='inline'&amp;gt;
+        &amp;lt;li&amp;gt;
+          &amp;lt;a class='btn' href='#'&amp;gt;Wiki&amp;lt;/a&amp;gt;
+        &amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;
+          &amp;lt;a class='btn' href='#'&amp;gt;Tracker&amp;lt;/a&amp;gt;
+        &amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;
+          &amp;lt;a class='btn' href='/ganglia'&amp;gt;Ganglia&amp;lt;/a&amp;gt;
+        &amp;lt;/li&amp;gt;
+        &amp;lt;li&amp;gt;
+          &amp;lt;a class='btn' href='/nagios/'&amp;gt;Nagios&amp;lt;/a&amp;gt;
+        &amp;lt;/li&amp;gt;
+      &amp;lt;/ul&amp;gt;
+      &amp;lt;h3&amp;gt;查询&amp;lt;/h3&amp;gt;
+      &amp;lt;form action='/tools/?' method='GET' name='dnsinfo_form'&amp;gt;
+        &amp;lt;input autocomplete='off' class='ac_input' id='suggest_dns' name='q' onfocus='this.select()' onmouseover='this.focus()' size='25' title='关键字: 域名、IP、域名列表或IP列表(,号或空格分隔)' type='text' /&amp;gt;
+        &amp;lt;input type='submit' value='查询' /&amp;gt;
+      &amp;lt;/form&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+ </entry>
  
  <entry>
    <title>查看github pages中文档的方式</title>

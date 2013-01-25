@@ -24,6 +24,7 @@
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
   </head>
 
   <body>
@@ -249,6 +250,57 @@
 
 
 
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/Technology/2010/10/26/rails-3-0-e79a84e696b0e9b29ce789b9e680a7efbc88e4b880efbc89.html" title="Rails 3.0 的新鲜特性（一）" rel="bookmark">Rails 3.0 的新鲜特性（一）</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>Rails正式发布了3.0版本，更新过一次后，现在已经有3.0.1了。</p>
+
+<p>3.0系列，与传统2.2系列的差异非常大。这些变化包括：</p>
+
+<p>1、简化的rails命令，替代了原来script/*，rails工具更加一致；</p>
+
+<p>2、基于bundle的gem管理，将依赖管理通过配置文件Gemfile的方式实现，比vender/plugin更容易进行管理；</p>
+
+<p>3、改进的FormHelper；</p>
+
+<p>4、默认支持跨站防御；</p>
+
+<p>5、易定制的route配置文件。</p>
+
+<p>在rails 3.0.1发布之后，一系列辅助工具如passenger等都顺利的配合rails3，为程序员进行大规模版本迁移提供了便利。</p>
+
+        <a href="/Technology/2010/10/26/rails-3-0-e79a84e696b0e9b29ce789b9e680a7efbc88e4b880efbc89.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2010-10-26 23:19:03 +0800">26 Oct 2010</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
@@ -656,92 +708,6 @@ $bytes_sent             返回长度</p>
   </div>
   <div class="rule"><hr/></div>
 
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2010/07/19/e6af8fe4b880e4b8aae8a2abnginxe7aea1e79086e59198e5b081e7a681ipe79a84e794a8e688b7efbc8ce4b88ae8be88e5ad90e983bde698afe68a98e7bfbce79a84.html" title="每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使" rel="bookmark">每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使</p>
-
-<p>方案一、</p>
-
-<p>deny  120.7.0.1/16</p>
-
-<p>方案二、</p>
-
-<p>http {
-&hellip;&hellip;
-geo $ban {
-default         0;  # 默认关闭
-127.0.0.0/16    1;  # 针对网段打开；可以设置多行。
-}
-&hellip;&hellip;
-server {
-&hellip;&hellip;
-# 在Server或Location里设置
-location / {
-if ($ban = 1) {
-return 500;  # 返回500 code
-}
-&hellip;&hellip;
-}
-&hellip;&hellip;
-}</p>
-
-<p>&hellip;&hellip;
-}</p>
-
-<p>该配置使用了nginx的geo模块，该模块是nginx标准模块，默认编译是开启的。需要机器上安装有GeoIP支持库。
-了解更多点击http://wiki.nginx.org/NginxHttpGeoModule</p>
-
-        <a href="/Technology/2010/07/19/e6af8fe4b880e4b8aae8a2abnginxe7aea1e79086e59198e5b081e7a681ipe79a84e794a8e688b7efbc8ce4b88ae8be88e5ad90e983bde698afe68a98e7bfbce79a84.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2010-07-19 19:13:23 +0800">19 Jul 2010</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#GeoIP-ref">GeoIP <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
 
 
   <div id="post-pagination" class="pagination pagination-centered">
@@ -989,6 +955,8 @@ return 500;  # 返回500 code
 
 
 
+  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
 

@@ -1,0 +1,484 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>使用HAML构建WEB页面</title>
+    <meta name="description" content="">
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Lax's Blog</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>使用HAML构建WEB页面 <small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<p><img src="http://haml.info/images/img-hero-boat.png" alt="" />  </p>
+
+<h2 id="section">前言</h2>
+
+<p>在日常系统运维工作中，经常需要为各种系统构建页面，提炼常用的操作放到<strong><em>仪表盘</em></strong>，以提高日常工作效率。</p>
+
+<p>在WEB逻辑层的选择，Ruby中有便捷优雅的Sinatra，Perl中有Dancer，Python有web.py。</p>
+
+<p>页面展现层的开发主要考虑两个方面  </p>
+
+<ol>
+  <li>
+    <p>构建页面框架</p>
+
+    <p>这个方面考虑构建页面的快速和可重复性。如果仍停留在手工写html页面的阶段，那就太落伍啦。</p>
+
+    <p>常用的方案是基于模版生成HTML代码。PHP本身就是一种模版。</p>
+
+    <p>另外还有ERB，Markdown等轻量级的标记语言，由于Markdown对于语法变量支持不容易集成到动态页面，因此主要用于静态页面构建。</p>
+  </li>
+  <li>
+    <p>页面样式和交互管理</p>
+
+    <p>jQuery无疑是交互管理的首选。如果有较多的数据图表展现，可以选用DDD等框架。</p>
+
+    <p>页面样式方面，可以参考<a href="http://jqueryui.com">jQuery UI</a>, <a href="http://yuilibrary.com">YUI</a>。</p>
+
+    <p>从易用的角度，jQuery结合<a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>是个好选择。</p>
+  </li>
+</ol>
+
+<p>本文主要介绍其中<code>构建页面框架</code>的方案选择，即用HAML替代ERB。  </p>
+
+<h2 id="hamlerb">haml与erb的对比</h2>
+
+<p><a href="http://haml.info">HAML</a> 是一种简单的html模版语言。它的最大特点是短小精干整洁。  </p>
+
+<p>在HAML项目首页有一项简单的对比，在此引用一下</p>
+
+<p>使用ERB生成的页面代码</p>
+
+<pre><code>&lt;section class=”container”&gt;
+  &lt;h1&gt;&lt;%= post.title %&gt;&lt;/h1&gt;
+  &lt;h2&gt;&lt;%= post.subtitle %&gt;&lt;/h2&gt;
+  &lt;div class=”content”&gt;
+    &lt;%= post.content %&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>使用HAML生成的页面代码</p>
+
+<pre><code>%section.container
+  %h1= post.title
+  %h2= post.subtitle
+  .content
+    = post.content
+</code></pre>
+
+<p>通过对比可以看出一些特点</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>对比项目</strong></th>
+      <th><strong>ERB</strong></th>
+      <th style="text-align: right"><strong>HAML</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>代码行数</td>
+      <td>7</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td>关闭标签</td>
+      <td>需要关闭</td>
+      <td style="text-align: right">不需要关闭</td>
+    </tr>
+    <tr>
+      <td>逻辑层级</td>
+      <td>与ruby语法相同</td>
+      <td style="text-align: right">按空格缩进</td>
+    </tr>
+    <tr>
+      <td>变量</td>
+      <td>ruby变量</td>
+      <td style="text-align: right">ruby变量</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>其中haml<strong>不需要关闭</strong>和<strong>按空格缩进</strong>两项特性，与Python的风格有几分相似（ruby代码中满屏end的现象，一直受到诟病。python用强迫症式的方案解决了这个问题）——HTML也需要关闭标签。</p>
+
+<h2 id="section-1">实际项目中的应用</h2>
+
+<p>以下示例以HAML构建了一个简单的导航页面</p>
+
+<h3 id="haml">示例haml文件</h3>
+
+<pre><code>-# coding: UTF-8
+!!!
+%html(xml:lang='zh-cn' lang='zh-cn' xmlns='http://www.w3.org/1999/xhtml')
+  %head
+    %meta(content='text/html;charset=UTF-8' http-equiv='content-type')
+    %link{:href =&gt; "/css/bootstrap.min.css", :rel =&gt;"stylesheet", :type =&gt; "text/css", :media =&gt; "screen" }
+  %body
+    .container
+      %h1 支持系统
+      %ul.inline
+        %li
+          %a.btn{:href =&gt; '#'} Wiki
+        %li
+          %a.btn{:href =&gt; '#'} Tracker
+        %li
+          %a.btn{:href =&gt; '/ganglia'} Ganglia
+        %li
+          %a.btn{:href =&gt; '/nagios/'} Nagios
+
+      %h3 查询
+      %form{:action =&gt; "/tools/?", :method =&gt; "GET", :name =&gt; "dnsinfo_form"}
+        %input#suggest_dns{:type =&gt; "text", :size =&gt; 25, :name =&gt; "q", :onmouseover =&gt; "this.focus()", :onfocus =&gt; "this.select()", :title =&gt; "关键字: 域名、IP、域名列表或IP列表(,号或空格分隔)", :autocomplete =&gt; "off", :class =&gt; "ac_input"}
+        %input{:type =&gt; "submit", :value =&gt; "查询"}
+</code></pre>
+
+<h3 id="html">示例html文件</h3>
+
+<p>使用haml命令生成文件</p>
+
+<pre><code>haml index.haml &gt; index.html
+</code></pre>
+
+<p>文件内容</p>
+
+<pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html lang='zh-cn' xml:lang='zh-cn' xmlns='http://www.w3.org/1999/xhtml'&gt;
+  &lt;head&gt;
+    &lt;meta content='text/html;charset=UTF-8' http-equiv='content-type' /&gt;
+    &lt;link href='/css/bootstrap.min.css' media='screen' rel='stylesheet' type='text/css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class='container'&gt;
+      &lt;h1&gt;支持系统&lt;/h1&gt;
+      &lt;ul class='inline'&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='#'&gt;Wiki&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='#'&gt;Tracker&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='/ganglia'&gt;Ganglia&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='/nagios/'&gt;Nagios&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;h3&gt;查询&lt;/h3&gt;
+      &lt;form action='/tools/?' method='GET' name='dnsinfo_form'&gt;
+        &lt;input autocomplete='off' class='ac_input' id='suggest_dns' name='q' onfocus='this.select()' onmouseover='this.focus()' size='25' title='关键字: 域名、IP、域名列表或IP列表(,号或空格分隔)' type='text' /&gt;
+        &lt;input type='submit' value='查询' /&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2013/01/20/view-documents-on-github-pages-the-ugly-way.html" title="查看github pages中文档的方式">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <script type="text/javascript">
+(function(){
+var url = "http://widget.weibo.com/distribution/comments.php?width=0&url=auto&border=1&fontsize=12&skin=9&ralateuid=1772102214&appkey=446112883&iframskin=9&dpc=1";
+url = url.replace("url=auto", "url=" + document.URL); 
+document.write('<iframe id="WBCommentFrame" src="' + url + '" scrolling="no" frameborder="0" style="width:100%"></iframe>');
+})();
+</script>
+<script src="http://tjs.sjs.sinajs.cn/open/widget/js/widget/comment.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+window.WBComment.init({
+    "id": "WBCommentFrame"
+});
+</script>
+
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>25 January 2013</span></div>
+
+    
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
