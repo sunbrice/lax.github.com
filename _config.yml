@@ -9,8 +9,8 @@ pygments: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Lax's Blog
-tagline: Idea, Code
+title : 非常规思维研究所
+tagline: Idea, Code, Life
 author :
   name : Liu Lantao
   email : liulantao@gmail.com
@@ -134,7 +134,7 @@ source: .
 destination: ./_site
 exclude: ./_draft
  
-paginate: 8
+paginate: 48
 
 lsi: false
 
