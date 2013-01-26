@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Lax</title>
+    <title>非正常生活 << [Idea, Code, Life]</title>
     
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
@@ -34,7 +34,7 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="/">Linux科学俱乐部</a>
+          <a class="brand" href="/">非常规思维研究所</a>
           <ul class="nav">
             
             
@@ -67,6 +67,8 @@
     
   
     
+      
+    
   
     
       
@@ -97,19 +99,35 @@
     
   
     
-  
+      
     
   
     
-  
+      
     
   
     
-  
+      
     
   
     
+      
+    
   
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
     
   
 
@@ -198,7 +216,7 @@
       <ul>
     
   
-    <li><span>January 26, 2013</span> &raquo; <a href="/2013/01/26/open-source-game-d0x3d.html">Open source game, [d0x3d!]</a></li>
+    <li><span>January 26, 2013</span> &raquo; <a href="/2013/01/26/open-source-game-d0x3d.html">有趣的开源项目（二）：安全游戏[d0x3d!]</a></li>
   
     
           
@@ -258,7 +276,7 @@
   
     
   
-    <li><span>January 18, 2013</span> &raquo; <a href="/Technology/2013/01/18/funny-opensource-projects.html">有趣的开源项目</a></li>
+    <li><span>January 18, 2013</span> &raquo; <a href="/Technology/2013/01/18/funny-opensource-projects.html">有趣的开源项目（一）：Octpress/ktap</a></li>
   
     
           
@@ -1013,8 +1031,111 @@
     
     </div>
 
-  <div class='span3'>
-    <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+  <div class='span3 sidebar'>
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/01/26/open-source-game-d0x3d.html">有趣的开源项目（二）：安全游戏[d0x3d!]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Quotes/2013/01/25/quotes-weekly-2013w4.html">每周语录 2013年第四周</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2013/01/25/build-page-with-haml.html">使用HAML构建WEB页面</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/20/view-documents-on-github-pages-the-ugly-way.html">查看github pages中文档的方式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2013/01/18/funny-opensource-projects.html">有趣的开源项目（一）：Octpress/ktap</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/12/weibo-update-20130107-20130113.html">微博更新记录 20130107-20130113</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2012/12/30/raspberry-pi-launches-pi-store.html">Raspberry Pi上的AppStrore：Pi Store</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2012/12/28/gerrit-review-system---setup-notes.html">Gerrit Review System - Setup notes</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/Linux/2012/10/22/squid-ulimit-n.html">ulimit -n的重要性</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/Linux/2012/09/14/edac.html">EDAC</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2012/09/06/object-c-programming-notes-1.html">Object C Programming Notes 1 - Objects, Classes and Messaging</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2012/08/26/index-page-update.html">减少首页文字量</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2012/08/18/mac-osx-development-environment-setup.html">Mac OSX development environment setup</a>
+      </li>
+    
+      <li class="post">
+        <a href="/Technology/2012/08/06/jekyll-bootstrap.html">切换到jekyll bootstrap</a>
+      </li>
+    
+      <li class="post">
+        <a href="/SysAdmin/2012/07/18/mirror-debian.html">Debian镜像攻略</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+    <section>
+      <h1>微信官方帐户 Linux</h1>
+      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+    </section>
+
+    
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/Lax">@Lax</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'Lax',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
 
   </div>
 </div>

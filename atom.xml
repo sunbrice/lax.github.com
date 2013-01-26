@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Linux科学俱乐部</title>
+ <title>非常规思维研究所</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-26T23:57:52+08:00</updated>
+ <updated>2013-01-27T00:23:45+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>Open source game, [d0x3d!]</title>
+   <title>有趣的开源项目（二）：安全游戏[d0x3d!]</title>
    <link href="http://lax.github.com/2013/01/26/open-source-game-d0x3d.html"/>
    <updated>2013-01-26T00:00:00+08:00</updated>
    <id>http://lax.github.com/2013/01/26/open-source-game-d0x3d</id>
@@ -307,7 +307,7 @@ git checkout gh-pages
  </entry>
  
  <entry>
-   <title>有趣的开源项目</title>
+   <title>有趣的开源项目（一）：Octpress/ktap</title>
    <link href="http://lax.github.com/Technology/2013/01/18/funny-opensource-projects.html"/>
    <updated>2013-01-18T00:00:00+08:00</updated>
    <id>http://lax.github.com/Technology/2013/01/18/funny-opensource-projects</id>
