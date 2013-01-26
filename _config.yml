@@ -123,6 +123,12 @@ JB :
   # and include your custom code. Your custom file must be defined at:
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
+
+# Github repositories
+github_user: Lax
+github_repo_count: 0
+github_show_profile_link: true
+github_skip_forks: true
   
 safe: true
 pygments: true
@@ -135,6 +141,7 @@ destination: ./_site
 exclude: ./_draft
  
 paginate: 48
+recent_posts: 15
 
 lsi: false
 
