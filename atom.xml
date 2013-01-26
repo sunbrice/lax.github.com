@@ -4,7 +4,7 @@
  <title>Lax's Blog</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-26T22:22:59+08:00</updated>
+ <updated>2013-01-26T23:32:05+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
@@ -22,7 +22,7 @@
 
 &lt;p&gt;[d0x3d!]是一个有趣的开源游戏，以网络安全为题材，可以作为网络安全课程的辅助教育工具。&lt;/p&gt;
 
-&lt;p&gt;游戏的玩法比较有趣，几个人分成两组即可开始。其中，黑客团队的成员从网络的主机上收集数据，找出那些是重要的秘密信息；网络管理员则通过各种措施来防止你的行动。如果网络管理员发现威胁，他将可以将你的信息公开发布，这时候游戏就结束了。&lt;/p&gt;
+&lt;p&gt;游戏的玩法简单而有趣，几个人分成两组即可开始。其中，黑客团队的成员从网络的主机上收集数据，找出那些是重要的秘密信息；网络管理员则通过各种措施来防止你的行动。如果网络管理员发现威胁，他将可以将你的信息公开发布，这时候游戏就结束了。&lt;/p&gt;
 
 &lt;p&gt;游戏提供一个收费版本，标价24.99美金。开源版本可以在github下载代码。&lt;/p&gt;
 
@@ -1936,24 +1936,6 @@ https://cwiki.apache.org/TS/faq.html&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>此博客已移动</title>
-   <link href="http://lax.github.com/2010/09/30/blog-post_30.html"/>
-   <updated>2010-09-30T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2010/09/30/blog-post_30</id>
-   <content type="html">&lt;br /&gt;       此博客现在位于 __FTP_MIGRATION_NEW_URL__。&lt;br /&gt;       您会在 30 秒内自动重定向，或者您也可以点击&lt;a href='__FTP_MIGRATION_NEW_URL__'&gt;此处&lt;/a&gt;。&lt;br /&gt;&lt;br /&gt;       如果您是供稿订阅者，请更新对 __FTP_MIGRATION_FEED_URL__ 的供稿订阅。&lt;br /&gt;  &lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-2416971342242713212?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>此博客已移动</title>
-   <link href="http://lax.github.com/2010/09/30/blog-post.html"/>
-   <updated>2010-09-30T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2010/09/30/blog-post</id>
-   <content type="html">&lt;br /&gt;       此博客现在位于 __FTP_MIGRATION_NEW_URL__。&lt;br /&gt;       您会在 30 秒内自动重定向，或者您也可以点击&lt;a href='__FTP_MIGRATION_NEW_URL__'&gt;此处&lt;/a&gt;。&lt;br /&gt;&lt;br /&gt;       如果您是供稿订阅者，请更新对 __FTP_MIGRATION_FEED_URL__ 的供稿订阅。&lt;br /&gt;  &lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-3900186062392888490?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>Twitter的快速程序部署</title>
    <link href="http://lax.github.com/Technology/2010/08/11/twittere79a84e5bfabe9809fe7a88be5ba8fe983a8e7bdb2.html"/>
    <updated>2010-08-11T19:36:00+08:00</updated>
@@ -2124,15 +2106,6 @@ ping -f – l 1500 www.renren.com
 在路由器的管理界面（怎么进入管理界面？看一下说明书吧），一般在“WAN设置”/“广域网设置”及其“高级设置”中，可以看到MTU设置。修改MTU为合适的数值（等于或稍小于网络服务提供商的MTU）后，保存设置重启路由器。&lt;/p&gt;
 
 &lt;p&gt;重启后，进入图片上传的网页（http://upload.renren.com/addphoto.do），传一张图片试试能不能成功。&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Hello world!</title>
-   <link href="http://lax.github.com/2010/07/19/hello-world.html"/>
-   <updated>2010-07-19T00:53:08+08:00</updated>
-   <id>http://lax.github.com/2010/07/19/hello-world</id>
-   <content type="html">&lt;p&gt;Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!&lt;/p&gt;
 </content>
  </entry>
  
@@ -2520,15 +2493,6 @@ make
  </entry>
  
  <entry>
-   <title>Httpwww</title>
-   <link href="http://lax.github.com/2009/02/07/httpwww.html"/>
-   <updated>2009-02-07T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2009/02/07/httpwww</id>
-   <content type="html">嗨，大家好！新年新面貌，我的主页也换了一个新风格。希望这里能够成为我与亲人和朋友们交流的好平台。&lt;br&gt;&lt;br&gt;&lt;br&gt;您可以把本网页加入收藏夹，以便获得最新动态。&lt;br&gt;网址：&lt;br&gt;&lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://www.liulantao.com/blogs/liulantao/atom.xml&quot;&gt;http://www.liulantao.com/blogs/liulantao/atom.xml&lt;/a&gt;&lt;br clear=&quot;all&quot;&gt; &lt;br&gt;-- &lt;br&gt;Liu Lantao&lt;br&gt;College of Information Science and Technology, Beijing Normal University&lt;br&gt;EMAIL: liulantao ( at ) gmail ( dot ) com ; &lt;br&gt;WEBSITE: &lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt; .&lt;br&gt; ------&lt;br&gt; &lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-148453277547879405?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>Rails国际化的关键步骤。Rails I18n Key Steps.</title>
    <link href="http://lax.github.com/2009/01/24/railsrails-i18n-key-steps.html"/>
    <updated>2009-01-24T00:00:00+08:00</updated>
@@ -2597,15 +2561,6 @@ make
    <updated>2008-10-28T00:00:00+08:00</updated>
    <id>http://lax.github.com/2008/10/28/fuse-sshfs-mount</id>
    <content type="html">&amp;gt;sudo yum install -y fuse-sshfs ; &lt;br&gt;&amp;gt;sshfs hostname: mountpoint&lt;br&gt;&amp;gt;df -h&lt;br&gt;&amp;gt;fusermount -u mountpoint&lt;br clear=&quot;all&quot;&gt;&lt;br&gt;-- &lt;br&gt;Liu Lantao&lt;br&gt;College of Information Science and Technology, Beijing Normal University&lt;br&gt; EMAIL: liulantao ( at ) gmail ( dot ) com ; &lt;br&gt;WEBSITE: &lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt; .&lt;br&gt;------&lt;br&gt; &lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8842663503074270884?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>转：10个最吃香的网站开发技术</title>
-   <link href="http://lax.github.com/2008/10/25/10_25.html"/>
-   <updated>2008-10-25T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2008/10/25/10_25</id>
-   <content type="html">看起来这些技术都是心在最热门的一些应用，比如facebook开放接口的入选。当然有些就比较传统而且充满技巧性和经验的要求，比如CMS的theme和plugin开发。&lt;br&gt;而framework则面临着迅速变化的境地，竞争也日趋激烈。最终谁能统御市场还难下定论，但是它里面蕴涵的机遇则是谁也不能否认的。&lt;br&gt;&lt;br&gt;&lt;br&gt;－－－－－－－－－－－－以下为原文－－－－－－－－－－－－－－－&lt;br&gt;10个最吃香的网站开发技术&lt;br&gt;&lt;a href=&quot;http://www.cnbeta.com/articles/67944.htm&quot;&gt;http://www.cnbeta.com/articles/67944.htm&lt;/a&gt;&lt;br&gt; -------------------------------------------&lt;br&gt;&lt;br&gt;尽管美国经济出现危机，但是网站开发领域还是很繁荣的，因为不论是现在或者将来，网络必定是人们日常生活中不可缺少的组成部分。NETTUTS上列出10个最吃香的网站开发技术。作为网站开发工程师，如果你精通这些技术，即便在经济不景气的时候，仍然很容易找到一份好工作。&lt;br&gt;&lt;br&gt;1. Framework knowledge (架构知识)&lt;br&gt; 架构是大型网站开发的重要部分。开发者已经从Rails, Django等公司提供的网站架构工具中收益，因为架构工具可以帮助完成那些需要一定编程知识的重复性的任务。如果你拥有领先的架构技术(像Rails, Django, CakePHP, Symfony等)，你的择业面将非常广阔。&lt;br&gt;&lt;br&gt;2. Widget Development (窗体小部件开发)&lt;br&gt;窗体小部件(Widgets)是一个嵌入网页的迷你应用程序，通常也可以下载到Windows或者Mac桌面下运行。它让数据变得便与携带而且更具交互性。比较出名的像Yahoo Widgets 和AOL Music Widgets。窗体小部件开发除了需要掌握网络应用程序开发所需的语言知识，还需要精通Javascript和Flash知识。&lt;br&gt; &lt;br&gt;3. Custom CMS themes (内容管理系统主题定制)&lt;br&gt;如今越来越多人开始使用CMS(内容管理系统，例如Wordpress和Drupal)来构建他们的网站。可以想象不可能大家都用CMS提供的默认主题，为了让自己的CMS网站在外观设计上独树一帜，就需要一些专门给CMS开发主题的技术人员。&lt;br&gt;&lt;br&gt;4. CMS Customizations and plugin development (内容管理系统的定制以及插件开发)&lt;br&gt; 同样随着CMS的流行，对CMS的功能定制以及插件开发的需求也越来越大。&lt;br&gt;&lt;br&gt;5. PSD to XHTML services (PSD转换XHTML的服务）&lt;br&gt;在建站中，许多公司是先用Photoshop设计好网站的外观原图，然后再转换成XHTML。这需要很强的CSS/HTML知识。&lt;br&gt;&lt;br&gt;6. Javascript Plugin creation(Javascript的插件开发)&lt;br&gt;Javascript的Framework非常流行，因为它使Javascript的代码开发变得简单。就比如说现在流行的Javascript Framework - jQuery，如果你在它的基础上开发优秀的插件，那么你的插件也会跟着流行起来。&lt;br&gt; &lt;br&gt;7. Facebook/MySpace applications (Facebook/MySpace 应用程序开发)&lt;br&gt;Facebook/MySpace两大社交网站在美国红遍半边天。给他们开发应用程序，不用说一定是相当热门的。&lt;br&gt;&lt;br&gt;8. iPhone applications (iPhone 应用程序开发)&lt;br&gt;同样给iPhone开发应用程序，也一直都可以被大量下载，因此也是很赚钱的活。&lt;br&gt;&lt;br&gt;9. E-commerce integration (电子商务一体化)&lt;br&gt; 如今电子商务网站(像Ebay，Amazon)与在线银行服务系统(像Paypal和Google Checkout的)之间的配合越来越紧密，因此电子商务交易平台的开发也是相当有前途的。&lt;br&gt;&lt;br&gt;10. Flash and Actionscript Knowledge (Flash和Actionscript知识)&lt;br&gt;越来越多的公司采用Flash来制作自己的网站、展现自己的产品，因为精美的动画总是容易吸引人们的眼球。因此Flash动画技术也必然迅速发展。&lt;br clear=&quot;all&quot;&gt; －－－－－－－－－－原文结束－－－－－－－－－－－－&lt;br&gt;&lt;br&gt;&lt;br&gt;-- &lt;br&gt;Liu Lantao&lt;br&gt;College of Information Science and Technology, Beijing Normal University&lt;br&gt;EMAIL: liulantao ( at ) gmail ( dot ) com ; &lt;br&gt;WEBSITE: &lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt; .&lt;br&gt; ------&lt;br&gt; &lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5435392028412098407?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -2782,15 +2737,6 @@ make
  
  <entry>
    <title>fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</title>
-   <link href="http://lax.github.com/2007/11/13/fluxbox_13.html"/>
-   <updated>2007-11-13T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/11/13/fluxbox_13</id>
-   <content type="html">&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;关于如何设置菜单，请参考网络上其他朋友的文档。&lt;br/&gt;本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。&lt;br/&gt;&lt;br/&gt;一、请确认你安装了中文的字体。&lt;br/&gt;方法1、&lt;br/&gt;首先在终端运行fc-list命令：&lt;br/&gt;&lt;br/&gt;[lax@liulantao .fluxbox]$ fc-list&lt;br/&gt;&lt;br/&gt;从中找到支持中文的字体，记下字体名字：&lt;br/&gt;&lt;br/&gt;AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium&lt;br/&gt;AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular&lt;br/&gt;&lt;br/&gt;本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。&lt;br/&gt;如果要使用其它字体，替换成相应的名称。&lt;br/&gt;方法2、&lt;br/&gt;打开firefox，点击View - &amp;amp;gt; Preferences -&amp;amp;gt; Content ，看Default font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。&lt;br/&gt;&lt;br/&gt;二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：&lt;br/&gt;&lt;blockquote&gt;[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation&lt;br/&gt;Password: ******&lt;/blockquote&gt;&lt;br/&gt;&lt;br/&gt;找到：&lt;br/&gt;&lt;br/&gt;&lt;blockquote&gt;window.font: lucidasans-10&lt;br/&gt;window.justify: right&lt;/blockquote&gt;&lt;br/&gt;&lt;br/&gt;注释掉window.font行，修改为：&lt;br/&gt;&lt;br/&gt;&lt;blockquote&gt;#window.font: lucidasans-10&lt;br/&gt;window.font: AR PL ZenKai Uni-10&lt;br/&gt;window.justify: right&lt;/blockquote&gt;&lt;br/&gt;&lt;br/&gt;保存退出，reload config就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。&lt;br/&gt;&lt;br/&gt;设置其它位置的字体，可以修改相应的font。&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Technorati Tags: &lt;a rel='tag' href='http://technorati.com/tag/linux%20fluxbox%20%E4%B8%AD%E6%96%87%20%E5%AD%97%E4%BD%93%20%E6%98%BE%E7%A4%BA%20%E6%96%87%E9%BC%8E%20fc-list' class='performancingtags'&gt;linux fluxbox 中文 字体 显示 文鼎 fc-list&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;&lt;p class='poweredbyperformancing'&gt;Powered by &lt;a href='http://scribefire.com/'&gt;ScribeFire&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6403968958837271573?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</title>
    <link href="http://lax.github.com/2007/11/13/fluxbox.html"/>
    <updated>2007-11-13T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/11/13/fluxbox</id>
@@ -2844,15 +2790,6 @@ make
  </entry>
  
  <entry>
-   <title>课程表2007-2008秋冬学期</title>
-   <link href="http://lax.github.com/2007/09/21/2008.html"/>
-   <updated>2007-09-21T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/09/21/2008</id>
-   <content type="html">&lt;a onblur=&quot;try {parent.deselectBloggerImageGracefully();} catch(e) {}&quot; href=&quot;http://www.liulantao.com/images/quote/lax_course_07-08.1.jpg&quot;&gt;&lt;img style=&quot;margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 320px;&quot; src=&quot;http://www.liulantao.com/images/quote/lax_course_07-08.1.jpg&quot; alt=&quot;&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-727723313336203979?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>课程表2007-2008-第一学期</title>
    <link href="http://lax.github.com/2007/09/05/2008_05.html"/>
    <updated>2007-09-05T00:00:00+08:00</updated>
@@ -2876,15 +2813,6 @@ make
    <updated>2007-07-18T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/07/18/blog-post_18</id>
    <content type="html">那个家伙的生日。&lt;br /&gt;(2007.7.18)&lt;p&gt;自己生日都会想不起来，还要大家提醒，真崇拜自己，干脆塑个像回家对自己烧香好了。&lt;br /&gt;与蚊子亲吻了一夜，没睡觉。于是大早晨特有精神，5点半冲到京师广场赏荷花。荷花也有盛开的，粉嘟嘟煞是好看。心中暗自琢磨要是小姑娘也在学校，一起赏荷花的意境又将如何。真是可惜了无此佳人陪伴，同去的宿舍哥们显然让花仙子们失望了，于是一盆盆全是无精打采，叶黄体瘦，叶顶娇滴滴的水珠也不见踪影，真干涩又无聊一群伙伴们。&lt;br /&gt;这几天的怪天气，让人受不了，于是受我等轻蔑言论几旬之后，老天突然一个&lt;br /&gt;响雷，然后又一个响雷，接着又一个响雷……如此几番，伴随着弱弱的闪电，让人脸面一凉脚面一凉心底也一凉的水珠就砸了下来。&lt;br /&gt;小学起老师就教导我们不要在大树底下避雨，可是到现在仍琢磨不透其中的道理。几番思想斗争之后终于决定换个地方，冲向了主楼下。&lt;br /&gt;雨中漫步的浪漫，在主楼下的天棚下被演绎着。爷爷奶奶叔叔阿姨们在这里，慢慢绕着圈子走──外面下着雨，这边漫着步。&lt;br /&gt;等到了开饭时间，雨还在下；再等等，还是没看出雨小一点儿的迹象；讨论一下，决定冒雨冲回去。&lt;br /&gt;于是俩傻瓜终于证明自己想法的幼稚，在主楼到教九的正中央屈服了。只好硬着头皮到教九前面，陪一个早起读书的美女坐着。&lt;br /&gt;无奈懒桃儿哥哥的色心此刻丢在了某盆荷花里，而赏雨雅兴又大发。于是乎，看着眼前几棵树参天，烟蒙蒙雾蒙蒙中，如同静谧的森林深处。其时天仍黑，躲过枝头叶间，可以看到灰白的天空。片片梧桐叶，飞临草地间，栖身小道上。&lt;br /&gt;过了一会儿教九开门，进去坐坐。感慨的这学期结束了第一次起大早亲近教室，寻找坐在第一排的感觉。想到将来，考虑学业，回家还是出国，或者随大家一起去考研，都已不是久远的事情了。&lt;br /&gt;最后还是等雨歇时刻未至，不耐烦冲回来，完成了这半年或者一年唯一一次宿舍集体早餐。一觉醒来，凉风如斯，家还要回？&lt;/p&gt;&lt;p&gt;--&lt;br /&gt;EMAIL: liulantao ( at ) liulantao ( dot ) com ;&lt;br /&gt;WEBSITE: &lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt; .&lt;br /&gt;------&lt;/p&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5378801319659678795?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>总会过去的</title>
-   <link href="http://lax.github.com/2007/07/12/blog-post_12.html"/>
-   <updated>2007-07-12T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/07/12/blog-post_12</id>
-   <content type="html">总会过去的&lt;p&gt;&lt;br&gt;&amp;gt;&amp;gt;总会过去的总会过去的总会过去的总会过去的总会过去的总会过去的总会过去的。&lt;br&gt;&amp;gt;&amp;gt;我却知道这是骗人的。&lt;p&gt;人和人都会相忘于江湖的。&lt;br&gt;我还是不习惯人和人之间亲密的感觉，因为我特别特别害怕和一个人有长久的关系。我不知道害怕什么，反正不能让我有安全的感觉。。。。&lt;p&gt;其实即使没有出去，也是一样的结果，因为我已经打定主意离你远远的了。因为我不知道会带来怎么样的伤害给你，&lt;br&gt;我总是莫名其妙的发脾气。总是有较高的要求，总是突然间就感觉到不好了，这是我得很大很大的缺点。很多很多年，都没有改变。&lt;p&gt;你需要个好的女孩子来疼，我既不会疼人，有很贪玩，有自私小气。。。。&lt;p&gt;&lt;br&gt;记得我唱过 你一定要幸福 这首歌。请你记得，一定要幸福，&lt;p&gt;&lt;br&gt;我心里有很多对于爱情啊友情阿的绝望，我不相信可以走到很久，所以我就选择不走了，跑掉吧。&lt;p&gt;-- &lt;br&gt;EMAIL: liulantao ( at ) liulantao ( dot ) com ;&lt;br&gt;WEBSITE: &lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt; .&lt;br&gt;------&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7537306420754038803?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -2926,28 +2854,10 @@ make
  
  <entry>
    <title>相遇是一种美丽的伤</title>
-   <link href="http://lax.github.com/2007/06/13/blog-post_2782.html"/>
-   <updated>2007-06-13T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/06/13/blog-post_2782</id>
-   <content type="html">相遇是一种美丽的伤&lt;br&gt;2007-04-20&lt;p&gt;大学生电影节期间，我有幸看了《夜。上海》。这是比较期待也比较让我满意的电影。其实看完的当天本来想写一篇所谓的感想，但是那天不凑巧，发生很多怪事，一直耽误到现在。啊哈哈~好可惜！&lt;p&gt;电影这样开始……&lt;p&gt;顶级发型设计师水岛直树为慈善音乐节的工作和与他相恋多年的经纪人美帆来到上海。工作上，他才华横溢，使音乐节大获成功。然而看似一帆风顺的工作让水岛感到厌烦，而郁郁不乐的他更棘手的是与美帆的感情已濒临破裂。而偏偏在这个时候，一直追求美帆的建筑工程师河口为了她千里迢迢的从日本来到了上海，让直树更加忧虑。&lt;p&gt;出租车司机林夕（赵薇饰）是个年轻美丽的女孩，每天为了生活奋斗不息，虽然不宽裕的生活和小混混似的弟弟让她繁忙不堪，但是仍旧不能阻止她天真地遐想，然后做一些傻傻的事情，比如把车撞坏，然后兴高采烈的去找她的梦中情人汽车修理工，冬冬（郭品超饰）修理，甚至不顾隔壁老人善意的揶揄。&lt;p&gt;直树和林夕因为一场意外相遇。因为过分依赖美帆的直树身无分文，没有证件，也不知道自己住在那里，于是林夕带着他，在美丽上海的夜晚，走过了许多地方……&lt;p&gt;一天，特别的夜晚──夜。&lt;p&gt;一天，特别的地方──上海。&lt;p&gt;夜。上海。两个人相遇了。&lt;p&gt;故事这样开始。&lt;p&gt;这便是电影名字的由来。有人曾经问导演张一白&amp;quot;为什么电影的名字是《夜。上海》而不是《夜上海》？&amp;quot;导演张一白说这个句号是至关重要的，因为&amp;quot;夜&amp;quot;表示这个电影发生在一个夜晚里。对剧组来说，这个&amp;quot;夜&amp;quot;甚至还要更长，自从在上海开机以来，《夜。上海》就夜夜趁黑出没，昼伏夜出，日落而作，日出而息。也难怪，《夜。上海》的英文名字直接翻译过来就是&amp;quot;上海最长的一个夜晚&amp;quot;。&lt;p&gt;《夜。上海》是迄今为止我所看的大学生电影节参评电影中最好看的一部。这可能电影的风格很符合我的口味，可能是电影中的感情令我难忘，可能是演员不俗的演技，也可能还有无数个可能，吸引了我。&lt;p&gt;导演张一白是个特殊的人才。他曾经导演过电视剧《将爱情进行到底》，电影《开往春天的地铁》、《好奇害死猫》，还在电影《功夫》中作过客串。在他的电影里，总有一些东西吸引着我，总让我有很深的触动，感到很特别。&lt;p&gt;这次他率领强大的主创阵容，为我们呈现了一个在上海发生的关于爱情的美丽故事。关于爱情的故事，不一定就是爱情故事，但是，因为有爱，因为在上海，整个故事变得美丽起来。&lt;p&gt;除了美丽的故事之外，该片演员出色的演技也是我所欣赏的。早在上世纪80年代开始便红极日本的本木雅弘，曾获得过东京国际电影节影帝的殊荣，已是亚洲有口皆碑的演技派演员。时至今日，他依然魅力过人，在《夜。上海》中不但将造型师的角色诠释的丝丝入扣，更将个人魅力发挥的淋漓尽致。&lt;p&gt;而对于曾经因《玉观音》和《绿茶》在票房上的失利而被媒体称为&amp;quot;票房毒药&amp;quot;的赵薇，导演对她却是这样的评价：&amp;quot;她的表现可以用光彩照人来形容，同时还透露出了之前影视作品中从未有过的女人味。赵薇这几年一直被错误定位，其实她这几年已经长大了，有更可爱、更女性的一面表现出来了。我相信大家在看了《夜。上海》之后会发现赵薇更可爱、更女人的这一面。&amp;quot;在我看来，她在电影中虽显夸张但不失本色的表演，充分体现了她走向成熟的改变。&lt;p&gt;导演和演员，电影和现实，故事和人物，在看《夜。上海》时，那些片段，总是让人沉默，让人思索。&lt;p&gt;常常觉得日本人对猥琐和滑稽的行为有一种特殊的天赋。比如直树在无助的情况下千方百计地留在林夕的出租汽车上；日本男助理因为喜欢李小龙而惹出了许多乌龙事件；在酒吧和女郎聊天的日本男人举止优雅，谈话风趣，可看着他的表情和动作我还是忍俊不禁。日本男演员中有很多人都略显瘦弱单薄，比如龟梨和也，小池彻平，即使风度翩翩也略显牵强。但是本木雅弘的绅士风度清新自然。他能优雅的坐在公安局里等候焦急中的林夕；虽然是千方百计地留在了林夕的车上，但是雨夜中看到心存顾虑的女乘客，还是爽快的下了车，等林夕回来；站在街道的一边，他安静的看着林夕在婚纱店门口徘徊，悲伤的看着里面的冬冬和新娘……这些好像流水一样的一点一滴和他的幽默诙谐结合在一起，和谐而完整，让我十分喜欢。&lt;p&gt;然而，似乎是有意的安排，电影的名字就告诉我们：第二天的到来，就是故事的结束。于是，我们看到，无论之前直树和林夕怎样心有灵犀，他们之间又有多少浪漫情愫，他们都会因为最终目的地的到达而分别。于是，我们看到，无论之前两个人一起满足地吃云吞，还是慢慢的用汉字和简单的英语进行交流，互相了解，都会因为各自有自己的生活而继续独自踏上旅途。于是，我们看到，无论之前他们快乐的在夜晚街道上用口红涂写出自己心中的爱语，甚至是后来他们互相依靠，任由感情尽情宣泄，都会因为夜上海的过去而成为过去。于是，我们看到，当第二天，无论是美帆和河口，男助理和女交警，女助理和男翻译，还是日本男子和酒吧女郎，都不再是夜晚上海中的他们。他们各归其位，继续进行着自己的生活。&lt;p&gt;清晨，林夕开着车送直树回到他的住处，直树所坐的位置，由林夕的后面变成了她的旁边。没有音乐，没有谈话，只剩下让人感到漫长的沉默。美丽上海的夜晚结束，美丽的相遇结束。&lt;p&gt;第二天，直树果断了解决了他和美帆的关系，也使他得到了一直没有过的轻松。可能是因为整夜发生的事情，他开始对林夕有了牵挂，于是他开始找她。来到了那个满是红色爱语的街道。于是他心有灵犀的看到了站在街道对面的林夕。清道车正在洗去昨夜的口红痕迹，但是好在印记消失之前他们找到了彼此。&lt;p&gt;不过，我说，这只是个关于爱情的故事是吗？&lt;p&gt;直树为林夕精心打扮，让她美丽的去参加冬冬的婚礼。林夕对着镜子里的自己，对着镜子里的直树，深情又恍惚的用直树教过她的一句日语问――&amp;quot;你爱我吗？&amp;quot;然后，画面消失，在直树回答之前，也许他的回答是沉默。&lt;p&gt;夜。上海。直树和林夕。他们的相遇淡淡，绵绵，淳淳，久久……&lt;p&gt;也许，这就是电影《夜。上海》的魅力。&lt;p&gt;-- &lt;br&gt;EMAIL: liulantao ( at ) liulantao ( dot ) com ;&lt;br&gt;WEBSITE: &lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt; .&lt;br&gt;------&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-5702815128776701747?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>相遇是一种美丽的伤</title>
    <link href="http://lax.github.com/2007/06/13/blog-post_13.html"/>
    <updated>2007-06-13T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/06/13/blog-post_13</id>
    <content type="html">相遇是一种美丽的伤&lt;br&gt;2007-04-20&lt;p&gt;大学生电影节期间，我有幸看了《夜。上海》。这是比较期待也比较让我满意的电影。其实看完的当天本来想写一篇所谓的感想，但是那天不凑巧，发生很多怪事，一直耽误到现在。啊哈哈~好可惜！&lt;p&gt;电影这样开始……&lt;p&gt;顶级发型设计师水岛直树为慈善音乐节的工作和与他相恋多年的经纪人美帆来到上海。工作上，他才华横溢，使音乐节大获成功。然而看似一帆风顺的工作让水岛感到厌烦，而郁郁不乐的他更棘手的是与美帆的感情已濒临破裂。而偏偏在这个时候，一直追求美帆的建筑工程师河口为了她千里迢迢的从日本来到了上海，让直树更加忧虑。&lt;p&gt;出租车司机林夕（赵薇饰）是个年轻美丽的女孩，每天为了生活奋斗不息，虽然不宽裕的生活和小混混似的弟弟让她繁忙不堪，但是仍旧不能阻止她天真地遐想，然后做一些傻傻的事情，比如把车撞坏，然后兴高采烈的去找她的梦中情人汽车修理工，冬冬（郭品超饰）修理，甚至不顾隔壁老人善意的揶揄。&lt;p&gt;直树和林夕因为一场意外相遇。因为过分依赖美帆的直树身无分文，没有证件，也不知道自己住在那里，于是林夕带着他，在美丽上海的夜晚，走过了许多地方……&lt;p&gt;一天，特别的夜晚──夜。&lt;p&gt;一天，特别的地方──上海。&lt;p&gt;夜。上海。两个人相遇了。&lt;p&gt;故事这样开始。&lt;p&gt;这便是电影名字的由来。有人曾经问导演张一白&amp;quot;为什么电影的名字是《夜。上海》而不是《夜上海》？&amp;quot;导演张一白说这个句号是至关重要的，因为&amp;quot;夜&amp;quot;表示这个电影发生在一个夜晚里。对剧组来说，这个&amp;quot;夜&amp;quot;甚至还要更长，自从在上海开机以来，《夜。上海》就夜夜趁黑出没，昼伏夜出，日落而作，日出而息。也难怪，《夜。上海》的英文名字直接翻译过来就是&amp;quot;上海最长的一个夜晚&amp;quot;。&lt;p&gt;《夜。上海》是迄今为止我所看的大学生电影节参评电影中最好看的一部。这可能电影的风格很符合我的口味，可能是电影中的感情令我难忘，可能是演员不俗的演技，也可能还有无数个可能，吸引了我。&lt;p&gt;导演张一白是个特殊的人才。他曾经导演过电视剧《将爱情进行到底》，电影《开往春天的地铁》、《好奇害死猫》，还在电影《功夫》中作过客串。在他的电影里，总有一些东西吸引着我，总让我有很深的触动，感到很特别。&lt;p&gt;这次他率领强大的主创阵容，为我们呈现了一个在上海发生的关于爱情的美丽故事。关于爱情的故事，不一定就是爱情故事，但是，因为有爱，因为在上海，整个故事变得美丽起来。&lt;p&gt;除了美丽的故事之外，该片演员出色的演技也是我所欣赏的。早在上世纪80年代开始便红极日本的本木雅弘，曾获得过东京国际电影节影帝的殊荣，已是亚洲有口皆碑的演技派演员。时至今日，他依然魅力过人，在《夜。上海》中不但将造型师的角色诠释的丝丝入扣，更将个人魅力发挥的淋漓尽致。&lt;p&gt;而对于曾经因《玉观音》和《绿茶》在票房上的失利而被媒体称为&amp;quot;票房毒药&amp;quot;的赵薇，导演对她却是这样的评价：&amp;quot;她的表现可以用光彩照人来形容，同时还透露出了之前影视作品中从未有过的女人味。赵薇这几年一直被错误定位，其实她这几年已经长大了，有更可爱、更女性的一面表现出来了。我相信大家在看了《夜。上海》之后会发现赵薇更可爱、更女人的这一面。&amp;quot;在我看来，她在电影中虽显夸张但不失本色的表演，充分体现了她走向成熟的改变。&lt;p&gt;导演和演员，电影和现实，故事和人物，在看《夜。上海》时，那些片段，总是让人沉默，让人思索。&lt;p&gt;常常觉得日本人对猥琐和滑稽的行为有一种特殊的天赋。比如直树在无助的情况下千方百计地留在林夕的出租汽车上；日本男助理因为喜欢李小龙而惹出了许多乌龙事件；在酒吧和女郎聊天的日本男人举止优雅，谈话风趣，可看着他的表情和动作我还是忍俊不禁。日本男演员中有很多人都略显瘦弱单薄，比如龟梨和也，小池彻平，即使风度翩翩也略显牵强。但是本木雅弘的绅士风度清新自然。他能优雅的坐在公安局里等候焦急中的林夕；虽然是千方百计地留在了林夕的车上，但是雨夜中看到心存顾虑的女乘客，还是爽快的下了车，等林夕回来；站在街道的一边，他安静的看着林夕在婚纱店门口徘徊，悲伤的看着里面的冬冬和新娘……这些好像流水一样的一点一滴和他的幽默诙谐结合在一起，和谐而完整，让我十分喜欢。&lt;p&gt;然而，似乎是有意的安排，电影的名字就告诉我们：第二天的到来，就是故事的结束。于是，我们看到，无论之前直树和林夕怎样心有灵犀，他们之间又有多少浪漫情愫，他们都会因为最终目的地的到达而分别。于是，我们看到，无论之前两个人一起满足地吃云吞，还是慢慢的用汉字和简单的英语进行交流，互相了解，都会因为各自有自己的生活而继续独自踏上旅途。于是，我们看到，无论之前他们快乐的在夜晚街道上用口红涂写出自己心中的爱语，甚至是后来他们互相依靠，任由感情尽情宣泄，都会因为夜上海的过去而成为过去。于是，我们看到，当第二天，无论是美帆和河口，男助理和女交警，女助理和男翻译，还是日本男子和酒吧女郎，都不再是夜晚上海中的他们。他们各归其位，继续进行着自己的生活。&lt;p&gt;清晨，林夕开着车送直树回到他的住处，直树所坐的位置，由林夕的后面变成了她的旁边。没有音乐，没有谈话，只剩下让人感到漫长的沉默。美丽上海的夜晚结束，美丽的相遇结束。&lt;p&gt;第二天，直树果断了解决了他和美帆的关系，也使他得到了一直没有过的轻松。可能是因为整夜发生的事情，他开始对林夕有了牵挂，于是他开始找她。来到了那个满是红色爱语的街道。于是他心有灵犀的看到了站在街道对面的林夕。清道车正在洗去昨夜的口红痕迹，但是好在印记消失之前他们找到了彼此。&lt;p&gt;不过，我说，这只是个关于爱情的故事是吗？&lt;p&gt;直树为林夕精心打扮，让她美丽的去参加冬冬的婚礼。林夕对着镜子里的自己，对着镜子里的直树，深情又恍惚的用直树教过她的一句日语问――&amp;quot;你爱我吗？&amp;quot;然后，画面消失，在直树回答之前，也许他的回答是沉默。&lt;p&gt;夜。上海。直树和林夕。他们的相遇淡淡，绵绵，淳淳，久久……&lt;p&gt;也许，这就是电影《夜。上海》的魅力。&lt;p&gt;-- &lt;br&gt;EMAIL: liulantao ( at ) liulantao ( dot ) com ;&lt;br&gt;WEBSITE: &lt;a href=&quot;http://www.liulantao.com/&quot;&gt;http://www.liulantao.com/&lt;/a&gt; .&lt;br&gt;------&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5702815128776701747?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Job Descriptions and Requirements</title>
-   <link href="http://lax.github.com/2007/06/12/job-descriptions-and-requirements.html"/>
-   <updated>2007-06-12T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/06/12/job-descriptions-and-requirements</id>
-   <content type="html">&lt;DIV&gt;------------------------------------&lt;/DIV&gt;  &lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;Technical Support Engineer ( Intern )Division: Global Support Services   &amp;nbsp;&lt;BR&gt;Location: Beijing &amp;nbsp;&lt;BR&gt;Time: Fulltime &amp;nbsp;&lt;BR&gt;Period: 6－12   months &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;*Job Description* &amp;nbsp;&lt;BR&gt;Responsible for   providing technical support to customers in the Greater China and global   customers &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;Answer telephone hotline and web based inquiries   from customers regarding Red Hat software &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;Analyze problems   with non-functioning software to identify problem areas and recommend corrective   action &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;Use professional concept and exercise judgment   within defined procedures &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;*Job Requirement*   &amp;nbsp;&lt;BR&gt;Bachelor degree in technical related discipline or equivalent   &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;Excellent verbal and written communication skills in   English and Chinese &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;Excellent learning skill   &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;Excellent understanding of Linux/Unix and Open Source   technology will be preferred. &amp;nbsp;&lt;BR&gt;&amp;nbsp; &lt;BR&gt;Experience in kernel, TCP/IP,   LDAP/NIS, NFS, SAMBA and storage (like SAN/NAS/iSCSI) will be   preferred.&amp;nbsp;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;--------------------------------------&lt;/DIV&gt;  &lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;http://www.liulantao.com/&lt;/DIV&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2042293169168527837?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -2962,28 +2872,10 @@ make
  
  <entry>
    <title>2007年5月30日</title>
-   <link href="http://lax.github.com/2007/06/03/2007530.html"/>
-   <updated>2007-06-03T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/06/03/2007530</id>
-   <content type="html">~~~~~~~~~~&lt;br /&gt;&lt;br /&gt;自习，下午，教四&lt;br /&gt;听到一声雷，不很响，足够突然。&lt;br /&gt;&lt;br /&gt;~~~~~~~~~~&lt;br /&gt;&lt;br /&gt;昨晚，做梦了。回味父亲经常做的麻油腐竹，那个香味和麻味，穿透厚厚的舌头，渗入食道，而后又能传回鼻腔，发散出迷人的感受。不敢怪自己没出息──想家的时候，总是在路上。走得艰辛了，不舒服了，累了，要休息了，就会想家。&lt;br /&gt;&lt;br /&gt;~~~~~~~~~~&lt;br /&gt;&lt;br /&gt;昨天下午老大给我送个西瓜，顺便来看看我。眼看又要走了的人了，心情也不会太好吧。我可以替他回想起，一次次饭局上，大家的欢喜沉默忧愁和喧闹，围坐着的大家的真诚温暖。&lt;br /&gt;中午来教室的路上又遇见老三，依然行色匆匆，呆呆地看小花园，仰视那几位辛苦的大树。傻傻的家伙，以后别再给咱们家丢脸了。&lt;br /&gt;每日通宵干活儿的几位战友，鸟兽散去了。每日打架的某人和某人，呵呵，不说了。&lt;br /&gt;晚饭后遇见某家伙，依然如故，他的眼泪，却再无缘亲见了。&lt;br /&gt;&lt;br /&gt;~~~~~~~~~~&lt;br /&gt;&lt;br /&gt;前几日忽略掉的，我的PS满岁了。那个丑丑的萝卜已经惨不忍睹，背面又被我搞出那个不规则的&quot;心&quot;形，真是难为那些大小领导们了。拙劣的路过，繁花谢去，不忍用新的去破坏它了。&lt;br /&gt;&lt;br /&gt;~~~~~~~~~~&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-6882068627629117010?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>2007年5月30日</title>
    <link href="http://lax.github.com/2007/05/30/2007530.html"/>
    <updated>2007-05-30T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/05/30/2007530</id>
    <content type="html">~~~~~~~~~~&lt;p&gt;自习，下午，教四&lt;br&gt;听到一声雷，不很响，足够突然。&lt;p&gt;~~~~~~~~~~&lt;p&gt;思想游弋一番，回到了现实。又是不堪的往事。没有了语言再能表达自己的想法，恼悔也好，狠心也好，只能说出冷冰冰的保重二字。消耗掉那一箱子想哭的冲动之后，没有人能够再给这么有效的药物了；那对在大街上闲逛的身影，那辆载满了记忆的815路车，都成为了影子，透过湿润的睫毛偷偷地、偷偷地远去。&lt;p&gt;~~~~~~~~~~&lt;p&gt;昨晚，做梦了。回味父亲经常做的麻油腐竹，那个香味和麻味，穿透厚厚的舌头，渗入食道，而后又能传回鼻腔，发散出迷人的感受。不敢怪自己没出息──想家的时候，总是在路上。走得艰辛了，不舒服了，累了，要休息了。&lt;p&gt;~~~~~~~~~~&lt;p&gt;昨天下午老大给我送个西瓜，顺便来看看我。眼看又要走了的人了，心情也不会太好吧。我可以替他回想起，一次次饭局上，大家的欢喜沉默忧愁和喧闹，围坐着的大家的真诚温暖。&lt;br&gt;中午来教室的路上又遇见老三，依然行色匆匆，呆呆地看小花园，仰视那几位辛苦的大树。傻傻的家伙，以后别再给咱们家丢脸了。&lt;br&gt;每日通宵干活儿的几位战友，鸟兽散去了。每日打架的某人和某人，呵呵，不说了。&lt;br&gt;晚饭后遇见某家伙，依然如故，他的眼泪，却再无缘亲见了。&lt;p&gt;~~~~~~~~~~&lt;p&gt;前几日忽略掉的，我的PS满岁了。那个丑丑的萝卜已经惨不忍睹，背面又被我搞出那个不规则的&amp;quot;心&amp;quot;形，真是难为那些大小领导们了。拙劣的路过，繁花谢去，不忍用新的去破坏它了。&lt;p&gt;~~~~~~~~~~&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6162322527556129298?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>信息安全问题</title>
-   <link href="http://lax.github.com/2007/05/21/blog-post_21.html"/>
-   <updated>2007-05-21T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/05/21/blog-post_21</id>
-   <content type="html">《电子商务概论》作业 2007-5-21&lt;p&gt;电子商务中的安全问题及解决方式&lt;br&gt;信息泄漏问题：通过密码学的方法在一定程度上可以解决。&lt;br&gt;身份欺骗问题：电子指纹&lt;br&gt;信息完整性：传输和校验&lt;p&gt;信息安全中最重要的是哪部分,依据.&lt;br&gt;信息泄漏可以通过良好的管理弥补，因为绝大多是密码泄漏时间是没有严格按照合理的管理制度造成的。&lt;br&gt;信息传输中已经有很好的校验机制保证信息的完整。&lt;br&gt;而身份被盗用的情况还非常严重，身份验证采取的技术过于复杂繁琐，有时侯即使合法用户亦无法通过正常的验证机制，影响正常使用者的利益。所以身份验证相关技术仍然需要进一步发展。&lt;p&gt;提出尚未发现的信息安全问题或遇到的什么安全问题&lt;br&gt;flood攻击方式导致网络带宽的消耗，使正常使用受到严重影响。这在大型网站的安全方面非常突出，采取防火墙只能在一定程度上缓解，不能防止这种攻击的发生。&lt;br&gt;各种刷卡方式消费是，由于身份验证太简单，不能真正确认持卡人就是合法所有者。则当卡丢失的时候很容易被冒用。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-253198840468467922?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3002,24 +2894,6 @@ make
    <updated>2007-05-19T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/05/19/blog-post_966</id>
    <content type="html">Monolog: Stream of My Season - Summer&lt;p&gt;———-&lt;br /&gt;2007-5-19 19:07&lt;br /&gt;Stream of Every Season&lt;/p&gt;&lt;p&gt;这几天，又感觉到这个季节的浮躁。&lt;br /&gt;头顶树叶疯狂的遮蔽了人行道。&lt;br /&gt;刚才还活跃的食欲，躲到哪里了？&lt;br /&gt;太阳光辉隐去了，心情的亮光也渐渐无助地离开。&lt;br /&gt;为了完成最后一句，还是跑去买个大果粒酸奶比较好。&lt;br /&gt;一会儿见~&lt;/p&gt;&lt;p&gt;———-&lt;br /&gt;2007-5-19 19:21&lt;br /&gt;喜欢的东西，除了酸奶就是山楂了，都是那么酸酸的。&lt;br /&gt;每次火车经过长江大桥的时候，都在这样的一个时刻，太阳刚刚下去，余光下，江面的船和浮标那么不清晰。因为天要黑了，光线很弱；因为还没有那么深黑，明暗对比不足以清楚万物的边缘。&lt;/p&gt;&lt;p&gt;肚子叫了下，吃口酸奶再继续&lt;/p&gt;&lt;p&gt;———-&lt;br /&gt;2007-5-19 19:32&lt;br /&gt;诱惑无处不在。&lt;/p&gt;&lt;p&gt;酸奶再好吃，不如那碗热腾腾的饺子。&lt;br /&gt;所以决定去吃饭。&lt;/p&gt;&lt;p&gt;———-&lt;br /&gt;2007-5-19 20:07&lt;br /&gt;先汇报一下昨天的午餐吧。&lt;br /&gt;用丰盛来形容一顿午餐，在一个大城市的边缘区域的路边小店。&lt;br /&gt;小葱豆腐，清炒油麦菜，干煸豆角，宫爆鸡丁，炖鲫鱼。&lt;br /&gt;一位和我妈妈年龄相近的阿姨，一位在民工社区很有威望的师兄，一位与他合作很久的师姐，一个路过的我和一个好心的小孩儿。&lt;br /&gt;小葱豆腐，在我去过的餐馆，都是不能确实的项目，入口滑软清新，老少皆宜。这家豆腐还是很软很新鲜，如别家一样。有特点的是小葱：别家的小葱都是在发叶不久，刚长起来的时候，因为新鲜有水分，嚼起来省力，不会塞牙；这家却用了比较老的葱，有点儿干，也许为了成本低，毕竟在这一带的餐馆，利润不会太高的。这个才一直是我的最爱，旁边小孩竟第一次吃到，每人吃过一口后，就由小孩儿清理了，十几年没吃过，吃相就不描述了。&lt;br /&gt;清炒油麦菜，跟别家一样，比学校食堂的新鲜，给阿姨吃。&lt;br /&gt;干煸豆角，大师兄说不好，因为豆角却是不干，油不小，和我在家的时候炒豆角的有一比──吃起来比较香，当炒扁豆吃了。&lt;br /&gt;宫爆鸡丁，很质朴，没有用超市里随处可见的料，而是一点点儿做出来。店小，不可能忙碌到来不及调料而必须要成品的阶段，这就算是原汁原味了吧，确实让人品尝到了久违的新鲜感觉。&lt;br /&gt;炖鲫鱼，一层白萝卜，一条鱼。白萝卜的营养价值，懒得考证了。泥土里出来的东西，没有几样不好的。娲神给我们泥土的身体，而我们却每天在水泥台阶上无目的的攀爬。只有大地的精华来滋养。吃了几口就发现汤变的很苦了，大概清洗匆忙吧。苦到心里，跟梦中游荡在山溪旁的场景谐振，痒痒的，很舒服。&lt;/p&gt;&lt;p&gt;———-&lt;/p&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-499208068364079299?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>独白：初夏 - 思絮飞扬</title>
-   <link href="http://lax.github.com/2007/05/19/blog-post_9655.html"/>
-   <updated>2007-05-19T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/05/19/blog-post_9655</id>
-   <content type="html">Monolog: Stream of My Season - Summer&lt;p&gt;———-&lt;br&gt;2007-5-19 19:07&lt;br&gt;Stream of Every Season&lt;p&gt;这几天，又感觉到这个季节的浮躁。&lt;br&gt;头顶树叶疯狂的遮蔽了人行道。&lt;br&gt;刚才还活跃的食欲，躲到哪里了？&lt;br&gt;太阳光辉隐去了，心情的亮光也渐渐无助地离开。&lt;br&gt;为了完成最后一句，还是跑去买个大果粒酸奶比较好。&lt;br&gt;一会儿见~&lt;p&gt;———-&lt;br&gt;2007-5-19 19:21&lt;br&gt;喜欢的东西，除了酸奶就是山楂了，都是那么酸酸的。&lt;br&gt;每次火车经过长江大桥的时候，都在这样的一个时刻，太阳刚刚下去，余光下，江面的船和浮标那么不清晰。因为天要黑了，光线很弱；因为还没有那么深黑，明暗对比不足以清楚万物的边缘。&lt;p&gt;肚子叫了下，吃口酸奶再继续&lt;p&gt;———-&lt;br&gt;2007-5-19 19:32&lt;br&gt;诱惑无处不在。&lt;p&gt;酸奶再好吃，不如那碗热腾腾的饺子。&lt;br&gt;所以决定去吃饭。&lt;p&gt;不允许任何人再打扰我的心，亲爱的小米，对不起，可没有机会再对你说。&lt;br&gt;某天，我们再见面的时候，只有淡淡的平静还是什么呢？&lt;p&gt;———-&lt;br&gt;2007-5-19 20:07&lt;br&gt;先汇报一下昨天的午餐吧。&lt;br&gt;用丰盛来形容一顿午餐，在一个大城市的边缘区域的路边小店。&lt;br&gt;小葱豆腐，清炒油麦菜，干煸豆角，宫爆鸡丁，炖鲫鱼。&lt;br&gt;一位和我妈妈年龄相近的阿姨，一位在民工社区很有威望的师兄，一位与他合作很久的师姐，一个路过的我和一个好心的小孩儿。&lt;br&gt;小葱豆腐，在我去过的餐馆，都是不能确实的项目，入口滑软清新，老少皆宜。这家豆腐还是很软很新鲜，如别家一样。有特点的是小葱：别家的小葱都是在发叶不久，刚长起来的时候，因为新鲜有水分，嚼起来省力，不会塞牙；这家却用了比较老的葱，有点儿干，也许为了成本低，毕竟在这一带的餐馆，利润不会太高的。这个才一直是我的最爱，旁边小孩竟第一次吃到，每人吃过一口后，就由小孩儿清理了，十几年没吃过，吃相就不描述了。&lt;br&gt;清炒油麦菜，跟别家一样，比学校食堂的新鲜，给阿姨吃。&lt;br&gt;干煸豆角，大师兄说不好，因为豆角却是不干，油不小，和我在家的时候炒豆角的有一比──吃起来比较香，当炒扁豆吃了。&lt;br&gt;宫爆鸡丁，很质朴，没有用超市里随处可见的料，而是一点点儿做出来。店小，不可能忙碌到来不及调料而必须要成品的阶段，这就算是原汁原味了吧，确实让人品尝到了久违的新鲜感觉。&lt;br&gt;炖鲫鱼，一层白萝卜，一条鱼。白萝卜的营养价值，懒得考证了。泥土里出来的东西，没有几样不好的。娲神给我们泥土的身体，而我们却每天在水泥台阶上无目的的攀爬。只有大地的精华来滋养。吃了几口就发现汤变的很苦了，大概清洗匆忙吧。苦到心里，跟梦中游荡在山溪旁的场景谐振，痒痒的，很舒服。&lt;p&gt;———-&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-499208068364079299?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>仍然只能错过的交点</title>
-   <link href="http://lax.github.com/2007/05/19/blog-post_19.html"/>
-   <updated>2007-05-19T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/05/19/blog-post_19</id>
-   <content type="html">早上又跑到宿舍去，帮那个女孩儿弄个软件。&lt;br&gt;一年过去了，看起来还是那么舒服的女孩儿。&lt;br&gt;记得第一次见她的时候，她情绪不大好，&lt;br&gt;也许源于那个季节酝酿的情绪，&lt;br&gt;让很多人做出不理智的行为，更加影响了尚在萌芽的思绪。&lt;br&gt;于是郁闷横行，大家彻夜不眠，通宵叫嚣，大肆吃喝玩乐。&lt;br&gt;来自对面的认同也艰难如斯，日子终于开始漫长。&lt;br&gt;太多的偶然给人虚幻的希望，思想逐渐变得幼稚。&lt;br&gt;但是，总有必然的无奈和无聊，&lt;br&gt;走过路过最终仍然要错过。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2052335111212691497?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3047,15 +2921,6 @@ make
    <updated>2007-05-15T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/05/15/blog-post_15</id>
    <content type="html">5月13日，香山&lt;p&gt;中午到达山脚下，进入。由南侧向上登。渐行渐窄的山路，并没有多少麻烦。路过静翠湖，上到香山寺。&lt;br&gt;香山寺只剩下残余的基座和石屏风。从南侧小门出去，一块巨石耸立，使劲仰头，石巅有一亭子，旋绕而上，就到了。&lt;br&gt;此处是到达的第一个视角开阔的地点。向东，隐约有北京市区楼房的影子；向北，几个山头都在眼中，山坡树林茂盛，可以想见秋季漫山红叶时候的景色。再往山上，小路一段之后就隐藏在密密的山林里。&lt;br&gt;选的这条路是很偏僻，几乎都是很原始的，用木桩和碎石搭建的路。再几经盘旋，听到人声；又行几步，就见到人们从另外几条宽阔一点儿的路过来。回首向上，可以看见这里的山巅峰了。咬咬牙，很快就到了山顶。&lt;br&gt;躺在石墙下侧的石板上，看片片白云，和明蓝的天。心旷神怡之所在，让人再难有人生壮志或辗转缠绵之思绪。兴奋之下将此时感受炫耀式的短信给数位老友，尤其那正在几千里外奋战高考的某孩子：太善感悟的她在此地还会有什么感悟吗？&lt;br&gt;复前行，至香炉峰，只有两个平台供游人拍摄，索然无味，倒是可以将京城半侧收入眼下。&lt;br&gt;下山，经途有西山晴雪之处，忆及彼处断桥残雪，未尝真有雪片飘舞而下，却又有皎皎月光，映射漫山遍野的雪白。一定在月圆之夜才能体会到，因为古往今来，月圆留下的情感实在是太丰富了，唯有如此美景才能与之搭配。太白笔下&amp;quot;地上霜&amp;quot;，即此时。&lt;br&gt;有片林，遮盖四处的天空，静下心，听风声涛声。有束阳光，华丽的明亮的，沿山坡方向，透过重重树枝下来；越过大路，仍然华丽的明亮的，继续穿行，越过下方的小路，不见止息之处。我无心打扰她，也无法再为她的前途担忧，能在彼此的路途间设置一个交点，感谢造化了。&lt;br&gt;暮色将下，隔云钟处，处在浮云之后，听各处禅寺钟声传来，也是一个值得驻足的所在。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7894221566472143336?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>博客热评软件开源_新浪博客_新浪网</title>
-   <link href="http://lax.github.com/2007/05/12/blog-post_12.html"/>
-   <updated>2007-05-12T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/05/12/blog-post_12</id>
-   <content type="html">&lt;DIV&gt;&lt;FONT face=Verdana size=2&gt;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;  &lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;博客热评软件开源_新浪博客_新浪网&lt;/DIV&gt;  &lt;DIV&gt;&lt;A   href=&quot;http://blog.sina.com.cn/lm/z/opensoft/&quot;&gt;http://blog.sina.com.cn/lm/z/opensoft/&lt;/A&gt;&lt;/DIV&gt;  &lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;&lt;A title=刘兰涛：商业软件与开源软件的思索 href=&quot;http://blog.sina.com.cn/u/4975ef57010008sv&quot;   target=_blank&gt;&lt;FONT color=#006699&gt;刘兰涛：商业软件与开源软件的思索&lt;/FONT&gt;&lt;/A&gt;&lt;/DIV&gt;  &lt;DIV&gt;关于盗版软件的前世今生 ──商业软件与开源软件的思索- §澜意※烟雨 - 新浪BLOG&lt;/DIV&gt;  &lt;DIV&gt;&lt;A   href=&quot;http://blog.sina.com.cn/u/4975ef57010008sv&quot;&gt;http://blog.sina.com.cn/u/4975ef57010008sv&lt;/A&gt;&lt;/DIV&gt;  &lt;DIV&gt;&lt;A   href=&quot;http://blog.sina.com.cn/lax&quot;&gt;http://blog.sina.com.cn/lax&lt;/A&gt;&lt;/DIV&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5469042554375043092?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3114,15 +2979,6 @@ make
  </entry>
  
  <entry>
-   <title>什么被他弄丢了</title>
-   <link href="http://lax.github.com/2007/04/27/blog-post_27.html"/>
-   <updated>2007-04-27T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/04/27/blog-post_27</id>
-   <content type="html">&lt;DIV&gt;什么被他弄丢了&lt;/DIV&gt;  &lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;  &lt;DIV&gt;他加入这个班的时候，高考的倒计时牌子上是个两位数。&lt;BR&gt;让人窒息的空气中，偶尔有人放肆宣泄着青春。&lt;/DIV&gt;  &lt;DIV&gt;大概还是春天，像今天一样，没有什么能够压制这个季节赋予万物的生命力。&lt;BR&gt;他总是专注于自己那几本很老却很整齐的书。前面，他的路在何方，没去想，太遥远的事情没有意义，尽管这个距离不太远。&lt;BR&gt;每天结束了晚自习，总有几个行动缓慢的家伙，讨论着无聊的话题。模拟考试，大学，等等等等……他们的视界的全部。&lt;BR&gt;他不喜欢提问老师，因为，不讷言语的他，总不能清楚表达自己的问题。于是，左邻右舍的老师成了真正的朋友。&lt;BR&gt;梧桐花开了，又落了；&lt;BR&gt;槐花开了，又谢了；&lt;BR&gt;路边的月季花，也开了又谢了。&lt;BR&gt;然后，高考开始了，接着又结束了。&lt;BR&gt;夏天，正在北京照料四叔，懒惰的他，从地图上随手圈了一个大学，填在了志愿表上，他有自信的理由。&lt;BR&gt;和他一起来北京的，有一位女孩曾作为左邻右舍的老师。她很好，很好……此时他相信，语言描述将是如此多余。&lt;BR&gt;他们一起逛街一起自习一起坐在长凳子上发呆，一起等待晚上最后一班公交车。50分钟的地铁或者50分钟的电话成了每天的必修课。&lt;BR&gt;又过了一年，又过了一年。&lt;BR&gt;……&lt;BR&gt;桃花开了有谢了；&lt;BR&gt;梧桐花开了，又落了；&lt;BR&gt;槐花开了，又谢了；&lt;BR&gt;路边的月季花，也开了又谢了。&lt;BR&gt;很像是做了个梦，他经历了最丰富的大学生活，她也经历了最丰富的大学生活。他和她已经有一年没有在一起了，甚至没有通过一次电话。倔强的他们，面对着一个无奈。&lt;BR&gt;想起从前，一起逛街吃东西；想起从前，一起从五环步行到王府井去……现在，什么都没有了什么被他们弄丢了？什么被他弄丢了？&lt;/DIV&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5224922524344405625?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>关于由递推公式求数列的通项</title>
    <link href="http://lax.github.com/2007/04/26/blog-post_26.html"/>
    <updated>2007-04-26T00:00:00+08:00</updated>
@@ -3137,24 +2993,6 @@ make
    <updated>2007-04-25T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/04/25/day-dreaming_25</id>
    <content type="html">&lt;a href=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/Ri7TxAMbHcI/AAAAAAAAABc/WDRbE65rJ-0/s1600-h/dreaming.jpg&quot;&gt;&lt;img style=&quot;display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;&quot; src=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/Ri7TxAMbHcI/AAAAAAAAABc/WDRbE65rJ-0/s400/dreaming.jpg&quot; border=&quot;0&quot; alt=&quot;&quot;id=&quot;BLOGGER_PHOTO_ID_5057212270402805186&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;杨絮飘飘的季节，做着白日梦&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3490387695951003066?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Day Dreaming..</title>
-   <link href="http://lax.github.com/2007/04/25/day-dreaming_1102.html"/>
-   <updated>2007-04-25T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/04/25/day-dreaming_1102</id>
-   <content type="html">&lt;a href=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/Ri7TxAMbHcI/AAAAAAAAABc/WDRbE65rJ-0/s1600-h/dreaming.jpg&quot;&gt;&lt;img style=&quot;display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;&quot; src=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/Ri7TxAMbHcI/AAAAAAAAABc/WDRbE65rJ-0/s400/dreaming.jpg&quot; border=&quot;0&quot; alt=&quot;&quot;id=&quot;BLOGGER_PHOTO_ID_5057212270402805186&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;杨絮飘飘的季节，做着白日梦&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-4083260319967565584?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>北京的姿态</title>
-   <link href="http://lax.github.com/2007/04/24/blog-post_4587.html"/>
-   <updated>2007-04-24T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/04/24/blog-post_4587</id>
-   <content type="html">我喜欢北京，这个古老而保守的城市。&lt;br&gt;这是个多元化文化的汇集地，&lt;br&gt;人们没有疯狂追逐，&lt;br&gt;而仅仅是在观望。&lt;br&gt;而这种观望的姿态，当你走过路边，走过小巷的时候，&lt;br&gt;存在于你身边。&lt;p&gt;和上海等城市比起来，北京很保守，我喜欢。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-1804712477589623796?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3186,15 +3024,6 @@ make
  </entry>
  
  <entry>
-   <title>Blog Post_18</title>
-   <link href="http://lax.github.com/2007/04/18/blog-post_18.html"/>
-   <updated>2007-04-18T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/04/18/blog-post_18</id>
-   <content type="html">心很累，在自己不小心的时候。&lt;br /&gt;有位旧友的来信一个没有能回复，因为每次下笔总有太多要说的，超越了当时的思维。&lt;br /&gt;累的时候，不刻意去追求什么解脱，总以为那太空虚。&lt;br /&gt;该来的总要来，接着就是了。&lt;br /&gt;该走的亦会走，珍惜每一次。&lt;br /&gt;&lt;br /&gt;------&lt;br /&gt;每天帮人修电脑，每天换个女朋友，&lt;br /&gt;到底是幸福还是悲哀？&lt;br /&gt;&lt;br /&gt;只想有个她，&lt;br /&gt;每天只见一面，&lt;br /&gt;陪我吃顿饭也好&lt;br /&gt;------&lt;br /&gt;&lt;br /&gt;春天是一个季节，&lt;br /&gt;春天是一种心态，&lt;br /&gt;并且，好多人的春天就在春天发生。&lt;br /&gt;------&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5086713307061898705?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>关于盗版软件的前世今生 ──商业软件与开源软件的思索</title>
    <link href="http://lax.github.com/2007/04/17/blog-post_17.html"/>
    <updated>2007-04-17T00:00:00+08:00</updated>
@@ -3209,15 +3038,6 @@ make
    <updated>2007-04-15T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/04/15/blog-post_6287</id>
    <content type="html">&lt;a href=&quot;http://www.liulantao.com/blogs/lltaichi/uploaded_images/suiyue-778523.jpg&quot;&gt;&lt;img style=&quot;display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;&quot; src=&quot;http://www.liulantao.com/blogs/lltaichi/uploaded_images/suiyue-778492.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;随手就打了这个名字上去，明明是路边，&lt;br /&gt;却成了墙角，两者有什么相通之处呢？&lt;br /&gt;而虚弱的阳光又能代表岁月吗？&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-2965680922585418864?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>墙角的岁月</title>
-   <link href="http://lax.github.com/2007/04/15/blog-post_6227.html"/>
-   <updated>2007-04-15T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/04/15/blog-post_6227</id>
-   <content type="html">&lt;a href=&quot;http://www.liulantao.com/blogs/lltaichi/uploaded_images/suiyue-778523.jpg&quot;&gt;&lt;img style=&quot;display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;&quot; src=&quot;http://www.liulantao.com/blogs/lltaichi/uploaded_images/suiyue-778492.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;随手就打了这个名字上去，明明是路边，&lt;br /&gt;却成了墙角，两者有什么相通之处呢？&lt;br /&gt;而虚弱的阳光又能代表岁月吗？&lt;br /&gt;&lt;a href=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/RiGvvkX2orI/AAAAAAAAAA0/ifGNVuehG4w/s1600-h/suiyue.jpg&quot;&gt;&lt;img style=&quot;display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;&quot; src=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/RiGvvkX2orI/AAAAAAAAAA0/ifGNVuehG4w/s320/suiyue.jpg&quot; border=&quot;0&quot; alt=&quot;&quot;id=&quot;BLOGGER_PHOTO_ID_5053513488638845618&quot; /&gt;&lt;/a&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-9029646820047504618?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3276,29 +3096,11 @@ make
  </entry>
  
  <entry>
-   <title>荡秋千的少女</title>
-   <link href="http://lax.github.com/2007/04/02/blog-post.html"/>
-   <updated>2007-04-02T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/04/02/blog-post</id>
-   <content type="html">&lt;p&gt;昨晚无聊赖，恰好看到买来电话卡上的女孩不错，就有了这幅用gimp做出的图画。&lt;br /&gt;呵呵，很不错的小姑娘。&lt;/p&gt;&lt;br /&gt;&lt;br /&gt;&lt;a onblur=&quot;try {parent.deselectBloggerImageGracefully();} catch(e) {}&quot; href=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/RhG6uh2ODAI/AAAAAAAAAAM/J5HWzBcQVPM/s1600-h/thegirl.gif&quot;&gt;&lt;img style=&quot;cursor: pointer;&quot; src=&quot;http://4.bp.blogspot.com/_G13PNVm5Rto/RhG6uh2ODAI/AAAAAAAAAAM/J5HWzBcQVPM/s400/thegirl.gif&quot; alt=&quot;&quot; id=&quot;BLOGGER_PHOTO_ID_5049021965781568514&quot; border=&quot;0&quot; /&gt;&lt;/a&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8587691756702286625?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>关于新东方英语辅导班</title>
    <link href="http://lax.github.com/2007/03/31/blog-post_31.html"/>
    <updated>2007-03-31T00:00:00+08:00</updated>
    <id>http://lax.github.com/2007/03/31/blog-post_31</id>
    <content type="html">准备英语六级考试，新东方的辅导班。&lt;br /&gt;五一就不用回去了。&lt;br /&gt;&lt;br /&gt;好像还有个英语竞赛，可能会冲突一次课&lt;br /&gt;&lt;br /&gt;－－－－－－－－－－&lt;br /&gt;报名状态：    正常报名&lt;br /&gt;班号：      VH7601&lt;br /&gt;班级性质：      6000词汇速记班&lt;br /&gt;班级性质关键字：      上午班 , 下午班 , 春季班 , 走读班&lt;br /&gt;开课时间：      2007-5-2 至 2007-5-7&lt;br /&gt;上课时间：      每天8:30-11:00,11:50-14:20&lt;br /&gt;上课地点：     海淀学清路校区103教室&lt;br /&gt;课次：     12&lt;br /&gt;费用：     280 元&lt;br /&gt;备注：    直接上课,教室领教材&lt;br /&gt;&lt;br /&gt;－－－－－－－－－－&lt;br /&gt;报名状态：    正常报名&lt;br /&gt;班号：       VBS762&lt;br /&gt;班级性质：      六级冲刺模考班&lt;br /&gt;班级性质关键字：      周末班 , 下午班 , 晚上班 , 春季班 , 走读班&lt;br /&gt;开课时间：      2007-6-2 至 2007-6-17&lt;br /&gt;上课时间：      周六,日15:10-17:40,18:30-21:00&lt;br /&gt;上课地点：     海淀展春园校区301教室&lt;br /&gt;课次：     12&lt;br /&gt;费用：     260 元&lt;br /&gt;备注：    直接上课,教室领教材&lt;br /&gt;－－－－－－－－－－&lt;br /&gt;总部&lt;br /&gt;报名地址：北京市海淀区海淀中街6号新东方大厦3层（海龙大厦西侧）&lt;br /&gt;咨询电话：010-82611818/62605858&lt;br /&gt;办公时间：8：00－18：30&lt;br /&gt;详细路线：&lt;br /&gt;C. 北四环中关村站（由东向西方向）：16 支、47、384、718、735、740外环、751、808、840外环、913、982、983、944支、运通106、运通109、运通110、运通113、下车后穿过中关村一号桥，南行见家乐福超市路标，右转沿海淀东一街步行5分钟，见丁字路口左转路北即到。&lt;br /&gt;－－－－－－－－－－&lt;br /&gt;  懒桃子  Mar 31st, 2007 at 3:25 pm &lt;br /&gt;&lt;br /&gt;报名归来了，呵呵。两个班一个吃掉我540个米，心疼！&lt;br /&gt;顺便又买了几本书，有吃掉104个米，今天好奢侈啊。&lt;br /&gt;－－－－－－－－－－&lt;br /&gt;  lax  Mar 31st, 2007 at 9:40 pm &lt;br /&gt;&lt;br /&gt;不过，新东方总部办理业务的小姐挺漂漂的说～&lt;br /&gt;－－－－－－－－－－&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-1087938693602791922?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>我们无处安放的青春</title>
-   <link href="http://lax.github.com/2007/03/29/blog-post.html"/>
-   <updated>2007-03-29T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2007/03/29/blog-post</id>
-   <content type="html">我们无处安放的青春作者:lax 日期:2007-03-28&lt;br /&gt;&lt;br /&gt;在某一间生命力旺盛的屋子里，&lt;br /&gt;黑暗酝酿着腐朽的气息，&lt;br /&gt;颓废的我们对面颓废的室友。&lt;br /&gt;&lt;br /&gt;窗帘一角，寂寞的天空陪伴同样寂寞的青春，&lt;br /&gt;偶尔一缕阳光，从我床头出发，&lt;br /&gt;穿过狭隙，折射在对面楼房的窗玻璃上。&lt;br /&gt;&lt;br /&gt;入夜时分，操场的铁丝网上方，窃窃私语的两盏路灯表达着爱意。&lt;br /&gt;桌上是凌乱的瓜子壳、半瓶酸奶和清风翻动的书页，&lt;br /&gt;还有我们对爱情、美好以及这个喧嚣世界的理想。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-6587991926240851321?l=liulantao.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3438,29 +3240,11 @@ make
  </entry>
  
  <entry>
-   <title>code~</title>
-   <link href="http://lax.github.com/2006/12/09/code.html"/>
-   <updated>2006-12-09T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/12/09/code</id>
-   <content type="html">&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;&lt;br&gt;&lt;/br&gt;fixit 198462&lt;br&gt;&lt;/br&gt;wangxiaoxi75 75wangcui&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;p class='poweredbyperformancing'&gt;powered by &lt;a href='http://performancing.com/firefox'&gt;performancing firefox&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-116567046727231621?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>酒是陈的香，博客也是。</title>
    <link href="http://lax.github.com/2006/12/04/blog-post.html"/>
    <updated>2006-12-04T00:00:00+08:00</updated>
    <id>http://lax.github.com/2006/12/04/blog-post</id>
    <content type="html">&lt;div xmlns='http://www.w3.org/1999/xhtml'&gt;没想到能够一直是用的竟然只是这个几年前申请的东西。感觉是911之后的岁月，人们还在它的阴影之中没有完全恢复过来。话题中谈论到了博客这种新生的事物，尤其是它的那些不被人相信的预告。从一些报道中我知道了世界上还有这么一个东西。于是某日我便成为了有博客人士的一员。&lt;br&gt;&lt;/br&gt;在其后的时间里，我没有这个欲望，要把它写下去。&lt;br&gt;&lt;/br&gt;但是来到北京之后的无聊生活，又让我看见了这一个平台，很多人用它来展示自己，记录生活的点滴。自己也申请几个玩，仅仅是玩的想法支配自己写了一点点。过去了那个凑热闹的阶段才发现，这里保存了自己时间最长的记录。&lt;br&gt;&lt;/br&gt;乱花渐欲迷人眼，还是这一个好用。一点不要花哨。&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;&lt;p class='poweredbyperformancing'&gt;powered by &lt;a href='http://performancing.com/firefox'&gt;performancing firefox&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-116523226937360041?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>岩</title>
-   <link href="http://lax.github.com/2006/11/30/blog-post_30.html"/>
-   <updated>2006-11-30T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/11/30/blog-post_30</id>
-   <content type="html">想起她，仅仅能维持着暧昧吧。&lt;br /&gt;她没上过大学，爱唱歌，会弹钢琴，现在学表演。&lt;br /&gt;她经常来师大，我叫她来听讲座，看电影。&lt;br /&gt;生活的经历好复杂，她处事很成熟，却没有缺少年幼的茫昧。&lt;br /&gt;我们走在不同的人生路上，不过偶尔相遇&lt;br /&gt;寂寞中彼此成为对方暂时的寄托而已。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-116966009413031848?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3506,42 +3290,6 @@ make
    <updated>2006-09-19T00:00:00+08:00</updated>
    <id>http://lax.github.com/2006/09/19/blog-post_19</id>
    <content type="html">&lt;div xmlns=&quot;http://purl.org/atom/ns#&quot;&gt;      &lt;p&gt;回忆是这么一个东西：它带给你一次次甜蜜的感受，往往是现当今无法切身得到的。同时也带来更多的苦涩，与周身所处环境的艰辛掺杂在一块儿，别是一番滋味，如烈酒般，品一口直冲脑门，回味却只感到绵绵软软的身体无所依靠。&lt;/p&gt;    &lt;/div&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115863683522445931?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>去年的一个照片，拿出来秀一下</title>
-   <link href="http://lax.github.com/2006/09/02/blog-post.html"/>
-   <updated>2006-09-02T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/09/02/blog-post</id>
-   <content type="html">&lt;a href=&quot;http://photos1.blogger.com/blogger/5299/295/1600/photoimg65.jpg&quot;&gt;&lt;img style=&quot;display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;&quot; src=&quot;http://photos1.blogger.com/blogger/5299/295/320/photoimg65.jpg&quot; border=&quot;0&quot; alt=&quot;&quot; /&gt;&lt;/a&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115715766586663384?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>7月27日</title>
-   <link href="http://lax.github.com/2006/08/29/727.html"/>
-   <updated>2006-08-29T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/08/29/727</id>
-   <content type="html">&lt;div xmlns=&quot;http://purl.org/atom/ns#&quot;&gt;澜意烟雨  ︶︶ㄣ7月27日　归乡前的北京　感动和罪恶共舞　卑劣的灵魂与一个喜欢19岁的女生面对面&lt;/div&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115682025289164724?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>无题</title>
-   <link href="http://lax.github.com/2006/08/17/blog-post_17.html"/>
-   <updated>2006-08-17T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/08/17/blog-post_17</id>
-   <content type="html">&lt;div align=&quot;center&quot;&gt;因为我的善良，&lt;br /&gt;你不会听到我长期的承诺。&lt;br /&gt;我不能每天早上送你一个甜蜜的吻，&lt;br /&gt;因为偶尔我会让自己睡意朦胧。&lt;br /&gt;我从来不保证自己会带给你怎样的幸福，&lt;br /&gt;因为我保留了自己反悔的权利。&lt;br /&gt;我无法陪伴你走过一声，&lt;br /&gt;因为偶尔我会给自己逃脱的机会。&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/div&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115582904773373098?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>婚礼</title>
-   <link href="http://lax.github.com/2006/08/12/blog-post_12.html"/>
-   <updated>2006-08-12T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/08/12/blog-post_12</id>
-   <content type="html">&lt;div align=&quot;center&quot;&gt;婚礼&lt;/div&gt;&lt;br /&gt;&lt;br /&gt;今天去邯郸参加哥哥昊楠的婚礼。回想上次见哥哥还是近二十年前的事情。那时跟父母去邯郸姨家，那时候他们都还是普通的职工，挤在一间小房子里。但我是一个农村的小孩子，对一切都感到新鲜，所以芬姨给我好多零食吃。我吃得很投入，二比我大不了几岁的哥哥就不同意了，在一旁闹起来。&lt;br /&gt;&lt;br /&gt;好多年来，我一直听母亲提起这件事情，而这次之后我们竟然有那么就无缘相见面。平时，父亲和母亲有机会与芬姨见面，也就能见到昊楠，而我总是由于求学诸类种种原因，游离在亲戚的圈子外面，尽管我成为他们谈话的一个重要话题。而昊楠的形象是根据描述存在于我的脑子中：胖胖的，有点可爱，很勤奋。&lt;br /&gt;&lt;br /&gt;辗转之中，我从上海来到了北京，直到昊楠在北京工作了，于是找芬姨要了哥哥的联系方式，却莫名其妙半年了没找到机会相聚一次。没想到这次回家竟能得到他结婚的消息，不禁感慨时间之快啊。&lt;br /&gt;&lt;br /&gt;迎亲队伍归来，新娘下车的时候看到了他，果然是胖胖的，可爱中透着点成熟稳重，很渴接近的感觉。整个婚礼中他太忙了，应酬着一千多人的场面。婚宴结束，在门口跟他说话，留下了联系方式，说好到北京之后找他。真得不错，为儿时回忆中的零星片断找到一个归宿。&lt;br /&gt;&lt;br /&gt;http://izone.qq.com/client/indexNew.htm#uin=232139&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115539667022091219?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3600,15 +3348,6 @@ make
  </entry>
  
  <entry>
-   <title>与我无关</title>
-   <link href="http://lax.github.com/2006/07/25/blog-post_25.html"/>
-   <updated>2006-07-25T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/07/25/blog-post_25</id>
-   <content type="html">看不懂，随她去吧，与我无关。&lt;br /&gt;以后记着每天找我吃午饭就行了。&lt;br /&gt;&lt;br /&gt;http://www.blogcn.com/user66/yydyyyao/blog/38238645.html&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115379878311136940?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>以往的晴空，真的遗忘了吗</title>
    <link href="http://lax.github.com/2006/07/25/blog-post_115390568912485716.html"/>
    <updated>2006-07-25T00:00:00+08:00</updated>
@@ -3623,15 +3362,6 @@ make
    <updated>2006-07-25T00:00:00+08:00</updated>
    <id>http://lax.github.com/2006/07/25/blog-post_115390561084069881</id>
    <content type="html">&lt;br /&gt;&lt;div align=&quot;center&quot;&gt;今天下午准备去买票了，放假这么多天，&lt;br /&gt;在学校，上网，碰到很多有意思的人。&lt;br /&gt;最重要的，我要写的，&lt;br /&gt;回忆的东西。&lt;br /&gt;&lt;br /&gt;一直都不知道如何下笔。终于&lt;br /&gt;从很多人那里学习学习，&lt;br /&gt;于是动笔指日可待了。&lt;br /&gt;&lt;br /&gt;档案上，这个空白，&lt;br /&gt;就自己慢慢填补吧&lt;br /&gt;2006-7-25-13-25-0&lt;br /&gt;&lt;/div&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115390561084069881?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>永远不是我永远的承诺</title>
-   <link href="http://lax.github.com/2006/07/20/blog-post_20.html"/>
-   <updated>2006-07-20T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/07/20/blog-post_20</id>
-   <content type="html">永远是一个神话，我不会怀疑，但是我又能怎样来证实它呢？&lt;br /&gt;不想仅仅作出一个个承诺，却在短暂的时光之后无意间丢失它。&lt;br /&gt;所有时刻，付出都是对的。&lt;br /&gt;所以我永远相信永远，但永远不会是我永远的承诺。&lt;br /&gt;&lt;blockquote&gt;&lt;font color=&quot;Navy&quot;&gt;很害怕，很害怕给自己的心烙下许多印迹。伤疤会好，疼痛可以忘掉，但疤痕却无法褪去。有时，不小心看到那个地方，心会涩。&lt;br /&gt;&lt;br /&gt;也很害怕，也很害怕自己的生活这样相扑朔迷离。今天和我一起畅饮的你，明天还会和我这样轻松地谈笑风声吗？我们的关系，我们的友谊，我们的所有记忆和经历，可不可以永远定格在最美丽的时期。可不可以不成为疤痕留在心底。&lt;br /&gt;&lt;br /&gt;誓言是什么？过季的依恋是什么？失去光鲜又是什么？人如果可以主宰自己的心，我想要一个永远。永远的爱情，永远的友情，永远的年轻。&lt;br /&gt;&lt;br /&gt;曾经的朋友，如今离我而去；曾经的爱情，开花未果；曾经的一头清新短发慢慢长长。走了一路，左右盼顾，依然寂寞。&lt;br /&gt;&lt;br /&gt;如果知道明天你不再是我的朋友，我会选择今天不与你相识。&lt;br /&gt;&lt;br /&gt;如果明天你也要离开我的身边，我宁愿选择昨天没有擦肩而过的瞬间。&lt;br /&gt;&lt;br /&gt;如果我可以选择。&lt;/font&gt;&lt;/blockquote&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115340931686258787?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3762,15 +3492,6 @@ make
  </entry>
  
  <entry>
-   <title>感情的事</title>
-   <link href="http://lax.github.com/2006/07/06/blog-post_06.html"/>
-   <updated>2006-07-06T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/07/06/blog-post_06</id>
-   <content type="html">感情的事，我们玩不起，也输不起，所以我选择逃避。&lt;br /&gt;&lt;br /&gt;－－　一个网友的签名，看过之后我就想到另外一个某某了&lt;br /&gt;　　　难道是被吓怕滴～～&lt;br /&gt;　　　下学期开学来个治疗，咔咔。。。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-116965979535761552?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>白胡子老头手拿零食给小姑娘</title>
    <link href="http://lax.github.com/2006/07/02/blog-post_02.html"/>
    <updated>2006-07-02T00:00:00+08:00</updated>
@@ -3798,15 +3519,6 @@ make
  </entry>
  
  <entry>
-   <title>一种感觉</title>
-   <link href="http://lax.github.com/2006/06/26/blog-post_26.html"/>
-   <updated>2006-06-26T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/06/26/blog-post_26</id>
-   <content type="html">一次偶然被捉，就带来这么大的损失，&lt;br /&gt;女孩子那个目光是最犀利的武器，一口气就吃下大大一碗拌饭。&lt;br /&gt;虽然以前做完活动也经常吃，但从来没有感觉这么香过。&lt;br /&gt;&lt;br /&gt;从来都知道自己胆子小，上不了大场面。每次开部长例会的时候都会要紧张，自己还笑自己呢。&lt;br /&gt;没有想到今天连两个人一起的场面都会紧张，低头吃那么一大碗拌饭竟然没有找到几句话来说？&lt;br /&gt;真是的，开始干嘛要那么兴奋了，弄得最后好尴尬呀。&lt;br /&gt;不要怕，下次弥补。再出岔子就自杀&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;≈≈ RE:谢啦 06-26 13:14 17Byte&lt;br /&gt;这样主题的短信已经有54条了。。。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-116965938513468939?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
    <title>永恒</title>
    <link href="http://lax.github.com/2006/06/24/blog-post_24.html"/>
    <updated>2006-06-24T00:00:00+08:00</updated>
@@ -3830,15 +3542,6 @@ make
    <updated>2006-06-12T00:00:00+08:00</updated>
    <id>http://lax.github.com/2006/06/12/blog-post_12</id>
    <content type="html">今天群楼环抱的西操场上看了一会儿毕业生晚会，音乐、歌舞、健美操表演都还不错。舞台不高，昨天就已经搭好了，台子前面大家坐在地上，一个挨一个，满满一地全是人。来的晚的站在人群的边上，一个不太规则的圈子就形成了。更外面是宿舍楼的点点灯光，尽管音响的声音没有白天测试的时候大，但是气氛却一下子就到了这片操场。&lt;br /&gt;大概是2003年的六月底，我见识了第一次大学毕业生晚会。那晚我在图书馆的4楼自习，窗下就是毕业生晚会的现场。包玉刚图书馆前面的台阶和成了合适的舞台，旁边还有舒适的看台，饮水思源的标志作为一个忠实的背景。紧挨着的思源湖畔是所有人最熟悉的地方，四年来每天早上都要去的地方。&lt;br /&gt;节目的细节再也想不起来了，惟一的记忆就是从四楼俯瞰到的一大片雨伞。那天下了很大的雨，但是参加的人不但没有减少，反而越来越多，解释不清的多，出乎意料的多。大学里的几年能让人失去所有的浪漫，被戴上很多深沉的镣铐。但是那天的情景却是最浪漫的一幅景象。大雨瓢泼，冲掉了压在心头蒙着的所有的尘，带来清新心情的纯真，给每一个人命运滋润的享受。&lt;br /&gt;那是一个心情最接近大自然的地方。在偏僻的郊区与知识为伴，没有给人太多的做作，给人的只有一份注重效益、干脆直接的思维。这份干脆，很多时候是要在封闭的KTV里放纵才能找回来──人慢慢变老，也就越来越需要这份干脆真实才能保持身心的全方位健康。&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5557545298881131523?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>毕业随想……</title>
-   <link href="http://lax.github.com/2006/06/11/blog-post_11.html"/>
-   <updated>2006-06-11T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/06/11/blog-post_11</id>
-   <content type="html">早上在一阵嘈杂的噪音中醒来，西操场传出调试音频设备时的种种怪腔调。&lt;br /&gt;偶尔飘来优美的，让人回忆的旋律。这旋律里有太多太多的往事，也有太多太多的遐想，能让你全身乏力，深深陷入某个境地而不能自制。&lt;br /&gt;没有来得及想过的总是转眼即逝，准备长久的总是在手足无措时到来。青春就是这么来无影又要去无踪了。&lt;br /&gt;多少回忆和遗憾随着快节奏的说唱声跳入大脑的活跃区域，一个个少年的豪言壮语被自己无情的嘲笑，一次次计划被否定抛弃后总是走另外的某一条路子。一次次放荡一次次颓废组成了大部分的生活。&lt;br /&gt;兴致偶尔来访，于是决定去看今晚的节目，这本应该属于自己的节目。3年之后我是不是会再去参加为我准备的晚会呢？我真的是一点信心都没有了。&lt;br /&gt;&lt;br /&gt;发表于2006-06-11 13:29&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-675592973350503326?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3875,15 +3578,6 @@ make
    <updated>2006-05-28T00:00:00+08:00</updated>
    <id>http://lax.github.com/2006/05/28/blog-post</id>
    <content type="html">&lt;p&gt;来师大以前经历那么多挫折，到现在成了大龄青年了。可是自己的那一半却离自己那么遥远，一眼看不到，只能在梦中天天见面。每天上课的兴趣不大，能逃就逃了。有些老本可以吃，毕竟学过一遍了，并且有些东西比以前学的还要简单一些。每周还要有很长的时间参与社团活动。能力不怎么样，但混了个小头目也得经常开会、干一些体力活。体力活倒不怕，但是真正有什么大型活动就感觉有些吃力了。还要想办法挣些钱来花，还好是校内的部门，但是要做好还是很费心费时间，快考试了又有新的任务。&lt;/p&gt;&lt;p&gt;已经快一年了，还没有自在的去看过一场电影，组织了那么多讲座，还没有认真坐台下聆听大师的声音。一个又一个诱惑和无奈，何去何从？&lt;/p&gt;&lt;p&gt;心理健康节时快被累死的我&lt;/p&gt;&lt;p&gt;满树的卡片都是我半夜起来去办公室设计，然后跑印刷厂印制的，呵呵～～&lt;/p&gt;&lt;p&gt;北二外那位女生带来的展板出毛病，真费死我老劲了，大半天才找了一根竹竿应急。&lt;/p&gt;&lt;p&gt;心理咨询中心的网站又要去做，老师这次的要求比以前高多了。要做一个互动的东西上去，我有这个能力吗？我真的很怀疑啊。压力太大了，想要找个人咨询咨询，可是咨询中心的老师都太熟了，感觉说话放不开啊。&lt;/p&gt;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-116965858444246515?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>听音乐</title>
-   <link href="http://lax.github.com/2006/05/13/blog-post_13.html"/>
-   <updated>2006-05-13T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2006/05/13/blog-post_13</id>
-   <content type="html">早晨的阳光总是那么美丽，让人精神振奋。一大早我就跑到操场上去锻炼。真的是很爽，尤其是跑几圈之后。去篮球场了，和一些人打比赛玩。&lt;br /&gt;老感觉要拉肚子，所以就没有太卖力，毕竟身体重要。于是悲剧发生：球飞到我手里，一个突破，球带着人就冲进了篮下区域，而左脚的拇趾却感到一丝丝疼痛－－趾甲受伤了。肿得真是不舒服，回宿舍就端了一盆冷水放在床头，将受伤的脚浸了进去。一天就在这份折磨中过去了。&lt;br /&gt;&lt;br /&gt;2006-5-13 22:04:00&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6823727308656618199?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  
@@ -3931,16 +3625,6 @@ make
    <id>http://lax.github.com/2004/03/04/graphical-interface-similar-to</id>
    <content type="html">是一个很好前景的东西？
 &lt;br /&gt;&lt;a href=&quot;http://www.computerhope.com/jargon/o/os2.htm&quot;&gt;OS/2&lt;/a&gt;: &quot;graphical interface similar to Windows &quot;&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-107837058405841284?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>2003年，非典期间。在女孩花园的历史记录</title>
-   <link href="http://lax.github.com/2003/12/31/2003.html"/>
-   <updated>2003-12-31T00:00:00+08:00</updated>
-   <id>http://lax.github.com/2003/12/31/2003</id>
-   <content type="html">original_time: 2003-06-23 16:34:00.000000000 +08:00
-lcy 于2003-6-23 16:34:26 寄给你的信件：&lt;br /&gt;主题: 羡慕你们&lt;br /&gt;内容:&lt;br /&gt;我们快要放假了,学校允许我们回家,应该没事了.&lt;br /&gt;+&lt;br /&gt;MiniRobot~ 于2003-6-16 21:14:33 寄给你的信件：&lt;br /&gt;主题: RE:羡慕你们&lt;br /&gt;内容:&lt;br /&gt;现在已经没什么可怕了。全国形势基本上控制住了，愿你能早日出来看看外面的世界&lt;br /&gt;+&lt;br /&gt;lcy 于2003-6-16 15:58:10 寄给你的信件：&lt;br /&gt;主题: 羡慕你们&lt;br /&gt;内容:&lt;br /&gt;谢谢不过我们现在可以出去了，虽然程序很烦。我相信到放假的时候一切就都正常了。&lt;br /&gt;+&lt;br /&gt;MiniRobot~ 于2003-6-10 18:22:13 寄给你的信件：&lt;br /&gt;主题: RE:羡慕你们&lt;br /&gt;内容:&lt;br /&gt;我代表上海的同学们向你们表示慰问 同时希望我们的祖国越来越好&lt;br /&gt;+&lt;br /&gt;lcy 于2003-6-7 22:03:55 寄给你的信件：&lt;br /&gt;主题: 羡慕你们&lt;br /&gt;内容:&lt;br /&gt;好羡慕你们，不知我们什么时候可以出去？我好想去逛街。&lt;br /&gt;+&lt;br /&gt;MiniRobot~ 于2003-6-5 21:38:04 寄给你的信件：&lt;br /&gt;主题: RE:也封了&lt;br /&gt;内容:&lt;br /&gt;我们学校已经没什么紧张了，师生都可以随便出入&lt;br /&gt;+&lt;br /&gt;lcy 于2003-5-31 22:09:31 寄给你的信件：&lt;br /&gt;主题: 也封了&lt;br /&gt;内容:&lt;br /&gt;我们学校早就封了，不过现在已经开始上课了，应该没什么问题了。&lt;br /&gt;+&lt;br /&gt;MiniRobot~ 于2003-5-18 17:07:15 寄给你的信件：&lt;br /&gt;主题: 你们学校怎么样?&lt;br /&gt;内容:&lt;br /&gt;我们学校已经封了&lt;br /&gt;&lt;br /&gt;-------------------------------------------&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;46926      不会只排第三吧      2003/05/18 18:00:25      MiniRobot~      小芳         删&lt;br /&gt;46925     一般一般，世界第三/扬州大学没有听过？     2003/05/18 17:58:58     小芳     MiniRobot~     回 删&lt;br /&gt;46923     都是大一, 你们学校怎么样了     2003/05/18 17:57:41     MiniRobot~     小芳        删&lt;br /&gt;46922     什么巧？     2003/05/18 17:57:04     小芳     MiniRobot~     回 删&lt;br /&gt;46921     是挺巧的呀     2003/05/18 17:56:46     MiniRobot~     小芳        删&lt;br /&gt;46919     扬州     2003/05/18 17:56:10     小芳     MiniRobot~     回 删&lt;br /&gt;46918     你在哪里?     2003/05/18 17:55:54     MiniRobot~     小芳        删&lt;br /&gt;46917     真的？假的？我也是大一     2003/05/18 17:55:30     小芳     MiniRobot~     回 删&lt;br /&gt;46916     大一     2003/05/18 17:55:03     MiniRobot~     小芳        删&lt;br /&gt;46915     大几     2003/05/18 17:54:44     小芳     MiniRobot~     回 删&lt;br /&gt;46912     上海     2003/05/18 17:53:50     MiniRobot~     小芳        删&lt;br /&gt;46910     哪个交大？西安？上海？     2003/05/18 17:52:54     小芳     MiniRobot~     回 删&lt;br /&gt;46909     交大     2003/05/18 17:52:20     MiniRobot~     小芳        删&lt;br /&gt;46908     在哪儿读书？     2003/05/18 17:52:01     小芳     MiniRobot~     回 删&lt;br /&gt;46907     如假包换的学生     2003/05/18 17:51:37     MiniRobot~     小芳        删&lt;br /&gt;46906     呵呵，你不是学生？     2003/05/18 17:50:48     小芳     MiniRobot~     回 删&lt;br /&gt;46905     上网就上瘾     2003/05/18 17:50:25     MiniRobot~     小芳        删&lt;br /&gt;46904     怎么不回去吃饭？     2003/05/18 17:48:59     小芳     MiniRobot~     回 删&lt;br /&gt;46902     hehe,没吃呢     2003/05/18 17:48:39     MiniRobot~     小芳        删&lt;br /&gt;46901     吃了吗     2003/05/18 17:48:09     小芳     MiniRobot~     回 删&lt;br /&gt;46900     好呀     2003/05/18 17:47:48     MiniRobot~     小芳        删&lt;br /&gt;46899     好     2003/05/18 17:47:21     小芳     MiniRobot~     回 删&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;-----------------------------------&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;46865      z再见      2003/05/18 16:47:08      MiniRobot~      辣笔小欣         删&lt;br /&gt;46864     哈，不打搅你了，88     2003/05/18 16:46:43     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46863     当然了     2003/05/18 16:46:18     MiniRobot~     辣笔小欣        删&lt;br /&gt;46862     哈哈，没事，你在乎吗     2003/05/18 16:45:38     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46861     这样发信是要减积分     2003/05/18 16:45:12     MiniRobot~     辣笔小欣        删&lt;br /&gt;46860     哦哦，我要走了，下次聊     2003/05/18 16:44:52     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46859     哦哦     2003/05/18 16:44:12     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46858     现在不能用     2003/05/18 16:44:04     MiniRobot~     辣笔小欣        删&lt;br /&gt;46857     有QQ吗     2003/05/18 16:43:35     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46855     给个朋友发信     2003/05/18 16:40:22     MiniRobot~     辣笔小欣        删&lt;br /&gt;46854     你在干吗     2003/05/18 16:39:46     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46853     辣笔小欣添加了您为好友。(系统信息，2003/5/18)     2003/05/18 16:38:14     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46852     哦     2003/05/18 16:37:10     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46849     恩，够意思     2003/05/18 16:35:02     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46848     大家都是朋友了,不必客气,有事就找我     2003/05/18 16:34:42     MiniRobot~     辣笔小欣        删&lt;br /&gt;46847     哦 ，那以后多多关照呀，哈哈     2003/05/18 16:33:40     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46846     有几天没来,以前一直来     2003/05/18 16:33:11     MiniRobot~     辣笔小欣        删&lt;br /&gt;46845     哦，你经常来这吗     2003/05/18 16:32:29     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46844     我在上海     2003/05/18 16:32:06     MiniRobot~     辣笔小欣        删&lt;br /&gt;46843     泉州，你呢     2003/05/18 16:31:34     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46842     nizainali?     2003/05/18 16:31:15     MiniRobot~     辣笔小欣        删&lt;br /&gt;46841     好     2003/05/18 16:30:48     辣笔小欣     MiniRobot~     回 删&lt;br /&gt;46840     你好呀     2003/05/18 16:30:36     MiniRobot~     辣笔小欣        删&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;---------------------------------------------------------------------&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;42847      把QQ开了吗？      2003/05/02 21:16:15      MiniRobot~      雨中的女孩         删&lt;br /&gt;42845     呵呵，这次不行，下次给你怎么样     2003/05/02 21:15:38     MiniRobot~     水果        删&lt;br /&gt;42844     送我一个吧！     2003/05/02 21:15:02     水果     MiniRobot~     回 删&lt;br /&gt;42842     两个，呵呵     2003/05/02 21:14:36     MiniRobot~     水果        删&lt;br /&gt;42840     几个     2003/05/02 21:13:27     水果     MiniRobot~     回 删&lt;br /&gt;42839     我有     2003/05/02 21:13:12     MiniRobot~     水果        删&lt;br /&gt;42838     没有，你呢有吗？     2003/05/02 21:12:47     水果     MiniRobot~     回 删&lt;br /&gt;42837     你还在吧/     2003/05/02 21:12:43     MiniRobot~     雨中的女孩        删&lt;br /&gt;42836     你有QQ吗/     2003/05/02 21:12:17     MiniRobot~     水果        删&lt;br /&gt;42835     大大大大大大大大大大的对     2003/05/02 21:11:50     水果     MiniRobot~     回 删&lt;br /&gt;42833     哈，你们还能放好几天呢     2003/05/02 21:11:26     MiniRobot~     水果        删&lt;br /&gt;42831     不，明天不上，后天上。大后天；大大后天放。     2003/05/02 21:10:49     水果     MiniRobot~     回 删&lt;br /&gt;42830     你QQ呢？     2003/05/02 21:10:46     MiniRobot~     雨中的女孩        删&lt;br /&gt;42829     你这几天还上课吗？     2003/05/02 21:09:22     MiniRobot~     水果        删&lt;br /&gt;42827     我不知道这规定，我QQ:155183265     2003/05/02 21:08:49     MiniRobot~     雨中的女孩        删&lt;br /&gt;42825     是的     2003/05/02 21:07:54     水果     MiniRobot~     回 删&lt;br /&gt;42822     哦你有QQ吗在这个上面聊会扣积分的     2003/05/02 21:07:20     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42821     你经常上网吗/     2003/05/02 21:07:17     MiniRobot~     水果        删&lt;br /&gt;42820     我这一天也要忙一些呀     2003/05/02 21:06:59     MiniRobot~     雨中的女孩        删&lt;br /&gt;42816     不，初中     2003/05/02 21:05:55     水果     MiniRobot~     回 删&lt;br /&gt;42814     嘻嘻，你上高中吗？     2003/05/02 21:05:22     MiniRobot~     水果        删&lt;br /&gt;42812     是     2003/05/02 21:04:55     水果     MiniRobot~     回 删&lt;br /&gt;42810     哦我过两天     2003/05/02 21:04:42     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42809     我只过一天     2003/05/02 21:04:26     MiniRobot~     雨中的女孩        删&lt;br /&gt;42807     过啊     2003/05/02 21:04:06     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;&lt;br /&gt;42806      你是学生吧      2003/05/02 21:04:04      MiniRobot~      水果         删&lt;br /&gt;42803     家     2003/05/02 21:03:49     水果     MiniRobot~     回 删&lt;br /&gt;42802     你们过周末吗？     2003/05/02 21:03:45     MiniRobot~     雨中的女孩        删&lt;br /&gt;42800     确实     2003/05/02 21:03:12     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42796     哈哈，都一样郁闷     2003/05/02 21:02:36     MiniRobot~     雨中的女孩        删&lt;br /&gt;42795     你在哪里呢？     2003/05/02 21:02:33     MiniRobot~     水果        删&lt;br /&gt;42794     好     2003/05/02 21:02:12     水果     MiniRobot~     回 删&lt;br /&gt;42791     上课啊     2003/05/02 21:01:51     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42790     你好     2003/05/02 21:01:36     MiniRobot~     水果        删&lt;br /&gt;42786     你五一都干什么啦？     2003/05/02 21:00:41     MiniRobot~     雨中的女孩        删&lt;br /&gt;42779     是     2003/05/02 20:59:17     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42777     不过现在都挺紧的呀     2003/05/02 20:59:03     MiniRobot~     雨中的女孩        删&lt;br /&gt;42774     哦我们也是     2003/05/02 20:58:29     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42771     我们学校在郊区，没什么影响     2003/05/02 20:58:16     MiniRobot~     雨中的女孩        删&lt;br /&gt;42768     哦那边多的哦     2003/05/02 20:57:49     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42767     哦那边多的哦     2003/05/02 20:57:48     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42765     我在上海的     2003/05/02 20:57:33     MiniRobot~     雨中的女孩        删&lt;br /&gt;42764     嗯你是哪里的我还有一会儿就要下啦     2003/05/02 20:57:12     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42763     那你还好，希望不会再有     2003/05/02 20:56:47     MiniRobot~     雨中的女孩        删&lt;br /&gt;42760     没有     2003/05/02 20:56:16     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42759     常州现在非典怎么样？     2003/05/02 20:56:08     MiniRobot~     雨中的女孩        删&lt;br /&gt;42754     我在常州城建校     2003/05/02 20:55:31     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42753     你在哪里呢？     2003/05/02 20:55:20     MiniRobot~     雨中的女孩        删&lt;br /&gt;42750     我也差不多     2003/05/02 20:54:32     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42748     是的，是的.     2003/05/02 20:54:10     MiniRobot~     雨中的女孩        删&lt;br /&gt;42746     现在是大学生？     2003/05/02 20:53:54     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42744     去年是高中生     2003/05/02 20:53:42     MiniRobot~     雨中的女孩        删&lt;br /&gt;42743     在学校     2003/05/02 20:53:23     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42742     你是高中生     2003/05/02 20:53:18     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42741     你在哪里上网哪？     2003/05/02 20:53:09     MiniRobot~     雨中的女孩        删&lt;br /&gt;42738     我在学校呀，过几天学习就紧了     2003/05/02 20:52:35     MiniRobot~     雨中的女孩        删&lt;br /&gt;42736     哦那你现在是在网吧上网的吗？     2003/05/02 20:51:45     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42734     雨中的女孩添加了您为好友。(系统信息，2003/5/2)     2003/05/02 20:50:28     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42732     我在以后可能来的少了     2003/05/02 20:50:21     MiniRobot~     雨中的女孩        删&lt;br /&gt;42731     星期六星期天会常来的     2003/05/02 20:49:47     雨中的女孩     MiniRobot~     回 删&lt;br /&gt;42728     你还在吗?     2003/05/02 20:47:56     MiniRobot~     雨中的女孩        删&lt;br /&gt;42727     你常来吗？     2003/05/02 20:44:36     MiniRobot~     雨中的女孩        删&lt;div class=&quot;blogger-post-footer&quot;&gt;&lt;img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-115295472183129431?l=lltaichi.blogspot.com' alt='' /&gt;&lt;/div&gt;
 </content>
  </entry>
  

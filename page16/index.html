@@ -202,22 +202,6 @@
   
     
   
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
 
 
 
@@ -252,216 +236,6 @@
 
 
 
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/11/30/bash.html" title="通过bash脚本批量创建用户并设置密码" rel="bookmark">通过bash脚本批量创建用户并设置密码</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        Create Users And Change Passwords With A Bash Script<br>通过脚本批量创建用户并设置密码<p>First create a file which contains all the user name.<br>首先创建一个包还所有用户名的文件，格式如下：<br>------------------------<br>nurealam<br>nayeem<br>mrahman<br>farid<br>rubi<br>sankar<br>------------------------<br>Save the file as userlist.txt. Now create the following bash file:<br>把该文件保存为userlist.txt。现在创建如下的bash文件：<br>------------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>adduser $i<br>done<br>---------------------------<br>保存文件为useradd.sh。<br>运行该脚本文件：<br>--------------------<br>[lax@liulantao-com ~]# sh useradd.sh<br>---------------------<br>This will add all the users to the system. Now we have to change the<br>passwords. Let&#39;s say we want username123 as password. So for user<br>nayeem the password will be nayeem123, rubi123 for user rubi and so<br>on.----www.liulantao.com-----<br />结果是添加了所有用户名到系统中。现在必须修改密码了。假设我们用使用username123为密码。比如rubi的密码将是rubi123，依此类推。<br>Create another bash file as follows:<br>创建下面的脚本文件：<br>-------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>echo $i&quot;123&quot; | passwd –-stdin &quot;$i&quot;<br>echo; echo &quot;User $username&#39;s password changed!&quot;<br>done<br>--------------------<br>保存为userpasswd.sh。<br>-------------<br>[lax@liulantao-com ~]# sh userpasswd.sh<br>------------<br>Run the file. All the passwords are changed.<br>运行该文件。所有的密码被修改<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>转载本网站文章请保留这一行和以上所有文字，谢谢。<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7596269751548084725?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/11/30/bash.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-11-30 00:00:00 +0800">30 Nov 2007</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/11/25/blog-post.html" title="国立北京师范大学校歌" rel="bookmark">国立北京师范大学校歌</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        前年社团文化节开幕式的时候合唱了这首歌，歌词和配的曲子，让人感觉很有历史责任感。<br>闲话不多说，歌词奉上：<p>------------------------------<br>国立北京师范大学校歌<br>范源廉 作歌<br>冯孝思 作曲<br>------------------------------<p>往者文化世所荣<br>将来事业更无穷<br>开来继往 师道贯其中<br>师道 师道 谁兴立<br>责无旁贷在藐躬<p>皇皇兮首都<br>巍巍兮学府<br>一堂相聚志相同<br>朝研夕讨乐融融<br>宏我教化<br>昌我民治<br>共矢此愿务成功<p>------------------------------------------------------------<br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<p>---------- 转载本网站所有文章，请注明出处 ---------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4762123815007214058?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/11/25/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-11-25 00:00:00 +0800">25 Nov 2007</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/11/13/fluxbox_13.html" title="fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案" rel="bookmark">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <div xmlns='http://www.w3.org/1999/xhtml'>关于如何设置菜单，请参考网络上其他朋友的文档。<br/>本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。<br/><br/>一、请确认你安装了中文的字体。<br/>方法1、<br/>首先在终端运行fc-list命令：<br/><br/>[lax@liulantao .fluxbox]$ fc-list<br/><br/>从中找到支持中文的字体，记下字体名字：<br/><br/>AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium<br/>AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular<br/><br/>本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。<br/>如果要使用其它字体，替换成相应的名称。<br/>方法2、<br/>打开firefox，点击View - &amp;gt; Preferences -&amp;gt; Content ，看Default font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。<br/><br/>二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：<br/><blockquote>[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation<br/>Password: ******</blockquote><br/><br/>找到：<br/><br/><blockquote>window.font: lucidasans-10<br/>window.justify: right</blockquote><br/><br/>注释掉window.font行，修改为：<br/><br/><blockquote>#window.font: lucidasans-10<br/>window.font: AR PL ZenKai Uni-10<br/>window.justify: right</blockquote><br/><br/>保存退出，reload config就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。<br/><br/>设置其它位置的字体，可以修改相应的font。<br/><br/><br/><br/>Technorati Tags: <a rel='tag' href='http://technorati.com/tag/linux%20fluxbox%20%E4%B8%AD%E6%96%87%20%E5%AD%97%E4%BD%93%20%E6%98%BE%E7%A4%BA%20%E6%96%87%E9%BC%8E%20fc-list' class='performancingtags'>linux fluxbox 中文 字体 显示 文鼎 fc-list</a><br/><br/><p class='poweredbyperformancing'>Powered by <a href='http://scribefire.com/'>ScribeFire</a>.</p></div><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6403968958837271573?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/11/13/fluxbox_13.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/11/13/fluxbox.html" title="fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案" rel="bookmark">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        关于如何设置菜单，请参考网络上其他朋友的文档。<br>本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。<p>一、请确认你安装了中文的字体。<br>方法1、<br>首先在终端运行fc-list命令：<br>&lt;code&gt;<br>[lax@liulantao .fluxbox]$ fc-list<br>&lt;/code&gt;<br>从中找到支持中文的字体，记下字体名字：<br>&lt;code&gt;<br>AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium<br>AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular<br>&lt;/code&gt;<br>本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。<br>如果要使用其它字体，替换成相应的名称。<br>方法2、<br>打开firefox，点击View - &amp;gt; Preferences -&amp;gt; Content ，看Default<br>font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。<p>二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：<br>[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation<br>Password:  ******<p>找到下面一行：<br>&lt;code&gt;<br>window.font:                    lucidasans-10<br>&lt;/code&gt;<br>注释掉window.font行，修改为：<br>&lt;code&gt;<br>#window.font:                    lucidasans-10<br>window.font:                    AR PL ZenKai Uni-10<br>&lt;/code&gt;<p>保存退出，reload config或者重新启动fluxbox就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。<p>设置其它位置的字体，可以修改相应的font。<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2941371565744535162?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/11/13/fluxbox.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/11/13/fedora-8.html" title="fedora 8 声音问题解决方案" rel="bookmark">fedora 8 声音问题解决方案</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        fedora 8 声音问题解决方案<p>症状：<br>1、通过system-config-soundcard测试，可以正确识别声卡。<br>2、普通用户无法调节音量，无法播放声音文件。<p>解决方法：<p>[lax@liulantao ~]$ sudo less /etc/security/console.perms.d/50-default.perms<br>Password:<p>添加以下内容<p>    #lax defined<br>    #lax defined<br>    &lt;laxaudio&gt;=/dev/dsp* /dev/snd/*<br>    &lt;console&gt; 0666 &lt;laxaudio&gt; 0600 root<p>重启系统，ok。<p>参考文章：<a href="http://home.nyc.rr.com/computertaijutsu/rhsound.html">http://home.nyc.rr.com/computertaijutsu/rhsound.html</a><p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-595768438268884869?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/11/13/fedora-8.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/11/06/c_06.html" title="计算两个整数最大公约数和最小公倍数的算法：C++语言实现" rel="bookmark">计算两个整数最大公约数和最小公倍数的算法：C++语言实现</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        计算两个整数最大公约数和最小公倍数的算法：C++语言实现<p>#include &lt;iostream&gt;<br>using namespace std;<br>int gcd(int a, int b) //最大公约数<br>{<br> while(a!=b)<br> { a&gt;b ? a -= a/b * b : b -= b/a * a; }<br> return a;<br>}<br>int lcm(int a, int b) //最小公倍数<br>{<br> return a * b / gcd(a,b);<br>}<br>int main()<br>{<br>int x, y;<br>cout &lt;&lt; &quot;请输入两个正整数：&quot; &lt;&lt;endl;<br>cin &gt;&gt; x &gt;&gt; y;<br>cout &lt;&lt; &quot;最大公约数： &quot; &lt;&lt; gcd(x,y) &lt;&lt; &quot; ； 最小公倍数： &quot; &lt;&lt; lcm(x,y) &lt;&lt; endl;<br>return 0;<br>}<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5986079122463533873?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/11/06/c_06.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-11-06 00:00:00 +0800">06 Nov 2007</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
@@ -517,6 +291,216 @@
       <div class="span3">
         <span class="date full-date">
           <abbr class="published" title="2007-10-08 00:00:00 +0800">08 Oct 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/10/07/blog-post.html" title="==云是风的音符==" rel="bookmark">==云是风的音符==</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <span style="font-weight:bold;">==云是风的音符==</span><br /><br /><br /><br />秋高云凉，衣服也薄了。上铺兄弟专门跑回来加了件厚厚的棉衣。<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-747163.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-747152.jpg" alt="" border="0" /></a><br /><br />远去了时代和远去着的人<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-701712.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-701697.jpg" alt="" border="0" /></a><br /><br />忙碌的清晨还是悠闲的清晨？这时候几个老人在聊着家常，走路锻炼<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-707473.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-707468.jpg" alt="" border="0" /></a><br /><br />大学校园里最安静的一刻<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-746856.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-746844.jpg" alt="" border="0" /></a><br /><br />不管我们愿不愿意，这缕阳光照进了我们的大学<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-723538.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-723527.jpg" alt="" border="0" /></a><br /><br />～～～我家兔子向大家问好了，呵呵～～～<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-770104.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer;" src="http://www.liulantao.com/blogs/liulantao/uploaded_images/file-770097.jpg" alt="" border="0" /></a><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2520190442712440835?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/10/07/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-10-07 00:00:00 +0800">07 Oct 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/09/05/2008_05.html" title="课程表2007-2008-第一学期" rel="bookmark">课程表2007-2008-第一学期</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/images/quote/lax_course_07-08.1.jpg"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 320px;" src="http://www.liulantao.com/images/quote/lax_course_07-08.1.jpg" alt="" border="0" /></a><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3445871259352950282?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/09/05/2008_05.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-09-05 00:00:00 +0800">05 Sep 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/08/10/blog-post.html" title="北美留学的奖学金选择" rel="bookmark">北美留学的奖学金选择</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        北美留学的奖学金选择<br>       作者简介：王少华，上海新东方SAT基础词汇、GRE词汇、GMAT语法主讲教师，2004年度集团优秀教师。浙江大学工学学士，管理学硕士。对单词的记忆有深入的研究。曾获GRE满分2400分，GMAT考试770分。<p><br>      这两年随着赴美留学的签证回暖，越来越多的莘莘学子们把美国重新作为他们留学的第一选择。这与去美国留学的诸多优势是紧密相关的：美国有着世界上最好的大学；美国的教学设施最为先进，教授最为优秀；世界上最好的企业大部分总部都在美国，从美国的研究生院毕业之后可以留下来工作，而且美国有着世界上极为公平的竞争体系；而除了这些之外，还有一个不可忽视的很重要的原因：美国大学所给的奖学金无疑是世界上最为丰厚的。在这里我们就想给大家介绍一下去美国留学你可以获得哪些金融上的资助。<p>          首先从大方向来看，去美国可以获得的financial aid可以分为三种。第一种叫做non-service<br>scholarship, 顾名思义这种奖学金是不需要干活就能够拿钱的，因此它无疑应该作为大家的第一选择。这种奖学金又可以细分为以下三类。第一类叫做fellowship，它是真正意义上的全奖，很多著名大学的fellowship可以高达一年四到五万美元，其中两到三万美元帮你自动交学费，还有两到三万美元发给你当生活费。所以如果申请到这种奖学金的话，基本上经济方面就没有问题了。五年博士读下来，不仅自己不需要花一分钱，而且如果你花钱不是很厉害的话，还可以攒下相当可观数目的一笔钱。但就是因为这种钱最好，所以它也最难拿。基本上中国学生出国拿到fellowship的比例是很低的，因为这种奖学金基本上都是按校来评定而不是按系来评定的，比方说学校获得了一笔基金fund，他就把全校最为优秀的学生给找出来，把这笔钱发给他们，所以和你竞争的是整个学校的学生，获得的难度就会比较大，但是大家一定要力争拿这种奖学金。第二类不需要提供服务就能够拿钱的奖学金叫做scholarship，这种钱一般是机构或者企业所给的，数量不会很多。其实我们在读本科时也经常可以遇到这种奖学金，比如说象花旗银行奖学金，宝洁奖学金，INTEL奖学金等，钱的数额都是不高的，仅凭这些钱很难完成在美国的学业。但是没有人会嫌钱少，所以这种奖学金大家也应该争取获得。在每类奖学金的前面都有一个方框，大家可以看到框就打勾。有些同学会害怕如果这种奖学金也打勾了说明自己比较容易被满足，学校就直接给自己scholarship而不给fellowship了，其实不然。因为美国的奖学金都是按一档一档来评定的，首先教授把所有申请fellowship的同学分在一类，把里面最优秀的同学选出来，发给他们fellowship，然后再把没有获得fellowship的同学调到下一挡，选择获取scholarship，所以大家应该每个框都打勾，每种奖学金都应该争取。第三类叫做<br>tuition waver，也就是把你的学费给免掉，一般来说在美国留学的主要支出就是学费和生活费，而这两项在数额上一般是对半开的。由于一年的学费一般需要两万到三万美元，因此获得这种奖学金也可以节省一笔不小的开支。<p>      第二种大方向叫做service-assistantship，这种奖学金就需要干活了。它又可以细分为两类，一个叫做TA也就是teaching<br>assistantship助教，另外一个叫做 RA也就是 research assistantship助研。TA一般比较轻松一点,<br>中国学生拿的比例不高, 因为它对口语的要求比较高。一般来说TA经常要教的一门课是calculus,<br>所以数学好的同学在这方面会占有一定的优势。当然如果你不能教calculus的话，批批本子或者监督一下考试也是可以算TA的。想要拿TA的同学要注意的是如果你参加老托福考试最好再去参加一个TSE考试来证明自己的口语能力，如果参加新托福考试的话尽量把口语的单项成绩考得高一点，这样会对申请TA有很大的帮助。RA的话就比较辛苦了，经常一周要干四十多个小时的活，而且给的钱从单位小时数目来看就并不是很多。如果从将来发展的角度来看，两种奖学金就各有优劣了。首先拿RA来讲，它的优点是可以尽早进实验室，这样对以后写论文会很有好处，而缺点在于拿这种钱的话在研一就把导师给定好了，以后如果发现这个老师不是很适合自己的话就比较难以更换。而TA的优缺点恰好相反，由于第一年是不进实验室的，因此可以在研一先观望一年，看看哪个导师在学术上有较大的发展空间，或者哪个导师对中国学生相对不错，以后在选导师可以选他，然而就是因为晚进实验室，因此对于研究能力的提高没有好处。从钱的总数来看TA和RA<br>的数量则是差不多的，而且这两种奖学金你只能拿一个，是不可能两个都拿的。一般来说TA和RA任拿一个再加上tuition<br>waver在数额上就等于fellowship了，因为tuition<br>waver把学费给免了，TA和RA则解决生活费。一般来说中国学生所讲的全奖其实在很大比例上都是TA和RA加上tuition<br>waver，因为fellowship是非常难拿的。此外申请TA和RA的同学都要好好准备interview，因为现在给interview的机会越来越多了，一般来说理科生不大要求interview，因为比较好申请，只要GPA够高，GRE和TOEFL成绩还可以，就直接给奖学金了，但工科，商科和文科的同学经常会要求interview。具体说来interview可以分为两类，一类叫做face<br>to face, 也就是面对面直接进行面试，这种面试里教授会直接从美国飞过来，在北京或者上海这种城市里选择一个宾馆住下来，让大家过去面试。而第二种则是<br>telephone用电话进行面试，考虑到成本的原因这种面试现在占了较大的比例。大家在申请后对于教授经常会问的常见的问题要做好准备，以便教授突然从美国打来电话面试时可以做到有备而答。<p>          第三个方向叫做loan也就是贷款，一般来说申请普通的研究生院是很难申请这种贷款的，它比较适合于申请读MBA或者法学院的学生。其实MBA也不是一定没有奖学金，如果是排名TOP<br>10的学校当然没什么奖学金了，去这些学校读书都是进行一项投资，以后出来是可以获得高薪的，美国人不可能让你有这么好的事情，一方面又给你奖学金，一方面又让你出来以后轻松赚大钱。但如果是排名三十名之后的学校尤其是一些州立大学也可以申请到奖学金。但是MBA的奖学金一般只是提供tuition<br>waver也就是把学费给免掉，生活费还是得自己承担，大概两年会需要四到五万美元。对于申请美国最好的商学院和法学院的同学一般都可以考虑贷款，因为只要你申请到这些学校了，贷款的可能性是很大的，这些牛校对自己的学生很有信心，觉得从自己学校毕业出来的学生以后都会是一些成功人士，所以还清贷款是没有问题的。而且一般贷款的还款期限也比较长，许多学校都高达十年二十年，导致毕业后每年只需要还一到两万美元，对于从这些大学毕业的商科和法律的学生是绝对能够承担的，所以大家可以力争多获得一些贷款。<p>          介绍完奖学金的种类后我们再看看其他一些相关的东西。大家要注意拿奖学金的难易程度和所申请的专业也有很大的关系。一般来说商科的很多专业都是很难申请到奖学金的，比如说Financial<br>engineering, accounting,<br>marketing都很难拿到奖学金，而理工科的同学比如象数学系，物理系和化学系的同学只要GPA够高，GRE和TOEFL成绩还可以，都有拿<br>fellowship的希望。经济类很难申请，这几年去美国牛校的人不多，包括北大的经济研究中心，清华和复旦的经济系这几年的申请情况都不容乐观，但只要你各方面够优秀，申请成功以后拿奖学金的比例还是挺高的。拿文科来讲，fellowship的难度是比较大的，当然要看你具体申请什么方向，比如申请传媒难度就比较大，这个专业基本上很少给fellowship，但这两年的RA有增多的趋势，因此有兴趣的同学可以朝这个方向予以更多的关注。而文科里面一些比较冷门的专业比如东亚研究或者社会学拿全奖的可能性就大多了，但出来后工作情况就要差一点。其实对于不同专业拿奖学金在难易程度上有很大区别大家也要有正确的认识，同学们完全不要因为进了个好拿奖的专业就沾沾自喜，也不要因为自己进了个很难拿奖的专业就怨天尤人。其实大家可以反过来考虑这个问题，为什么有些专业不给奖学金呢，因为它是热门专业，美国人也很喜欢读，出来后工作好找而且年薪很高，读这种专业是当作一种投资的，它自然就不给你奖学金了。而为什么还有些专业提供丰富的奖学金呢，因为这些专业出来后不大好找工作，或者读的难度太大，美国人也不大爱读，这才会提供奖学金来吸引海外学生过去读。想通了这一点大家在申请奖学金时的心态就会比较平和了。<p>          此外申请奖学金的时间也有一定的讲究。由于美国绝大部分大学的deadline可以分为三档，也就是十二月一日，一月十五日和二月十五日，所以中国同学一般在十一月初和十二月底之间需要把材料寄出，而拿录取通知书的时间一直要到第二年的三月以及五月，因此从寄材料开始到拿入学通知书当中会有整整六个月，这六个月大家千万不要停止申请工作，还是有很多方法可以帮你拿奖学金的。比如大四的同学可以多去找一些本系的教授，看看自己能不能帮他们做一些项目，或者结合自己的毕业论文好好做一些研究方面的工作，力争可以在核心期刊上发表一篇英文的paper,<br>如果有一篇paper在手或者研究方面有什么比较重大的进展的话，就马上可以和对方学校的教授获得联系，给他展示成果了。因为真正的最后一批录取通知书要到五月份才发，所以在你的不懈努力之下当中发生什么事情都是有可能的。比如教授在十二月份原来打算给你个四分之一奖的，但是后来在三月份看了你最新的研究进展之后，就马上改变了对你的看法，转而决定给你fellowship了，又或者原来是准备仅仅给你录取通知书而不给你奖学金的，但看到你的努力之后给你一个RA了，这种情况都是屡见不鲜的，所以大家在申请的后期千万不要放弃对于奖学金的执着追求。<p>          这几年美国给奖学金的比例呈现出递级增加的趋势，而且签证的通过率也已大幅度增加。大家可以抓住这难得的时机，结合自己的实际情况，选择奖学金去美国进行深造<p>-- <br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8665708038848459186?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/08/10/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-08-10 00:00:00 +0800">10 Aug 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/07/18/blog-post_18.html" title="如果天天都是那个家伙的生日？" rel="bookmark">如果天天都是那个家伙的生日？</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        那个家伙的生日。<br />(2007.7.18)<p>自己生日都会想不起来，还要大家提醒，真崇拜自己，干脆塑个像回家对自己烧香好了。<br />与蚊子亲吻了一夜，没睡觉。于是大早晨特有精神，5点半冲到京师广场赏荷花。荷花也有盛开的，粉嘟嘟煞是好看。心中暗自琢磨要是小姑娘也在学校，一起赏荷花的意境又将如何。真是可惜了无此佳人陪伴，同去的宿舍哥们显然让花仙子们失望了，于是一盆盆全是无精打采，叶黄体瘦，叶顶娇滴滴的水珠也不见踪影，真干涩又无聊一群伙伴们。<br />这几天的怪天气，让人受不了，于是受我等轻蔑言论几旬之后，老天突然一个<br />响雷，然后又一个响雷，接着又一个响雷……如此几番，伴随着弱弱的闪电，让人脸面一凉脚面一凉心底也一凉的水珠就砸了下来。<br />小学起老师就教导我们不要在大树底下避雨，可是到现在仍琢磨不透其中的道理。几番思想斗争之后终于决定换个地方，冲向了主楼下。<br />雨中漫步的浪漫，在主楼下的天棚下被演绎着。爷爷奶奶叔叔阿姨们在这里，慢慢绕着圈子走──外面下着雨，这边漫着步。<br />等到了开饭时间，雨还在下；再等等，还是没看出雨小一点儿的迹象；讨论一下，决定冒雨冲回去。<br />于是俩傻瓜终于证明自己想法的幼稚，在主楼到教九的正中央屈服了。只好硬着头皮到教九前面，陪一个早起读书的美女坐着。<br />无奈懒桃儿哥哥的色心此刻丢在了某盆荷花里，而赏雨雅兴又大发。于是乎，看着眼前几棵树参天，烟蒙蒙雾蒙蒙中，如同静谧的森林深处。其时天仍黑，躲过枝头叶间，可以看到灰白的天空。片片梧桐叶，飞临草地间，栖身小道上。<br />过了一会儿教九开门，进去坐坐。感慨的这学期结束了第一次起大早亲近教室，寻找坐在第一排的感觉。想到将来，考虑学业，回家还是出国，或者随大家一起去考研，都已不是久远的事情了。<br />最后还是等雨歇时刻未至，不耐烦冲回来，完成了这半年或者一年唯一一次宿舍集体早餐。一觉醒来，凉风如斯，家还要回？</p><p>--<br />EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br />WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br />------</p><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5378801319659678795?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/07/18/blog-post_18.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-07-18 00:00:00 +0800">18 Jul 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/07/09/blog-post.html" title="再见烟雨风" rel="bookmark">再见烟雨风</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        夏天，跑到有水有林子的地方，于是发现了路旁的紫竹院。<br>大地炙烤着天空，竹林无风之时，仅差半丝的清凉，不可谓非遗憾也。<br>处处可闻古琴声音，偶尔可见小伙子汉服折扇，儒雅气质。<br>池塘中已漫是芙蓉，却不及西湖&quot;曲苑风荷&quot;处荷香与酒香飘逸令人沉醉。<br>坐在湖沿斜坡的草地上，用手敲开来时从立交桥下买到的小西瓜，甜入舌根，浸入喉咙，渗透每一片仍有感觉的身体。<p>从另一个门出来时，见到有卖莲子的，买几个回来路上吃。原以为莲蓬之中是乳状甜汁液，&quot;莲子&quot;之&#39;子&#39;如&quot;西子&quot;之&#39;子&#39;意同。今天看见莲蓬里蜂巢般夹着若干长圆的粒籽，才发觉其名字已失去了那份浪漫。不过说实话，味道还算不错。<br>在中国，荷花有着丰富的含义。首先，荷花一向被人们视为圣洁的象征。荷花与佛教有着千丝万缕的关系，比如，在西双版纳，傣族全民信仰南传上座部佛教，几乎每个村寨里都有佛教寺院，荷花被佛教寺院定为&quot;五树六花&quot;（即佛经中规定寺院里必须种植的五种树，六种花。）之一，广泛种植。其次，荷花也被人们当作美丽的化身，唐朝大诗人白居易就曾用&quot;芙蓉如面柳如眉，对此如何不泪垂。&quot;来形容中国古代四大美女之一杨玉环的容貌。&quot;出水芙蓉&quot;一词则直到今天都还被人们用来形容国色天香、倾国倾城的绝代佳人。最后，荷花还被人们用来比拟品行高洁，正直谦虚的君子，所以荷花也有&quot;花中君子&quot;的别名。<br>《诗经&#183;郑风》中写道：&quot;隰有荷花&quot;。南朝《西洲曲》中写道：&quot;采莲南塘秋，莲花过人头；低头弄莲子，莲子清如水。&quot;南唐中主、著名词人李璟《浣溪沙》中写道：&quot;菡萏香销翠叶残，西风愁起绿波间。&quot;唐朝大诗人杨万里曾有诗云：&quot;毕竟西湖六月中，风光不与四时同；接天连叶无穷碧，映日荷花别样红。&quot;、&quot;小荷才露尖尖角，早有蜻蜓立上头。&quot;宋代大学者、理学创始人周敦颐《爱莲说》中写道：&quot;予独爱莲之出淤泥面不染，濯清涟而不妖，中通外直，不蔓不枝，香远益清，亭亭净植，可远观而不可亵玩焉！&quot;。&quot;莲，花之君子者也。……莲之爱，同予者何人？&quot;宋代著名女词人李清照《一剪梅》中写道：&quot;红藕香残玉簟秋，轻解罗衫，独上兰舟。&quot;<p>趁着天未黑回到学校，屁股生根之前，窗外风起，行人疾走。凉气袭来，不久雨就下来了。<p><br>-- <br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3932127091930033962?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/07/09/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-07-09 00:00:00 +0800">09 Jul 2007</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
+      <a href="/2007/06/27/blog-post_27.html" title="自由软件的法律保护" rel="bookmark">自由软件的法律保护</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <DIV><FONT face=Verdana><FONT size=2>自由软件的法律保护<BR>刘兰涛   北京师范大学计算机科学技术</FONT></FONT></DIV>  <DIV>&nbsp;</DIV>  <DIV><FONT face=Verdana><FONT   size=2>软件按授权方式可分为商业软件、公共软件、共享软件和自由软件。"自由软件"是相对于商业软件和共享软件的另外一种类型的软件，其最大特征就是版权人在保留软件版权的同时，将软件程序源代码通过作出"通用公共许可"（General   Public   License）的方式全部公开，并且赋予用户运行、复制、扩散、修改完善等权利。因此，自由软件又被称为"开放源代码软件"。自由软件采取与商业软件不同的自由开放的开发和盈利模式，同时由于"通用公共许可"等协议保护的引入也使得自由软件的法律保护方式相异于传统的软件版权保护模式，而且在探寻自由软件法律保护之路时衍生出诸如"copyleft"这样法律概念，这些都给传统的版权法带来很大的冲击。</FONT></FONT></DIV>  <DIV>&nbsp;</DIV>  <DIV><FONT face=Verdana><FONT size=2>最先提出自由软件（free software）的是MIT的Richard   Stallman。1984年， Richard Stallman创立开源软件项目GNU，不久后他倡导成立了Free Software Foundation   (FSF)。FSF自由软件基金会致力于消除对计算机软件在复制、分发、理解和修改方面的限制，并通过在所有计算机领域中开发和使用自由软件来实现这一目标。Richard   Stallman意识到，自由（free）的实现必须要靠现有的法律制度的支持，既然商业软件可以用版权来夺走用户的自由，那也可以用版权来保卫用户的自由。因此，他起草了GNU通用公共协议证书（GNU   GPL，简称为GPL）。1989年， GNU General Public License   (GPL）发布并创造性地提出了"反版权"（Copyleft）的概念。在Richard   Stallman看来，自由软件是全人类共同的财富，应该自由传播。自由软件的"自由"并非指其在价格上是免费的，而是指用户运行、复制、研究、改进及分发软件的自由。Richard   Stallman在其著述中写道，"自由"包括四个层次：使用该软件的自由；研究程序运行机制，并根据使用者的需要修改它的自由；重新分发拷贝，以使其他人能够共享软件的自由；改进程序，为使他人受益而散发它的自由。如果软件的使用者具有上述四种权利，则该软件可以被称为"自由软件"。如果使用者无须当面授权或是支付任何的许可费用就能从事这些行为，就表示他拥有自由软件所赋予的自由权利。而这种"自由"使得自由软件具有与其他种类的软件所不同的特性，从技术方面讲，任何人都可以参与到自由软件的开发设计之中；从法律方面讲，任何人都可以因参与了自由软件的开发而对自己所创新的部分拥有一定的权利。开放源代码运动的主要理论家之一Eric   Steven   Raymond曾把商业软件和自由软件比喻成"大教堂"和"集市"，商业软件的开发如同建设大教堂，它是由一群特定的人在预定时间内按计划完成的，建成后其所有权也是归特定的人所有；而自由软件却像一个集市，接受任何人的建议和作品，并加以智能化管理，"集市"的发展不受预先计划的约束，而且任何参与者都享有平等的权利，在此过程中软件的原始版权人或管理人并不会基于软件版权而要求使用者支付费用，而只是向其收取一定的软件管理分发费用。可见，与商业软件比较自由软件除了使用等方面的"自由"外，还有个特征就是其开发及盈利模式的开放性。</FONT></FONT></DIV>  <DIV>&nbsp;</DIV>  <DIV><FONT face=Verdana><FONT   size=2>下面分析GPL的主要内容<BR>GPL共分为三个部分：导言，具体条款部分以及使用说明与示例部分。<BR>一、导言。导言部分规定了GPL的宗旨，自由软件的"自由"之含义，自由软件用户的权利和责任，GPL保护用户权利的两条基本措施、关于自由软件没有担保的声明以及对软件专利的鲜明态度。序言部分的开头就明确规定了GPL的宗旨："大多数软件许可证的决意在于剥夺你共享和修改软件的自由。对比之下，GNU通用公共许可证力图保证你共享和修改自由软件的自由――保证自由软件对所有用户都是自由的。"GPL指出，自由软件的自由与价格无关。GPL确保用户有自由地发布、获取源代码、修改、将其部分软件用于生成新的自由软件的自由，而且确保用户知道自己拥有这些权利。导言部分提出了自由软件总的责任义务：禁止任何人剥夺或要求放弃上述自由权利。但如果用户修改了自由软件或发布了软件的拷贝，则GPL的规定就转化为其责任。实际上，用户的责任就是：必须将其对自由软件的一切权利给予其接受者，并且应确保他们能得到软件的源程序，同时也应告之他们拥有这些权利。这完全不同于传统版权的权利只归版权人独享的原则。然后GPL采取两项措施来保护自由软件用户的权利：1、用版权来保护自由软件；2、向用户提供许可证，赋予其复制、发布和修改软件的法律许可。另外，由于自由软件开发维护的开放性，GPL不得不采取谨慎的自我保护措施，其导言声明了不对软件的应用后果提供担保。为了防止他人将自由软件的修改版本申请专利后私有化，GPL导言部分最后特别规定："任何专利必须以允许每个人自由使用为前提，否则就不准许有专利。"<BR>二、有关自由软件的复制、发行和修改等具体条款规定部分。具体条款规定部分共13条。分别对GPL的适用对象和范围（第0款）、简要的使用方法（第1款）、程序的修改（第2款）、源代码开放（第3款）、警告性规定（第4、5款）、GPL自动生效和不能修改（第6款）、GPL与其它法律冲突时的解决方法（第7款）、在不同国家的发布和使用问题（第8款）、新版本问题（第9款）、与遵循其它许可证的软件的结合问题（第10款）、没有担保的声明（第   11、12款）等方面进行了完整、严密的规定。通过GPL条款的规定，自由软件的自由性质得以保持，且其在时间上得以延续，在空间上不断扩大范围，从而达到自由软件运动的最终目的：让所有的软件都成为自由软件。GPL又注意到了自由软件所处的与商业软件等私有软件共存的环境，灵活地处理与不同类型软件的相互关系，各条款在保持和扩展自由软件的自由性质的同时，也注意把自由性质拓展到其它类型的软件。<BR>三、使用说明与示例部分。GPL的最后是其使用说明与示例部分，该部分是一个在多种情况下使用GPL的示例样本。其示例样本的开头和结尾有一个有趣的对比：在示例样本的开头，照例要求注明"版权所有"的声明，但在结尾部分却建议"如有需要，您亦应取得您的雇主（若您的工作为程序设计师）或学校就本程序所签署的《版权放弃承�书》。"</FONT></FONT></DIV>  <DIV>&nbsp;</DIV>  <DIV><FONT face=Verdana><FONT   size=2>从这些内容可以看出，GPL的产生使得自由软件的法律保护异于商业软件所采取的传统版权保护模式。其不同主要体现在以下几个方面：<BR>（1）软件版权人的确定。自由软件的原始开发者是它的版权人，一般他们也就是原始许可证颁发者。自由软件的开发过程是一个集体参与并不断延续的过程，那么后续开发者是否对其所创造的衍生作品享有版权呢？依据传统版权法的观点，后续开发者对其独立开发的部分享有版权，而且该权利是专属于他个人的。但按照GPL的规定，衍生作品的作者对作品享有版权，只是当他重新发布衍生作品时，就将权利让渡于许可证的原始发行人，而衍生作品的用户，就视为从原始许可证颁发者处获得复制、再发行和修改作品的权利。</FONT></FONT></DIV>  <DIV>&nbsp;</DIV>  <DIV><FONT face=Verdana><FONT size=2>（2）精神权利。自由软件的诞生缘起于其创立者Richard   Stallman等人对"自由的信息共享"的理想之向往，他们反对把软件作为营利的商业化工具，而更看重开发软件并与人分享成果所带来的精神愉悦。所以说，自由软件版权的精神权利就显得比其财产权利更重要。这方面又成为自由软件与商业软件法律保护最大的不同。首先，作者的发表权受到一定的限制。根据GPL规定，软件作者只要接受GPL，就必须要以自由软件的方式发表，公开软件源代码，遵守GPL的相关规定。而且软件作者决定将自己的程序以自由软件的形式发表的意思表示必须是明示的。与之不同，传统的版权法赋予版权人有绝对自由决定是否发表其作品以及用何种方式发表。其次，关于署名权，GPL规定它不但是一项权利也是一项义务，GPL要求修改者在修改时署名并注明修改日期，以免修改后的软件功能拙劣而对原始作品的声誉造成不良影响，以确保不损害原始作者的名誉。最后，GPL拓宽了软件修改权的权利主体范围，使其不再归软件版权人一人所独享。任何得到程序源代码的人都可以对自由软件进行修改，并可以在修改后的软件上署名。而传统版权法把修改权限制在版权人手里。GPL   的做法实际上激发了大众参与软件创作的热情，也就更利于软件技术的发展。<BR>（3）财产权利。对于自由软件的财产权利，GPL规定任何人都不能独占。传统的版权制度赋予版权人在一定时间内排他地享有各种专有权利，他人使用都必须经过版权人的同意。而GPL允许任何人使用自由软件，版权人无权拒绝，将软件使用收益的权利转交给用户。GPL鼓励对自由软件进行传播，让更多的人能够分享   ，因为它规定用户对修改后的软件有传播的义务。但从GPL的条款来看，自由软件的原版权人的财产权利并没有完全丧失，只是受到了限制。</FONT></FONT></DIV>  <DIV>&nbsp;</DIV>  <DIV><FONT face=Verdana><FONT   size=2>结语：自由软件及GPL为软件业提供了新的发展形态，对于促进软件产业发展起到了积极的作用。而软件业的发展又将产生新的问题，如何让用户在自由软件和商业软件的竞争中获益，必将成为软件产业探讨的下一个话题。<BR></FONT></DIV>  <DIV><FONT size=2></FONT>&nbsp;</DIV>  <DIV align=left><FONT size=2>  <HR style="WIDTH: 122px; HEIGHT: 2px" SIZE=2>  </FONT></DIV>  <DIV><FONT color=#c0c0c0><FONT size=2>刘兰涛 <A   href="http://www.liulantao.com/">http://www.liulantao.com/</A></FONT></DIV>  <DIV><FONT size=2>2007-06-27</FONT></FONT></DIV></FONT><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6575330186966157567?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2007/06/27/blog-post_27.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2007-06-27 00:00:00 +0800">27 Jun 2007</abbr>
         </span>
         
         <span>
@@ -712,30 +696,6 @@
     
     <li class="page">
       <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page30">30</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page31">31</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page32">32</a>
     </li>
     
   
