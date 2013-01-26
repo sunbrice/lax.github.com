@@ -34,7 +34,7 @@
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="/">Lax's Blog</a>
+          <a class="brand" href="/">Linux科学俱乐部</a>
           <ul class="nav">
             
             
@@ -62,6 +62,8 @@
       	<li><a href="/categories.html">Categories</a></li>
       	
       
+    
+  
     
   
     
@@ -110,98 +112,6 @@
   
     
   
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
 
 
 
@@ -216,776 +126,10 @@
       <div class="content">
         
 
-<!-- Pagination links -->
-
-  <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page3">Next &rarr;</a>
-  </li>
-
-</ul>
-
-
-
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/Linux/2012/10/22/squid-ulimit-n.html" title="ulimit -n的重要性" rel="bookmark">ulimit -n的重要性</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        
-<p>最近发现有几个squid实例的稳定性成问题，对比了环境设置，分析了几个可能的因素。</p>
-
-<p>1    由于squid前使用了nginx，为了减少连接开销，开启了keepalive连接。keepalive机制存在一些问题，如客户端不停止发送请求，nginx不会中止与后端服务的连接，这将造成squid的访问压力无法在短时间内调整。不过分析了这个情形，问题不全在这里。</p>
-
-<p>2    发现连接数的最高值稳定在2000左右。看到这个数字，寻思会不会与连接数限制有关。曾经遇到过memcached由于默认1024个连接数用完而不提供服务的现象，吞吐率在瞬间降低为0。由于squid与nginx跑在同一台服务器上，2k恰好约对应squid的1024个连接数。</p>
-
-<p>基于假设2，查看了squid进程的limits。</p>
-
-<p>[root@BJCER210-63 ~]# cat /proc/17174/limits 
- Limit                     Soft Limit           Hard Limit           Units   <br />
- Max cpu time              unlimited            unlimited            seconds <br />
- Max file size             unlimited            unlimited            bytes   <br />
- Max data size             unlimited            unlimited            bytes   <br />
- Max stack size            8388608              unlimited            bytes   <br />
- Max core file size        0                    unlimited            bytes   <br />
- Max resident set          unlimited            unlimited            bytes   <br />
- Max processes             128577               128577               processes 
- Max open files            1024                 4096                 files   <br />
- Max locked memory         65536                65536                bytes   <br />
- Max address space         unlimited            unlimited            bytes   <br />
- Max file locks            unlimited            unlimited            locks   <br />
- Max pending signals       128577               128577               signals <br />
- Max msgqueue size         819200               819200               bytes   <br />
- Max nice priority         0                    0                  <br />
- Max realtime priority     0                    0                  <br />
- Max realtime timeout      unlimited            unlimited            us        </p>
-
-<p>果然Max open files只有默认的1024。查看另外一台更稳定的squid服务器，发现这个值都是65535。</p>
-
-<p>于是准备了一个测试环境，验证了squid启动时设置ulimit -n的重要性：squid后端使用nginx做源并使用nginx-delay设置延时5s，squid进程启动前不设置ulimit及设置为65535，增加并发数，查看各自的表现。</p>
-
-<ul>
-  <li>ulimit -n为系统默认1024时，并发数达到800左右吞吐量下降到接近零；</li>
-  <li>设置ulimit -n 65535时，并发数增加吞吐量亦增加。</li>
-</ul>
-
-<p>假设得到证明，可以推断后端性能变差时，由于可用文件数用完而无法开启新的连接。ulimit -n需要设置足够大才能保证squid的稳定。</p>
-
-        <a href="/Technology/Linux/2012/10/22/squid-ulimit-n.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-10-22 00:00:00 +0800">22 Oct 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-            <li><a href="/categories.html#Linux-ref" title="Linux" rel="category tag">Linux</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#ulimit-ref">ulimit <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#squid-ref">squid <span>1</span></a></li>
+<div class='container'>
+  <div class='span8'>
     
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/Linux/2012/09/14/edac.html" title="EDAC" rel="bookmark">EDAC</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        
-<h1 id="edac-overview">EDAC Overview</h1>
-<p>EDAC (Error Detection and Correction) is a set of Linux kernel modules for handling hardware-related errors. </p>
-
-<p>Its major focus has been ECC memory error handling, however it also detects and reports PCI bus parity errors. </p>
-
-<p>EDAC通过sysfs方式获得硬件的信息。检测到问题时，在syslog中可以看到这样的日志：</p>
-
-<pre><code>kernel: EDAC MC1: CE row 0, channel 0, label "": Corrected error (Socket=1 channel=0 dimm=0)
-</code></pre>
-
-<p>有一个叫做edac-util的工具，可以用来查看更详细的状态报表。</p>
-
-<pre><code>$ edac-util -r
-mc1: csrow0: ch0: 43722040 Corrected Errors
-</code></pre>
-
-<p>上面的输出表示有较多的可修复错误（Corrected Errors - CE）被发现。</p>
-
-<p>edac-util的安装，在RHEL或CentOS上，可以通过yum安装：</p>
-
-<pre><code>yum install edac-util -y
-</code></pre>
-
-<h1 id="links">Links</h1>
-
-<p>[http://www.kernel.org/doc/Documentation/edac.txt EDAC - Error Detection And Correction]</p>
-
-<p>[http://bluesmoke.sourceforge.net EDAC Project]</p>
-
-        <a href="/Technology/Linux/2012/09/14/edac.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-09-14 00:00:00 +0800">14 Sep 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-            <li><a href="/categories.html#Linux-ref" title="Linux" rel="category tag">Linux</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#EDAC-ref">EDAC <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2012/09/06/object-c-programming-notes-1.html" title="Object C Programming Notes 1 - Objects, Classes and Messaging" rel="bookmark">Object C Programming Notes 1 - Objects, Classes and Messaging</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        
-<h2 id="section">消息机制</h2>
-
-<p>类似函数调用，Object C中采用消息机制，基本调用语法如下：    </p>
-
-<pre><code>[receiver message]
-</code></pre>
-
-<p>接收方receiver是一个对象，传递的消息通知该对象进行操作的方法名。消息传递的方法名经常叫做selector。  </p>
-
-<p>可以使用点(.)操作符访问对象的accessor方法。</p>
-
-<p>给nil发消息是允许的——在运行时它仅仅是没有任何效果：消息发送给nil并返回nil。</p>
-
-<p>消息传递的方法对接收方的实例变量有访问权限。</p>
-
-<p>多态：不同类对象有相同的方法。</p>
-
-<h2 id="section-1">方法调用与消息的区别</h2>
-
-<p>方法调用：在编译阶段就已确定其方法和参数；  </p>
-
-<p>消息：运行阶段消息发送时才有运行时环境确定。Dynamic binding / Dynamic Method Resolution</p>
-
-<h2 id="dot-syntax">Dot Syntax</h2>
-
-<p>点（.）操作符与消息的使用<br />
-    myInstance.value = 10;
-    [myInstance setValue:10];</p>
-
-<h1 id="nsobject">NSObject</h1>
-
-<p>继承(Inheriting Methods)</p>
-
-<p>覆盖继承来的方法，但是不能覆盖继承来的变量（因为继承时内存已分配）。</p>
-
-<p>抽象类（Abstract Classes）</p>
-
-<h1 id="class-types">Class Types</h1>
-
-<h2 id="static-typing">静态类型Static Typing</h2>
-
-<p>编译器可以做类型检查</p>
-
-<h2 id="type-introspection">内省Type Introspection</h2>
-<p>运行时获知类型等信息。</p>
-
-<h1 id="class-objects">Class Objects</h1>
-
-<p>A class definition contains various kinds of information, much of it about instances of the class:<br />
--    The name of the class and its superclass
--    A template describing a set of instance variables
--    The declarations of method names and their return and parameter types
--    The method implementations</p>
-
-<h2 id="class-methods-vs-instance-methods">Class Methods vs. Instance Methods</h2>
-
-<pre><code>int versionNumber = [Rectangle version];
-
-id aClass = [anObject class];
-id rectClass = [Rectangle class];
-
-Class aClass = [anObject class];
-Class rectClass = [Rectangle class];
-</code></pre>
-
-<p>Cloass Objects的类型都是Class。</p>
-
-<h1 id="section-2">创建实例</h1>
-
-<pre><code>id  myRectangle;
-
-myRectangle = [Rectangle alloc];
-</code></pre>
-
-<p>初始化实例状态<br />
-    myRectangle = [[Rectangle alloc] init];</p>
-
-<p>变量</p>
-
-<p><a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocObjectsClasses.html">The Objective-C Programming Language</a></p>
-
-        <a href="/Technology/2012/09/06/object-c-programming-notes-1.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-09-06 00:00:00 +0800">06 Sep 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#Object C-ref">Object C <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Mac OSX-ref">Mac OSX <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Programming-ref">Programming <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Language-ref">Language <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2012/08/26/index-page-update.html" title="减少首页文字量" rel="bookmark">减少首页文字量</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        
-<p>尝试减少了首页文件的文字量。</p>
-
-<p>昨天查看监控宝和google analytics数据，发现首页加载时间跳出率都比较高，简单分析发觉首页给出了太多的文字内容，而不包含容易查询的内容列表。这可能造成读者不容易查找到需要的内容。</p>
-
-<p>基于此，对首页的内容做了一个缩减尝试。作为第一次修改，把首页的日志全文去掉，替代以文章列表。同时对翻页参数进行了简单调整。调整完毕的页面大小为20k左右，应该能带来不小的速度提升。</p>
-
-
-        <a href="/Technology/2012/08/26/index-page-update.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-08-26 00:00:00 +0800">26 Aug 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2012/08/18/mac-osx-development-environment-setup.html" title="Mac OSX development environment setup" rel="bookmark">Mac OSX development environment setup</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        
-<h1 id="what-to-setup">What to setup?</h1>
-
-<ul>
-  <li>xcode</li>
-  <li>git</li>
-  <li>Homebrew</li>
-  <li>RVM: Ruby Version Manager</li>
-  <li>textmate: popular code editor</li>
-  <li>macruby</li>
-</ul>
-
-<h1 id="progressing">PROGRESSING</h1>
-
-<h2 id="xcode">xcode</h2>
-<p>Install from App Store. This very difficulty is that it takes too long to download, especially in China.</p>
-
-<p>I swithed my local DNS to a Taiwan host (168.95.1.1), so it finished in serveral hours.</p>
-
-<h2 id="git">git</h2>
-<p>Download recent stable release of git for mac from <a href="http://git-scm.com/downloads">git-scm.com</a></p>
-
-<p>Install other tools related to git: 
-*  <a href="http://mac.github.com">GitHub for Mac</a> 
-*  <a href="https://github.com/trybeee/GitStats">GitStats</a>: generate stats web pages for your project  </p>
-
-<h2 id="homebrew">Homebrew</h2>
-<p>Simple installation with one-line-command: </p>
-
-<pre><code>ruby &lt;(curl -fsSkL raw.github.com/mxcl/homebrew/go)
-</code></pre>
-
-<p>Usage example: </p>
-
-<pre><code>brew search textmate
-brew install ninja  # need when building textmate
-brew install wget
-</code></pre>
-
-<h2 id="rvm">RVM</h2>
-<p><a href="https://rvm.io">RVM</a> is short for Ruby Version Manager, not Ruby Virtual Machine. </p>
-
-<p>Install stable version with default ruby[-1.9.3] </p>
-
-<pre><code>curl -kL https://get.rvm.io | bash -s stable --ruby
-</code></pre>
-
-<p>When every thing reports ok, run this command to see installed versions of ruby in a new term: </p>
-
-<pre><code>rvm list
-</code></pre>
-
-<p>Switch to system version </p>
-
-<pre><code>rvm use system
-rvm use system --default
-</code></pre>
-
-<h2 id="textmate">textmate</h2>
-<p>I choose build textmate from source. follow <a href="https://github.com/textmate/textmate/#building">this document</a> </p>
-
-<p>First, install dependencies </p>
-
-<pre><code>brew install ragel boost multimarkdown hg ninja
-</code></pre>
-
-<p>Get and prepare source code </p>
-
-<pre><code>git clone git://github.com/textmate/textmate.git
-cd textmate
-git submodule update --init
-</code></pre>
-
-<p>Configure and build </p>
-
-<pre><code>./configure &amp;&amp; ninja
-</code></pre>
-
-<h2 id="macruby">macruby</h2>
-<p><a href="http://macruby.org">MacRuby</a> is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies. </p>
-
-<p>Install with rvm </p>
-
-<pre><code>rvm install macruby-head
-</code></pre>
-
-<p><a href="http://www.rubymotion.com">RubyMotion</a> for iOS development. </p>
-
-        <a href="/Technology/2012/08/18/mac-osx-development-environment-setup.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-08-18 00:00:00 +0800">18 Aug 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#xcode-ref">xcode <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#homebrew-ref">homebrew <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#rvm-ref">rvm <span>3</span></a></li>
-     
-    	<li><a href="/tags.html#textmate-ref">textmate <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#macruby-ref">macruby <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/2012/08/06/jekyll-bootstrap.html" title="切换到jekyll bootstrap" rel="bookmark">切换到jekyll bootstrap</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        
-<p>把博客程序切换的<a href="http://jekyllbootstrap.com">jekyll-bootstrap</a>。切换的原因是看中了它的几个优点：</p>
-
-<ul>
-  <li>有命令行工具。可以通过rake post命令创建日志。    </li>
-  <li>支持插件。使用命令行控制plugin安装，更方便利用别人制作的插件，这点很重要。    </li>
-  <li>可以定义页面风格，快速切换themes。    </li>
-  <li>从头开始学习jekyll太耗费时间和精力。    </li>
-</ul>
-
-<p>切换的过程比较顺利，执行git merge，只有6个文件需要手工合并，而且没有严重冲突。合并完毕将代码提交到github即可。</p>
-
-
-        <a href="/Technology/2012/08/06/jekyll-bootstrap.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-08-06 00:00:00 +0800">06 Aug 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#jekyll-ref">jekyll <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#jekyll-bootstrap-ref">jekyll-bootstrap <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/SysAdmin/2012/07/18/mirror-debian.html" title="Debian镜像攻略" rel="bookmark">Debian镜像攻略</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p><a href="http://www.debian.org/mirror/ftpmirror#how">Debian mirror官方文档</a></p>
-
-<p>由于Debian各个版本的软件包容量都比较大（平均每个版本50G左右），需要量力而行，做好容量规划，不想要的包尽量设置exclude参数来排除。</p>
-
-<p>官方文档提供的工具有bug，经询问已经修改，但是没有重新发布- -!囧</p>
-
-        <a href="/SysAdmin/2012/07/18/mirror-debian.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-07-18 00:00:00 +0800">18 Jul 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#Debian-ref">Debian <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#mirror-ref">mirror <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#Shell-ref">Shell <span>2</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/SysAdmin/2012/07/13/hadoop-scripting-basics.html" title="Hadoop scripting basics (draft)" rel="bookmark">Hadoop scripting basics (draft)</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>Links:</p>
-
-<p><a href="http://hadoop.apache.org/">Hadoop Website</a></p>
-
-<p><a href="http://www.slideshare.net/acarlos1000/hadoop-basics-presentation">Hadoop at Yahoo!</a></p>
-
-<h1 id="setup">Setup</h1>
-
-<p>TODO</p>
-
-<h1 id="command-line-basics">Command line basics</h1>
-
-<h2 id="environment-variables">ENVIRONMENT VARIABLES</h2>
-
-<p>in ~/.bash_profile</p>
-
-<pre><code># User specific environment and startup programs
-JAVA_HOME=/opt/java
-HADOOP_HOME=/opt/hadoop
-HIVE_HOME=/opt/hive
-
-PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HIVE_HOME/bin:$PATH:$HOME/bin
-
-export PATH JAVA_HOME HADOOP_HOME
-</code></pre>
-
-<h2 id="hdfs---walk-around">HDFS - Walk around</h2>
-
-<pre><code>hadoop fs -ls /
-hadoop fs -du -h /data/
-hadoop fs -dus /user/_myname_/
-hadoop fs -tail /user/_myname_/my-test-file.txt
-</code></pre>
-
-<h2 id="submit-mapreduce-jobjar">Submit Map/Reduce Job(jar)</h2>
-
-<h2 id="job-tracker">Job Tracker</h2>
-
-<p>TODO</p>
-
-<h1 id="streaming">Streaming</h1>
-<p>Streaming(script)
-&mdash;&mdash;</p>
-
-<p>Usage:</p>
-
-<pre><code> hadoop jar $STREAMING_JAR -mapper "$MAPPER" -file $MAPPER_FILE -reducer "$REDUCER" -file $REDUCER_FILE -input $RAW -output $SUMMARY -numReduceTasks 1
-
-$STREAMING_JAR, $MAPPER_FILE, $REDUCER_FILE: files in local path.
-
-$MAPPER，$REDUCER: commands run by hadoop.
-
-$RAW, $SUMMARY: files in HDFS.
-</code></pre>
-
-<h2 id="streaming-examples">Streaming examples</h2>
-<p>EXAMPLES: streaming/wc-demo.sh</p>
-
-        <a href="/SysAdmin/2012/07/13/hadoop-scripting-basics.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-07-13 00:00:00 +0800">13 Jul 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#Hadoop-ref">Hadoop <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Streaming-ref">Streaming <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-
-
-  <div id="post-pagination" class="pagination pagination-centered">
+      <div id="post-pagination" class="pagination pagination-centered">
   <ul class="pages nav nav-pills">
 
   
@@ -1027,144 +171,6 @@ $RAW, $SUMMARY: files in HDFS.
     </li>
     
   
-    
-    <li class="page">
-      <a href="/page6">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page8">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page11">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page16">16</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page17">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
 
   
     <li>
@@ -1176,7 +182,823 @@ $RAW, $SUMMARY: files in HDFS.
 </div>
 
 
+    
+    
+    
+    
 
+
+  
+    
+    
+    
+    
+  
+    
+      <h2>2010</h2>
+      <h3>July</h3>
+      <ul>
+    
+  
+    <li><span>July 19, 2010</span> &raquo; <a href="/Technology/2010/07/19/e6af8fe4b880e4b8aae8a2abnginxe7aea1e79086e59198e5b081e7a681ipe79a84e794a8e688b7efbc8ce4b88ae8be88e5ad90e983bde698afe68a98e7bfbce79a84.html">每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>July 19, 2010</span> &raquo; <a href="/Technology/2010/07/19/e88bb1e8afade8af8de585b8e6b5b7e8af8de5aea2e688b7e7abafflashe78988efbc88flexe7a88be5ba8fe5a4aanbe595a6efbc89.html">英语词典海词客户端Flash版（Flex程序太NB啦）</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>July 19, 2010</span> &raquo; <a href="/Technology/2010/07/19/efbcbbe4bdbfe794a8e8b7afe794b1e599a8e5bf85e79c8befbcbdefbcbbe697a0e6b395e4b88ae4bca0e69687e4bbb6e5bf85e79c8befbcbde585b3e4ba8emtu.html">［使用路由器必看］［无法上传文件必看］关于MTU的那点事儿</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>July 17, 2010</span> &raquo; <a href="/Technology/2010/07/17/mtuisp.html">路由器MTU与ISP不匹配导致无法上传文件</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>June</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>June  8, 2010</span> &raquo; <a href="/Technology/2010/06/08/varnish-setup-in-steps.html">Varnish Setup in Steps</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>June  2, 2010</span> &raquo; <a href="/Technology/2010/06/02/flex-hello-world-example.html">Flex Hello-world example.</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>May</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>May 11, 2010</span> &raquo; <a href="/Technology/2010/05/11/emergegcc.html">Emerge抱怨gcc不能工作啦！</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>April</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April 21, 2010</span> &raquo; <a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html">使用Ruby进行Log分析：放弃String.split，使用Regexp.match</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April 21, 2010</span> &raquo; <a href="/Technology/2010/04/21/rubylog.html">补充：使用Ruby进行Log分析</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>February</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>February 23, 2010</span> &raquo; <a href="/Technology/2010/02/23/gentoo-setup-scim-in-gnome.html">Gentoo: setup scim in GNOME</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>February 11, 2010</span> &raquo; <a href="/Technology/2010/02/11/c.html">C++构造函数私有的有趣问题</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>January</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>January 24, 2010</span> &raquo; <a href="/2010/01/24/nvidia.html">Compiz-fusion on Thinkpad SL400, NVIDIA Card.</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>January 18, 2010</span> &raquo; <a href="/2010/01/18/blog-post.html">..--</a></li>
+  
+    
+      
+        </ul>
+        <h2>2009</h2>
+        <h3>December</h3>
+        <ul>
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>December 10, 2009</span> &raquo; <a href="/2009/12/10/ruby.html">Ruby让你成为一个愉悦的开发者</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>September</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September 25, 2009</span> &raquo; <a href="/2009/09/25/what-is-test-driven-development-in-ruby.html">What is Test-Driven Development in Ruby?</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September 25, 2009</span> &raquo; <a href="/2009/09/25/head-h-host-2031661789.html">curl -4 --head -H "Host 203.166.178.9" http://www.liulantao.com/images/lax_shetou.gif</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September 24, 2009</span> &raquo; <a href="/2009/09/24/rake-dbdrop-with-permission-denied.html">rake db:drop with permission denied error.</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September 16, 2009</span> &raquo; <a href="/2009/09/16/journey-to-gentoo-intel-video-card-and.html">A journey to Gentoo: Intel video card and xorg installed.</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September  7, 2009</span> &raquo; <a href="/2009/09/07/output-of-array-to-sentence-ruby-way.html">Output of an Array to sentence, the ruby way</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September  7, 2009</span> &raquo; <a href="/2009/09/07/installing-chromium-web-browser-on.html">Installing Chromium Web Browser on Fedora 11.</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September  6, 2009</span> &raquo; <a href="/2009/09/06/blog-post.html">西四新开的一家奶酪魏</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>September  2, 2009</span> &raquo; <a href="/2009/09/02/config-rubygems-and-rails-in-ubuntu.html">Config rubygems and rails in ubuntu.</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>August</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>August 29, 2009</span> &raquo; <a href="/2009/08/29/unix-like.html">Unix-like系统用户交流信息的几个小命令</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>August 25, 2009</span> &raquo; <a href="/2009/08/25/how-to-disable-ping-response.html">How-to: disable the PING response.</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>August 25, 2009</span> &raquo; <a href="/2009/08/25/google-sets-is-cool.html">Google Sets is cool!</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>August 14, 2009</span> &raquo; <a href="/2009/08/14/sed-i-sstr1rep1sstr2rep2sstrnrepn.html">sed -i 's/str1/rep1/;s/str2/rep2/;...;s/strN/repN/' urfile</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>August  7, 2009</span> &raquo; <a href="/2009/08/07/nginx.html">Nginx访问日志统计：按时间计数</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>July</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>July 28, 2009</span> &raquo; <a href="/2009/07/28/something-about-xulrunner-and-xpcom.html">something about xulrunner and xpcom</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>July 27, 2009</span> &raquo; <a href="/2009/07/27/htaccess.html">.htaccess</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>July 22, 2009</span> &raquo; <a href="/2009/07/22/nagios.html">nagios中主机依赖与服务依赖</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>May</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>May 13, 2009</span> &raquo; <a href="/2009/05/13/blog-post.html">在北京听到布谷鸟了</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>May 12, 2009</span> &raquo; <a href="/2009/05/12/working-productively-in-bashs-vi.html">Working Productively in Bash’s Vi Command Line Editing Mode (with Cheat Sheet)</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>April</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April 28, 2009</span> &raquo; <a href="/2009/04/28/subversion.html">Subversion主干-分支开发的流程。</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April 25, 2009</span> &raquo; <a href="/2009/04/25/linuxsunbuild-sunpinyin-on-gnulinux.html">在Linux上编译安装SUN拼音输入法｜Build SunPinyin on GNU/Linux (CentOS/Redhat/Fedora).</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April 25, 2009</span> &raquo; <a href="/2009/04/25/install-and-config-sun-java-runtime.html">Install and Config Sun Java Runtime Environment: How-to.</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April 21, 2009</span> &raquo; <a href="/2009/04/21/r-studio.html">磁盘数据救援工具R-Studio</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April 15, 2009</span> &raquo; <a href="/2009/04/15/principles-behind-agile-manifesto.html">Principles behind the Agile Manifesto</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>April  7, 2009</span> &raquo; <a href="/2009/04/07/svnsshruby-on-rails.html">使用SVN+SSH，同步Ruby On Rails代码的脚本</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>March</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>March  4, 2009</span> &raquo; <a href="/2009/03/04/yum-error-no-module-named-rpm.html">YUM error: No module named rpm</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>February</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>February 26, 2009</span> &raquo; <a href="/2009/02/26/debian-lenny-chinese-input-method.html">Debian Lenny: Chinese Input Method</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>February 26, 2009</span> &raquo; <a href="/2009/02/26/debian-lenny-audio-not-working.html">Debian Lenny: Audio Not Working</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>February 17, 2009</span> &raquo; <a href="/2009/02/17/install-debian-gnulinux-under-existing.html">Install Debian GNU/Linux under an existing Unix-like system VIA  chroot and debootstrap</a></li>
+  
+    
+          
+        
+          </ul>
+          <h3>January</h3>
+          <ul>
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>January 24, 2009</span> &raquo; <a href="/2009/01/24/railsrails-i18n-key-steps.html">Rails国际化的关键步骤。Rails I18n Key Steps.</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>January 20, 2009</span> &raquo; <a href="/2009/01/20/railsmysql.html">Rails开发中的MySQL中文问题以及简单解决方式</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>January 19, 2009</span> &raquo; <a href="/2009/01/19/rake-railsfreezegems-version222.html"># rake rails:freeze:gems VERSION=2.2.2</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>January 17, 2009</span> &raquo; <a href="/2009/01/17/ror-development-with-radrails-in.html">ROR development with RadRails in Eclipse</a></li>
+  
+    
+          
+        
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>January  6, 2009</span> &raquo; <a href="/2009/01/06/scaffoldrails.html">从“Rails 2.2 / Scaffold功能增强”看Rails敏捷性的提高</a></li>
+  
+    
+      
+        </ul>
+        <h2>2008</h2>
+        <h3>December</h3>
+        <ul>
+      
+    
+  
+    
+    
+    
+    
+  
+    
+  
+    <li><span>December 31, 2008</span> &raquo; <a href="/2008/12/31/msys.html">MSYS的搭建及参数设置</a></li>
+  
+    
+      </ul>
+    
+  
+
+
+
+    
+    <!-- Pagination links -->
+    
+      <ul class="pager">
+
+  <li class="previous">
+  
+    <a href="/">&larr; Previous</a>
+  
+  </li>
+
+
+
+  <li class="next">
+    <a href="/page3">Next &rarr;</a>
+  </li>
+
+</ul>
+
+    
+    </div>
+
+  <div class='span3'>
+    <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+
+  </div>
+</div>
 
       </div>
 

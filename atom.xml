@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Lax's Blog</title>
+ <title>Linux科学俱乐部</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-26T23:32:05+08:00</updated>
+ <updated>2013-01-26T23:57:52+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
