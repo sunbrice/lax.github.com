@@ -255,6 +255,41 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/2009/04/07/svnsshruby-on-rails.html" title="使用SVN+SSH，同步Ruby On Rails代码的脚本" rel="bookmark">使用SVN+SSH，同步Ruby On Rails代码的脚本</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        版本库和开发都在自己的笔记本上进行，而服务器则通过svn来同步代码。<br>每次在服务器上测试都需要运行一系列的命令，并且由于无线网络使用DHCP取得动态ip，每次都要修改。这个过程很麻烦，所以写一个简单的脚本完成这个任务。<br><br>基本思路很简单：<br>首先修改hosts文件（为svn update时提供方便，即使使用动态ip，也可以每次通过主机名来访问），<br>然后通过svn+ssh来获取代码，<br>之后则进行初步的设定，配置数据库文件，<br> 最后则执行数据库迁移，并且启动script/server。<br>---------------------------------------------<br>[lax@gnu ~]$ cat svn_ssh_from_lax <br>sudo vi /etc/hosts<br>svn co svn+ssh://lax/LAX/_DEV_/_SVN_/repos/<a href="http://www.myshu.org/trunk">www.myshu.org/trunk</a> www.myshu.org.devel_trunk<br> cd www.myshu.org.devel_trunk/ &amp;&amp; cp config/database.yml.orig config/database.yml<br>vi config/database.yml &amp;&amp; rake db:drop &amp;&amp; rake db:create &amp;&amp; rake db:migrate &amp;&amp; ruby script/server<br> ---------------------------------------------<br clear="all"><br>只需<br>$ sh svn_ssh_from_lax<br>即可运行此脚本来完成任务。<br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4115259286010733722?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2009/04/07/svnsshruby-on-rails.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2009-04-07 00:00:00 +0800">07 Apr 2009</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/2009/03/04/yum-error-no-module-named-rpm.html" title="YUM error: No module named rpm" rel="bookmark">YUM error: No module named rpm</a>
     </h1>
     <p class="alt-font tight">
@@ -482,41 +517,6 @@
       <div class="span3">
         <span class="date full-date">
           <abbr class="published" title="2009-01-20 00:00:00 +0800">20 Jan 2009</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2009/01/19/rake-railsfreezegems-version222.html" title="# rake rails:freeze:gems VERSION=2.2.2" rel="bookmark"># rake rails:freeze:gems VERSION=2.2.2</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <ol class="dp-bash" start="1"><li class=""><div style="width: 422px;" class="">rake&nbsp;rails:freeze:gems&nbsp;<span class="vars">VERSION=</span><span>2.2.2&nbsp; </span></div></li></ol><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-4620965334961364128?l=liulantao.blogspot.com' alt='' /></div>
-
-        <a href="/2009/01/19/rake-railsfreezegems-version222.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2009-01-19 00:00:00 +0800">19 Jan 2009</abbr>
         </span>
         
         <span>

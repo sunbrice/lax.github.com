@@ -72,6 +72,7 @@ http://lax.github.com/page30/index.html
 http://lax.github.com/page31/index.html
 http://lax.github.com/page32/index.html
 
+http://lax.github.com/2013/01/26/open-source-game-d0x3d.html
 http://lax.github.com/Quotes/2013/01/25/quotes-weekly-2013w4.html
 http://lax.github.com/Technology/2013/01/25/build-page-with-haml.html
 http://lax.github.com/2013/01/20/view-documents-on-github-pages-the-ugly-way.html

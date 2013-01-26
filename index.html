@@ -253,6 +253,54 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/2013/01/26/open-source-game-d0x3d.html" title="Open source game, [d0x3d!]" rel="bookmark">Open source game, [d0x3d!]</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        
+<p><img src="/images/public/OSDC_Life_opengame-d0x3d-mini.jpg" alt="" /></p>
+
+<p>[d0x3d!]是一个有趣的开源游戏，以网络安全为题材，可以作为网络安全课程的辅助教育工具。</p>
+
+<p>游戏的玩法比较有趣，几个人分成两组即可开始。其中，黑客团队的成员从网络的主机上收集数据，找出那些是重要的秘密信息；网络管理员则通过各种措施来防止你的行动。如果网络管理员发现威胁，他将可以将你的信息公开发布，这时候游戏就结束了。</p>
+
+<p>游戏提供一个收费版本，标价24.99美金。开源版本可以在github下载代码。</p>
+
+<ul>
+  <li>收费版本：<a href="https://www.thegamecrafter.com/games/-d0x3d-">购买</a></li>
+  <li>开源版本源代码：<a href="https://github.com/TableTopSecurity/d0x3d-the-game">github</a></li>
+  <li>原始介绍文章：<a href="http://linuxaria.com/recensioni/an-open-source-board-game-about-network-security-d0x3d?lang=en">linuxaria.com</a></li>
+</ul>
+
+        <a href="/2013/01/26/open-source-game-d0x3d.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2013-01-26 00:00:00 +0800">26 Jan 2013</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/Quotes/2013/01/25/quotes-weekly-2013w4.html" title="每周语录 2013年第四周" rel="bookmark">每周语录 2013年第四周</a>
     </h1>
     <p class="alt-font tight">
@@ -956,100 +1004,6 @@ gerrit push
     	<li><a href="/tags.html#Git-ref">Git <span>2</span></a></li>
      
     	<li><a href="/tags.html#Code Review-ref">Code Review <span>1</span></a></li>
-    
-  
-
-
-
-          </ul>
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/Linux/2012/10/22/squid-ulimit-n.html" title="ulimit -n的重要性" rel="bookmark">ulimit -n的重要性</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        
-<p>最近发现有几个squid实例的稳定性成问题，对比了环境设置，分析了几个可能的因素。</p>
-
-<p>1    由于squid前使用了nginx，为了减少连接开销，开启了keepalive连接。keepalive机制存在一些问题，如客户端不停止发送请求，nginx不会中止与后端服务的连接，这将造成squid的访问压力无法在短时间内调整。不过分析了这个情形，问题不全在这里。</p>
-
-<p>2    发现连接数的最高值稳定在2000左右。看到这个数字，寻思会不会与连接数限制有关。曾经遇到过memcached由于默认1024个连接数用完而不提供服务的现象，吞吐率在瞬间降低为0。由于squid与nginx跑在同一台服务器上，2k恰好约对应squid的1024个连接数。</p>
-
-<p>基于假设2，查看了squid进程的limits。</p>
-
-<p>[root@BJCER210-63 ~]# cat /proc/17174/limits 
- Limit                     Soft Limit           Hard Limit           Units   <br />
- Max cpu time              unlimited            unlimited            seconds <br />
- Max file size             unlimited            unlimited            bytes   <br />
- Max data size             unlimited            unlimited            bytes   <br />
- Max stack size            8388608              unlimited            bytes   <br />
- Max core file size        0                    unlimited            bytes   <br />
- Max resident set          unlimited            unlimited            bytes   <br />
- Max processes             128577               128577               processes 
- Max open files            1024                 4096                 files   <br />
- Max locked memory         65536                65536                bytes   <br />
- Max address space         unlimited            unlimited            bytes   <br />
- Max file locks            unlimited            unlimited            locks   <br />
- Max pending signals       128577               128577               signals <br />
- Max msgqueue size         819200               819200               bytes   <br />
- Max nice priority         0                    0                  <br />
- Max realtime priority     0                    0                  <br />
- Max realtime timeout      unlimited            unlimited            us        </p>
-
-<p>果然Max open files只有默认的1024。查看另外一台更稳定的squid服务器，发现这个值都是65535。</p>
-
-<p>于是准备了一个测试环境，验证了squid启动时设置ulimit -n的重要性：squid后端使用nginx做源并使用nginx-delay设置延时5s，squid进程启动前不设置ulimit及设置为65535，增加并发数，查看各自的表现。</p>
-
-<ul>
-  <li>ulimit -n为系统默认1024时，并发数达到800左右吞吐量下降到接近零；</li>
-  <li>设置ulimit -n 65535时，并发数增加吞吐量亦增加。</li>
-</ul>
-
-<p>假设得到证明，可以推断后端性能变差时，由于可用文件数用完而无法开启新的连接。ulimit -n需要设置足够大才能保证squid的稳定。</p>
-
-        <a href="/Technology/Linux/2012/10/22/squid-ulimit-n.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-10-22 00:00:00 +0800">22 Oct 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-            <li><a href="/categories.html#Linux-ref" title="Linux" rel="category tag">Linux</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#ulimit-ref">ulimit <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#squid-ref">squid <span>1</span></a></li>
     
   
 

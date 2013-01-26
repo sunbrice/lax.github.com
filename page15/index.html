@@ -255,6 +255,41 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/2008/05/08/blog-post.html" title="网站建构与定位的思考" rel="bookmark">网站建构与定位的思考</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        今天讨论了一下某个网站的建构计划。<p>这个网站是作为一个门户而存在的，所以全面性和主旋律将占据很大的比重。在栏目的安排中，要考虑便于用户使用，又要考虑使用这获得更加丰富的信息。对于一个以内容为主的网站，需要有稳定的信息来源，是否采用用户投递的信息，将不仅仅是一个技术问题，而更是一个理念方面的问题：是否信任用户、是否信任管理人员的处理能力。<p>如何提高用户的参与度，是web2.0时代的一个重要课题，而合理利用用户的参与度，以使网站内容向着可控制的方向发展，则是另外一个更深入的课题。wiki的推广、bbs渐渐走入传统。digg模式的成功，将用户投递与投票的方式加进来。要做的就是整合这些网站的优点，从而是用户更方便，网站更健康发展。<p>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-1898750196841730596?l=lltaichi.blogspot.com' alt='' /></div>
+
+        <a href="/2008/05/08/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2008-05-08 00:00:00 +0800">08 May 2008</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+          </ul>
+        </span>
+        
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/2008/05/05/windowsxpdcomlaunch.html" title="WindowsXP连接无线网络必须开启DcomLaunch服务" rel="bookmark">WindowsXP连接无线网络必须开启DcomLaunch服务</a>
     </h1>
     <p class="alt-font tight">
@@ -482,41 +517,6 @@
       <div class="span3">
         <span class="date full-date">
           <abbr class="published" title="2008-01-10 00:00:00 +0800">10 Jan 2008</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-          </ul>
-        </span>
-        
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/2007/11/30/bash.html" title="通过bash脚本批量创建用户并设置密码" rel="bookmark">通过bash脚本批量创建用户并设置密码</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        Create Users And Change Passwords With A Bash Script<br>通过脚本批量创建用户并设置密码<p>First create a file which contains all the user name.<br>首先创建一个包还所有用户名的文件，格式如下：<br>------------------------<br>nurealam<br>nayeem<br>mrahman<br>farid<br>rubi<br>sankar<br>------------------------<br>Save the file as userlist.txt. Now create the following bash file:<br>把该文件保存为userlist.txt。现在创建如下的bash文件：<br>------------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>adduser $i<br>done<br>---------------------------<br>保存文件为useradd.sh。<br>运行该脚本文件：<br>--------------------<br>[lax@liulantao-com ~]# sh useradd.sh<br>---------------------<br>This will add all the users to the system. Now we have to change the<br>passwords. Let&#39;s say we want username123 as password. So for user<br>nayeem the password will be nayeem123, rubi123 for user rubi and so<br>on.----www.liulantao.com-----<br />结果是添加了所有用户名到系统中。现在必须修改密码了。假设我们用使用username123为密码。比如rubi的密码将是rubi123，依此类推。<br>Create another bash file as follows:<br>创建下面的脚本文件：<br>-------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>echo $i&quot;123&quot; | passwd –-stdin &quot;$i&quot;<br>echo; echo &quot;User $username&#39;s password changed!&quot;<br>done<br>--------------------<br>保存为userpasswd.sh。<br>-------------<br>[lax@liulantao-com ~]# sh userpasswd.sh<br>------------<br>Run the file. All the passwords are changed.<br>运行该文件。所有的密码被修改<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>转载本网站文章请保留这一行和以上所有文字，谢谢。<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7596269751548084725?l=lltaichi.blogspot.com' alt='' /></div>
-
-        <a href="/2007/11/30/bash.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2007-11-30 00:00:00 +0800">30 Nov 2007</abbr>
         </span>
         
         <span>

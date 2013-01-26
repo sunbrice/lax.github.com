@@ -4,13 +4,35 @@
  <title>Lax's Blog</title>
  <link href="http://lax.github.com/atom.xml" rel="self"/>
  <link href="http://lax.github.com"/>
- <updated>2013-01-26T09:47:10+08:00</updated>
+ <updated>2013-01-26T22:22:59+08:00</updated>
  <id>http://lax.github.com</id>
  <author>
    <name>Liu Lantao</name>
    <email>liulantao@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Open source game, [d0x3d!]</title>
+   <link href="http://lax.github.com/2013/01/26/open-source-game-d0x3d.html"/>
+   <updated>2013-01-26T00:00:00+08:00</updated>
+   <id>http://lax.github.com/2013/01/26/open-source-game-d0x3d</id>
+   <content type="html">
+&lt;p&gt;&lt;img src=&quot;/images/public/OSDC_Life_opengame-d0x3d-mini.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;[d0x3d!]是一个有趣的开源游戏，以网络安全为题材，可以作为网络安全课程的辅助教育工具。&lt;/p&gt;
+
+&lt;p&gt;游戏的玩法比较有趣，几个人分成两组即可开始。其中，黑客团队的成员从网络的主机上收集数据，找出那些是重要的秘密信息；网络管理员则通过各种措施来防止你的行动。如果网络管理员发现威胁，他将可以将你的信息公开发布，这时候游戏就结束了。&lt;/p&gt;
+
+&lt;p&gt;游戏提供一个收费版本，标价24.99美金。开源版本可以在github下载代码。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;收费版本：&lt;a href=&quot;https://www.thegamecrafter.com/games/-d0x3d-&quot;&gt;购买&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;开源版本源代码：&lt;a href=&quot;https://github.com/TableTopSecurity/d0x3d-the-game&quot;&gt;github&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;原始介绍文章：&lt;a href=&quot;http://linuxaria.com/recensioni/an-open-source-board-game-about-network-security-d0x3d?lang=en&quot;&gt;linuxaria.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
  
  <entry>
    <title>每周语录 2013年第四周</title>

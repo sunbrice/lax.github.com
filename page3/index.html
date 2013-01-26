@@ -255,6 +255,113 @@
 
   <div class="full" style='background-color: #FFF;'>
     <h1 class="entry-title">
+      <a href="/SysAdmin/2012/06/26/mirror-centos.html" title="CentOS镜像攻略" rel="bookmark">CentOS镜像攻略</a>
+    </h1>
+    <p class="alt-font tight">
+      <span>
+        
+      </span>
+    </p>
+    <div class="row">
+      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+        <p>这篇文章讲述了通过rsync协议来进行CentOS软件仓库镜像的技术，如果你觉得实用我的目的就达到了。</p>
+
+<p>先从<a href="http://www.centos.org/modules/tinycontent/index.php?id=30">这个页面</a>找到一个支持rsync协议的镜像站点，我选择了<a href="http://www.kernel.org/">Linux Kernel Archives</a>，当然你可以根据情况选择其它站点。</p>
+
+<p>之后是准备磁盘空间，创建目录。</p>
+
+<pre><code>mkdir -p /data/mirrors/centos/{5.8,6.2}
+</code></pre>
+
+<p>接着就可以开始进行同步。</p>
+
+<pre><code>rsync  -avSHP --delete --exclude "local*" --exclude "isos" rsync://mirrors.kernel.org/centos/5.8/ /data/mirrors/centos/5.8/
+
+rsync  -avSHP --delete --exclude "local*" --exclude "isos" rsync://mirrors.kernel.org/centos/6.2/ /data/mirrors/centos/6.2/
+</code></pre>
+
+<p>CentOS的版本号是由一个主版本号和一个次版本号组成。实际使用yum访问软件仓库时，一般根据主版本号来查找各自的目录，比如CentOS 5.8的系统通过5而不是5.8来查找仓库的目录。因此需要为这两个主版本号创建软连接。</p>
+
+<pre><code>cd /data/mirrors/centos/ &amp;&amp; ln -s 5.8 5 &amp;&amp; ln -s 6.2 6
+</code></pre>
+
+<p>之后是修改yum的配置文件，即/etc/yum.repos.d/CentOS-Base.repo。下面给出base仓库的示例。类似可以配置
+- addons
+- centosplus
+- contrib
+- cr
+- extras
+- fasttrack
+- os
+- updates</p>
+
+<pre><code>[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os
+baseurl=http://mirrors.renren.com/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+</code></pre>
+
+<p>为了方便部署，我写了一个更强壮的脚本，<a href="https://raw.github.com/Lax/SA/master/centos/rsync-centos">点击获取</a>。通过为该脚本创建软连接，可以在不传参数的情况下更新不同版本的仓库目录。软连接的格式有要求，需要是rsync-centos-VER（VER是完整版本号）</p>
+
+<pre><code>ln -s rsync-centos rsync-centos-5.8
+
+ln -s rsync-centos rsync-centos-6.2
+</code></pre>
+
+<p>放入计划任务中每天凌晨执行（对于国外的服务器，北京时间的凌晨执行并不是一个好主意）</p>
+
+<pre><code>0 2 * * *  cd /path/to/scripts/ &amp;&amp; sh rsync-centos-6.2 &amp;&amp; rsync-centos-5.8
+</code></pre>
+
+
+        <a href="/SysAdmin/2012/06/26/mirror-centos.html" class="read_more span2 pull-right">[ Read More ]</a>
+        <div class="clear"></div>
+      </div>
+      <div class="span3">
+        <span class="date full-date">
+          <abbr class="published" title="2012-06-26 00:00:00 +0800">26 Jun 2012</abbr>
+        </span>
+        
+        <span>
+          Posted in&nbsp;
+          <ul>
+          
+            <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+          
+          </ul>
+        </span>
+        
+        
+          <h4>Tags</h4>
+          <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#CentOS-ref">CentOS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#mirror-ref">mirror <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Shell-ref">Shell <span>2</span></a></li>
+    
+  
+
+
+
+          </ul>
+         
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="rule"><hr/></div>
+
+  <div class="full" style='background-color: #FFF;'>
+    <h1 class="entry-title">
       <a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" title="GNOME3多显示器配置" rel="bookmark">GNOME3多显示器配置</a>
     </h1>
     <p class="alt-font tight">
@@ -870,77 +977,6 @@ chmod 777 tcpdump-arm
           </ul>
         </span>
         
-         
-      </div>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="rule"><hr/></div>
-
-  <div class="full" style='background-color: #FFF;'>
-    <h1 class="entry-title">
-      <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" title="关于RubyGems/RUBYOPT【一】" rel="bookmark">关于RubyGems/RUBYOPT【一】</a>
-    </h1>
-    <p class="alt-font tight">
-      <span>
-        
-      </span>
-    </p>
-    <div class="row">
-      <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-        <p>什么是RubyGems/RubyOPT？什么情况要设置RUBYOPT？</p>
-
-<p><strong>关于标准库，第三方库</strong></p>
-
-<p>编程语言的标准库，是该种语言的每种实现中都按例提供的库，大多数语言的标准库包含以下组件，以实现一些基本功能：</p>
-
-<p>1   算法 
-2   数据结构 
-3   与操作系统交互 </p>
-
-<p>ruby标准库可以在源码的lib目录中找到。可以看的ruby标准库包含从文件操作到网络库，从多语言支持到测试工具，从多线程到日期处理等，基本能满足简单使用的需要。</p>
-
-<p>除了标准库的功能，应用开发者希望共享一些代码，这些代码在特定场合经常使用，却没有或不适合加入标准库中，于是就产生约定了格式和使用方式的第三方库，方便管理，分享和搜索。</p>
-
-<p>你可以下载第三方代码，在自己的程序中通过完整的路径来引用相关功能。但是便捷性太差，一个包管理的框架成为必需品。rubygem在这种情况下出现。</p>
-
-<p>怎么确定是否使用rubygems或其它第三方库提供的软件包呢？Ruby中的一个环境变量起到了这个作用，这就是RUBYOPT变量。使用RUBYOPT变量的效果与在ruby命令行中增加参数是相同的。</p>
-
-        <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" class="read_more span2 pull-right">[ Read More ]</a>
-        <div class="clear"></div>
-      </div>
-      <div class="span3">
-        <span class="date full-date">
-          <abbr class="published" title="2012-03-25 13:41:39 +0800">25 Mar 2012</abbr>
-        </span>
-        
-        <span>
-          Posted in&nbsp;
-          <ul>
-          
-            <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-          
-            <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
-          
-          </ul>
-        </span>
-        
-        
-          <h4>Tags</h4>
-          <ul class="tag_box">
-          
-          
-
-
-  
-     
-    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
-    
-  
-
-
-
-          </ul>
          
       </div>
     </div>
