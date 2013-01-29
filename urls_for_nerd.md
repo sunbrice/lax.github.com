@@ -1,7 +1,8 @@
 ---
 layout: page
-title: "URLs For Nerd"
+title: "Nerd URLs"
 description: ""
+group: "navigation"
 ---
 {% include JB/setup %}
 
@@ -17,3 +18,9 @@ description: ""
 *    Language
      *    Markdown
           *    [Markdown @wikipedia](http://en.wikipedia.org/wiki/Markdown)
+
+*    System Admin
+     *    Operation
+          *    [海量运维、运营规划之道](http://www.itkoala.com)
+
+*    System Architecture
