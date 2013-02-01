@@ -1,0 +1,1648 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>非正常生活 << [Idea, Code, Life]</title>
+    
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+  </head>
+
+  <body>
+
+  <div class="navbar-wrapper">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">非常规思维研究所</a>
+          <ul class="nav">
+            <li><a href="/">首页</a></li>
+            
+            
+            
+
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/urls_for_nerd.html">Nerd URLs</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+
+<div class='container'>
+  <div class='span8'>
+
+  <!-- Pagination links -->
+  
+    <ul class="pager">
+
+  <li class="previous">
+  
+    <a href="/page14">&larr; Previous</a>
+  
+  </li>
+
+
+
+  <li class="next">
+    <a href="/page16">Next &rarr;</a>
+  </li>
+
+</ul>
+
+  
+
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2008-02-04 00:00:00 +0800">04 Feb 2008</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2008/02/04/freebsdpostfixfatal-open-database.html" title="FreeBSD邮件服务Postfix问题：“fatal: open database /etc/aliases.db”" rel="bookmark">FreeBSD邮件服务Postfix问题：“fatal: open database /etc/aliases.db”</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          FreeBSD邮件服务Postfix问题：&quot;fatal: open database /etc/aliases.db&quot;<br><a href="http://www.liulantao.com/blogs/liulantao/">http://www.liulantao.com/blogs/liulantao/</a>	[Mon Feb  4 18:43:54 CST 2008]<p>E: What does &quot;fatal: open database /etc/aliases.db&quot; mean?<br>C: &quot;fatal: open database /etc/aliases.db&quot; 意味着什么？<p>E: DB files are maintained by the Berkeley DB library. The above<br>message means one of the following things:<br>C: DB数据库文件由Berkeley DB链接库维护。以上的消息意味着以下的几种情况之一：<br>E:     * The existing file does not have the expected file format. The<br>cause is one of the following:<br>C: 	已存在的文件没有期望的文件格式。原因为以下情况之一：<br>E:           o The file was created by Berkeley DB version 1 and you<br>are using version 2 or 3 (or vice versa).<br>C: 		此文件由Berkeley DB版本1所创建，而你正在使用版本2或3（反之亦然）。<br>E:           o The file was written in &quot;btree&quot; format and Postfix<br>expects &quot;hash&quot; format (or vice versa).<br>C: 		文件以&quot;btree&quot;格式写就，而Postfix需要&quot;hash&quot;格式（反之亦然）。<br>E:       To fix the problem for Postfix execute the following command as root:<br>C: 	欲为Postfix修正此问题，以root用户运行以下命令：<br>              newaliases<br>E:       This creates the aliases.db in the format that Postfix expects.<br>C: 	这将以Postfix所期望的格式创建aliases.db。<p>E:     * Or the problem could be something completely different. If<br>the result of running newaliases is a zero-length aliases.db file,<br>then you probably suffer from the following problem.<br>C: 	或许问题恰好完全相反。如果运行newaliases的结果是一个空aliases.db文件，那么你可能遇到的是以下的问题。<br>E:           o Postfix was compiled with #include files for Berkeley<br>DB version X and was linked against object library files for Berkeley<br>DB version Y, where X and Y are different versions of the Berkeley DB<br>library.<br>C: 		Postfix编译时包含了Berkeley DB版本X的文件，而为Berkeley<br>DB版本Y链接为目标库文件，而X与Y为Berkeley DB的不同版本。<br>E:       The fix for this is to properly install the Berkeley DB<br>library. For example, RedHat version 7.0 uses the Berkeley DB version<br>3 object library by default, but no /usr/include/db.h file is<br>installed by default. In order to correctly build Postfix you must<br>install the db3-devel package.<br>C: 	解决此问题的方法是适当的安装Berkeley DB库。例如，Redhat版本7.0默认使用了Berkeley DB<br>版本3的目标库，却没有默认安装/usr/include/db.h文件。为了正确的建立Postfix，你必须安装db3-devel文件包。<br>E:       On a properly installed system, including the file &lt;db.h&gt; and<br>linking with -ldb should access files from the same Berkeley DB<br>library version.<br>C: 	在一个适当安装好的系统中，包含文件&lt;db.h&gt;并且链接以-ldb选项将会利用Berkeley DB相同版本的库文件。<p>参考位置：<a href="http://www.postfix.org/faq.html#noalias">http://www.postfix.org/faq.html#noalias</a><p>-- <br>刘兰涛 Liu Lantao<br>北京师范大学信息科学技术学院 College of Information Science and Technology, Beijing<br>Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6657143921781226091?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2008/02/04/freebsdpostfixfatal-open-database.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2008-01-15 00:00:00 +0800">15 Jan 2008</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2008/01/15/blog-post.html" title="”中毒了，重装也不行？“ -- 系统重装注意事项" rel="bookmark">”中毒了，重装也不行？“ -- 系统重装注意事项</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          &quot;中毒了，重装也不行&quot;？ -- 系统重装注意事项<p><br>从打印店回来，中毒了。从网上下载东西，也中毒了。<br>最近中病毒的兄弟姐妹们还真不少。各位可以发扬自力更生的精神，重装一下系统，让千疮百孔的电脑变的新鲜起来。<p>电脑里还有好多论文、课件、音乐之类的，实在珍惜不忍就让它们随着格式化的过程而消失。大家要做的就是只把系统所在的C盘格式化掉了。为什么要格式化C盘呢：因为原来的系统文件有很多被感染了，格式化就能比较容易的把它们从磁盘上清理掉。为什么不能只删除那些坏了的文件呢：因为windows系统文件有成千上万个，从里面找出几个被感染的文件太难了。为什么其它盘不用格式化：因为可以使用新装的系统清理里面中毒的文件，不过前提是使用正确的方法。<p>一        安装系统<p>找个系统盘，大部分品牌电脑购买的时候会附带系统安装盘。当然也可以通过其它方法弄到。如果不想为以后留下隐患的话，最好不要用ghost版和某些修改版。学校的ftp上可以下载到windows<br>xp的镜像文件（ftp://bnu:bnu@ftp.bnu.edu.cn），刻录一个就好，记得先把序列号抄到纸上。<br />放入光盘，重启，提示安任意键从光盘启动的时候，就随便按一个键（任意键不是一个键）。进入之后安提示操<br>作，分区的时候要小心，看清楚哪个是你要格式化的C盘。一般C盘在第一个，也可以根据它的容量来判断。按D删除它，然后再选中它所在的未知创建一个新的分区。关于磁盘的格式，要选择格式化，ntfs或fat32都可以。快速格式化也是格式化，不会在C盘留病毒的。<br>然后就可以复制文件开始安装了。漫长的等待，要重启几次，期间会要求输入序列号，输入用户名，按照提示就可以了，比较简单。<br>大概半个小时就能看见朴实的草地蓝天桌面了。不过先不要动，病毒还在呢，清理完了再庆祝吧。<p>二        手动清理<p>记得这一步一定不要有多余的操 作，否则前功尽弃哦。<br>重装完之后千万不要双击/右键打开D、E盘，因为那样一下就染毒了。很多朋友发帖说每次重装不管用，很多是这个原因。<br>安装上系统的第一件事，就是打开我的电脑 - 在上面菜单中找到 工具 - 文件夹选项，修改配置使系统显示隐藏文件、显示系统文件。<br>然后通过资源管理器左侧的浏览进入D/E盘根目录，在名字为autorun.inf的文件上点右键，删除，然后重启。重新进系统之后就可以双击打开这些分区了（不过如果很怕再中毒，最好以后只从资源管理器模式开文件夹吧，好习惯顶得过任何杀毒软件）<p>三        杀毒软件查毒<p>安装杀毒软件，杀毒软件安装到C盘。<br>如果使用原来保存在电脑上的安装文件就很容易出问题：因为那个文件可能已经被病毒感染了，所以一点安装就又会中毒。<br>稳妥的方法是使用光盘版的杀毒软件安装，或者重新下载一个信得过的安装文件来安装。<br>升级病毒库，全面查杀病毒。<br>杀毒期间就耐心等待吧。查到的病毒全部删除掉。<p>四        安装其它软件<p>杀毒软件查杀之后，重启电脑。再进入之后就应该是一个干净的系统了。<br>重新安装office，msn，matlab，spss之类的软件吧。具体方法就不多说了。一个原则，安装之前先用杀毒软件扫描安装文件。<p>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2363365821231306722?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2008/01/15/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2008-01-10 00:00:00 +0800">10 Jan 2008</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2008/01/10/freebsdfluxbox.html" title="freebsd+fluxbox中文输入法不能启动的设置方法" rel="bookmark">freebsd+fluxbox中文输入法不能启动的设置方法</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          freebsd+fluxbox中文输入法不能启动的设置方法<br>------<br>我用的是freebsd+fluxbox，当然其它环境也有类似的配置。<p>通过ports安装，网上也有不少介绍。安装过程很简单了，进入各个目录make install clean。<br>需要安装的有x11/xorg，x11-wm/fluxbox，chinese/scim。<p>正确配置xorg.conf，确保正常启动图形界面。不要这个文件是能够启动的，但是会有鼠标之类的不可用。配置过程是比较玄妙的一件事情，一般不能启动的时候都是和显卡有关的驱动加载问题，我运行xorgconfig配置之后，显卡成了vga了，死活提示启动有问题。后来手动修改为vesa才可以。看造化吧，因为我在中英文的论坛中搜索答案的时候发现关于这个文件的文章不是很够用。<p>下面就是和输入法有关的了。先启动图形界面，打开一个term运行scim -d，如果有反应则说明安装成功了，然后就可以在~/.xinitrc中添加<br>------<br>scim -d &amp;<br>exec fluxbox<br>------<br>正常情况下可以看到任务栏上的输入法图标了。但是很让人郁闷的是，没法在任何程序中调用它。<p>运行locale命令，查看输出结果，如果LC_CTYPE未被设置，则需要需要手动设置。<br>如果是csh/tcsh，则运行setenv LC_CTYPE zh_CN.UTF-8，<br>如果是sh/bash，则运行export LC_CYTPE=zh_CN.UTF-8。<br>如果不想每次都手动设定，可以修改~/.cshrc（或~/.bashrc，看你用哪个shell了）<br>------<br>lax@liulantao-com&gt;  echo &quot;setenv LC_CTYPE zh_CN.UTF-8&quot; &gt;&gt; ~/.cshrc<p>lax@liulantao-com$   echo &quot;export LC_CYTPE=zh_CN.UTF-8&quot; &gt;&gt; ~/.bashrc<br>------<br>经测试，这个变量设置之后就能够正确启动输入法了。<p>-- <br>作者：刘兰涛  Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>转载请注明出处。<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7753736560692750141?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2008/01/10/freebsdfluxbox.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2007-11-30 00:00:00 +0800">30 Nov 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/11/30/bash.html" title="通过bash脚本批量创建用户并设置密码" rel="bookmark">通过bash脚本批量创建用户并设置密码</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          Create Users And Change Passwords With A Bash Script<br>通过脚本批量创建用户并设置密码<p>First create a file which contains all the user name.<br>首先创建一个包还所有用户名的文件，格式如下：<br>------------------------<br>nurealam<br>nayeem<br>mrahman<br>farid<br>rubi<br>sankar<br>------------------------<br>Save the file as userlist.txt. Now create the following bash file:<br>把该文件保存为userlist.txt。现在创建如下的bash文件：<br>------------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>adduser $i<br>done<br>---------------------------<br>保存文件为useradd.sh。<br>运行该脚本文件：<br>--------------------<br>[lax@liulantao-com ~]# sh useradd.sh<br>---------------------<br>This will add all the users to the system. Now we have to change the<br>passwords. Let&#39;s say we want username123 as password. So for user<br>nayeem the password will be nayeem123, rubi123 for user rubi and so<br>on.----www.liulantao.com-----<br />结果是添加了所有用户名到系统中。现在必须修改密码了。假设我们用使用username123为密码。比如rubi的密码将是rubi123，依此类推。<br>Create another bash file as follows:<br>创建下面的脚本文件：<br>-------------------<br>#!/bin/sh<br>for i in `more userlist.txt `<br>do<br>echo $i<br>echo $i&quot;123&quot; | passwd –-stdin &quot;$i&quot;<br>echo; echo &quot;User $username&#39;s password changed!&quot;<br>done<br>--------------------<br>保存为userpasswd.sh。<br>-------------<br>[lax@liulantao-com ~]# sh userpasswd.sh<br>------------<br>Run the file. All the passwords are changed.<br>运行该文件。所有的密码被修改<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>转载本网站文章请保留这一行和以上所有文字，谢谢。<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7596269751548084725?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2007/11/30/bash.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2007-11-25 00:00:00 +0800">25 Nov 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/11/25/blog-post.html" title="国立北京师范大学校歌" rel="bookmark">国立北京师范大学校歌</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          前年社团文化节开幕式的时候合唱了这首歌，歌词和配的曲子，让人感觉很有历史责任感。<br>闲话不多说，歌词奉上：<p>------------------------------<br>国立北京师范大学校歌<br>范源廉 作歌<br>冯孝思 作曲<br>------------------------------<p>往者文化世所荣<br>将来事业更无穷<br>开来继往 师道贯其中<br>师道 师道 谁兴立<br>责无旁贷在藐躬<p>皇皇兮首都<br>巍巍兮学府<br>一堂相聚志相同<br>朝研夕讨乐融融<br>宏我教化<br>昌我民治<br>共矢此愿务成功<p>------------------------------------------------------------<br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<p>---------- 转载本网站所有文章，请注明出处 ---------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4762123815007214058?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2007/11/25/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/11/13/fluxbox.html" title="fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案" rel="bookmark">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          关于如何设置菜单，请参考网络上其他朋友的文档。<br>本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。<p>一、请确认你安装了中文的字体。<br>方法1、<br>首先在终端运行fc-list命令：<br>&lt;code&gt;<br>[lax@liulantao .fluxbox]$ fc-list<br>&lt;/code&gt;<br>从中找到支持中文的字体，记下字体名字：<br>&lt;code&gt;<br>AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium<br>AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular<br>&lt;/code&gt;<br>本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。<br>如果要使用其它字体，替换成相应的名称。<br>方法2、<br>打开firefox，点击View - &amp;gt; Preferences -&amp;gt; Content ，看Default<br>font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。<p>二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：<br>[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation<br>Password:  ******<p>找到下面一行：<br>&lt;code&gt;<br>window.font:                    lucidasans-10<br>&lt;/code&gt;<br>注释掉window.font行，修改为：<br>&lt;code&gt;<br>#window.font:                    lucidasans-10<br>window.font:                    AR PL ZenKai Uni-10<br>&lt;/code&gt;<p>保存退出，reload config或者重新启动fluxbox就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。<p>设置其它位置的字体，可以修改相应的font。<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2941371565744535162?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2007/11/13/fluxbox.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/11/13/fedora-8.html" title="fedora 8 声音问题解决方案" rel="bookmark">fedora 8 声音问题解决方案</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          fedora 8 声音问题解决方案<p>症状：<br>1、通过system-config-soundcard测试，可以正确识别声卡。<br>2、普通用户无法调节音量，无法播放声音文件。<p>解决方法：<p>[lax@liulantao ~]$ sudo less /etc/security/console.perms.d/50-default.perms<br>Password:<p>添加以下内容<p>    #lax defined<br>    #lax defined<br>    &lt;laxaudio&gt;=/dev/dsp* /dev/snd/*<br>    &lt;console&gt; 0666 &lt;laxaudio&gt; 0600 root<p>重启系统，ok。<p>参考文章：<a href="http://home.nyc.rr.com/computertaijutsu/rhsound.html">http://home.nyc.rr.com/computertaijutsu/rhsound.html</a><p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-595768438268884869?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2007/11/13/fedora-8.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2007-11-06 00:00:00 +0800">06 Nov 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/11/06/c_06.html" title="计算两个整数最大公约数和最小公倍数的算法：C++语言实现" rel="bookmark">计算两个整数最大公约数和最小公倍数的算法：C++语言实现</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          计算两个整数最大公约数和最小公倍数的算法：C++语言实现<p>#include &lt;iostream&gt;<br>using namespace std;<br>int gcd(int a, int b) //最大公约数<br>{<br> while(a!=b)<br> { a&gt;b ? a -= a/b * b : b -= b/a * a; }<br> return a;<br>}<br>int lcm(int a, int b) //最小公倍数<br>{<br> return a * b / gcd(a,b);<br>}<br>int main()<br>{<br>int x, y;<br>cout &lt;&lt; &quot;请输入两个正整数：&quot; &lt;&lt;endl;<br>cin &gt;&gt; x &gt;&gt; y;<br>cout &lt;&lt; &quot;最大公约数： &quot; &lt;&lt; gcd(x,y) &lt;&lt; &quot; ； 最小公倍数： &quot; &lt;&lt; lcm(x,y) &lt;&lt; endl;<br>return 0;<br>}<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5986079122463533873?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2007/11/06/c_06.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+  
+  
+    <div id="post-pagination" class="pagination pagination-centered">
+  <ul class="pages nav nav-pills">
+
+  
+    <li>
+    
+      <a href="/page14">Previous</a>
+    
+    </li>
+  
+
+  
+    <li class="page">
+      <a href="/">1</a>
+    </li>
+  
+
+  
+    
+    <li class="page">
+      <a href="/page2">2</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page3">3</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page4">4</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page5">5</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page6">6</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page7">7</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page8">8</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page9">9</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page10">10</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page11">11</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page12">12</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page13">13</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page14">14</a>
+    </li>
+    
+  
+    
+    <li class="page active">
+      <a href="#">15</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page16">16</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page17">17</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page18">18</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page19">19</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page20">20</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page21">21</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page22">22</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page23">23</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page24">24</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page25">25</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page26">26</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page27">27</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page28">28</a>
+    </li>
+    
+  
+
+  
+    <li>
+      <a href="/page16">Next</a>
+    </li>
+  
+
+  </ul>
+</div>
+
+
+  
+  </div>
+
+  <div class='span3 sidebar'>
+    <section>
+      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+    </section>
+
+    <section>
+  <h1>归档</h1>
+  <ul id="archive_posts">
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2012">2012</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2011">2011</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2010">2010</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2009">2009</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2008">2008</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2007">2007</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2006">2006</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2005">2005</a></li>
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2004">2004</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2003">2003</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+  </ul>
+</section>
+
+
+    <section>
+      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
+    </section>
+  </div>
+</div>
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+
+
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1658815-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -18,6 +18,7 @@
     <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/themes/twitter/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
 
     <!-- Le fav and touch icons -->
   <!-- Update these with your own images
@@ -31,6 +32,7 @@
 
   <body>
 
+  <div class="navbar-wrapper">
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -87,6 +89,98 @@
   
     
   
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
 
 
 
@@ -95,6 +189,7 @@
         </div>
       </div>
     </div>
+  </div>
 
     <div class="container">
 
@@ -103,8 +198,762 @@
 
 <div class='container'>
   <div class='span8'>
+
+  <!-- Pagination links -->
+  
+    <ul class="pager">
+
+  <li class="previous">
+  
+    <a href="/page2">&larr; Previous</a>
+  
+  </li>
+
+
+
+  <li class="next">
+    <a href="/page4">Next &rarr;</a>
+  </li>
+
+</ul>
+
+  
+
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-06-26 00:00:00 +0800">26 Jun 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/SysAdmin/2012/06/26/mirror-centos.html" title="CentOS镜像攻略" rel="bookmark">CentOS镜像攻略</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>这篇文章讲述了通过rsync协议来进行CentOS软件仓库镜像的技术，如果你觉得实用我的目的就达到了。</p>
+
+<p>先从<a href="http://www.centos.org/modules/tinycontent/index.php?id=30">这个页面</a>找到一个支持rsync协议的镜像站点，我选择了<a href="http://www.kernel.org/">Linux Kernel Archives</a>，当然你可以根据情况选择其它站点。</p>
+
+<p>之后是准备磁盘空间，创建目录。</p>
+
+<pre><code>mkdir -p /data/mirrors/centos/{5.8,6.2}
+</code></pre>
+
+<p>接着就可以开始进行同步。</p>
+
+<pre><code>rsync  -avSHP --delete --exclude "local*" --exclude "isos" rsync://mirrors.kernel.org/centos/5.8/ /data/mirrors/centos/5.8/
+
+rsync  -avSHP --delete --exclude "local*" --exclude "isos" rsync://mirrors.kernel.org/centos/6.2/ /data/mirrors/centos/6.2/
+</code></pre>
+
+<p>CentOS的版本号是由一个主版本号和一个次版本号组成。实际使用yum访问软件仓库时，一般根据主版本号来查找各自的目录，比如CentOS 5.8的系统通过5而不是5.8来查找仓库的目录。因此需要为这两个主版本号创建软连接。</p>
+
+<pre><code>cd /data/mirrors/centos/ &amp;&amp; ln -s 5.8 5 &amp;&amp; ln -s 6.2 6
+</code></pre>
+
+<p>之后是修改yum的配置文件，即/etc/yum.repos.d/CentOS-Base.repo。下面给出base仓库的示例。类似可以配置
+- addons
+- centosplus
+- contrib
+- cr
+- extras
+- fasttrack
+- os
+- updates</p>
+
+<pre><code>[base]
+name=CentOS-$releasever - Base
+#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os
+baseurl=http://mirrors.renren.com/centos/$releasever/os/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+</code></pre>
+
+<p>为了方便部署，我写了一个更强壮的脚本，<a href="https://raw.github.com/Lax/SA/master/centos/rsync-centos">点击获取</a>。通过为该脚本创建软连接，可以在不传参数的情况下更新不同版本的仓库目录。软连接的格式有要求，需要是rsync-centos-VER（VER是完整版本号）</p>
+
+<pre><code>ln -s rsync-centos rsync-centos-5.8
+
+ln -s rsync-centos rsync-centos-6.2
+</code></pre>
+
+<p>放入计划任务中每天凌晨执行（对于国外的服务器，北京时间的凌晨执行并不是一个好主意）</p>
+
+<pre><code>0 2 * * *  cd /path/to/scripts/ &amp;&amp; sh rsync-centos-6.2 &amp;&amp; rsync-centos-5.8
+</code></pre>
+
+
+          <a href="/SysAdmin/2012/06/26/mirror-centos.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#CentOS-ref">CentOS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#mirror-ref">mirror <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Shell-ref">Shell <span>2</span></a></li>
     
-      <div id="post-pagination" class="pagination pagination-centered">
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-06-19 00:00:00 +0800">19 Jun 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" title="GNOME3多显示器配置" rel="bookmark">GNOME3多显示器配置</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>gnome3多显示器默认只有mirror模式工作正常。使用扩展模式，则导致整个屏幕横跨两个显示器，工具条和窗口被拆分。</p>
+
+<p>经检查资料，发现需要配置USE flag： xinerama。</p>
+
+<pre><code># File: /etc/make.conf
+
+USE="$USE xinerama"
+</code></pre>
+
+<p>修改后需要重新emerge一下已安装的软件包，之后重启X</p>
+
+<p><a href="http://en.gentoo-wiki.com/wiki/X.Org/Dual_Monitors#Xinerama">Xinerama</a></p>
+
+          <a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#gnome-shell-ref">gnome-shell <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#xinerama-ref">xinerama <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-06-13 00:00:00 +0800">13 Jun 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/SysAdmin/2012/06/13/smokeping.html" title="使用smokeping监控网络质量" rel="bookmark">使用smokeping监控网络质量</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p><a href="http://oss.oetiker.ch/smokeping">smokeping</a>是一款网络质量检测软件，用perl写成，使用rrdtool保存数据。</p>
+
+<p>它的优势是轻量，易于安装，可定制性强。</p>
+
+<h3 id="section">安装过程</h3>
+
+<p>下载安装包：<a href="http://oss.oetiker.ch/smokeping/pub/">下载页面</a></p>
+
+<p>写作此文时最新版本为2.6.8。</p>
+
+<p>解压后进入目录，执行命令</p>
+
+<pre><code>./setup/build-perl-modules.sh /opt/smokeping-2.6.8/thirdparty
+
+./configure
+</code></pre>
+
+<p>如果提示有模块安装失败，可以从CPAN安装。</p>
+
+<pre><code>perl -MCPAN -e 'install FCGI'
+</code></pre>
+
+<p>确保configure成功后，执行</p>
+
+<pre><code>qmake install
+</code></pre>
+
+<p>创建必要的目录</p>
+
+<pre><code>cd /opt/smokeping-2.6.8/ &amp;&amp; mkdir cache var data
+</code></pre>
+
+<p>安装rrdtool，httpd和mod_fcgid</p>
+
+<pre><code>rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+
+yum install rrdtool httpd mod_fcgid -y
+</code></pre>
+
+<p>配置httpd。创建配置文件/etc/httpd/conf.d/smokeping.conf，内容如下</p>
+
+<pre><code>alias	/smokeping/cache	/opt/smokeping-2.6.8/cache/
+alias	/smokeping	/opt/smokeping-2.6.8/htdocs/
+
+&lt;Directory /opt/smokeping-2.6.8/cache/&gt;
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+&lt;Directory /opt/smokeping-2.6.8/htdocs/&gt;
+    #SetHandler fcgid-script
+    Options +ExecCGI
+
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+</code></pre>
+
+<p>修复cache目录权限，否则查看页面会报错。</p>
+
+<pre><code>chown apache /opt/smokeping-2.6.8/cache/
+</code></pre>
+
+<p>启动smokeping</p>
+
+<pre><code>[root@lax-iPad smokeping-2.6.8]# ./bin/smokeping
+Note: logging to syslog as local0/info.
+Daemonizing ./bin/smokeping ...
+</code></pre>
+
+<p>启动httpd</p>
+
+<pre><code># service httpd start
+</code></pre>
+
+<p>在浏览器中查看</p>
+
+<pre><code>http://localhost/smokeping/smokeping.fcgi.dist
+</code></pre>
+
+          <a href="/SysAdmin/2012/06/13/smokeping.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#smokeping-ref">smokeping <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rrdtool-ref">rrdtool <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-05-23 00:00:00 +0800">23 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2012/05/23/teaming-network-device.html" title="Teaming" rel="bookmark">Teaming</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>Read documents bellow.</p>
+
+<p><a href="https://github.com/jpirko/libteam">libteam@github</a></p>
+
+<p><a href="http://lwn.net/Articles/467280/">lwn</a></p>
+
+<p><a href="www.pirko.cz/teamdev.pp.pdf">Jiri Pirko&rsquo;s PDF</a></p>
+
+<p><a href="http://www.h-online.com/open/features/Kernel-Log-Coming-in-3-3-Part-1-Networking-1421959.html">Kernel Log: Coming in 3.3 (Part 1) - Networking</a></p>
+
+<p><a href="http://kernelnewbies.org/Linux_3.3">kernelnewbies.org</a></p>
+
+          <a href="/Technology/2012/05/23/teaming-network-device.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-05-21 00:00:00 +0800">21 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/Ruby/2012/05/21/package-management-with-fpm.html" title="使用fpm管理软件打包" rel="bookmark">使用fpm管理软件打包</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p><a href="https://github.com/jordansissel/fpm">fpm</a>是一款支持多平台的打包管理工具。支持的平台包括：rpm, deb, tar, solaris等。</p>
+
+<p>fpm的目标：</p>
+
+<ol>
+  <li>
+    <p>无痛创建软件包</p>
+  </li>
+  <li>
+    <p>修改已有的软件包</p>
+  </li>
+  <li>
+    <p>抽取已有软件包中的脚本</p>
+  </li>
+</ol>
+
+<h2 id="section">安装</h2>
+<p>可以通过gem直接安装</p>
+
+<pre><code>gem install fpm
+</code></pre>
+
+<p>如果失败，需要确保rubygems和ruby-devel已经安装</p>
+
+<pre><code># yum install rubygems ruby-devel -y
+</code></pre>
+
+<h2 id="squid">一个简单示例：打包squid</h2>
+
+<p>我们的squid安装在/opt/squid/目录下。</p>
+
+<pre><code>fpm -s dir -t rpm -n squid -v 0.1 --post-install /opt/squid/bin/initVar.sh /opt/squid/
+</code></pre>
+
+<p>运行后会在当前目录生成squid-0.1-1.rpm。</p>
+
+<p>在创建rpm文件时，我们增加了一个参数&ndash;post-install，指定了当安装完成时执行的脚本，可以利用这个功能来完成软件初始化工作。类似的参数还有&ndash;pre-install/&ndash;post-uninstall/&ndash;pre-uninstall等。</p>
+
+          <a href="/Technology/Ruby/2012/05/21/package-management-with-fpm.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#fpm-ref">fpm <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rpm-ref">rpm <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-05-20 00:00:00 +0800">20 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2012/05/20/gentoo-portage-tree-sync-with-git.html" title="使用git同步更新portage" rel="bookmark">使用git同步更新portage</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>Gentoo的Portage默认使用rsync进行同步，网速不好时每次操作至少要几分钟的等待。幸好Gentoo开发者之一<a href="http://www.funtoo.org/wiki/User:Drobbins">Daniel Robbins</a>维护了<a href="http://www.funtoo.org">Funtoo</a>，使用github来分发portage树，并且有一个<a href="https://github.com/funtoo/portage">Gentoo portage的快照</a>，每天同步两次。</p>
+
+<p>使用起来很简单，只需简单的命令</p>
+
+<pre><code>git clone git://github.com/funtoo/portage.git &amp;&amp; cd portage &amp;&amp; git checkout gentoo.org 
+</code></pre>
+
+<p>之后将取回的portage目录替换原来的/usr/portage/即可。</p>
+
+<p>速度问题应该由来已久，不明白这群极客为什么不早些采用Git。</p>
+
+<p>从Gentoo讨论区看到，开发者还没有将用户同步Portage的方式迁移到git的计划（开发者的Portage树由CVS迁移到Git的工作已经列入计划）。</p>
+
+          <a href="/Technology/2012/05/20/gentoo-portage-tree-sync-with-git.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Gentoo-ref">Gentoo <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#Portage-ref">Portage <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Git-ref">Git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Funtoo-ref">Funtoo <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-05-18 00:00:00 +0800">18 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" title="Android网络问题检查（使用TCPDUMP）" rel="bookmark">Android网络问题检查（使用TCPDUMP）</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>随着智能手机的增长，智能平台（Andorid，iOS）的装机量也在飞速增加。为开发者带来很大商机。</p>
+
+<p>开发者对android平台的重视，意味着支持部门也要与这个系统打更多的交道，技术人员需要将已有的经验迁移到新的平台中。在传统的PC web中，网络相关问题已经有比较完善的方法和流程来进行定位和追踪，而移动设备端的相关软件还需要进行整合与优化。</p>
+
+<p>最近遇到开发人员报告的问题，需要确定问题发生时网络通讯是否正常。为此测试设计了两种方案，分别用模拟器和实际设备配合网络工具进行网络状况调试和分析。</p>
+
+<h2 id="android-sdk">方案一 使用Android SDK包含的模拟器进行调试</h2>
+
+<h3 id="android-sdk-1">准备Android SDK环境</h3>
+
+<p>从Android开发者网站下载相应开发平台的<a href="http://developer.android.com/sdk/index.html">Android SDK</a>，我下载了Linux版SDK，版本为<a href="http://dl.google.com/android/android-sdk_r18-linux.tgz">r18</a>。</p>
+
+<p>如果是Windows平台，下载安装包直接双击即可，可以跳过本段。如果你和我一样用Linux，可按以下操作。</p>
+
+<p>以下假设安装目录为~/apps/，请根据情况创建目录或修改命令参数。</p>
+
+<p>解压</p>
+
+<pre><code>tar zxvf /path/to/android-sdk_r18-linux.tgz
+</code></pre>
+
+<p>将解压的文件移动到目标目录</p>
+
+<pre><code>mv android-sdk-linux/ ~/apps/android-sdk-linux
+</code></pre>
+
+<p>为方便使用，配置环境变量。在~/.bashrc中增加以下内容。</p>
+
+<pre><code># Android SDK
+ADT=$HOME/apps/android-sdk-linux
+PATH=${PATH}:${ADT}/tools:${ADT}/platform-tools
+</code></pre>
+
+<p>退出当前终端并重新登陆，或执行以下命令。</p>
+
+<pre><code>source ~/.bashrc
+</code></pre>
+
+<h3 id="sdk">用SDK安装所需的虚拟镜像</h3>
+<p>执行以下命令，带开Android SDK Manager。</p>
+
+<pre><code>android
+</code></pre>
+
+<p>选择安装Android SDK Tools和Android SDK Platfor-tools，选择安装Android 2.3.3下的SDK Platform和Google APIs。</p>
+
+<h3 id="section">创建虚拟设备</h3>
+<p>执行以下命令，带开Android Virtual Device Manager。</p>
+
+<pre><code>android avd
+</code></pre>
+
+<p>点击New，开始新建设备。输入设备名称为android，Target选择2.3.3，SD卡大小设置为512MiB。</p>
+
+<p>创建完毕。</p>
+
+<h3 id="apk">启动虚拟设备和相关工具，安装apk</h3>
+
+<pre><code>emulator -netfast -debug proxy @android
+
+sudo `which adb` start-server
+
+adb install xxx.apk
+</code></pre>
+
+<h3 id="section-1">开始调试</h3>
+
+<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
+
+<s>由于我们在启动模拟器时，指定了调试网络代理，因此操作软件时的网络交互可以在模拟器的终端下看到调试信息。</s>
+<p>&mdash;实际测试时使用了squid作为代理。重复测试发现没有重现输出内容，需要验证。</p>
+
+<h2 id="tcpdump">方案二 使用TCPDUMP进行实机测试</h2>
+
+<p>准备Android环境的方法前面已经介绍。</p>
+
+<h3 id="section-2">设备准备</h3>
+
+<p>原则上任何安装Android系统的手机、平板电脑都可以进行此次调试。由于本次测试需求，需要ROOT并开启开发者模式。操作方法在此不再做介绍（网上太多相关文章了）。</p>
+
+<p>我测试用的是一台HP TouchPad，安装CM9。</p>
+
+<h3 id="section-3">软件</h3>
+
+<p>下载<a href="http://www.eecs.umich.edu/~timuralp/tcpdump-arm">tcpdump-arm</a></p>
+
+<p>将tcpdump-arm传到设备上</p>
+
+<pre><code>adb push tcpdump-arm /data/local/
+</code></pre>
+
+<p>登入设备，设置文件权限</p>
+
+<pre><code>adb shell
+
+cd /data/local/
+
+chmod 777 tcpdump-arm
+</code></pre>
+
+<p>安装程序包</p>
+
+<pre><code>adb install xxx.apk
+</code></pre>
+
+<h3 id="section-4">开始调试</h3>
+
+<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
+
+<p>仍然使用电脑进入adb shell中，启动tcpdump-arm，开始抓取数据包。</p>
+
+<pre><code>./tcpdump-arm -s 1500 -n -w result.cap
+</code></pre>
+
+<p>以上命令使用-w参数，将抓包结果保存到文件，方便后续进行进一步分析。</p>
+
+<p>从设备中把结果文件复制出来</p>
+
+<pre><code>adb pull /data/local/result.cap ./
+</code></pre>
+
+<p>使用wireshark查看</p>
+
+<pre><code>wireshark result.cap
+</code></pre>
+
+          <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#android-ref">android <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#tcpdump-ref">tcpdump <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-05-13 00:00:00 +0800">13 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2012/05/13/hello_jekyll.html" title="Hello, jekyll" rel="bookmark">Hello, jekyll</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          Hello, Jekyll.
+
+把blog迁移到github。Cheer!
+
+          <a href="/2012/05/13/hello_jekyll.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+  
+  
+    <div id="post-pagination" class="pagination pagination-centered">
   <ul class="pages nav nav-pills">
 
   
@@ -146,6 +995,144 @@
     </li>
     
   
+    
+    <li class="page">
+      <a href="/page6">6</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page7">7</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page8">8</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page9">9</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page10">10</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page11">11</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page12">12</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page13">13</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page14">14</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page15">15</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page16">16</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page17">17</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page18">18</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page19">19</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page20">20</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page21">21</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page22">22</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page23">23</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page24">24</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page25">25</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page26">26</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page27">27</a>
+    </li>
+    
+  
+    
+    <li class="page">
+      <a href="/page28">28</a>
+    </li>
+    
+  
 
   
     <li>
@@ -157,933 +1144,923 @@
 </div>
 
 
-    
-    
-    
-    
-
-
   
-    
-    
-    
-    
-  
-    
-      <h2>2008</h2>
-      <h3>November</h3>
-      <ul>
-    
-  
-    <li><span>November 19, 2008</span> &raquo; <a href="/2008/11/19/fedora-10.html">“升级到Fedora 10后键盘鼠标输入没反应”及解决办法。</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>October</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October 28, 2008</span> &raquo; <a href="/2008/10/28/fuse-sshfs-mount.html">fuse-sshfs: 安全mount 远程目录</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October 24, 2008</span> &raquo; <a href="/2008/10/24/scitecodeblocks.html">跨平台编程的好工具：编辑器SciTE和编译环境Code::Blocks</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October 14, 2008</span> &raquo; <a href="/2008/10/14/10.html">10分钟让你全面了解当前世界金融危机！-转载</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October 13, 2008</span> &raquo; <a href="/2008/10/13/2008.html">2008年国庆相册-与父母在天安门、王府井</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October  8, 2008</span> &raquo; <a href="/2008/10/08/squid.html">基于多端口控制的Squid二级代理设置方法</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>September</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>September 30, 2008</span> &raquo; <a href="/2008/09/30/bashforin.html">bash入门：条件语句for...in...</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>September 24, 2008</span> &raquo; <a href="/2008/09/24/blog-post.html">北京邮电大学开学典礼之校长讲话</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>August</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>August 30, 2008</span> &raquo; <a href="/2008/08/30/attribwindows.html">attrib指令：windows命令行下修改文件属性</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>July</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>July  7, 2008</span> &raquo; <a href="/2008/07/07/blog-post.html">赴青海社会实践备忘录</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>June</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June  9, 2008</span> &raquo; <a href="/2008/06/09/512.html">5.12救援网</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>May</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May  8, 2008</span> &raquo; <a href="/2008/05/08/blog-post.html">网站建构与定位的思考</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May  5, 2008</span> &raquo; <a href="/2008/05/05/windowsxpdcomlaunch.html">WindowsXP连接无线网络必须开启DcomLaunch服务</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>March</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>March 19, 2008</span> &raquo; <a href="/2008/03/19/0051.html">凌晨00：51的短信</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>February</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>February 24, 2008</span> &raquo; <a href="/2008/02/24/liu-lantao-college-of-information.html">Liu Lantao College Of Information</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>February 21, 2008</span> &raquo; <a href="/2008/02/21/blog-post.html">上元夜</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>February  4, 2008</span> &raquo; <a href="/2008/02/04/freebsdpostfixfatal-open-database.html">FreeBSD邮件服务Postfix问题：“fatal: open database /etc/aliases.db”</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>January</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>January 15, 2008</span> &raquo; <a href="/2008/01/15/blog-post.html">”中毒了，重装也不行？“ -- 系统重装注意事项</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>January 10, 2008</span> &raquo; <a href="/2008/01/10/freebsdfluxbox.html">freebsd+fluxbox中文输入法不能启动的设置方法</a></li>
-  
-    
-      
-        </ul>
-        <h2>2007</h2>
-        <h3>November</h3>
-        <ul>
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>November 30, 2007</span> &raquo; <a href="/2007/11/30/bash.html">通过bash脚本批量创建用户并设置密码</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>November 25, 2007</span> &raquo; <a href="/2007/11/25/blog-post.html">国立北京师范大学校歌</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>November 13, 2007</span> &raquo; <a href="/2007/11/13/fluxbox.html">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>November 13, 2007</span> &raquo; <a href="/2007/11/13/fedora-8.html">fedora 8 声音问题解决方案</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>November  6, 2007</span> &raquo; <a href="/2007/11/06/c_06.html">计算两个整数最大公约数和最小公倍数的算法：C++语言实现</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>October</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October  8, 2007</span> &raquo; <a href="/2007/10/08/linux-problems-solved-today-20071008.html">Linux problems solved today - 20071008</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October  8, 2007</span> &raquo; <a href="/2007/10/08/20071008.html">Linux problems solved today c2 - 20071008</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>October  7, 2007</span> &raquo; <a href="/2007/10/07/blog-post.html">==云是风的音符==</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>September</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>September  5, 2007</span> &raquo; <a href="/2007/09/05/2008_05.html">课程表2007-2008-第一学期</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>August</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>August 10, 2007</span> &raquo; <a href="/2007/08/10/blog-post.html">北美留学的奖学金选择</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>July</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>July 18, 2007</span> &raquo; <a href="/2007/07/18/blog-post_18.html">如果天天都是那个家伙的生日？</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>July  9, 2007</span> &raquo; <a href="/2007/07/09/blog-post.html">再见烟雨风</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>June</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 27, 2007</span> &raquo; <a href="/2007/06/27/blog-post_27.html">自由软件的法律保护</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 24, 2007</span> &raquo; <a href="/2007/06/24/by-victoria.html">关于数码相机 by victoria</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 18, 2007</span> &raquo; <a href="/2007/06/18/to.html">网站评价：to 任雯小朋友</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June 13, 2007</span> &raquo; <a href="/2007/06/13/blog-post_13.html">相遇是一种美丽的伤</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>June  5, 2007</span> &raquo; <a href="/2007/06/05/blog-post.html">++不能说“再见”++</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>May</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May 30, 2007</span> &raquo; <a href="/2007/05/30/2007530.html">2007年5月30日</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May 20, 2007</span> &raquo; <a href="/2007/05/20/blog-post_20.html">学着羡慕</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May 19, 2007</span> &raquo; <a href="/2007/05/19/blog-post_966.html">独白：初夏 - 思絮飞扬</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May 15, 2007</span> &raquo; <a href="/2007/05/15/my-months-experience-on-fedora.html">My Months Experience On Fedora.</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May 15, 2007</span> &raquo; <a href="/2007/05/15/blog-post_8673.html">给远方的朋友</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May 15, 2007</span> &raquo; <a href="/2007/05/15/blog-post_15.html">香山。</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May  7, 2007</span> &raquo; <a href="/2007/05/07/blog-post_07.html">落槐花之花</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May  5, 2007</span> &raquo; <a href="/2007/05/05/blog-post_05.html">那时花开，那时花已谢了。</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May  4, 2007</span> &raquo; <a href="/2007/05/04/blog-post_04.html">记录：劳动节这三五日</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>May  1, 2007</span> &raquo; <a href="/2007/05/01/blog-post.html">生，活。</a></li>
-  
-    
-          
-        
-          </ul>
-          <h3>April</h3>
-          <ul>
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>April 30, 2007</span> &raquo; <a href="/2007/04/30/blog-post_30.html">向王小瑞们蒲小媛们的电脑们致敬！</a></li>
-  
-    
-          
-        
-      
-    
-  
-    
-    
-    
-    
-  
-    
-  
-    <li><span>April 29, 2007</span> &raquo; <a href="/2007/04/29/blog-post_29.html">受微软反盗版升级补丁困扰的朋友请看</a></li>
-  
-    
-      </ul>
-    
-  
-
-
-
-    
-    <!-- Pagination links -->
-    
-      <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/page2">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page4">Next &rarr;</a>
-  </li>
-
-</ul>
-
-    
-    </div>
+  </div>
 
   <div class='span3 sidebar'>
     <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
+      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+    </section>
+
+    <section>
+  <h1>归档</h1>
+  <ul id="archive_posts">
+  
     
-      <li class="post">
-        <a href="/2013/01/26/open-source-game-d0x3d.html">有趣的开源项目（二）：安全游戏[d0x3d!]</a>
-      </li>
     
-      <li class="post">
-        <a href="/Quotes/2013/01/25/quotes-weekly-2013w4.html">每周语录 2013年第四周</a>
-      </li>
     
-      <li class="post">
-        <a href="/Technology/2013/01/25/build-page-with-haml.html">使用HAML构建WEB页面</a>
-      </li>
+      <li><a href="/archive.html#archive_2013">2013</a></li>
     
-      <li class="post">
-        <a href="/2013/01/20/view-documents-on-github-pages-the-ugly-way.html">查看github pages中文档的方式</a>
-      </li>
+  
     
-      <li class="post">
-        <a href="/Technology/2013/01/18/funny-opensource-projects.html">有趣的开源项目（一）：Octpress/ktap</a>
-      </li>
     
-      <li class="post">
-        <a href="/2013/01/12/weibo-update-20130107-20130113.html">微博更新记录 20130107-20130113</a>
-      </li>
     
-      <li class="post">
-        <a href="/Technology/2012/12/30/raspberry-pi-launches-pi-store.html">Raspberry Pi上的AppStrore：Pi Store</a>
-      </li>
+  
     
-      <li class="post">
-        <a href="/Technology/2012/12/28/gerrit-review-system---setup-notes.html">Gerrit Review System - Setup notes</a>
-      </li>
     
-      <li class="post">
-        <a href="/Technology/Linux/2012/10/22/squid-ulimit-n.html">ulimit -n的重要性</a>
-      </li>
     
-      <li class="post">
-        <a href="/Technology/Linux/2012/09/14/edac.html">EDAC</a>
-      </li>
+  
     
-      <li class="post">
-        <a href="/Technology/2012/09/06/object-c-programming-notes-1.html">Object C Programming Notes 1 - Objects, Classes and Messaging</a>
-      </li>
     
-      <li class="post">
-        <a href="/Technology/2012/08/26/index-page-update.html">减少首页文字量</a>
-      </li>
     
-      <li class="post">
-        <a href="/Technology/2012/08/18/mac-osx-development-environment-setup.html">Mac OSX development environment setup</a>
-      </li>
+  
     
-      <li class="post">
-        <a href="/Technology/2012/08/06/jekyll-bootstrap.html">切换到jekyll bootstrap</a>
-      </li>
     
-      <li class="post">
-        <a href="/SysAdmin/2012/07/18/mirror-debian.html">Debian镜像攻略</a>
-      </li>
     
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2012">2012</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2011">2011</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2010">2010</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2009">2009</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2008">2008</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2007">2007</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2006">2006</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2005">2005</a></li>
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2004">2004</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2003">2003</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
+    
+  
   </ul>
 </section>
 
 
     <section>
-      <h1>微信官方帐户 Linux</h1>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
     </section>
-
-    
-<section>
-  <h1>GitHub Repos</h1>
-  <ul id="gh_repos">
-    <li class="loading">Status updating...</li>
-  </ul>
-  
-  <a href="https://github.com/Lax">@Lax</a> on GitHub
-  
-  <script type="text/javascript">
-    $.domReady(function(){
-        if (!window.jXHR){
-            var jxhr = document.createElement('script');
-            jxhr.type = 'text/javascript';
-            jxhr.src = '/javascripts/libs/jXHR.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(jxhr, s);
-        }
-
-        github.showRepos({
-            user: 'Lax',
-            count: 0,
-            skip_forks: true,
-            target: '#gh_repos'
-        });
-    });
-  </script>
-  <script src="/javascripts/github.js" type="text/javascript"> </script>
-</section>
-
-
-
   </div>
 </div>
 
