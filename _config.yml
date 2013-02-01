@@ -73,6 +73,7 @@ JB :
   archive_path: /archive.html
   categories_path : /categories.html
   tags_path : /tags.html
+  atom_path : /atom.xml
 
   # Settings for comments helper
   # Set 'provider' to the comment provider you want to use.
@@ -140,7 +141,7 @@ source: .
 destination: ./_site
 exclude: ./_draft
  
-paginate: 48
+paginate: 8
 recent_posts: 15
 
 lsi: false

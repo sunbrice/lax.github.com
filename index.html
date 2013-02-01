@@ -8,28 +8,70 @@ page_hidden: true
 
 <div class='container'>
   <div class='span8'>
-    {% if paginator.total_pages > 1 %}
-      {% include paginator.html %}
-    {% endif %}
-    
-    {% assign posts_collate = paginator.posts %}
-    {% include posts_collate.html %}
-    
-    <!-- Pagination links -->
-    {% if paginator.total_pages > 1 %}
-      {% include pager.html %}
-    {% endif %}
+
+  <!-- Pagination links -->
+  {% if paginator.total_pages > 1 %}
+    {% include pager.html %}
+  {% endif %}
+
+  {% for post in paginator.posts %}
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="{{ post.date }}">{{ post.date | date_to_string }}</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="{{ post.url }}" title="{{ post.title }}" rel="bookmark">{{ post.title }}</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          {{ post.author }}
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          {{ post.content | truncatehtml: 840 }}
+          <a href="{{ post.url }}" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          {% if post.categories %}
+          <span>
+            Posted in&nbsp;
+            <ul>
+            {% for category in post.categories %}
+              <li><a href="/categories.html#{{ category }}-ref" title="{{ category }}" rel="category tag">{{ category }}</a></li>
+            {% endfor %}
+            </ul>
+          </span>
+          {% endif %}
+          {% unless post.tags == empty %}
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            {% assign tags_list = post.tags %}
+            {% include JB/tags_list %}
+            </ul>
+          {% endunless %} 
+        </div>
+      </div>
+      <div class="clear"></div>
     </div>
+    <div class="rule"><hr/></div>
+  {% endfor %}
+  
+  {% if paginator.total_pages > 1 %}
+    {% include paginator.html %}
+  {% endif %}
+  </div>
 
   <div class='span3 sidebar'>
-    {% include asides_recent_posts.html %}
-
     <section>
-      <h1>微信官方帐户 Linux</h1>
       <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
-    {% include asides_github.html %}
+    {% include asides_archive.html %}
 
+    <section>
+      <a class='pull-right' href="{{ BASE_PATH }}{{ site.JB.atom_path }}"><i class="icon-star"></i>RSS</a>
+    </section>
   </div>
 </div>

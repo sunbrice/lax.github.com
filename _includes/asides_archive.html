@@ -1,0 +1,12 @@
+<section>
+  <h1>归档</h1>
+  <ul id="archive_posts">
+  {% for post in site.posts %}
+    {% capture this_year_tag %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% capture next_year_tag %}{{ post.next.date | date: "%Y" }}{% endcapture %}
+    {% if this_year_tag != next_year_tag %}
+      <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}#archive_{{this_year_tag}}">{{ this_year_tag }}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</section>
