@@ -226,6 +226,136 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2011-09-28 09:11:39 +0800">28 Sep 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2011/09/28/build-rack-based-application-on-heroku.html" title="Build Rack-based application on Heroku" rel="bookmark">Build Rack-based application on Heroku</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <h2 id="heroku">heroku</h2>
+
+<p>heroku是目前最方便使用的PaaS系统，是大部分开发者部署ruby服务的首选，基于git的部署工具带给它比google appengine更好的便捷性。</p>
+
+<p>在heroku创建一个rails程序是非常简单的，基本步骤（只是基本步骤，具体命令需要查rails和git的使用说明）：</p>
+
+<pre><code>rails create myapp
+heroku create
+cd myapp &amp;&amp; git init .
+git commit &amp;&amp; git push
+</code></pre>
+
+<p>搞出这样的开发流程，是造福广大程序员的伟大事业。</p>
+
+<h2 id="why-rack--datamapper-on-heroku">Why Rack + DataMapper on heroku</h2>
+
+<p>Rails + ActiveRecord可以算作一种标配，引领了Ruby开发的潮流。这次尝试Ruby off <del>Rails</del>，选用了Rack + DataMapper的组合。</p>
+
+<p>大部分ruby web框架都支持rack规范，如主流的rails、sinatra、merb。rack定义了一系列规范，类似java的servlet。遵循规范的结果，使得大量rack容器被开发出来。heroku目前默认的容器是thin。</p>
+
+<p>从heroku的文档中看出，heroku使用了postgresql数据库。对于大部分ruby程序而言，使用mysql或pgsql或sqlite都不会影响部署——因为引入数据库抽象层已成惯例，比如ActiveRecord、DataMapper和Sequeel等。</p>
+
+<h2 id="first-thing-first-rack">First thing first： 部署一个简单的Rack程序</h2>
+
+<p>在heroku上部署基于Rack的程序，也是非常简单的。</p>
+
+<p>最简单的config.ru内容如下</p>
+
+<p>map &ldquo;/&rdquo; do
+    run Proc.new {|env| [200, {&ldquo;Content-Type&rdquo; =&gt; &ldquo;text/html&rdquo;}, StringIO.new(&ldquo;sysadmin 0.1&rdquo;)] }
+ end</p>
+
+<p>本地直接用rackup即可执行。</p>
+
+<p>如果在heroku上部署，需要额外的Gemfile文件来指明服务器端需要的rubygem。最简单的Gemfile内容为：</p>
+
+<p>gem &lsquo;rack&rsquo;</p>
+
+<p>以上例子是一个最基本的Rack应用，将这两个文件提交后，通过git push到heroku，就能在http://myapp.heroku.com看到页面，显示&rdquo;sysadmin 0.1&rdquo;。
+到此最简单的部署完成。</p>
+
+<h2 id="setup-datamapper">Setup DataMapper</h2>
+
+<p>require &lsquo;data_mapper&rsquo;</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>DataMapper.setup(:default, ENV[&lsquo;DATABASE_URL&rsquo;]</td>
+      <td>&nbsp;</td>
+      <td>&lsquo;sqlite::memory:&rsquo;)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>class Tweet
+   include DataMapper::Resource</p>
+
+<p>property :id,   Serial
+   property :name, String
+   property :value, Text
+   property :created_at, DateTime
+ end</p>
+
+<p>DataMapper.finalize
+ DataMapper.auto_upgrade!</p>
+
+<p>经过这一操作，我们就有了一个class：Tweet，并且在数据库中有相应的表生成。一个基于DataMapper进行数据操作的应用就此诞生。</p>
+
+          <a href="/Technology/2011/09/28/build-rack-based-application-on-heroku.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#DataMapper-ref">DataMapper <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#heroku-ref">heroku <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#PaaS-ref">PaaS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rack-ref">rack <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2011-09-28 09:07:25 +0800">28 Sep 2011</abbr>
       </span>
       <h3 class="entry-title">
@@ -721,54 +851,6 @@ $ rvm use 1.9.2
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-06-17 12:43:12 +0800">17 Jun 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/06/17/e5bd97e6989fdnse4bc98e58c96e599a8.html" title="彗星DNS优化器" rel="bookmark">彗星DNS优化器</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>最近参与了不少联系用户的工作，发现DNS设置错误，导致访问网站有性能问题的情况比较多。</p>
-
-<p>指导用户手工修改DNS不是太难的工作，但是又要很有耐心帮忙做测试等等。实在是消耗时间。今天发现有用户在使用工具进行辅助完成这个工作，先分享出来。自己动手丰衣足食，很经济。</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>[彗星DNS优化器</td>
-      <td>彗星DNS优化器 1.20下载地址 - 华军软件园下载中心](http://zzidc.onlinedown.net/softdown/100870_2.htm).</td>
-    </tr>
-  </tbody>
-</table>
-
-          <a href="/Technology/2011/06/17/e5bd97e6989fdnse4bc98e58c96e599a8.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -978,6 +1060,10 @@ $ rvm use 1.9.2
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

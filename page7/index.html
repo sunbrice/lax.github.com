@@ -226,6 +226,73 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2010-07-19 19:14:30 +0800">19 Jul 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/07/19/e69599e4bda0e79b91e68ea7nginxe69c8de58aa1efbc9ae69687e4bbb6e4b88ae4bca0e69c8de58aa1loge9858de7bdae.html" title="教你监控Nginx服务：文件上传服务log配置" rel="bookmark">教你监控Nginx服务：文件上传服务log配置</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>教你监控Nginx服务：文件上传服务log配置</p>
+
+<p>log_format upload ‘[$time_local] $status $host $upstream_addr $upstream_response_time $request_time $remote_addr $request_length $bytes_sent’;
+access_log logs/upload.log upload;</p>
+
+<p>变量说明：
+$time_local  本地时间
+$status           状态码
+$host              主机名
+$upstream_addr    后端地址
+$upstream_response_time   后端响应时间
+$request_time         请求时间
+$remote_addr         用户地址
+$request_length     请求长度
+$bytes_sent             返回长度</p>
+
+          <a href="/Technology/2010/07/19/e69599e4bda0e79b91e68ea7nginxe69c8de58aa1efbc9ae69687e4bbb6e4b88ae4bca0e69c8de58aa1loge9858de7bdae.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2010-07-19 19:13:23 +0800">19 Jul 2010</abbr>
       </span>
       <h3 class="entry-title">
@@ -707,59 +774,6 @@ make
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2010-04-21 00:00:00 +0800">21 Apr 2010</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html" title="使用Ruby进行Log分析：放弃String.split，使用Regexp.match" rel="bookmark">使用Ruby进行Log分析：放弃String.split，使用Regexp.match</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          使用Ruby进行log分析，它的性能成为一个瓶颈。<br>传统在perl中通过split的方式进行字段抽取的工作，在ruby中性能变的极差。<br>对一个32万行的log文件进行统计，抽取其中一个字段进行累加。<br>原有采用split方式，脚本运行时间在12~13s，且CPU占用较高。这种情况下，进行实施数据分析的消耗巨大，无法大范围部署。<br>而让这一状况得以改观的是，采用Regexp.match(str)进行抽取，计算速度有了非常大的改善，在2s内完成了计划的任务。<br> <br>－－－－－－－－－－－－－－－<br>lax@mib ~ $ cat accounting_total_reqs.rb <br>#!/usr/bin/env ruby<br><br>f = File.open(&quot;NginxAccounting.log&quot;)<br>regex = Regexp.new(/req_total:(\d+)/)<br><br>tp = 0<br>while(f.gets)<br>    $_.scan(regex)<br>     tp += $1.to_i if $1<br>end<br>puts tp<br>－－－－－－－－－－－－－－－<br><br>采用str.scan(regex)，速度比较满意：<br>lax@mib ~ $ time ruby accounting_total_reqs.rb <br>12437322629<br><br>real    0m1.786s<br>user    0m1.753s<br>sys    0m0.031s<br> <br>调整为regex.match(str)方法后，速度又有少量提升：<br><br>lax@mib ~ $ time ruby 5.rb <br>12437322629<br><br>real    0m1.603s<br>user    0m1.570s<br>sys    0m0.031s<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4221053633967927849?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#Ruby-ref">Ruby <span>2</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -969,6 +983,10 @@ make
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

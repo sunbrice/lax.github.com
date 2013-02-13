@@ -226,6 +226,117 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2012-07-13 00:00:00 +0800">13 Jul 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/SysAdmin/2012/07/13/hadoop-scripting-basics.html" title="Hadoop scripting basics (draft)" rel="bookmark">Hadoop scripting basics (draft)</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>Links:</p>
+
+<p><a href="http://hadoop.apache.org/">Hadoop Website</a></p>
+
+<p><a href="http://www.slideshare.net/acarlos1000/hadoop-basics-presentation">Hadoop at Yahoo!</a></p>
+
+<h1 id="setup">Setup</h1>
+
+<p>TODO</p>
+
+<h1 id="command-line-basics">Command line basics</h1>
+
+<h2 id="environment-variables">ENVIRONMENT VARIABLES</h2>
+
+<p>in ~/.bash_profile</p>
+
+<pre><code># User specific environment and startup programs
+JAVA_HOME=/opt/java
+HADOOP_HOME=/opt/hadoop
+HIVE_HOME=/opt/hive
+
+PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HIVE_HOME/bin:$PATH:$HOME/bin
+
+export PATH JAVA_HOME HADOOP_HOME
+</code></pre>
+
+<h2 id="hdfs---walk-around">HDFS - Walk around</h2>
+
+<pre><code>hadoop fs -ls /
+hadoop fs -du -h /data/
+hadoop fs -dus /user/_myname_/
+hadoop fs -tail /user/_myname_/my-test-file.txt
+</code></pre>
+
+<h2 id="submit-mapreduce-jobjar">Submit Map/Reduce Job(jar)</h2>
+
+<h2 id="job-tracker">Job Tracker</h2>
+
+<p>TODO</p>
+
+<h1 id="streaming">Streaming</h1>
+<p>Streaming(script)
+&mdash;&mdash;</p>
+
+<p>Usage:</p>
+
+<pre><code> hadoop jar $STREAMING_JAR -mapper "$MAPPER" -file $MAPPER_FILE -reducer "$REDUCER" -file $REDUCER_FILE -input $RAW -output $SUMMARY -numReduceTasks 1
+
+$STREAMING_JAR, $MAPPER_FILE, $REDUCER_FILE: files in local path.
+
+$MAPPER，$REDUCER: commands run by hadoop.
+
+$RAW, $SUMMARY: files in HDFS.
+</code></pre>
+
+<h2 id="streaming-examples">Streaming examples</h2>
+<p>EXAMPLES: streaming/wc-demo.sh</p>
+
+          <a href="/SysAdmin/2012/07/13/hadoop-scripting-basics.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Hadoop-ref">Hadoop <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Streaming-ref">Streaming <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2012-06-26 00:00:00 +0800">26 Jun 2012</abbr>
       </span>
       <h3 class="entry-title">
@@ -918,43 +1029,6 @@ chmod 777 tcpdump-arm
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-05-13 00:00:00 +0800">13 May 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2012/05/13/hello_jekyll.html" title="Hello, jekyll" rel="bookmark">Hello, jekyll</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          Hello, Jekyll.
-
-把blog迁移到github。Cheer!
-
-          <a href="/2012/05/13/hello_jekyll.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1164,6 +1238,10 @@ chmod 777 tcpdump-arm
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

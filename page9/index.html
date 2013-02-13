@@ -226,6 +226,41 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2009-09-25 00:00:00 +0800">25 Sep 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/09/25/head-h-host-2031661789.html" title="curl -4 --head -H "Host 203.166.178.9" http://www.liulantao.com/images/lax_shetou.gif" rel="bookmark">curl -4 --head -H "Host 203.166.178.9" http://www.liulantao.com/images/lax_shetou.gif</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <br clear="all"><div>lax@homex ~ $ host <a href="http://www.liulantao.com">www.liulantao.com</a></div><div><a href="http://www.liulantao.com">www.liulantao.com</a> has address 203.166.178.9</div><div>lax@homex ~ $ curl -4 --head -H &quot;Host 203.166.178.9&quot; <a href="http://www.liulantao.com/images/lax_shetou.gif">http://www.liulantao.com/images/lax_shetou.gif</a></div> <div>HTTP/1.1 200 OK</div><div>Date: Fri, 25 Sep 2009 13:19:45 GMT</div><div>Server: Apache/2.0.52 (Red Hat)</div><div>Last-Modified: Sat, 07 Feb 2009 07:30:15 GMT</div><div>ETag: &quot;1208ae-16be-1bc9efc0&quot;</div><div> Accept-Ranges: bytes</div><div>Content-Length: 5822</div><div>Connection: close</div><div>Content-Type: image/gif</div><div><br></div>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-1476410669648052340?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/2009/09/25/head-h-host-2031661789.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2009-09-24 00:00:00 +0800">24 Sep 2009</abbr>
       </span>
       <h3 class="entry-title">
@@ -469,41 +504,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-08-25 00:00:00 +0800">25 Aug 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/08/25/how-to-disable-ping-response.html" title="How-to: disable the PING response." rel="bookmark">How-to: disable the PING response.</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          To disable the PING response, add the following line to your init script for the network:<br>echo 1 &gt;/proc/sys/net/ipv4/icmp_echo_ignore_all<br><br>To reenable the PING response do this:<br>echo 0 &gt;/proc/sys/net/ipv4/icmp_echo_ignore_all<br> <br>To make the change PERMANENT add the following line to /etc/sysctl.conf:<br>net.ipv4.icmp_echo_ignore_all=1<br>and execute this command<br>sysctl -p<br><br>It is better to use firewall for these purposes, so that you can optionally enable ping from some systems, esp monitoring systems<br> iptables -t filter -I INPUT -p icmp --icmp-type echo-request -s monitoring_system -j ACCEPT<br>iptables -t filter -I INPUT -p icmp --icmp-type echo-request -j DROP<br><br>Just in case it&#39;s not obvious to iptables newbies, replace &quot;monitoring_system&quot; with the IP/range of the server(s) which should be able to ping the server. All other ping requests will be silenty dropped.<br> <br><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-8673785730320933311?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/2009/08/25/how-to-disable-ping-response.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -713,6 +713,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
