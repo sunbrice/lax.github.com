@@ -20,4 +20,5 @@ Opera并不会淘汰现有的移动产品如Opera Mobile和Opera Mini，而是�
 
 
 * [Opera gears up at 300 million users](http://www.opera.com/press/releases/2013/02/13/)
+* [300 million users strong, Opera moves to WebKit](http://my.opera.com/haavard/blog/2013/02/13/webkit)
 * [MWC 2013](http://www.mobileworldcongress.com)
