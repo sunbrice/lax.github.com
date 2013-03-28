@@ -4,7 +4,7 @@
  <title>非常规思维研究所</title>
  <link href="http://blog.liulantao.com/atom.xml" rel="self"/>
  <link href="http://blog.liulantao.com"/>
- <updated>2013-03-28T10:09:29+08:00</updated>
+ <updated>2013-03-28T16:32:54+08:00</updated>
  <id>http://blog.liulantao.com</id>
  <author>
    <name>Liu Lantao</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>[阅读] 基于P2P的CDN/并发</title>
+   <title>[阅读] 基于P2P的CDN / Go vs Erlang并发模型</title>
    <link href="http://blog.liulantao.com/2013/03/28/digweb-peercdn-concurrency-x-2.html"/>
    <updated>2013-03-28T00:00:00+08:00</updated>
    <id>http://blog.liulantao.com/2013/03/28/digweb-peercdn-concurrency-x-2</id>
