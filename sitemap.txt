@@ -66,6 +66,8 @@ http://blog.liulantao.com/page26/index.html
 http://blog.liulantao.com/page27/index.html
 http://blog.liulantao.com/page28/index.html
 
+http://blog.liulantao.com/2013/03/28/digweb-peercdn-concurrency-x-2.html
+http://blog.liulantao.com/2013/03/19/gerrit-review-system-management.html
 http://blog.liulantao.com/Technology/2013/02/13/opera-shift-to-webkit.html
 http://blog.liulantao.com/2013/01/26/open-source-game-d0x3d.html
 http://blog.liulantao.com/Quotes/2013/01/25/quotes-weekly-2013w4.html

@@ -226,6 +226,152 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2011-11-23 09:22:44 +0800">23 Nov 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2011/11/23/pypy-1-7-released.html" title="PyPy 1.7 released" rel="bookmark">PyPy 1.7 released</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>pypy是一个高效的python解释器。由于采用了JIT编译器，它的速度快于传统的解释器。</p>
+
+<p>据称这次发布的PyPy 1.7的整体性能性能比1.6提升30%。</p>
+
+<p>用python重新了JSON编码器。新的编码器性能二倍于CPython中C扩展，比1.6版本性能提升高达20倍！</p>
+
+<p><a href="http://www.liulantao.com/portal/2011/11/23/pypy-1-7-released/pypy/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/11/pypy.jpg" alt="" /></a></p>
+
+<p>还有一些其它改变，如numpypy。有些特性列入了1.8版本的计划中，包括PowerPC和ARM处理器的JIT汇编器后端。</p>
+
+<p><a href="https://lwn.net/Articles/468661/">PyPy 1.7 released [LWN.net]</a>.</p>
+
+          <a href="/Technology/2011/11/23/pypy-1-7-released.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#pypy-ref">pypy <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#python-ref">python <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2011-10-19 19:21:03 +0800">19 Oct 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2011/10/19/nginx-log_format-abc.html" title="Nginx log_format设置ABC" rel="bookmark">Nginx log_format设置ABC</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>nginx作为反向代理服务器时，打开access_log可以用来查找后端的问题。</p>
+
+<p>默认的nginx.conf有一个log_format配置。这个配置对于普通的静态服务器有些帮助，但是作为代理，还需要做一些定制。</p>
+
+<blockquote>
+  <p>log_format  main  &lsquo;$host $remote_addr - $remote_user [$time_local] $request &lsquo;
+&lsquo;&ldquo;$status&rdquo; $body_bytes_sent &ldquo;$http_referer&rdquo; &lsquo;
+&lsquo;&ldquo;$http_user_agent&rdquo; &ldquo;$http_x_forwarded_for&rdquo;&rsquo;;</p>
+</blockquote>
+
+<p>我们使用nginx作为反向代理，代理后端部署的实际服务地址可能不止一个（一般情况下是这样）。我们要了解后端服务器的响应情况，就需要在log_format中增加几个变量。</p>
+
+<p>下面列出几个重要的变量：</p>
+
+<blockquote>
+  <p>$status  $upstream_status :  响应的状态码（响应正常还是出错了？）复习一下<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP CODE</a></p>
+</blockquote>
+
+<p>$request_time  $upstream_response_time :  关注性能必备！看看前天传输文件的时间，以及后台处理的时间。前者对了解网络状态有益，后者对了解服务性能有益。</p>
+
+<p>$remote_addr  $upstream_addr :  用户的IP地址，后端服务的IP地址</p>
+
+<p>$bytes_sent $body_bytes_sent  :  发送给用户端的数据量（包含HTTP头和不包含HTTP头）</p>
+
+<p>$host $request :  最重要的，搞定具体域名具体URL，不抓瞎。</p>
+
+<p>根据实际情况，把以上的变量组合放进log_format中。</p>
+
+          <a href="/Technology/2011/10/19/nginx-log_format-abc.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#log_format-ref">log_format <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2011-09-28 09:11:39 +0800">28 Sep 2011</abbr>
       </span>
       <h3 class="entry-title">
@@ -705,152 +851,6 @@ iPad: 0.26% </p>
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-06-21 12:39:07 +0800">21 Jun 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/Ruby/2011/06/21/rvm-ruby-version-manager.html" title="RVM: Ruby Version Manager" rel="bookmark">RVM: Ruby Version Manager</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p><a href="https://rvm.beginrescueend.com/">RVM: Ruby Version Manager - RVM Ruby Version Manager - Documentation</a>.</p>
-
-<p>管理Ruby版本的工具，可以帮助开发者在各个版本的Ruby之间进行快速切换，便于进行程序测试工作，也便于在生产环境中实现多版本程序共存。</p>
-
-<p>你一定受够了服务器上默认版本与本地开发环境版本不一致的痛苦，试一下吧。</p>
-
-<p>Setup steps:</p>
-
-<pre><code>$ echo insecure &gt;&gt; .curlrc
-$ curl -L https://get.rvm.io | bash -s stable --ruby
-</code></pre>
-
-<p>Usage:</p>
-
-<pre><code>$ rvm list
-$ rvm use system
-$ rvm use 1.9.2
-</code></pre>
-
-<p>另外，python也有类似工具(virtualenv)。</p>
-
-          <a href="/Technology/Ruby/2011/06/21/rvm-ruby-version-manager.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
-     
-    	<li><a href="/tags.html#rvm-ref">rvm <span>3</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-06-20 14:44:58 +0800">20 Jun 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/06/20/always-wrap-your-file-paths-in-quotes.html" title="Always wrap your file paths in quotes" rel="bookmark">Always wrap your file paths in quotes</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p><a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6#diff-1">Commit a047be85247755cdbe0acce6f1dafc8beb84f2ac to MrMEEE/bumblebee - GitHub</a>.</p>
-
-<p>一个空格，导致血淋淋悲剧的发生，因引发了程序员们对于代码质量的反思。</p>
-
-<p>一个小项目的安装文件，做了小小的bugfix，具体为：</p>
-
-<blockquote>
-
-</blockquote>
-
-<blockquote>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>@@ -348,7 +348,7 @@ case "$DISTRO" in</code></p>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>-  rm -rf /usr /lib/nvidia-current/xorg/xorg</code></p>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>+  rm -rf /usr/lib/nvidia-current/xorg/xorg</code></p>
-
-</blockquote>
-
-<p>关于code review，大家的评论热烈非常。</p>
-
-
-          <a href="/Technology/2011/06/20/always-wrap-your-file-paths-in-quotes.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1060,6 +1060,14 @@ $ rvm use 1.9.2
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

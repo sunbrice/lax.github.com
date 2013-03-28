@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>浏览器战争 Opera将改用WebKit引擎</title>
+    <title>Gerrit代码评审的权限管理</title>
     <meta name="description" content="">
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
@@ -200,37 +200,34 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>浏览器战争 Opera将改用WebKit引擎 <small></small></h1>
+  <h1>Gerrit代码评审的权限管理 <small></small></h1>
 </div>
 
 <div class="row">
   <div class="span8">
     
-<p>Opera今天宣布了3亿用户。但是更引人关注的不是这个数字，而是另一个消息：Opera将在新产品中改用WebKit引擎，弃用自家的Presto引擎。</p>
+<p>在公司的部分团队推进了Git的应用，同时对Gerrit进行代码评审。从使用情况来看，团队成员比较认可这种工作模式。通过代码评审增加了开发团队成员的交流，促进了日常配合的积极性。</p>
 
-<p>WebKit引擎是Safari和Chromium项目开发的成果，市场份额一直在稳定提升。在Android和iOS等智能设备平台以及PC平台上，WebKit引擎已经足够优秀。特别是WebKit在性能方面的改进，在此之前一直是Opera看重的方面。</p>
+<p>在Gerrit日常管理中，首要的问题是对用户的权限进行分类设定。Gerrit提供了非常细致的权限管理接口，涵盖了项目管理的各个方面，官方文档也提供了一个<a href="http://gerrit-documentation.googlecode.com/svn/Documentation/2.5.2/access-control.html#_examples_of_typical_roles_in_a_project">完善的例子</a>。对每类用户设定一定的权限——每个权限又对应一定的责任，因此完全符合“权限越多，责任越多”的原则。</p>
 
-<p>采用WebKit引擎后，Opera团队将把更多精力投入在开发新特性和用户友好的方案上。</p>
+<p>从大的方面将用户分为3类  <br />
+*    系统管理员  <br />
+*    业务组管理员  <br />
+*    业务组    </p>
 
-<p>作为浏览器曾经的巨头之一，Opera在一大批基于Chrome的浏览器压力下，生存空间受到很大影响。而在移动浏览器方面，Opera的用户增长比较乐观。</p>
+<p>每个层次的用户可以管理对应的下级组的成员。比如业务组管理员，可以管理业务组成员，当时不能管理该业务组的管理员。所有业务组管理员由系统管理员组统一管理，且系统管理员的日常管理操作仅限于此。通过层次设定，平衡了两级管理员的工作量，也提供了一定的灵活性。</p>
 
-<p>Opera并不会淘汰现有的移动产品如Opera Mobile和Opera Mini，而是推出独立品牌Opera Ice。本月在巴塞罗那召开的MWC（Mobile World Congress）上，Opera ICE将露面。</p>
-
-<ul>
-  <li><a href="http://www.opera.com/press/releases/2013/02/13/">Opera gears up at 300 million users</a></li>
-  <li><a href="http://my.opera.com/haavard/blog/2013/02/13/webkit">300 million users strong, Opera moves to WebKit</a></li>
-  <li><a href="http://www.mobileworldcongress.com">MWC 2013</a></li>
-</ul>
+<p>对于实际项目的权限方面，系统管理员可以创建项目，初始化权限规则，并将项目的管理权限分配给指定的业务组管理员组。业务组管理员具备整个项目的全部管理权限，可以调整各种操作的控制权限，对于一些危险操作有全部权限。对应业务组成员默认有该项目的提交评审权限，且权限限定在一定范围内。</p>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/2013/01/26/open-source-game-d0x3d.html" title="有趣的开源项目（二）：安全游戏[d0x3d!]">&larr; Previous</a></li>
+        <li class="prev"><a href="/Technology/2013/02/13/opera-shift-to-webkit.html" title="浏览器战争 Opera将改用WebKit引擎">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/2013/03/19/gerrit-review-system-management.html" title="Gerrit代码评审的权限管理">Next &rarr;</a></li>
+        <li class="next"><a href="/2013/03/28/digweb-peercdn-concurrency-x-2.html" title="[阅读] 基于P2P的CDN/并发">Next &rarr;</a></li>
       
       </ul>
     </div>
@@ -239,7 +236,7 @@
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>13 February 2013</span></div>
+    <div class="date"><span>19 March 2013</span></div>
 
     
   </div>

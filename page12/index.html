@@ -226,6 +226,76 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2009-04-07 00:00:00 +0800">07 Apr 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/04/07/svnsshruby-on-rails.html" title="使用SVN+SSH，同步Ruby On Rails代码的脚本" rel="bookmark">使用SVN+SSH，同步Ruby On Rails代码的脚本</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          版本库和开发都在自己的笔记本上进行，而服务器则通过svn来同步代码。<br>每次在服务器上测试都需要运行一系列的命令，并且由于无线网络使用DHCP取得动态ip，每次都要修改。这个过程很麻烦，所以写一个简单的脚本完成这个任务。<br><br>基本思路很简单：<br>首先修改hosts文件（为svn update时提供方便，即使使用动态ip，也可以每次通过主机名来访问），<br>然后通过svn+ssh来获取代码，<br>之后则进行初步的设定，配置数据库文件，<br> 最后则执行数据库迁移，并且启动script/server。<br>---------------------------------------------<br>[lax@gnu ~]$ cat svn_ssh_from_lax <br>sudo vi /etc/hosts<br>svn co svn+ssh://lax/LAX/_DEV_/_SVN_/repos/<a href="http://www.myshu.org/trunk">www.myshu.org/trunk</a> www.myshu.org.devel_trunk<br> cd www.myshu.org.devel_trunk/ &amp;&amp; cp config/database.yml.orig config/database.yml<br>vi config/database.yml &amp;&amp; rake db:drop &amp;&amp; rake db:create &amp;&amp; rake db:migrate &amp;&amp; ruby script/server<br> ---------------------------------------------<br clear="all"><br>只需<br>$ sh svn_ssh_from_lax<br>即可运行此脚本来完成任务。<br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4115259286010733722?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2009/04/07/svnsshruby-on-rails.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2009-03-04 00:00:00 +0800">04 Mar 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/03/04/yum-error-no-module-named-rpm.html" title="YUM error: No module named rpm" rel="bookmark">YUM error: No module named rpm</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          When I am upgrading my Fedora 10 to Fedora rawhide, my desktop was locked. Then I restart the computer, rerun the yum upgrade. some error like the following comes out.<br>-------------------------<br>There was a problem importing one of the Python modules<br>  required to run yum. The error leading to this problem was:<br> <br>    No module named rpm<br> <br> Please install a package which provides this module, or<br> verify that the module is installed correctly.<br> <br> It&#39;s possible that the above module doesn&#39;t match the<br> current version of Python, which is:<br> 2.5 (r25:51908, Apr 10 2007, 10:29:13)<br> [GCC 4.1.2 20070403 (Red Hat 4.1.2-8)]<br> <br> If you cannot solve this problem yourself, please go to<br> the yum faq at:<br>   <a href="http://wiki.linux.duke.edu/YumFaq" target="_blank">http://wiki.linux.duke.edu/YumFaq</a><br>-------------------------<br clear="all">someone in fedoraforum said to reinstall yum and python, but i found it didn&#39;t work well.<br> <br>then i try uninstall some yum plugin such as yum-metadata-parser, then the error mesage becomes<br>--------------<br>    No module named iniparser<br>--------------<br>it seems that the error comes from here.<br>then i find a package called python-iniparser is out of date. so i download it by hand and update it.<br>try to yum upgrade again, it works! everything comes to there original way.<br> <br>after all, you just need to reinstall 2 packages: yum-metadata-parser and python-iniparser.<br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3064007360935786036?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2009/03/04/yum-error-no-module-named-rpm.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2009-02-26 00:00:00 +0800">26 Feb 2009</abbr>
       </span>
       <h3 class="entry-title">
@@ -416,76 +486,6 @@
           <ol class="dp-bash" start="1"><li class=""><div style="width: 422px;" class="">rake&nbsp;rails:freeze:gems&nbsp;<span class="vars">VERSION=</span><span>2.2.2&nbsp; </span></div></li></ol><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-4620965334961364128?l=liulantao.blogspot.com' alt='' /></div>
 
           <a href="/2009/01/19/rake-railsfreezegems-version222.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-01-17 00:00:00 +0800">17 Jan 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/01/17/ror-development-with-radrails-in.html" title="ROR development with RadRails in Eclipse" rel="bookmark">ROR development with RadRails in Eclipse</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          安装Eclips。<br>菜单：Help - Software Updates - Available Software - Add Sites, <a href="http://radrails.sourceforge.net/update">http://radrails.sourceforge.net/update</a>,  <a href="http://updatesite.rubypeople.org/release">http://updatesite.rubypeople.org/release</a><br> ------------参考文章-------------------<br>installing RadRails on Eclipse ...........<br><br>I could not find a proper answer when i wanted to install RadRails on eclipse . This is how it is done , .... in the Eclipse menu go to<br> Help--&gt;Software Updates --&gt; Find and Install....<br>then in the pop - up window which appears ,..<br>Search for new features to install<br>and then click next and then u will have to add 2 new remote sites, .. the details for the sites are the ones which were very difficult to obtain , they are<br> site 1 :<br>Name :RadRails<br>URL : <a href="http://radrails.sourceforge.net/update">http://radrails.sourceforge.net/update</a><br>site 2 :<br>Name :RDT<br>URL : <a href="http://updatesite.rubypeople.org/release">http://updatesite.rubypeople.org/release</a><br> then click on finish , u are almost done with the installation , u have to just follow the instructions from here on to finish the installation .<br clear="all"><br>Original link：<a href="http://satisheerpini.blogspot.com/2008/05/installing-radrails-on-eclipse.html">http://satisheerpini.blogspot.com/2008/05/installing-radrails-on-eclipse.html</a><br> -------------------------------<br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2713110014899246446?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2009/01/17/ror-development-with-radrails-in.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-01-06 00:00:00 +0800">06 Jan 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/01/06/scaffoldrails.html" title="从“Rails 2.2 / Scaffold功能增强”看Rails敏捷性的提高" rel="bookmark">从“Rails 2.2 / Scaffold功能增强”看Rails敏捷性的提高</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          这几天看《Agile Web Development With Rails, 2nd Edition》（AWDWR），体验一下rails开发的敏捷。<br>不料第一个例子就卡住了。原来书上的例子所需要使用的方法是在rails1.2中有效的，而在rails2.2不被默认支持了。<br><br><br>我遇到的这个东西就是那个scaffold！从网上搜索发现大家都说要装plugin才能够使用，可是找到plugin的老巢也没看出什么门道。<br> 于是打开AWDWR,3rd edition beta电子书来看，才发现这个东西已经是可以直接作为script/generate的对象来使用了。<br><br><br>下面是成功的使用方式，创建一个product的scaffold：<br>---------------------------------------------<br>depot&gt; ruby script/generate scaffold product \<br> &gt; title:string description:text image_url:string<br>exists app/models/<br>exists app/controllers/<br>exists app/helpers/<br>create app/views/products<br>exists app/views/layouts/<br>exists test/functional/<br>exists test/unit/<br> exists public/stylesheets/<br>create app/views/products/index.html.erb<br>create app/views/products/show.html.erb<br>create app/views/products/new.html.erb<br>create app/views/products/edit.html.erb<br>create app/views/layouts/products.html.erb<br> create public/stylesheets/scaffold.css<br>create app/controllers/products_controller.rb<br>create test/functional/products_controller_test.rb<br>create app/helpers/products_helper.rb<br>route map.resources :products<br>dependency model<br> exists app/models/<br>exists test/unit/<br>exists test/fixtures/<br>create app/models/product.rb<br>create test/unit/product_test.rb<br>create test/fixtures/products.yml<br>create db/migrate<br>create db/migrate/20080601000001_create_products.rb<br> -------------------------------------------------------<br>从上面的输出可以看出，这个命令已经整合起原来的命令方式。<br><br>下面是原来的方式：<br>------------------------<br>script/generate model product 并且修改db/migrate下的任务<br>script/generate controller admin&nbsp; 并且修改app/controllers/admin下的admin_controller.rb，增加scaffold :product<br> ------------------------<br><br>下面的迁移任务还是同以前一样操作：<br>--------------------------------------------------------<br>depot&gt; rake db:migrate<br>(in /Users/rubys/work/depot)<br>== 20080601000001 CreateProducts: migrating ===================================<br> -- create_table(:products)<br>-&gt; 0.0027s<br>== 20080601000001 CreateProducts: migrated (0.0028s) ==========================<br>----------------------------------------------------<br><br>可以查看数据的版本：<br>----------------------------------------------------<br> depot&gt; sqlite3 db/development.sqlite3 &quot;select version from schema_migrations&quot;<br>20080601000001<br>---------------------------------------------------<br><br>启动服务器：<br>---------------------------------------------------<br> depot&gt; ruby script/server<br>=&gt; Booting WEBrick...<br>=&gt; Rails application started on <a href="http://0.0.0.0:3000">http://0.0.0.0:3000</a><br>=&gt; Ctrl-C to shutdown server; call with --help for options<br>[2008-03-27 11:54:55] INFO WEBrick 1.3.1<br> [2008-03-27 11:54:55] INFO ruby 1.8.6 (2007-09-24) [i486-linux]<br>[2008-03-27 11:54:55] INFO WEBrick::HTTPServer#start: pid=6200 port=3000<br>----------------------------------------------------<br><br>对比下两个版本中操作的便捷程度：<br> rails 1.2中， 输入命令 5 次，修改文件 2 处，<br>rails 2.2中，输入命令 3 次，修改文件 0 处。<br>可以明显看出新版的效率有了如此大的改进，真是让人欣喜。现在Rails仍然处于一个高速发展的阶段，相信不久它很快还能为我们带来更加便捷的开发方式。<br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-9013035094256112247?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2009/01/06/scaffoldrails.html" class="read_more span2 pull-right">[ Read More ]</a>
           <div class="clear"></div>
         </div>
         <div class="span3">
@@ -713,6 +713,14 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

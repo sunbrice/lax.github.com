@@ -226,6 +226,76 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2009-07-22 00:00:00 +0800">22 Jul 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/07/22/nagios.html" title="nagios中主机依赖与服务依赖" rel="bookmark">nagios中主机依赖与服务依赖</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          主机依赖：A主机依赖于B主机<br><br>服务依赖：A服务依赖于B服务<br><br>服务依赖有几种情况：<br><br>A主机上的X服务依赖于A主机上的Y服务<br><br>A主机上的X服务依赖于B主机上的X服务<br><br>A主机上的X服务依赖于B主机上的Y服务<br><br> <br><br>依赖关系在主机和服务之间有很重要的地位。比如服务依赖的情况，很多服务都依赖于主机的可连接性，网页的可访问依赖于web服务器的状态。一般情况下，如果主机已经死掉，它上面的其它服务的监测也会失败。如果主机上的服务由不同的管理员负责，通过nagios进行检测，只需通报主机已经down掉的消息给系统管理员即可，因为即使得到其它相关服务无法访问的消息，其它服务管理员无力处理这个问题。nagios默认能够支持刚才提到的依赖。主机依赖也有相似的状况，比如A主机通过B主机连接网络提供服务，如果监测到B主机停止的话，则不再对A主机进行监测。<br> <br> <br><br>主机依赖 通过hostdependency进行定义。<br><br>参数格式定义<br><br>define hostdependency{<br>  host_name              host_name<br>  hostgroup_name      hostgroup_name<br>  dependent_host_name            host_name<br>  dependent_hostgroup_name    hostgroup_name<br>   inherits_parent                  [0/1]<br>  execution_failure_criteria     [o,d,u,p,n]<br>  notification_failure_criteria   [o,d,u,p,n]<br>  dependency_period              timeperiod_name<br>  }<br><br>o: OK; d: DOWN; u: UP; p:PENDDING; n:NONE.<br> <br> <br><br>实例<br><br>define hostdependency{<br>  host_name        WWW1<br>  dependent_host_name       DBASE1<br>  notification_failure_criteria        d,u<br>  }<br><br> <br><br>服务依赖 通过servicedependency进行定义。<br><br>参数格式定义：<br> <br>define servicedependency{<br>  host_name                 host_name<br>  hostgroup_name         hostgroup_name<br>  service_description       service_description<br>  dependent_host_name              host_name<br>  dependent_hostgroup_name      hostgroup_name<br>   dependent_service_description   service_description<br>  inherits_parent                  [0/1]<br>  execution_failure_criteria     [o,w,u,c,p,n]<br>  notification_failure_criteria   [o,w,u,c,p,n]<br>  dependency_period            timeperiod_name<br>   }<br><br>o: OK; w: WARNING; u: UP; c: CRITICAL; p: PENDDING; n:NONE;<br><br>实例：<br><br>define servicedependency{<br>  host_name             WWW1<br>  service_description             Apache Web Server<br>  dependent_host_name       WWW1<br>   dependent_service_description      Main Web Site<br>  execution_failure_criteria               n<br>  notification_failure_criteria             w,u,c<br>  }<br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7312233985753379492?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2009/07/22/nagios.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2009-05-13 00:00:00 +0800">13 May 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/05/13/blog-post.html" title="在北京听到布谷鸟了" rel="bookmark">在北京听到布谷鸟了</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <div><font size="3">这个夜晚，开始听到窗外布谷鸟叫。麦子，马上要收割了。</font></div> <div><font size="3"></font> </div> <div><font size="3">城市之中竟然能听到布谷鸟，很神奇吧。</font><br clear="all"></div> <div></div> <div>大家都加油吧</div> <div> </div> <div><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br></div> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6079956247849821751?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2009/05/13/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2009-05-12 00:00:00 +0800">12 May 2009</abbr>
       </span>
       <h3 class="entry-title">
@@ -416,76 +486,6 @@
           <div style="text-align: center;"><b>Principles behind the Agile Manifesto</b><br><br><br>We follow these principles:<br><br>Our highest priority is to satisfy the customer<br>through early and continuous delivery<br>of valuable software.<br> <br>Welcome changing requirements, even late in<br>development. Agile processes harness change for<br>the customer&#39;s competitive advantage.<br><br>Deliver working software frequently, from a<br>couple of weeks to a couple of months, with a<br> preference to the shorter timescale.<br><br>Business people and developers must work<br>together daily throughout the project.<br><br>Build projects around motivated individuals.<br>Give them the environment and support they need,<br> and trust them to get the job done.<br><br>The most efficient and effective method of<br>conveying information to and within a development<br>team is face-to-face conversation.<br><br>Working software is the primary measure of progress.<br> <br>Agile processes promote sustainable development.<br>The sponsors, developers, and users should be able<br>to maintain a constant pace indefinitely.<br><br>Continuous attention to technical excellence<br>and good design enhances agility.<br> <br>Simplicity--the art of maximizing the amount<br>of work not done--is essential.<br><br>The best architectures, requirements, and designs<br>emerge from self-organizing teams.<br><br>At regular intervals, the team reflects on how<br> to become more effective, then tunes and adjusts<br>its behavior accordingly. <br clear="all"></div><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5513500096263419137?l=lltaichi.blogspot.com' alt='' /></div>
 
           <a href="/2009/04/15/principles-behind-agile-manifesto.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-04-07 00:00:00 +0800">07 Apr 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/04/07/svnsshruby-on-rails.html" title="使用SVN+SSH，同步Ruby On Rails代码的脚本" rel="bookmark">使用SVN+SSH，同步Ruby On Rails代码的脚本</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          版本库和开发都在自己的笔记本上进行，而服务器则通过svn来同步代码。<br>每次在服务器上测试都需要运行一系列的命令，并且由于无线网络使用DHCP取得动态ip，每次都要修改。这个过程很麻烦，所以写一个简单的脚本完成这个任务。<br><br>基本思路很简单：<br>首先修改hosts文件（为svn update时提供方便，即使使用动态ip，也可以每次通过主机名来访问），<br>然后通过svn+ssh来获取代码，<br>之后则进行初步的设定，配置数据库文件，<br> 最后则执行数据库迁移，并且启动script/server。<br>---------------------------------------------<br>[lax@gnu ~]$ cat svn_ssh_from_lax <br>sudo vi /etc/hosts<br>svn co svn+ssh://lax/LAX/_DEV_/_SVN_/repos/<a href="http://www.myshu.org/trunk">www.myshu.org/trunk</a> www.myshu.org.devel_trunk<br> cd www.myshu.org.devel_trunk/ &amp;&amp; cp config/database.yml.orig config/database.yml<br>vi config/database.yml &amp;&amp; rake db:drop &amp;&amp; rake db:create &amp;&amp; rake db:migrate &amp;&amp; ruby script/server<br> ---------------------------------------------<br clear="all"><br>只需<br>$ sh svn_ssh_from_lax<br>即可运行此脚本来完成任务。<br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4115259286010733722?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2009/04/07/svnsshruby-on-rails.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-03-04 00:00:00 +0800">04 Mar 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/03/04/yum-error-no-module-named-rpm.html" title="YUM error: No module named rpm" rel="bookmark">YUM error: No module named rpm</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          When I am upgrading my Fedora 10 to Fedora rawhide, my desktop was locked. Then I restart the computer, rerun the yum upgrade. some error like the following comes out.<br>-------------------------<br>There was a problem importing one of the Python modules<br>  required to run yum. The error leading to this problem was:<br> <br>    No module named rpm<br> <br> Please install a package which provides this module, or<br> verify that the module is installed correctly.<br> <br> It&#39;s possible that the above module doesn&#39;t match the<br> current version of Python, which is:<br> 2.5 (r25:51908, Apr 10 2007, 10:29:13)<br> [GCC 4.1.2 20070403 (Red Hat 4.1.2-8)]<br> <br> If you cannot solve this problem yourself, please go to<br> the yum faq at:<br>   <a href="http://wiki.linux.duke.edu/YumFaq" target="_blank">http://wiki.linux.duke.edu/YumFaq</a><br>-------------------------<br clear="all">someone in fedoraforum said to reinstall yum and python, but i found it didn&#39;t work well.<br> <br>then i try uninstall some yum plugin such as yum-metadata-parser, then the error mesage becomes<br>--------------<br>    No module named iniparser<br>--------------<br>it seems that the error comes from here.<br>then i find a package called python-iniparser is out of date. so i download it by hand and update it.<br>try to yum upgrade again, it works! everything comes to there original way.<br> <br>after all, you just need to reinstall 2 packages: yum-metadata-parser and python-iniparser.<br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3064007360935786036?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2009/03/04/yum-error-no-module-named-rpm.html" class="read_more span2 pull-right">[ Read More ]</a>
           <div class="clear"></div>
         </div>
         <div class="span3">
@@ -713,6 +713,14 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

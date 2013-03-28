@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>浏览器战争 Opera将改用WebKit引擎</title>
+    <title>[阅读] 基于P2P的CDN/并发</title>
     <meta name="description" content="">
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
@@ -200,37 +200,48 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>浏览器战争 Opera将改用WebKit引擎 <small></small></h1>
+  <h1>[阅读] 基于P2P的CDN/并发 <small></small></h1>
 </div>
 
 <div class="row">
   <div class="span8">
     
-<p>Opera今天宣布了3亿用户。但是更引人关注的不是这个数字，而是另一个消息：Opera将在新产品中改用WebKit引擎，弃用自家的Presto引擎。</p>
+<h3 id="peercdnhttppeercdncom"><a href="http://peercdn.com">PeerCDN</a></h3>
 
-<p>WebKit引擎是Safari和Chromium项目开发的成果，市场份额一直在稳定提升。在Android和iOS等智能设备平台以及PC平台上，WebKit引擎已经足够优秀。特别是WebKit在性能方面的改进，在此之前一直是Opera看重的方面。</p>
+<p>利用P2P进行文件分发不是什么新鲜事，但是在Web环境引入P2P仍然有很多挑战。PeerCDN团队正在进行相关技术的研发。该项目期望通过P2P技术为网站提供稳定、便捷、低成本的内容分发方案。</p>
 
-<p>采用WebKit引擎后，Opera团队将把更多精力投入在开发新特性和用户友好的方案上。</p>
+<p>任何支持WebRTC的浏览器可以支持这种技术，这比之前需要安装额外软件的技术是一个显著的进步。网站页面中只需要加入一行javascript代码。</p>
 
-<p>作为浏览器曾经的巨头之一，Opera在一大批基于Chrome的浏览器压力下，生存空间受到很大影响。而在移动浏览器方面，Opera的用户增长比较乐观。</p>
+<p>PeerCDN的专注点应该是大文件（视频，音频，图片），而对于海量小文件则可能会力不从心。</p>
 
-<p>Opera并不会淘汰现有的移动产品如Opera Mobile和Opera Mini，而是推出独立品牌Opera Ice。本月在巴塞罗那召开的MWC（Mobile World Congress）上，Opera ICE将露面。</p>
+<p><a href="http://peercdn.com">PeerCDN</a></p>
 
-<ul>
-  <li><a href="http://www.opera.com/press/releases/2013/02/13/">Opera gears up at 300 million users</a></li>
-  <li><a href="http://my.opera.com/haavard/blog/2013/02/13/webkit">300 million users strong, Opera moves to WebKit</a></li>
-  <li><a href="http://www.mobileworldcongress.com">MWC 2013</a></li>
-</ul>
+<h3 id="solving-the-wrong-problemhttpjoearmsgithubcom20130328solving-the-wrong-problemhtml"><a href="http://joearms.github.com/2013/03/28/solving-the-wrong-problem.html">Solving the wrong problem</a></h3>
+
+<p>漫长的计算机发展史，芯片规模扩展和时钟频率提升是一个主旋律，奠定了摩尔定律的基础。摩尔定律对软件发展的意义在于，大部分串行执行的程序，可以获得越来越短的执行时间。</p>
+
+<p>从2004年开始，芯片的发展有了微妙的变化：芯片规模仍然越来越大，开始增加更多的核心，而同时时钟频率并没有继续提升。这种情况颠覆了对软件开发的一些基本的认识。</p>
+
+<p>有现实的例子为证，当一个单线程的C程序遇到支持多线程的Erlang程序，性能高下不再是底层预言获胜，而是能够利用多核提升效率的一方。</p>
+
+<p><a href="http://joearms.github.com/2013/03/28/solving-the-wrong-problem.html">Joe Armstrong的Solving the wrong problem</a></p>
+
+<h3 id="concurrency-models-go-vs-erlanghttpjoneisenmepost38188396218"><a href="http://joneisen.me/post/38188396218">Concurrency Models: Go vs Erlang</a></h3>
+
+<p>一个新手对比了Go和Erlang这两种支持并发的语言。Go采用goroutine，有共享内存，因此在多核上扩展，通过channel方式传递消息，需要进行手工的错误处理；Erlang采用进程模型，不能共享内存，因此可以做多机扩展，通过mailbox方式传递消息，语言自身支持异常，通过OTP实现各种稳定性部署。</p>
+
+<p><a href="http://joneisen.me/post/38188396218">Concurrency Models: Go vs Erlang</a></p>
+
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/2013/01/26/open-source-game-d0x3d.html" title="有趣的开源项目（二）：安全游戏[d0x3d!]">&larr; Previous</a></li>
+        <li class="prev"><a href="/2013/03/19/gerrit-review-system-management.html" title="Gerrit代码评审的权限管理">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/2013/03/19/gerrit-review-system-management.html" title="Gerrit代码评审的权限管理">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
@@ -239,7 +250,7 @@
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>13 February 2013</span></div>
+    <div class="date"><span>28 March 2013</span></div>
 
     
   </div>
