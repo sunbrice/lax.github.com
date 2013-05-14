@@ -226,6 +226,155 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2012-08-18 00:00:00 +0800">18 Aug 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2012/08/18/mac-osx-development-environment-setup.html" title="Mac OSX development environment setup" rel="bookmark">Mac OSX development environment setup</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<h1 id="what-to-setup">What to setup?</h1>
+
+<ul>
+  <li>xcode</li>
+  <li>git</li>
+  <li>Homebrew</li>
+  <li>RVM: Ruby Version Manager</li>
+  <li>textmate: popular code editor</li>
+  <li>macruby</li>
+</ul>
+
+<h1 id="progressing">PROGRESSING</h1>
+
+<h2 id="xcode">xcode</h2>
+<p>Install from App Store. This very difficulty is that it takes too long to download, especially in China.</p>
+
+<p>I swithed my local DNS to a Taiwan host (168.95.1.1), so it finished in serveral hours.</p>
+
+<h2 id="git">git</h2>
+<p>Download recent stable release of git for mac from <a href="http://git-scm.com/downloads">git-scm.com</a></p>
+
+<p>Install other tools related to git: 
+*  <a href="http://mac.github.com">GitHub for Mac</a> 
+*  <a href="https://github.com/trybeee/GitStats">GitStats</a>: generate stats web pages for your project  </p>
+
+<h2 id="homebrew">Homebrew</h2>
+<p>Simple installation with one-line-command: </p>
+
+<pre><code>ruby &lt;(curl -fsSkL raw.github.com/mxcl/homebrew/go)
+</code></pre>
+
+<p>Usage example: </p>
+
+<pre><code>brew search textmate
+brew install ninja  # need when building textmate
+brew install wget
+</code></pre>
+
+<h2 id="rvm">RVM</h2>
+<p><a href="https://rvm.io">RVM</a> is short for Ruby Version Manager, not Ruby Virtual Machine. </p>
+
+<p>Install stable version with default ruby[-1.9.3] </p>
+
+<pre><code>curl -kL https://get.rvm.io | bash -s stable --ruby
+</code></pre>
+
+<p>When every thing reports ok, run this command to see installed versions of ruby in a new term: </p>
+
+<pre><code>rvm list
+</code></pre>
+
+<p>Switch to system version </p>
+
+<pre><code>rvm use system
+rvm use system --default
+</code></pre>
+
+<h2 id="textmate">textmate</h2>
+<p>I choose build textmate from source. follow <a href="https://github.com/textmate/textmate/#building">this document</a> </p>
+
+<p>First, install dependencies </p>
+
+<pre><code>brew install ragel boost multimarkdown hg ninja
+</code></pre>
+
+<p>Get and prepare source code </p>
+
+<pre><code>git clone git://github.com/textmate/textmate.git
+cd textmate
+git submodule update --init
+</code></pre>
+
+<p>Configure and build </p>
+
+<pre><code>./configure &amp;&amp; ninja
+</code></pre>
+
+<h2 id="macruby">macruby</h2>
+<p><a href="http://macruby.org">MacRuby</a> is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies. </p>
+
+<p>Install with rvm </p>
+
+<pre><code>rvm install macruby-head
+</code></pre>
+
+<p><a href="http://www.rubymotion.com">RubyMotion</a> for iOS development. </p>
+
+          <a href="/Technology/2012/08/18/mac-osx-development-environment-setup.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#xcode-ref">xcode <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#homebrew-ref">homebrew <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rvm-ref">rvm <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#textmate-ref">textmate <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#macruby-ref">macruby <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2012-08-06 00:00:00 +0800">06 Aug 2012</abbr>
       </span>
       <h3 class="entry-title">
@@ -814,99 +963,6 @@ Daemonizing ./bin/smokeping ...
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-05-21 00:00:00 +0800">21 May 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/Ruby/2012/05/21/package-management-with-fpm.html" title="使用fpm管理软件打包" rel="bookmark">使用fpm管理软件打包</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p><a href="https://github.com/jordansissel/fpm">fpm</a>是一款支持多平台的打包管理工具。支持的平台包括：rpm, deb, tar, solaris等。</p>
-
-<p>fpm的目标：</p>
-
-<ol>
-  <li>
-    <p>无痛创建软件包</p>
-  </li>
-  <li>
-    <p>修改已有的软件包</p>
-  </li>
-  <li>
-    <p>抽取已有软件包中的脚本</p>
-  </li>
-</ol>
-
-<h2 id="section">安装</h2>
-<p>可以通过gem直接安装</p>
-
-<pre><code>gem install fpm
-</code></pre>
-
-<p>如果失败，需要确保rubygems和ruby-devel已经安装</p>
-
-<pre><code># yum install rubygems ruby-devel -y
-</code></pre>
-
-<h2 id="squid">一个简单示例：打包squid</h2>
-
-<p>我们的squid安装在/opt/squid/目录下。</p>
-
-<pre><code>fpm -s dir -t rpm -n squid -v 0.1 --post-install /opt/squid/bin/initVar.sh /opt/squid/
-</code></pre>
-
-<p>运行后会在当前目录生成squid-0.1-1.rpm。</p>
-
-<p>在创建rpm文件时，我们增加了一个参数&ndash;post-install，指定了当安装完成时执行的脚本，可以利用这个功能来完成软件初始化工作。类似的参数还有&ndash;pre-install/&ndash;post-uninstall/&ndash;pre-uninstall等。</p>
-
-          <a href="/Technology/Ruby/2012/05/21/package-management-with-fpm.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#fpm-ref">fpm <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#rpm-ref">rpm <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1116,6 +1172,10 @@ Daemonizing ./bin/smokeping ...
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

@@ -224,6 +224,67 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2013-05-14 00:00:00 +0800">14 May 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2013/05/14/awk-sort-keys.html" title="awk统计脚本中的排序方法" rel="bookmark">awk统计脚本中的排序方法</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>最近在使用awk工具进行统计时，经常需要用的哈希来保存临时结果，同时在输出前需要根据哈希的key来进行排序。</p>
+
+<p>以前在awk脚本采取的方式是先通过asorti对key进行一次排序，生成一个排序的key列表，然后遍历这个列表，进行输出操作。这个过程会增加几行代码，同时使得代码的可读性下降，不易理解。</p>
+
+<p>awk在排序这方面的文档是比较缺乏的，在翻阅资料是发现，设置环境变量WHINY_USERS=1，可以使遍历任何哈希时根据key的排序顺序进行。这种方式减少了代码量，不过需要提前设置环境变量。
+Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USERS=1来传递环境变量。</p>
+
+<p>注：awk中哈希的key默认是字符串类型，排序基于字符串顺序。考虑0,1,12,2,21的顺序。</p>
+
+          <a href="/Technology/2013/05/14/awk-sort-keys.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#awk-ref">awk <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2013-03-28 00:00:00 +0800">28 Mar 2013</abbr>
       </span>
       <h3 class="entry-title">
@@ -804,82 +865,6 @@ git checkout gh-pages
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-01-18 00:00:00 +0800">18 Jan 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2013/01/18/funny-opensource-projects.html" title="有趣的开源项目（一）：Octpress/ktap" rel="bookmark">有趣的开源项目（一）：Octpress/ktap</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<ul id="markdown-toc">
-  <li><a href="#octopresshttpsgithubcomimathisoctopress"><a href="https://github.com/imathis/octopress">Octopress</a></a></li>
-  <li><a href="#ktaphttpsgithubcomktapktap"><a href="https://github.com/ktap/ktap">ktap</a></a></li>
-</ul>
-
-<h1 id="octopresshttpsgithubcomimathisoctopress"><a href="https://github.com/imathis/octopress">Octopress</a></h1>
-
-<p>这是又一个基于jekyll的博客程序，类似Jekyll-Bootstrap。和JB相比，默认界面风格更有传统blog系统的韵味，对于代码的支持也宣称做的更好，实在是众多码农码神的利器。</p>
-
-<p>Octopress is Jekyll blogging at its finest.</p>
-
-<ul>
-  <li>Octopress sports a clean responsive theme written in semantic HTML5, focused on readability and friendliness toward mobile devices.</li>
-  <li>Code blogging is easy and beautiful. Embed code (with Solarized styling) in your posts from gists, jsFiddle or from your filesystem.</li>
-  <li>Third party integration is simple with built-in support for Twitter, Pinboard, Delicious, GitHub Repositories, Disqus Comments and Google Analytics.</li>
-  <li>It&rsquo;s easy to use. A collection of rake tasks simplifies development and makes deploying a cinch.</li>
-  <li>Ships with great plug-ins some original and others from the Jekyll community — tested and improved.</li>
-</ul>
-
-<h1 id="ktaphttpsgithubcomktapktap"><a href="https://github.com/ktap/ktap">ktap</a></h1>
-
-<p>与DTrace、SystemTap类似的追踪程序，用于对系统和程序的调用栈进行追踪调试。目前这个软件还在开发的初始阶段。</p>
-
-
-          <a href="/Technology/2013/01/18/funny-opensource-projects.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#ktap-ref">ktap <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1087,6 +1072,10 @@ git checkout gh-pages
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

@@ -226,6 +226,91 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2010-06-08 00:00:00 +0800">08 Jun 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/06/08/varnish-setup-in-steps.html" title="Varnish Setup in Steps" rel="bookmark">Varnish Setup in Steps</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>配置与编译</p>
+
+<pre><code>./autogen.sh
+./configure
+make
+</code></pre>
+
+<p>测试</p>
+
+<pre><code>cd bin/varnishtest &amp;&amp; ./varnishtest tests/*.vtc
+</code></pre>
+
+<p>安装</p>
+
+<pre><code>make install
+</code></pre>
+
+<p>启动</p>
+
+<pre><code>/data/varnish/sbin/varnishd -a 0.0.0.0:80 -s file,/data/vcache/varnish_cache.data,20g -f /data/varnish/etc/vcl.conf -p thread_pool_max=1500 -p thread_pools=8 -p listen_depth=512 -P /data/varnish/sbin/varnish.pid
+</code></pre>
+
+<p>重新载入</p>
+
+<pre><code>kill -HUP `cat /data/varnish/sbin/varnish.pid`
+</code></pre>
+
+<p>关闭</p>
+
+<pre><code>killall varnishd
+</code></pre>
+
+<p>&ndash; <br />Liu Lantao<br />EMAIL: liulantao ( at ) gmail ( dot ) com ; <br />WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br />  &lt;div class="blogger-post-footer"&gt;<img width="1" height="1" src="https://blogger.googleusercontent.com/tracker/31667564-2499494717203567834?l=sandshoots.blogspot.com" alt="" />&lt;/div&gt;</p>
+
+          <a href="/Technology/2010/06/08/varnish-setup-in-steps.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Varnish-ref">Varnish <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2010-06-02 00:00:00 +0800">02 Jun 2010</abbr>
       </span>
       <h3 class="entry-title">
@@ -587,41 +672,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2010-01-18 00:00:00 +0800">18 Jan 2010</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2010/01/18/blog-post.html" title="..--" rel="bookmark">..--</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <font style="font-size: 14px;">日子滴滴嗒嗒，缓缓急急，入盛夏过深秋到寒冬。<br> <br> 半年的新生活，渐渐地，习惯了朝九晚九的新节奏，在一个狭小的区域里，每天摆来又摆去，重复着不变的节奏。 却疏远了深夜的麻辣烫，黄昏乌鸦鸣叫的校园，还有近郊香山高处的风与景。在这里，生活繁琐而艰难，每天面对各种诱惑，然后以各种路过的姿态，回归自己正常 的方向<span style="border-collapse: separate; color: rgb(0, 0, 0); font-family: Ar pL UKai Cn; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span style="font-family: Arial; font-size: 14px; line-height: 24px; text-align: left;">。<br>   <br> 一个烦躁不安的日子，翻阅着半年来几个月里朋友们的文字，那些远走他处享受生活的，那些</span></span><span style="border-collapse: separate; color: rgb(0, 0, 0); font-family: Ar pL UKai Cn; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span style="font-family: Arial; font-size: 14px; line-height: 24px; text-align: left;">仍 在这个水泥都市里奋斗的，那些消失许久后又现身的，都在各自的经历之后，发出了大大小小的满意的声音。印象里的一个个充满精力彻夜狂欢着的形象，顿显 成熟的影子。年轻人们的话题，那些飞扬的梦想，大概都伴随那时的日记本放进了尘封的储物箱中了。<br> <br> 在熙熙攘攘的人群中穿梭，在齐整划一的办公间拼搏，在深夜的孤 灯熄灭处栖身，每天又每天之后，终于，我们对周围的一切心满意足。</span></span></font><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>  <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4728715475917082246?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/2010/01/18/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -831,6 +881,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

@@ -226,6 +226,59 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2010-09-30 00:00:00 +0800">30 Sep 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/09/30/taobao-filesystemtfs.html" title="Taobao FileSystem（TFS）开源发布了" rel="bookmark">Taobao FileSystem（TFS）开源发布了</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          TFS新近发布出来了，代码量不小，抽个时间研究下。<br>taobao定制了不少功能，也有很多通用功能不能支持（比如自定义文件名），做迁移前需要考察它是否支持某些常用的特性。<br><br><a href="http://code.taobao.org/svn/tfs/">http://code.taobao.org/svn/tfs/</a><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/portal" target="_blank">http://www.liulantao.com/portal</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-7609411476171531609?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/Technology/2010/09/30/taobao-filesystemtfs.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#TFS-ref">TFS <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2010-08-11 19:36:00 +0800">11 Aug 2010</abbr>
       </span>
       <h3 class="entry-title">
@@ -727,91 +780,6 @@ ping -f – l 1500 www.renren.com
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2010-06-08 00:00:00 +0800">08 Jun 2010</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2010/06/08/varnish-setup-in-steps.html" title="Varnish Setup in Steps" rel="bookmark">Varnish Setup in Steps</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>配置与编译</p>
-
-<pre><code>./autogen.sh
-./configure
-make
-</code></pre>
-
-<p>测试</p>
-
-<pre><code>cd bin/varnishtest &amp;&amp; ./varnishtest tests/*.vtc
-</code></pre>
-
-<p>安装</p>
-
-<pre><code>make install
-</code></pre>
-
-<p>启动</p>
-
-<pre><code>/data/varnish/sbin/varnishd -a 0.0.0.0:80 -s file,/data/vcache/varnish_cache.data,20g -f /data/varnish/etc/vcl.conf -p thread_pool_max=1500 -p thread_pools=8 -p listen_depth=512 -P /data/varnish/sbin/varnish.pid
-</code></pre>
-
-<p>重新载入</p>
-
-<pre><code>kill -HUP `cat /data/varnish/sbin/varnish.pid`
-</code></pre>
-
-<p>关闭</p>
-
-<pre><code>killall varnishd
-</code></pre>
-
-<p>&ndash; <br />Liu Lantao<br />EMAIL: liulantao ( at ) gmail ( dot ) com ; <br />WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br />  &lt;div class="blogger-post-footer"&gt;<img width="1" height="1" src="https://blogger.googleusercontent.com/tracker/31667564-2499494717203567834?l=sandshoots.blogspot.com" alt="" />&lt;/div&gt;</p>
-
-          <a href="/Technology/2010/06/08/varnish-setup-in-steps.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#Varnish-ref">Varnish <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1021,6 +989,10 @@ make
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
