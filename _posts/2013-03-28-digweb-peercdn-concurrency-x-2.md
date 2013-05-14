@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[阅读] 基于P2P的CDN/并发"
+title: "[阅读] 基于P2P的CDN / Go vs Erlang并发模型"
 description: ""
 categories: []
 tags: []
