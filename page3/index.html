@@ -185,6 +185,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -223,6 +227,145 @@
 
   
 
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-09-06 00:00:00 +0800">06 Sep 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2012/09/06/object-c-programming-notes-1.html" title="Object C Programming Notes 1 - Objects, Classes and Messaging" rel="bookmark">Object C Programming Notes 1 - Objects, Classes and Messaging</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<h2 id="section">消息机制</h2>
+
+<p>类似函数调用，Object C中采用消息机制，基本调用语法如下：    </p>
+
+<pre><code>[receiver message]
+</code></pre>
+
+<p>接收方receiver是一个对象，传递的消息通知该对象进行操作的方法名。消息传递的方法名经常叫做selector。  </p>
+
+<p>可以使用点(.)操作符访问对象的accessor方法。</p>
+
+<p>给nil发消息是允许的——在运行时它仅仅是没有任何效果：消息发送给nil并返回nil。</p>
+
+<p>消息传递的方法对接收方的实例变量有访问权限。</p>
+
+<p>多态：不同类对象有相同的方法。</p>
+
+<h2 id="section-1">方法调用与消息的区别</h2>
+
+<p>方法调用：在编译阶段就已确定其方法和参数；  </p>
+
+<p>消息：运行阶段消息发送时才有运行时环境确定。Dynamic binding / Dynamic Method Resolution</p>
+
+<h2 id="dot-syntax">Dot Syntax</h2>
+
+<p>点（.）操作符与消息的使用<br />
+    myInstance.value = 10;
+    [myInstance setValue:10];</p>
+
+<h1 id="nsobject">NSObject</h1>
+
+<p>继承(Inheriting Methods)</p>
+
+<p>覆盖继承来的方法，但是不能覆盖继承来的变量（因为继承时内存已分配）。</p>
+
+<p>抽象类（Abstract Classes）</p>
+
+<h1 id="class-types">Class Types</h1>
+
+<h2 id="static-typing">静态类型Static Typing</h2>
+
+<p>编译器可以做类型检查</p>
+
+<h2 id="type-introspection">内省Type Introspection</h2>
+<p>运行时获知类型等信息。</p>
+
+<h1 id="class-objects">Class Objects</h1>
+
+<p>A class definition contains various kinds of information, much of it about instances of the class:<br />
+-    The name of the class and its superclass
+-    A template describing a set of instance variables
+-    The declarations of method names and their return and parameter types
+-    The method implementations</p>
+
+<h2 id="class-methods-vs-instance-methods">Class Methods vs. Instance Methods</h2>
+
+<pre><code>int versionNumber = [Rectangle version];
+
+id aClass = [anObject class];
+id rectClass = [Rectangle class];
+
+Class aClass = [anObject class];
+Class rectClass = [Rectangle class];
+</code></pre>
+
+<p>Cloass Objects的类型都是Class。</p>
+
+<h1 id="section-2">创建实例</h1>
+
+<pre><code>id  myRectangle;
+
+myRectangle = [Rectangle alloc];
+</code></pre>
+
+<p>初始化实例状态<br />
+    myRectangle = [[Rectangle alloc] init];</p>
+
+<p>变量</p>
+
+<p><a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocObjectsClasses.html">The Objective-C Programming Language</a></p>
+
+          <a href="/Technology/2012/09/06/object-c-programming-notes-1.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Object C-ref">Object C <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Mac OSX-ref">Mac OSX <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Programming-ref">Programming <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Language-ref">Language <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -827,138 +970,6 @@ USE="$USE xinerama"
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-06-13 00:00:00 +0800">13 Jun 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/SysAdmin/2012/06/13/smokeping.html" title="使用smokeping监控网络质量" rel="bookmark">使用smokeping监控网络质量</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p><a href="http://oss.oetiker.ch/smokeping">smokeping</a>是一款网络质量检测软件，用perl写成，使用rrdtool保存数据。</p>
-
-<p>它的优势是轻量，易于安装，可定制性强。</p>
-
-<h3 id="section">安装过程</h3>
-
-<p>下载安装包：<a href="http://oss.oetiker.ch/smokeping/pub/">下载页面</a></p>
-
-<p>写作此文时最新版本为2.6.8。</p>
-
-<p>解压后进入目录，执行命令</p>
-
-<pre><code>./setup/build-perl-modules.sh /opt/smokeping-2.6.8/thirdparty
-
-./configure
-</code></pre>
-
-<p>如果提示有模块安装失败，可以从CPAN安装。</p>
-
-<pre><code>perl -MCPAN -e 'install FCGI'
-</code></pre>
-
-<p>确保configure成功后，执行</p>
-
-<pre><code>qmake install
-</code></pre>
-
-<p>创建必要的目录</p>
-
-<pre><code>cd /opt/smokeping-2.6.8/ &amp;&amp; mkdir cache var data
-</code></pre>
-
-<p>安装rrdtool，httpd和mod_fcgid</p>
-
-<pre><code>rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
-
-yum install rrdtool httpd mod_fcgid -y
-</code></pre>
-
-<p>配置httpd。创建配置文件/etc/httpd/conf.d/smokeping.conf，内容如下</p>
-
-<pre><code>alias	/smokeping/cache	/opt/smokeping-2.6.8/cache/
-alias	/smokeping	/opt/smokeping-2.6.8/htdocs/
-
-&lt;Directory /opt/smokeping-2.6.8/cache/&gt;
-    Order allow,deny
-    Allow from all
-&lt;/Directory&gt;
-&lt;Directory /opt/smokeping-2.6.8/htdocs/&gt;
-    #SetHandler fcgid-script
-    Options +ExecCGI
-
-    Order allow,deny
-    Allow from all
-&lt;/Directory&gt;
-</code></pre>
-
-<p>修复cache目录权限，否则查看页面会报错。</p>
-
-<pre><code>chown apache /opt/smokeping-2.6.8/cache/
-</code></pre>
-
-<p>启动smokeping</p>
-
-<pre><code>[root@lax-iPad smokeping-2.6.8]# ./bin/smokeping
-Note: logging to syslog as local0/info.
-Daemonizing ./bin/smokeping ...
-</code></pre>
-
-<p>启动httpd</p>
-
-<pre><code># service httpd start
-</code></pre>
-
-<p>在浏览器中查看</p>
-
-<pre><code>http://localhost/smokeping/smokeping.fcgi.dist
-</code></pre>
-
-          <a href="/SysAdmin/2012/06/13/smokeping.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#smokeping-ref">smokeping <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#rrdtool-ref">rrdtool <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1141,6 +1152,12 @@ Daemonizing ./bin/smokeping ...
     </li>
     
   
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
 
   
     <li>
@@ -1168,6 +1185,10 @@ Daemonizing ./bin/smokeping ...
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

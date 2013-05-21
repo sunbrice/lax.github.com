@@ -185,6 +185,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -223,6 +227,92 @@
 
   
 
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2010-07-19 19:09:47 +0800">19 Jul 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/07/19/efbcbbe4bdbfe794a8e8b7afe794b1e599a8e5bf85e79c8befbcbdefbcbbe697a0e6b395e4b88ae4bca0e69687e4bbb6e5bf85e79c8befbcbde585b3e4ba8emtu.html" title="［使用路由器必看］［无法上传文件必看］关于MTU的那点事儿" rel="bookmark">［使用路由器必看］［无法上传文件必看］关于MTU的那点事儿</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>［使用路由器必看］［无法上传文件必看］关于MTU的那点事儿</p>
+
+<p>路由器MTU与ISP不匹配导致无法上传文件</p>
+
+<p>(1) 症状/问题表现
+网站不能正常连接，或者连接上非常慢，或者无法上传或无法发送大文件。</p>
+
+<p>(2) 关于MTU
+MTU（Maximum Transmission Unit）是网络上传送的最大数据包，MTU的单位是字节。
+MTU设置的标准是1500，大部分网络设备的MTU也都设置为1500，这样可以使的数据包在网络传输上获得最佳效率。
+如果网络上某一个节点的MTU设置被人为调小(比如1460)，导致标准大小的数据包(1500)在这一节点被拆开来传送，这样会产生很多数据包碎片，增加丢包率，降低网络速度。而天朝的实际情况是，某些网络服务提供商会修改某些节点的MTU，以达到限制用户通过路由器共享带宽的目的。</p>
+
+<p>把电脑或路由器的MTU调整为与网络服务提供商设备的MTU相同或稍小，就可以减少这种拆分，提供网络访问质量。一般情况下我们只需要设置路由器的 MTU值即可。</p>
+
+<p>(3) 检查网络服务提供商设备的MTU值
+开始菜单–程序–附件–命令提示符，输入以下命令：
+ping -f – l 1500 www.renren.com
+其中：
+-l 1500 发送一个定长数据包，1500是测试数据包的大小；
+–f 通知路由器不能私自更改该数据包大小。</p>
+
+<p>在1500以下调整测试数据包的大小，观察反馈结果的变化并判断电信服务商设备的MTU值。
+如果出现“Packet needs to be fragmented but DF set”，表示数据包需要被拆开来发送。
+减少测试数据包长度，再执行上面的ping命令。重复几次，直到前面的提示消失，记下当时测试数据包的长度。
+把测试数据包长度加上数据包头28字节，就得到MTU的值。</p>
+
+<p>(4) 修改路由器MTU
+在路由器的管理界面（怎么进入管理界面？看一下说明书吧），一般在“WAN设置”/“广域网设置”及其“高级设置”中，可以看到MTU设置。修改MTU为合适的数值（等于或稍小于网络服务提供商的MTU）后，保存设置重启路由器。</p>
+
+<p>重启后，进入图片上传的网页（http://upload.renren.com/addphoto.do），传一张图片试试能不能成功。</p>
+
+          <a href="/Technology/2010/07/19/efbcbbe4bdbfe794a8e8b7afe794b1e599a8e5bf85e79c8befbcbdefbcbbe697a0e6b395e4b88ae4bca0e69687e4bbb6e5bf85e79c8befbcbde585b3e4ba8emtu.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#MTU-ref">MTU <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#无线路由器-ref">无线路由器 <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#路由器-ref">路由器 <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -637,59 +727,6 @@ make
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2010-02-11 00:00:00 +0800">11 Feb 2010</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2010/02/11/c.html" title="C++构造函数私有的有趣问题" rel="bookmark">C++构造函数私有的有趣问题</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          C++构造函数私有的有趣问题<br><br>很多情况下，一个类的构造函数是按照public权限作为接口，当构造对象时默认来执行一些初始化功能。但是当构造函数出现在private中时，对类进行实例化时，会无法取得构造函数的权限，于是不能通过这种方式构造对象实例。疑问出现了：如果不能通过构造函数对类进行实例化，那么这个类还有用处吗？<br><br>其实，构造函数私有并不违背C++的语法规则，我们也大可不必为这个问题担心。解决之道呢，一般来说有两种方法。<br> 第一种方法，使用class的static成员来进行实例化工作。因为他们独立于class的对象，所以不必实例化也能够使用它来进行一些private操作，当然就可以调用那个害羞的构造函数。<br>第二种方法，当然可以通过一些朋友们来绕过这个权限控制，也就是我们都很熟悉的友元函数/友元类。<br><br>追究原因，因为这类class不能被任意调用创建实例，于是适合构造一些需要进行对象控制的类。<br clear="all"><br>-- <br> Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-823527332954063861?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/Technology/2010/02/11/c.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#C-ref">C <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -872,6 +909,12 @@ make
     </li>
     
   
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
 
   
     <li>
@@ -899,6 +942,10 @@ make
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

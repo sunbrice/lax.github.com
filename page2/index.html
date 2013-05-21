@@ -185,6 +185,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -223,6 +227,210 @@
 
   
 
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-01-25 00:00:00 +0800">25 Jan 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2013/01/25/build-page-with-haml.html" title="使用HAML构建WEB页面" rel="bookmark">使用HAML构建WEB页面</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p><img src="http://haml.info/images/img-hero-boat.png" alt="" />  </p>
+
+<h2 id="section">前言</h2>
+
+<p>在日常系统运维工作中，经常需要为各种系统构建页面，提炼常用的操作放到<strong><em>仪表盘</em></strong>，以提高日常工作效率。</p>
+
+<p>在WEB逻辑层的选择，Ruby中有便捷优雅的Sinatra，Perl中有Dancer，Python有web.py。</p>
+
+<p>页面展现层的开发主要考虑两个方面  </p>
+
+<ol>
+  <li>
+    <p>构建页面框架</p>
+
+    <p>这个方面考虑构建页面的快速和可重复性。如果仍停留在手工写html页面的阶段，那就太落伍啦。</p>
+
+    <p>常用的方案是基于模版生成HTML代码。PHP本身就是一种模版。</p>
+
+    <p>另外还有ERB，Markdown等轻量级的标记语言，由于Markdown对于语法变量支持不容易集成到动态页面，因此主要用于静态页面构建。</p>
+  </li>
+  <li>
+    <p>页面样式和交互管理</p>
+
+    <p>jQuery无疑是交互管理的首选。如果有较多的数据图表展现，可以选用DDD等框架。</p>
+
+    <p>页面样式方面，可以参考<a href="http://jqueryui.com">jQuery UI</a>, <a href="http://yuilibrary.com">YUI</a>。</p>
+
+    <p>从易用的角度，jQuery结合<a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a>是个好选择。</p>
+  </li>
+</ol>
+
+<p>本文主要介绍其中<code>构建页面框架</code>的方案选择，即用HAML替代ERB。  </p>
+
+<h2 id="hamlerb">haml与erb的对比</h2>
+
+<p><a href="http://haml.info">HAML</a> 是一种简单的html模版语言。它的最大特点是短小精干整洁。  </p>
+
+<p>在HAML项目首页有一项简单的对比，在此引用一下</p>
+
+<p>使用ERB生成的页面代码</p>
+
+<pre><code>&lt;section class=”container”&gt;
+  &lt;h1&gt;&lt;%= post.title %&gt;&lt;/h1&gt;
+  &lt;h2&gt;&lt;%= post.subtitle %&gt;&lt;/h2&gt;
+  &lt;div class=”content”&gt;
+    &lt;%= post.content %&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+
+<p>使用HAML生成的页面代码</p>
+
+<pre><code>%section.container
+  %h1= post.title
+  %h2= post.subtitle
+  .content
+    = post.content
+</code></pre>
+
+<p>通过对比可以看出一些特点</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>对比项目</strong></th>
+      <th><strong>ERB</strong></th>
+      <th style="text-align: right"><strong>HAML</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>代码行数</td>
+      <td>7</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td>关闭标签</td>
+      <td>需要关闭</td>
+      <td style="text-align: right">不需要关闭</td>
+    </tr>
+    <tr>
+      <td>逻辑层级</td>
+      <td>与ruby语法相同</td>
+      <td style="text-align: right">按空格缩进</td>
+    </tr>
+    <tr>
+      <td>变量</td>
+      <td>ruby变量</td>
+      <td style="text-align: right">ruby变量</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>其中haml<strong>不需要关闭</strong>和<strong>按空格缩进</strong>两项特性，与Python的风格有几分相似（ruby代码中满屏end的现象，一直受到诟病。python用强迫症式的方案解决了这个问题）——HTML也需要关闭标签。</p>
+
+<h2 id="section-1">实际项目中的应用</h2>
+
+<p>以下示例以HAML构建了一个简单的导航页面</p>
+
+<h3 id="haml">示例haml文件</h3>
+
+<pre><code>-# coding: UTF-8
+!!!
+%html(xml:lang='zh-cn' lang='zh-cn' xmlns='http://www.w3.org/1999/xhtml')
+  %head
+    %meta(content='text/html;charset=UTF-8' http-equiv='content-type')
+    %link{:href =&gt; "/css/bootstrap.min.css", :rel =&gt;"stylesheet", :type =&gt; "text/css", :media =&gt; "screen" }
+  %body
+    .container
+      %h1 支持系统
+      %ul.inline
+        %li
+          %a.btn{:href =&gt; '#'} Wiki
+        %li
+          %a.btn{:href =&gt; '#'} Tracker
+        %li
+          %a.btn{:href =&gt; '/ganglia'} Ganglia
+        %li
+          %a.btn{:href =&gt; '/nagios/'} Nagios
+
+      %h3 查询
+      %form{:action =&gt; "/tools/?", :method =&gt; "GET", :name =&gt; "dnsinfo_form"}
+        %input#suggest_dns{:type =&gt; "text", :size =&gt; 25, :name =&gt; "q", :onmouseover =&gt; "this.focus()", :onfocus =&gt; "this.select()", :title =&gt; "关键字: 域名、IP、域名列表或IP列表(,号或空格分隔)", :autocomplete =&gt; "off", :class =&gt; "ac_input"}
+        %input{:type =&gt; "submit", :value =&gt; "查询"}
+</code></pre>
+
+<h3 id="html">示例html文件</h3>
+
+<p>使用haml命令生成文件</p>
+
+<pre><code>haml index.haml &gt; index.html
+</code></pre>
+
+<p>文件内容</p>
+
+<pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html lang='zh-cn' xml:lang='zh-cn' xmlns='http://www.w3.org/1999/xhtml'&gt;
+  &lt;head&gt;
+    &lt;meta content='text/html;charset=UTF-8' http-equiv='content-type' /&gt;
+    &lt;link href='/css/bootstrap.min.css' media='screen' rel='stylesheet' type='text/css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class='container'&gt;
+      &lt;h1&gt;支持系统&lt;/h1&gt;
+      &lt;ul class='inline'&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='#'&gt;Wiki&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='#'&gt;Tracker&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='/ganglia'&gt;Ganglia&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;a class='btn' href='/nagios/'&gt;Nagios&lt;/a&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;h3&gt;查询&lt;/h3&gt;
+      &lt;form action='/tools/?' method='GET' name='dnsinfo_form'&gt;
+        &lt;input autocomplete='off' class='ac_input' id='suggest_dns' name='q' onfocus='this.select()' onmouseover='this.focus()' size='25' title='关键字: 域名、IP、域名列表或IP列表(,号或空格分隔)' type='text' /&gt;
+        &lt;input type='submit' value='查询' /&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+          <a href="/Technology/2013/01/25/build-page-with-haml.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -844,145 +1052,6 @@ mc1: csrow0: ch0: 43722040 Corrected Errors
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-09-06 00:00:00 +0800">06 Sep 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2012/09/06/object-c-programming-notes-1.html" title="Object C Programming Notes 1 - Objects, Classes and Messaging" rel="bookmark">Object C Programming Notes 1 - Objects, Classes and Messaging</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<h2 id="section">消息机制</h2>
-
-<p>类似函数调用，Object C中采用消息机制，基本调用语法如下：    </p>
-
-<pre><code>[receiver message]
-</code></pre>
-
-<p>接收方receiver是一个对象，传递的消息通知该对象进行操作的方法名。消息传递的方法名经常叫做selector。  </p>
-
-<p>可以使用点(.)操作符访问对象的accessor方法。</p>
-
-<p>给nil发消息是允许的——在运行时它仅仅是没有任何效果：消息发送给nil并返回nil。</p>
-
-<p>消息传递的方法对接收方的实例变量有访问权限。</p>
-
-<p>多态：不同类对象有相同的方法。</p>
-
-<h2 id="section-1">方法调用与消息的区别</h2>
-
-<p>方法调用：在编译阶段就已确定其方法和参数；  </p>
-
-<p>消息：运行阶段消息发送时才有运行时环境确定。Dynamic binding / Dynamic Method Resolution</p>
-
-<h2 id="dot-syntax">Dot Syntax</h2>
-
-<p>点（.）操作符与消息的使用<br />
-    myInstance.value = 10;
-    [myInstance setValue:10];</p>
-
-<h1 id="nsobject">NSObject</h1>
-
-<p>继承(Inheriting Methods)</p>
-
-<p>覆盖继承来的方法，但是不能覆盖继承来的变量（因为继承时内存已分配）。</p>
-
-<p>抽象类（Abstract Classes）</p>
-
-<h1 id="class-types">Class Types</h1>
-
-<h2 id="static-typing">静态类型Static Typing</h2>
-
-<p>编译器可以做类型检查</p>
-
-<h2 id="type-introspection">内省Type Introspection</h2>
-<p>运行时获知类型等信息。</p>
-
-<h1 id="class-objects">Class Objects</h1>
-
-<p>A class definition contains various kinds of information, much of it about instances of the class:<br />
--    The name of the class and its superclass
--    A template describing a set of instance variables
--    The declarations of method names and their return and parameter types
--    The method implementations</p>
-
-<h2 id="class-methods-vs-instance-methods">Class Methods vs. Instance Methods</h2>
-
-<pre><code>int versionNumber = [Rectangle version];
-
-id aClass = [anObject class];
-id rectClass = [Rectangle class];
-
-Class aClass = [anObject class];
-Class rectClass = [Rectangle class];
-</code></pre>
-
-<p>Cloass Objects的类型都是Class。</p>
-
-<h1 id="section-2">创建实例</h1>
-
-<pre><code>id  myRectangle;
-
-myRectangle = [Rectangle alloc];
-</code></pre>
-
-<p>初始化实例状态<br />
-    myRectangle = [[Rectangle alloc] init];</p>
-
-<p>变量</p>
-
-<p><a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocObjectsClasses.html">The Objective-C Programming Language</a></p>
-
-          <a href="/Technology/2012/09/06/object-c-programming-notes-1.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#Object C-ref">Object C <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Mac OSX-ref">Mac OSX <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Programming-ref">Programming <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Language-ref">Language <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1165,6 +1234,12 @@ myRectangle = [Rectangle alloc];
     </li>
     
   
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
 
   
     <li>
@@ -1192,6 +1267,10 @@ myRectangle = [Rectangle alloc];
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

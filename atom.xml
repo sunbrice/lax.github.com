@@ -4,7 +4,7 @@
  <title>非常规思维研究所</title>
  <link href="http://blog.liulantao.com/atom.xml" rel="self"/>
  <link href="http://blog.liulantao.com"/>
- <updated>2013-05-20T00:23:20+08:00</updated>
+ <updated>2013-05-21T10:16:55+08:00</updated>
  <id>http://blog.liulantao.com</id>
  <author>
    <name>Liu Lantao</name>
@@ -13,18 +13,35 @@
 
  
  <entry>
+   <title>推荐给程序员的在线文档</title>
+   <link href="http://blog.liulantao.com/Technology/2013/05/21/online-books-for-programmers.html"/>
+   <updated>2013-05-21T00:00:00+08:00</updated>
+   <id>http://blog.liulantao.com/Technology/2013/05/21/online-books-for-programmers</id>
+   <content type="html">
+&lt;h3 id=&quot;statistical-formulas-for-programmershttpwwwevanmillerorgstatistical-formulas-for-programmershtml&quot;&gt;&lt;a href=&quot;http://www.evanmiller.org/statistical-formulas-for-programmers.html&quot;&gt;Statistical Formulas For Programmers&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/evanmiller&quot;&gt;Evan Miller&lt;/a&gt;是个多才多艺的程序员，曾经写过&lt;a href=&quot;http://www.evanmiller.org/nginx-modules-guide.html&quot;&gt;Emiller&amp;rsquo;s Guide to Nginx Module Development&lt;/a&gt;和&lt;a href=&quot;http://www.evanmiller.org/nginx-modules-guide-advanced.html&quot;&gt;Emiller&amp;rsquo;s Advanced Topics In Nginx Module Development&lt;/a&gt;。
+最近他写了一系列关于数据、统计方面的文章，这篇Statistical Formulas For Programmers是其中的一篇。&lt;/p&gt;
+
+&lt;h3 id=&quot;modern-gpuhttpnvlabsgithubiomoderngpu&quot;&gt;&lt;a href=&quot;http://nvlabs.github.io/moderngpu/&quot;&gt;Modern GPU&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;现代GPU编程的设计模式。可以利用这个文档作为入门学习和工作参考。
+电子书的源码可以在&lt;a href=&quot;https://github.com/NVlabs/moderngpu&quot;&gt;github&lt;/a&gt;下载。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Linux kernel本地提权漏洞修复</title>
-   <link href="http://blog.liulantao.com/2013/05/20/local-root-vulnerability-in-the-kernel.html"/>
+   <link href="http://blog.liulantao.com/Technology/2013/05/20/local-root-vulnerability-in-the-kernel.html"/>
    <updated>2013-05-20T00:00:00+08:00</updated>
-   <id>http://blog.liulantao.com/2013/05/20/local-root-vulnerability-in-the-kernel</id>
+   <id>http://blog.liulantao.com/Technology/2013/05/20/local-root-vulnerability-in-the-kernel</id>
    <content type="html">
 &lt;p&gt;Kernel中爆出一个重大的提权漏洞，kernel-2.6.37以上版本几乎都受到影响。由于Redhat会从高版本内核backport一些特性，因此RHEL6自带的2.6.32内核也受影响，同时CentOS、Oracle等基于RHEL的版本都受影响。&lt;/p&gt;
 
 &lt;p&gt;漏洞爆出后，Redhat及时更新了RHEL内核，CentOS等迅速跟进。如果你的服务器上用到这些版本内核，请尽快检查一下。&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;&quot;&gt;https://lwn.net/Articles/550678/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;&quot;&gt;http://fucksheep.org/~sd/warez/semtex.c&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://lwn.net/Articles/550678/&quot;&gt;Local root vulnerability in the kernel&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://fucksheep.org/~sd/warez/semtex.c&quot;&gt;semtex.c&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>

@@ -185,6 +185,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -223,6 +227,41 @@
 
   
 
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2009-01-24 00:00:00 +0800">24 Jan 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/01/24/railsrails-i18n-key-steps.html" title="Rails国际化的关键步骤。Rails I18n Key Steps." rel="bookmark">Rails国际化的关键步骤。Rails I18n Key Steps.</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          Rails I18n的关键点<br><br><br>1、设定locales文档。<br>config/locales/en.yml<br>------------------------------<br>en:<br>&nbsp; hello: &quot;Hello world&quot;<br>&nbsp; store: &quot;Store&quot;<br>------------------------------<br>config/locales/zh-CN.yml<br> ------------------------------<br>zh-CN:<br>&nbsp; hello: &quot;你好&quot;<br>&nbsp; store: &quot;商店&quot;<br>------------------------------<br>2、解析locale。<br>app/controller/application.rb<br>------------------------------<br>&nbsp; class ApplicationController &lt; ActionController::Base<br> &nbsp;&nbsp;&nbsp; before_filter :set_locale<br>&nbsp;&nbsp;&nbsp; def set_locale<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; I18n.locale = params[:locale] || &#39;zh-CN&#39;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #如果没有，则使用默认值。<br>&nbsp;&nbsp;&nbsp; end<br>&nbsp;&nbsp;&nbsp; ...<br>&nbsp; end<br>------------------------------<br>3、在控制器中读取变量<br>------------------------------<br> class StoreController &lt; ApplicationController<br>&nbsp; def index<br>&nbsp;&nbsp;&nbsp; @products = Product.find_products_for_sale<br>&nbsp;&nbsp;&nbsp; flash[:hello_flash] = t(:hello_flash)<br>&nbsp; end<br>&nbsp; ...<br>end<br>------------------------------<br> 4、在视图层中使用变量<br>------------------------------<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;% if flash[:hello_flash] -%&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;div id=&quot;hello_flash&quot;&gt;&lt;%= flash[:hello_flash] %&gt;&lt;/div&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;% end -%&gt;<br>------------------------------<br clear="all"> <br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-1526269392601880878?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2009/01/24/railsrails-i18n-key-steps.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -469,41 +508,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2008-10-24 00:00:00 +0800">24 Oct 2008</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2008/10/24/scitecodeblocks.html" title="跨平台编程的好工具：编辑器SciTE和编译环境Code::Blocks" rel="bookmark">跨平台编程的好工具：编辑器SciTE和编译环境Code::Blocks</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <b>跨平台编程的好工具：编辑器SciTE和编译环境Code::Blocks</b><br /><br />这两个软件都是在Windows平台下和*nix平台下使用的自由软件。<br /><br />SciTE支持几十种语言的高亮显示，编程常用的替换、自动补足功能，实在是让人爱不释手。<a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/lltaichi/uploaded_images/scite-726707.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 310px; height: 400px;" src="http://www.liulantao.com/blogs/lltaichi/uploaded_images/scite-726703.png" alt="" border="0" /></a><br /><br />Code::Blocks是一个高效的C/C++开发平台，包含了编辑器、编译器等。它内置了多种模板，甚至可以自动生成简单的OpenGL显示程序。<br /><a onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}" href="http://www.liulantao.com/blogs/lltaichi/uploaded_images/codeblocks-gl-781185.png"><img style="margin: 0px auto 10px; display: block; text-align: center; cursor: pointer; width: 400px; height: 250px;" src="http://www.liulantao.com/blogs/lltaichi/uploaded_images/codeblocks-gl-781179.png" alt="" border="0" /></a><br />--<br />Liu Lantao<br />College of Information Science and Technology, Beijing Normal University<br />EMAIL: liulantao ( at ) gmail ( dot ) com ;<br />WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br />------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-1787045862420815200?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2008/10/24/scitecodeblocks.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -686,6 +690,12 @@
     </li>
     
   
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
 
   
     <li>
@@ -713,6 +723,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

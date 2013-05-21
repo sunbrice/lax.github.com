@@ -185,6 +185,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -223,6 +227,59 @@
 
   
 
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2010-02-11 00:00:00 +0800">11 Feb 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/02/11/c.html" title="C++构造函数私有的有趣问题" rel="bookmark">C++构造函数私有的有趣问题</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          C++构造函数私有的有趣问题<br><br>很多情况下，一个类的构造函数是按照public权限作为接口，当构造对象时默认来执行一些初始化功能。但是当构造函数出现在private中时，对类进行实例化时，会无法取得构造函数的权限，于是不能通过这种方式构造对象实例。疑问出现了：如果不能通过构造函数对类进行实例化，那么这个类还有用处吗？<br><br>其实，构造函数私有并不违背C++的语法规则，我们也大可不必为这个问题担心。解决之道呢，一般来说有两种方法。<br> 第一种方法，使用class的static成员来进行实例化工作。因为他们独立于class的对象，所以不必实例化也能够使用它来进行一些private操作，当然就可以调用那个害羞的构造函数。<br>第二种方法，当然可以通过一些朋友们来绕过这个权限控制，也就是我们都很熟悉的友元函数/友元类。<br><br>追究原因，因为这类class不能被任意调用创建实例，于是适合构造一些需要进行对象控制的类。<br clear="all"><br>-- <br> Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-823527332954063861?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/Technology/2010/02/11/c.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#C-ref">C <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -469,41 +526,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-09-07 00:00:00 +0800">07 Sep 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/09/07/output-of-array-to-sentence-ruby-way.html" title="Output of an Array to sentence, the ruby way" rel="bookmark">Output of an Array to sentence, the ruby way</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <pre>@contacts.collect{<code class="moz-txt-verticalline"><span class="moz-txt-tag">|</span>s<span class="moz-txt-tag">|</span></code> <a href="http://s.name">s.name</a>}.to_sentence.concat(&quot;.&quot;)<br></pre><br clear="all"> <br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-26549371631330249?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/2009/09/07/output-of-array-to-sentence-ruby-way.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -686,6 +708,12 @@
     </li>
     
   
+    
+    <li class="page">
+      <a href="/page29">29</a>
+    </li>
+    
+  
 
   
     <li>
@@ -713,6 +741,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

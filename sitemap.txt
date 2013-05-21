@@ -38,6 +38,7 @@ http://blog.liulantao.com/page25/index.html
 http://blog.liulantao.com/page26/index.html
 http://blog.liulantao.com/page27/index.html
 http://blog.liulantao.com/page28/index.html
+http://blog.liulantao.com/page29/index.html
 http://blog.liulantao.com/page2/index.html
 http://blog.liulantao.com/page3/index.html
 http://blog.liulantao.com/page4/index.html
@@ -65,8 +66,10 @@ http://blog.liulantao.com/page25/index.html
 http://blog.liulantao.com/page26/index.html
 http://blog.liulantao.com/page27/index.html
 http://blog.liulantao.com/page28/index.html
+http://blog.liulantao.com/page29/index.html
 
-http://blog.liulantao.com/2013/05/20/local-root-vulnerability-in-the-kernel.html
+http://blog.liulantao.com/Technology/2013/05/21/online-books-for-programmers.html
+http://blog.liulantao.com/Technology/2013/05/20/local-root-vulnerability-in-the-kernel.html
 http://blog.liulantao.com/Technology/2013/05/14/awk-sort-keys.html
 http://blog.liulantao.com/2013/03/28/digweb-peercdn-concurrency-x-2.html
 http://blog.liulantao.com/2013/03/19/gerrit-review-system-management.html
