@@ -4,13 +4,163 @@
  <title>非常规思维研究所</title>
  <link href="http://blog.liulantao.com/atom.xml" rel="self"/>
  <link href="http://blog.liulantao.com"/>
- <updated>2013-05-21T10:16:55+08:00</updated>
+ <updated>2013-06-13T17:49:21+08:00</updated>
  <id>http://blog.liulantao.com</id>
  <author>
    <name>Liu Lantao</name>
    <email>liulantao@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>为什么rsync能够快速删除400000文件？</title>
+   <link href="http://blog.liulantao.com/Technology/2013/06/13/why-can-rsync-rapidly-delete-400000-files.html"/>
+   <updated>2013-06-13T00:00:00+08:00</updated>
+   <id>http://blog.liulantao.com/Technology/2013/06/13/why-can-rsync-rapidly-delete-400000-files</id>
+   <content type="html">
+&lt;h3 id=&quot;section&quot;&gt;背景&lt;/h3&gt;
+
+&lt;p&gt;Quora上一篇文章&lt;a href=&quot;http://www.quora.com/File-Systems/How-can-someone-rapidly-delete-400-000-files&quot;&gt;★How can someone rapidly delete 400,000 files?&lt;/a&gt;提到通过rsync能够快速删除大量文件，之后在&lt;a href=&quot;http://web.itivy.com/article-797-1.html&quot;&gt;Linux技巧：一次删除一百万个文件的最快方法&lt;/a&gt;这篇文章里做了一个详细的评测，对于rm/find/rsync等诸多方法的性能做了对比。&lt;/p&gt;
+
+&lt;p&gt;对于出现性能的差异，应该属于预料中的结果。为了验证这个现象，我模拟了Quora原提问的要求，创建了40万个文件，分别用rm和rsync进行删除操作，对syscall做统计。为了简化条件，这写文件全部是空文件（使用包含内容的文件对结果不会造成明显差异，有兴趣可以重试一下）。&lt;/p&gt;
+
+&lt;p&gt;统计syscall使用了dtruss工具，这是MacOSX上提供的syscall调试工具，基于DTrace。Linux上可以使用SystemTap来代替。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;验证测试步骤&lt;/h3&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;第一步，创建测试文件&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir tmp/; seq 1 400000 | xargs -I{} touch tmp/file_{}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;创建的目录文件大小约为13M。这个大小指的是&lt;em&gt;目录文件&lt;/em&gt;，不包含目录中文件，要注意。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls -dl tmp/
+drwxr-xr-x  56513 lax  wheel  13062562  6 13 16:18 tmp-test-rsync
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;dtrussrm&quot;&gt;第二步，使用dtruss执行rm命令测试&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$sudo dtruss -c 'rm -rf tmp-test-rm/'
+
+CALL                                        COUNT
+__mac_syscall                                   1
+audit_session_self                              1
+bsdthread_register                              1
+exit                                            1
+fstatfs64                                       1
+getaudit_addr                                   1
+getegid                                         1
+rmdir                                           1
+shared_region_check_np                          1
+thread_selfid                                   1
+__sysctl                                        2
+close                                           2
+close_nocancel                                  2
+csops                                           2
+getpid                                          2
+ioctl                                           2
+issetugid                                       2
+open                                            2
+open_nocancel                                   2
+pread                                           2
+geteuid                                         3
+fchdir                                          4
+mprotect                                        8
+stat64                                         34
+mmap                                           93
+munmap                                        184
+madvise                                       205
+getdirentries64                              2659
+lstat64                                    311901
+unlink                                     400000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;dtrussrsync&quot;&gt;第三步，使用dtruss执行rsync命令测试&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$sudo dtruss -c 'rsync -a --delete empty/ tmp/'
+
+CALL                                        COUNT
+__mac_syscall                                   1
+__pthread_canceled                              1
+audit_session_self                              1
+bsdthread_register                              1
+exit                                            1
+fcntl_nocancel                                  1
+fork                                            1
+fstatfs64                                       1
+getaudit_addr                                   1
+getegid                                         1
+getrlimit                                       1
+getuid                                          1
+ioctl                                           1
+lstat64                                         1
+shared_region_check_np                          1
+shm_open                                        1
+sigprocmask                                     1
+sigreturn                                       1
+thread_selfid                                   1
+umask                                           1
+__sysctl                                        2
+chdir                                           2
+csops                                           2
+getdirentries64                                 2
+getpid                                          2
+lseek                                           2
+pread                                           2
+socketpair                                      2
+fstat64                                         3
+munmap                                          3
+open_nocancel                                   3
+close                                           4
+close_nocancel                                  4
+geteuid                                         4
+issetugid                                       4
+open                                            4
+wait4                                           6
+read_nocancel                                   7
+write                                           7
+mprotect                                        8
+read                                           10
+sigaction                                      10
+fcntl                                          11
+mmap                                           13
+select                                         21
+stat64                                         35
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;现象分析&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;rm
+    &lt;ul&gt;
+      &lt;li&gt;rm命令大量调用了lstat64和unlink，可以推测删除每个文件前都从文件系统中做过一次lstat操作。&lt;/li&gt;
+      &lt;li&gt;lstat64的次数低于文件总数，还有另外的原因，之后会在另一篇文章中说明。&lt;/li&gt;
+      &lt;li&gt;getdirentries64这个调用比较关键。&lt;/li&gt;
+      &lt;li&gt;过程：正式删除工作的第一阶段，需要通过getdirentries64调用，分批读取目录（每次大约为4K），在内存中建立rm的文件列表；第二阶段，lstat64确定所有文件的状态；第三阶段，通过unlink执行实际删除。这三个阶段都有比较多的系统调用和文件系统操作。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;rsync
+    &lt;ul&gt;
+      &lt;li&gt;rsync所做的系统调用很少。&lt;/li&gt;
+      &lt;li&gt;没有针对单个文件做lstat和unlink操作。&lt;/li&gt;
+      &lt;li&gt;命令执行前期，rsync开启了一片共享内存，通过mmap方式加载目录信息。&lt;/li&gt;
+      &lt;li&gt;只做目录同步，不需要针对单个文件做unlink。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;总结&lt;/h3&gt;
+
+&lt;p&gt;把文件系统的目录与书籍的目录做类比，rm删除内容时，将目录的每一个条目逐个删除(unlink)，需要循环重复操作很多次；rsync删除内容时，建立好新的空目录，替换掉老目录，基本没开销。&lt;/p&gt;
+
+&lt;p&gt;结论：频繁做减法不如直接从头来过。&lt;/p&gt;
+
+&lt;p&gt;&amp;mdash;Why can rsync rapidly delete 400,000 files?&amp;mdash; &lt;/p&gt;
+
+&lt;p&gt;&amp;mdash;by 刘兰涛(http://blog.liulantao.com)&amp;mdash;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>推荐给程序员的在线文档</title>

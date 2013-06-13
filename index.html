@@ -228,6 +228,208 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2013-06-13 00:00:00 +0800">13 Jun 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2013/06/13/why-can-rsync-rapidly-delete-400000-files.html" title="为什么rsync能够快速删除400000文件？" rel="bookmark">为什么rsync能够快速删除400000文件？</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<h3 id="section">背景</h3>
+
+<p>Quora上一篇文章<a href="http://www.quora.com/File-Systems/How-can-someone-rapidly-delete-400-000-files">★How can someone rapidly delete 400,000 files?</a>提到通过rsync能够快速删除大量文件，之后在<a href="http://web.itivy.com/article-797-1.html">Linux技巧：一次删除一百万个文件的最快方法</a>这篇文章里做了一个详细的评测，对于rm/find/rsync等诸多方法的性能做了对比。</p>
+
+<p>对于出现性能的差异，应该属于预料中的结果。为了验证这个现象，我模拟了Quora原提问的要求，创建了40万个文件，分别用rm和rsync进行删除操作，对syscall做统计。为了简化条件，这写文件全部是空文件（使用包含内容的文件对结果不会造成明显差异，有兴趣可以重试一下）。</p>
+
+<p>统计syscall使用了dtruss工具，这是MacOSX上提供的syscall调试工具，基于DTrace。Linux上可以使用SystemTap来代替。</p>
+
+<h3 id="section-1">验证测试步骤</h3>
+
+<h4 id="section-2">第一步，创建测试文件</h4>
+
+<pre><code>mkdir tmp/; seq 1 400000 | xargs -I{} touch tmp/file_{}
+</code></pre>
+
+<p>创建的目录文件大小约为13M。这个大小指的是<em>目录文件</em>，不包含目录中文件，要注意。</p>
+
+<pre><code>$ ls -dl tmp/
+drwxr-xr-x  56513 lax  wheel  13062562  6 13 16:18 tmp-test-rsync
+</code></pre>
+
+<h4 id="dtrussrm">第二步，使用dtruss执行rm命令测试</h4>
+
+<pre><code>$sudo dtruss -c 'rm -rf tmp-test-rm/'
+
+CALL                                        COUNT
+__mac_syscall                                   1
+audit_session_self                              1
+bsdthread_register                              1
+exit                                            1
+fstatfs64                                       1
+getaudit_addr                                   1
+getegid                                         1
+rmdir                                           1
+shared_region_check_np                          1
+thread_selfid                                   1
+__sysctl                                        2
+close                                           2
+close_nocancel                                  2
+csops                                           2
+getpid                                          2
+ioctl                                           2
+issetugid                                       2
+open                                            2
+open_nocancel                                   2
+pread                                           2
+geteuid                                         3
+fchdir                                          4
+mprotect                                        8
+stat64                                         34
+mmap                                           93
+munmap                                        184
+madvise                                       205
+getdirentries64                              2659
+lstat64                                    311901
+unlink                                     400000
+</code></pre>
+
+<h4 id="dtrussrsync">第三步，使用dtruss执行rsync命令测试</h4>
+
+<pre><code>$sudo dtruss -c 'rsync -a --delete empty/ tmp/'
+
+CALL                                        COUNT
+__mac_syscall                                   1
+__pthread_canceled                              1
+audit_session_self                              1
+bsdthread_register                              1
+exit                                            1
+fcntl_nocancel                                  1
+fork                                            1
+fstatfs64                                       1
+getaudit_addr                                   1
+getegid                                         1
+getrlimit                                       1
+getuid                                          1
+ioctl                                           1
+lstat64                                         1
+shared_region_check_np                          1
+shm_open                                        1
+sigprocmask                                     1
+sigreturn                                       1
+thread_selfid                                   1
+umask                                           1
+__sysctl                                        2
+chdir                                           2
+csops                                           2
+getdirentries64                                 2
+getpid                                          2
+lseek                                           2
+pread                                           2
+socketpair                                      2
+fstat64                                         3
+munmap                                          3
+open_nocancel                                   3
+close                                           4
+close_nocancel                                  4
+geteuid                                         4
+issetugid                                       4
+open                                            4
+wait4                                           6
+read_nocancel                                   7
+write                                           7
+mprotect                                        8
+read                                           10
+sigaction                                      10
+fcntl                                          11
+mmap                                           13
+select                                         21
+stat64                                         35
+</code></pre>
+
+<h3 id="section-3">现象分析</h3>
+
+<ul>
+  <li>rm
+    <ul>
+      <li>rm命令大量调用了lstat64和unlink，可以推测删除每个文件前都从文件系统中做过一次lstat操作。</li>
+      <li>lstat64的次数低于文件总数，还有另外的原因，之后会在另一篇文章中说明。</li>
+      <li>getdirentries64这个调用比较关键。</li>
+      <li>过程：正式删除工作的第一阶段，需要通过getdirentries64调用，分批读取目录（每次大约为4K），在内存中建立rm的文件列表；第二阶段，lstat64确定所有文件的状态；第三阶段，通过unlink执行实际删除。这三个阶段都有比较多的系统调用和文件系统操作。</li>
+    </ul>
+  </li>
+  <li>rsync
+    <ul>
+      <li>rsync所做的系统调用很少。</li>
+      <li>没有针对单个文件做lstat和unlink操作。</li>
+      <li>命令执行前期，rsync开启了一片共享内存，通过mmap方式加载目录信息。</li>
+      <li>只做目录同步，不需要针对单个文件做unlink。</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="section-4">总结</h3>
+
+<p>把文件系统的目录与书籍的目录做类比，rm删除内容时，将目录的每一个条目逐个删除(unlink)，需要循环重复操作很多次；rsync删除内容时，建立好新的空目录，替换掉老目录，基本没开销。</p>
+
+<p>结论：频繁做减法不如直接从头来过。</p>
+
+<p>&mdash;Why can rsync rapidly delete 400,000 files?&mdash; </p>
+
+<p>&mdash;by 刘兰涛(http://blog.liulantao.com)&mdash;</p>
+
+          <a href="/Technology/2013/06/13/why-can-rsync-rapidly-delete-400000-files.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#rsync-ref">rsync <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rm-ref">rm <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#DTrace-ref">DTrace <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#dtruss-ref">dtruss <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#SystemTap-ref">SystemTap <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2013-05-21 00:00:00 +0800">21 May 2013</abbr>
       </span>
       <h3 class="entry-title">
@@ -603,77 +805,6 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-01-25 00:00:00 +0800">25 Jan 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Quotes/2013/01/25/quotes-weekly-2013w4.html" title="每周语录 2013年第四周" rel="bookmark">每周语录 2013年第四周</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<p>点评：本周语录充满了各种各样的牢骚和抱怨，难道这是开发者们刚休完年假的普遍心态？</p>
-
-<ul>
-  <li>
-    <p>Alan Cox</p>
-
-    <blockquote>
-      <p>I&rsquo;m leaving the Linux world and Intel for a bit for family reasons. I&rsquo;m aware that &ldquo;family reasons&rdquo; is usually management speak for &ldquo;I think the boss is an asshole&rdquo; but I&rsquo;d like to assure everyone that while I frequently think Linus is an asshole (and therefore very good as kernel dictator) I am departing quite genuinely for family reasons and not because I&rsquo;ve fallen out with Linus or Intel or anyone else.</p>
-    </blockquote>
-  </li>
-  <li>
-    <p>Steven Rostedt</p>
-
-    <blockquote>
-      <p>Yes, it&rsquo;s very unlikely, but we are in the business of dealing with the very unlikely. That&rsquo;s because in our business, the very unlikely is very likely. Damn, I need to buy a lotto ticket!</p>
-    </blockquote>
-  </li>
-  <li>
-    <p>Tom St Denis</p>
-
-    <blockquote>
-      <p>About the only thing Kernel developers agree on is they use C and don&rsquo;t comment their code.</p>
-    </blockquote>
-  </li>
-  <li>
-    <p>Arnd Bergmann</p>
-
-    <blockquote>
-      <p>Documentation is generally considered a good thing, but few people can be bothered to write it, and few of the other people that should read it actually do.</p>
-    </blockquote>
-  </li>
-</ul>
-
-<p><img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" alt="关注微信公共号 Linux" /></p>
-
-          <a href="/Quotes/2013/01/25/quotes-weekly-2013w4.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Quotes-ref" title="Quotes" rel="category tag">Quotes</a></li>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -887,6 +1018,10 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

@@ -230,6 +230,63 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2010-02-23 00:00:00 +0800">23 Feb 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/02/23/gentoo-setup-scim-in-gnome.html" title="Gentoo: setup scim in GNOME" rel="bookmark">Gentoo: setup scim in GNOME</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          1 add USE flags: <br><meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 15px; line-height: 22px;"><pre style="padding: 1em; border: 1px dashed rgb(47, 111, 171); color: black; background-color: rgb(249, 249, 249); line-height: 1.1em;"> USE=&quot;${USE} scim unicode nls&quot;</pre></span></span><br>2 <meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 15px; line-height: 22px;"><div style="background-color: rgb(255, 224, 224); color: rgb(0, 0, 0); padding: 0.05em 0.5em; margin: 0.5em; border-width: 1px 1px 1px 10px; border-style: solid; border-color: rgb(204, 102, 102); font-size: 11px; white-space: pre; font-family: monospace; width: 492px;"> emerge -avuDN world</div></span></span><br>3  #  vim /etc/locale.gen; <br>    #  locale-gen<br>    #  env-update ; source  /etc/profile<br><br>4  add LANG=&quot;en_US.UTF-8&quot; to <meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 14px; line-height: 22px;">/etc/env.d/02locale</span></span><br> <br>5  set environment inf /etc/source of ~/.xinitrc<br><meta http-equiv="content-type" content="text/html; charset=utf-8"><span class="Apple-style-span" style="border-collapse: separate; color: rgb(0, 0, 0); font-family: &#39;Times New Roman&#39;; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; font-size: medium;"><span class="Apple-style-span" style="font-family: sans-serif; font-size: 15px; line-height: 22px;"><pre style="padding: 1em; border: 1px dashed rgb(47, 111, 171); color: black; background-color: rgb(249, 249, 249); line-height: 1.1em;"> export XMODIFIERS=@im=SCIM export GTK_IM_MODULE=scim export QT_IM_MODULE=scim</pre></span></span>6  Sometimes: add line &quot;scim -d &amp;&quot; to ~/.xinitrc<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>  <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-1997028008038567418?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/Technology/2010/02/23/gentoo-setup-scim-in-gnome.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Gentoo-ref">Gentoo <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#SCIM-ref">SCIM <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#GNOME-ref">GNOME <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2010-02-11 00:00:00 +0800">11 Feb 2010</abbr>
       </span>
       <h3 class="entry-title">
@@ -491,41 +548,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-09-16 00:00:00 +0800">16 Sep 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/09/16/journey-to-gentoo-intel-video-card-and.html" title="A journey to Gentoo: Intel video card and xorg installed." rel="bookmark">A journey to Gentoo: Intel video card and xorg installed.</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          config intel video card on Gentoo Linux.<br><br>first, make sure the kernel module option, &quot;Device Drivers --&gt; Graphics support --&gt; Direct Rendering Manager --&gt; Intel 810&quot; should be checked for my i810 card.<br> <br>then set  VIDEO_CARDS=&quot;intel&quot;  in /etc/make.conf.<br clear="all"><br>now, reinstall xorg-x11:  # sudo emerge -uDNva xorg-x11.<br><br>when all above steps were finished, remove /etc/X11/xorg.conf, run $ startx, and everything is fine. <br> <br>Though, there is neither any input method nor web browser installed, a easy journey to go.<br><br>-- <br>Liu Lantao, Oaks Pacific Corp.<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4876074992862163302?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/2009/09/16/journey-to-gentoo-intel-video-card-and.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -741,6 +763,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

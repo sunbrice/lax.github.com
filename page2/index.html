@@ -233,6 +233,77 @@
         <abbr class="published" title="2013-01-25 00:00:00 +0800">25 Jan 2013</abbr>
       </span>
       <h3 class="entry-title">
+        <a href="/Quotes/2013/01/25/quotes-weekly-2013w4.html" title="每周语录 2013年第四周" rel="bookmark">每周语录 2013年第四周</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>点评：本周语录充满了各种各样的牢骚和抱怨，难道这是开发者们刚休完年假的普遍心态？</p>
+
+<ul>
+  <li>
+    <p>Alan Cox</p>
+
+    <blockquote>
+      <p>I&rsquo;m leaving the Linux world and Intel for a bit for family reasons. I&rsquo;m aware that &ldquo;family reasons&rdquo; is usually management speak for &ldquo;I think the boss is an asshole&rdquo; but I&rsquo;d like to assure everyone that while I frequently think Linus is an asshole (and therefore very good as kernel dictator) I am departing quite genuinely for family reasons and not because I&rsquo;ve fallen out with Linus or Intel or anyone else.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Steven Rostedt</p>
+
+    <blockquote>
+      <p>Yes, it&rsquo;s very unlikely, but we are in the business of dealing with the very unlikely. That&rsquo;s because in our business, the very unlikely is very likely. Damn, I need to buy a lotto ticket!</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Tom St Denis</p>
+
+    <blockquote>
+      <p>About the only thing Kernel developers agree on is they use C and don&rsquo;t comment their code.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Arnd Bergmann</p>
+
+    <blockquote>
+      <p>Documentation is generally considered a good thing, but few people can be bothered to write it, and few of the other people that should read it actually do.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" alt="关注微信公共号 Linux" /></p>
+
+          <a href="/Quotes/2013/01/25/quotes-weekly-2013w4.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Quotes-ref" title="Quotes" rel="category tag">Quotes</a></li>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-01-25 00:00:00 +0800">25 Jan 2013</abbr>
+      </span>
+      <h3 class="entry-title">
         <a href="/Technology/2013/01/25/build-page-with-haml.html" title="使用HAML构建WEB页面" rel="bookmark">使用HAML构建WEB页面</a>
       </h3>
       <p class="alt-font tight">
@@ -969,89 +1040,6 @@ gerrit push
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-09-14 00:00:00 +0800">14 Sep 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/Linux/2012/09/14/edac.html" title="EDAC" rel="bookmark">EDAC</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<h1 id="edac-overview">EDAC Overview</h1>
-<p>EDAC (Error Detection and Correction) is a set of Linux kernel modules for handling hardware-related errors. </p>
-
-<p>Its major focus has been ECC memory error handling, however it also detects and reports PCI bus parity errors. </p>
-
-<p>EDAC通过sysfs方式获得硬件的信息。检测到问题时，在syslog中可以看到这样的日志：</p>
-
-<pre><code>kernel: EDAC MC1: CE row 0, channel 0, label "": Corrected error (Socket=1 channel=0 dimm=0)
-</code></pre>
-
-<p>有一个叫做edac-util的工具，可以用来查看更详细的状态报表。</p>
-
-<pre><code>$ edac-util -r
-mc1: csrow0: ch0: 43722040 Corrected Errors
-</code></pre>
-
-<p>上面的输出表示有较多的可修复错误（Corrected Errors - CE）被发现。</p>
-
-<p>edac-util的安装，在RHEL或CentOS上，可以通过yum安装：</p>
-
-<pre><code>yum install edac-util -y
-</code></pre>
-
-<h1 id="links">Links</h1>
-
-<p>[http://www.kernel.org/doc/Documentation/edac.txt EDAC - Error Detection And Correction]</p>
-
-<p>[http://bluesmoke.sourceforge.net EDAC Project]</p>
-
-          <a href="/Technology/Linux/2012/09/14/edac.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-              <li><a href="/categories.html#Linux-ref" title="Linux" rel="category tag">Linux</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#EDAC-ref">EDAC <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -1267,6 +1255,10 @@ mc1: csrow0: ch0: 43722040 Corrected Errors
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

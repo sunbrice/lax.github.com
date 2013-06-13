@@ -230,6 +230,41 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2009-08-14 00:00:00 +0800">14 Aug 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/08/14/sed-i-sstr1rep1sstr2rep2sstrnrepn.html" title="sed -i 's/str1/rep1/;s/str2/rep2/;...;s/strN/repN/' urfile" rel="bookmark">sed -i 's/str1/rep1/;s/str2/rep2/;...;s/strN/repN/' urfile</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          sed -i &#39;s/str1/rep1/;s/str2/rep2/;...;s/strN/repN/&#39; urfile<br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2350508221124263108?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/2009/08/14/sed-i-sstr1rep1sstr2rep2sstrnrepn.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2009-08-07 00:00:00 +0800">07 Aug 2009</abbr>
       </span>
       <h3 class="entry-title">
@@ -473,41 +508,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-04-25 00:00:00 +0800">25 Apr 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/04/25/linuxsunbuild-sunpinyin-on-gnulinux.html" title="在Linux上编译安装SUN拼音输入法｜Build SunPinyin on GNU/Linux (CentOS/Redhat/Fedora)." rel="bookmark">在Linux上编译安装SUN拼音输入法｜Build SunPinyin on GNU/Linux (CentOS/Redhat/Fedora).</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <pre><code>〔懒桃原创，转载请注明完整链接<a href="http://www.liulantao.com/">http://www.liulantao.com/</a>〕</code><br><code><br>= 在Linux上编译安装SUN拼音。 =<br><br>Sun Pinyin是最近评价很高的一款中文输入法。<br><br>首先安装必须的工具和库文件：<br>[lax@liulantao-com ~]</code><code>$ sudo yum install mercurial scim-devel<br> <br>如果安装过程中报错，可以添加下面的东西试试：<br>[lax@liulantao-com ~]$ sudo yum install git gnome-common intltool -y<br><br>现在把源代码从库中签出：<br></code><code>[lax@liulantao-com ~]$</code><code> hg clone ssh://anon<em>@</em><a href="http://hg.opensolaris.org/hg/nv-g11n/inputmethod">hg.opensolaris.org/hg/nv-g11n/inputmethod</a></code><br> <code><br>开始安装过程，以下命令安装使得sun拼音能够在scim中被调用：<br></code><code>[lax@liulantao-com ~]$</code><code> cd inputmethod/sunpinyin/ime<br></code><code>[lax@liulantao-com ~]$</code><code> ./autogen.sh --prefix=/usr --disable-cle --enable-scim<br> </code><code>[lax@liulantao-com ~]$</code><code> make<br></code><code>[lax@liulantao-com ~]$</code> sudo<code> make install<br><br>退出桌面，重新登入。从你的SCIM中选择Sun Pinyin就可以了。<br><br></code><code>--------------------------------------------------------------------------------<br> Sun Pinyin is a recently high performance chinese input method.<br><br>First, Install essential tools and development libraries:<br>[lax@liulantao-com ~]</code><code>$ sudo yum install mercurial scim-devel<br> <br>If something goes wrong in next steps, you may need some of the following packages:<br> [lax@liulantao-com ~]$ sudo yum install git gnome-common intltool -y<br><br>Now, check out the source from opensolaris server:<br></code><code>[lax@liulantao-com ~]$</code><code> hg clone ssh://anon<em>@</em><a href="http://hg.opensolaris.org/hg/nv-g11n/inputmethod">hg.opensolaris.org/hg/nv-g11n/inputmethod</a></code><br> <code><br>Just install it, with the following commands:<br></code><code>[lax@liulantao-com ~]$</code><code> cd inputmethod/sunpinyin/ime<br></code><code>[lax@liulantao-com ~]$</code><code> ./autogen.sh --prefix=/usr --disable-cle --enable-scim<br> </code><code>[lax@liulantao-com ~]$</code><code> make<br></code><code>[lax@liulantao-com ~]$</code> sudo<code> make install</code></pre>Logout your desktop and re-login, a fresh sun-pinyin is just there in scim menu.<br clear="all"> <br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5329117712972381947?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2009/04/25/linuxsunbuild-sunpinyin-on-gnulinux.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
     <div id="post-pagination" class="pagination pagination-centered">
@@ -723,6 +723,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     

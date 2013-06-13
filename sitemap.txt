@@ -68,6 +68,7 @@ http://blog.liulantao.com/page27/index.html
 http://blog.liulantao.com/page28/index.html
 http://blog.liulantao.com/page29/index.html
 
+http://blog.liulantao.com/Technology/2013/06/13/why-can-rsync-rapidly-delete-400000-files.html
 http://blog.liulantao.com/Technology/2013/05/21/online-books-for-programmers.html
 http://blog.liulantao.com/Technology/2013/05/20/local-root-vulnerability-in-the-kernel.html
 http://blog.liulantao.com/Technology/2013/05/14/awk-sort-keys.html
