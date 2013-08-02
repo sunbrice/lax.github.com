@@ -1,16 +1,17 @@
 
 http://blog.liulantao.com/404.html
+http://blog.liulantao.com/about_me.html
 http://blog.liulantao.com/archive.html
 http://blog.liulantao.com/atom.xml
 http://blog.liulantao.com/categories.html
 http://blog.liulantao.com/default.html
 http://blog.liulantao.com/index.html
+http://blog.liulantao.com/nerd_urls.html
 http://blog.liulantao.com/pages/sr3000-auth-ios/index.html
 http://blog.liulantao.com/pages.html
 http://blog.liulantao.com/rss.xml
 http://blog.liulantao.com/sitemap.txt
 http://blog.liulantao.com/tags.html
-http://blog.liulantao.com/urls_for_nerd.html
 http://blog.liulantao.com/page2/index.html
 http://blog.liulantao.com/page3/index.html
 http://blog.liulantao.com/page4/index.html
