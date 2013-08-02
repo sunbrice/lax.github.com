@@ -134,6 +134,8 @@ Quora上一篇文章[★How can someone rapidly delete 400,000 files?](http://ww
     *   命令执行前期，rsync开启了一片共享内存，通过mmap方式加载目录信息。
     *   只做目录同步，不需要针对单个文件做unlink。
 
+另外，在[其他人的评测](http://web.itivy.com/article-797-1.html)里，rm的上下文切换比较多，会造成System CPU占用较多——对于文件系统的操作，简单增加并发数并不总能提升操作速度。
+
 ### 总结
 
 把文件系统的目录与书籍的目录做类比，rm删除内容时，将目录的每一个条目逐个删除(unlink)，需要循环重复操作很多次；rsync删除内容时，建立好新的空目录，替换掉老目录，基本没开销。
