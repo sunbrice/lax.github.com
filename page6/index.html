@@ -30,6 +30,11 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
     <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
@@ -58,6 +63,12 @@
     
   
     
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
   
     
   
@@ -83,6 +94,12 @@
   
     
   
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
     
   
     
@@ -217,24 +234,83 @@
 
   <!-- Pagination links -->
   
-    <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/page5">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page7">Next &rarr;</a>
-  </li>
-
-</ul>
 
   
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2011-09-28 09:07:25 +0800">28 Sep 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/Ruby/2011/09/28/heroku-java-play-framework.html" title="Heroku开始支持Java，Play框架！" rel="bookmark">Heroku开始支持Java，Play框架！</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <h2 id="java-and-play-on-heroku">Java and Play! on Heroku</h2>
 
+<p><img src="https://i5.createsend1.com/ei/r/21/51F/D94/030742/csimport/play_4.png" alt="Java and Play! on Heroku" /></p>
+
+<p>At  Heroku, we believe you should be able to choose the best programming  language for your application. That&rsquo;s why we are transforming Heroku  into a <a href="http://rrurl.cn/i4pP6y">ploygot platform</a>. We are excited to announce that <a href="http://rrurl.cn/v1Jqm3">Java is now available</a> on Heroku as our fourth official language! We also want to introduce <a href="http://rrurl.cn/dD0Yd4">Play!, a Java based web framework</a> that is as easy and elegant as Rails for Ruby.</p>
+
+<p>以上为heroku官方的通知，在Ruby，Python，PHP，Node.js，Closure之后，heroku终于支持了Java语言。相信这一次升级会吸引更多的开发者使用heroku平台。</p>
+
+<p>heroku所带来的便捷部署方式，提升开发者效率，改善上线速度，提高程序员生产率和生活质量，一度受到广泛好评。近半年heroku升级速度加快，从单一的ruby平台过渡到多语言平台，一举进入主流的云服务行列。</p>
+
+<p>同时看到一个消息，facebook内置为开放平台用户在heroku上创建应用的功能，独立应用平台与内容平台将各施展所长。</p>
+
+
+          <a href="/Technology/Ruby/2011/09/28/heroku-java-play-framework.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#facebook-ref">facebook <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#heroku-ref">heroku <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#java-ref">java <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#play!-ref">play! <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rack-ref">rack <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -705,288 +781,14 @@ $ rvm use 1.9.2
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-01-19 12:55:26 +0800">19 Jan 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/01/19/wordpress-child-theme.html" title="wordpress child-theme" rel="bookmark">wordpress child-theme</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>wordpress内置的theme引擎，很适合以已有的风格为基础，修改某一部分的风格文件——这种修改对于个人blog是很常见的行为。直接修改theme文件，与使用child-theme的最大区别，在于当官方升级theme包时，个人所作修改是否会被覆盖/丢弃。</p>
-
-<p>themes/twentyten-child $ cat style.css</p>
-
-<p>/*
-* Theme Name:     Twenty Ten Child
-* Theme URI:      http: //www.liulantao.com/portal/
-* Description:    Child theme for the Twenty Ten theme
-* Author:         Liu Lantao
-* Author URI:     http: //www.liulantao.com/portal/
-* Template:       twentyten
-* Version:        0.1.0
-* */</p>
-
-<p>@import url(&ldquo;../twentyten/style.css&rdquo;);</p>
-
-<h1 id="site-title-a-">site-title a {</h1>
-<p>color: #000099;
-}</p>
-
-<p>http://codex.wordpress.org/Child_Themes</p>
-
-          <a href="/Technology/2011/01/19/wordpress-child-theme.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
   
-     
-    	<li><a href="/tags.html#child-theme-ref">child-theme <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#theme-ref">theme <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#wordpress-ref">wordpress <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-  
-  
-    <div id="post-pagination" class="pagination pagination-centered">
-  <ul class="pages nav nav-pills">
-
-  
-    <li>
-    
-      <a href="/page5">Previous</a>
-    
-    </li>
-  
-
-  
-    <li class="page">
-      <a href="/">1</a>
-    </li>
-  
-
-  
-    
-    <li class="page">
-      <a href="/page2">2</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page3">3</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page4">4</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page5">5</a>
-    </li>
-    
-  
-    
-    <li class="page active">
-      <a href="#">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page8">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page11">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page16">16</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page17">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-
-  
-    <li>
-      <a href="/page7">Next</a>
-    </li>
-  
-
-  </ul>
-</div>
-
-
   
   </div>
 
   <div class='span3 sidebar'>
+
     <section>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
     <section>
@@ -997,6 +799,10 @@ $ rvm use 1.9.2
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
@@ -1920,12 +1726,15 @@ $ rvm use 1.9.2
     
   
   </ul>
+  <a href="/atom.xml"><i class="icon-star"></i>RSS</a>
 </section>
 
 
     <section>
-      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
-    </section>
+<iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+
   </div>
 </div>
 
@@ -1941,22 +1750,6 @@ $ rvm use 1.9.2
     </div> <!-- /container -->
 
     
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1658815-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
   <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   </body>

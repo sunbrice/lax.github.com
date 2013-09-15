@@ -30,6 +30,11 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
     <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
@@ -58,6 +63,12 @@
     
   
     
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
   
     
   
@@ -83,6 +94,12 @@
   
     
   
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
     
   
     
@@ -217,24 +234,42 @@
 
   <!-- Pagination links -->
   
-    <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/page16">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page18">Next &rarr;</a>
-  </li>
-
-</ul>
 
   
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2007-10-08 00:00:00 +0800">08 Oct 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/10/08/linux-problems-solved-today-20071008.html" title="Linux problems solved today - 20071008" rel="bookmark">Linux problems solved today - 20071008</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          Linux problems solved today - 20071008<p><br>1、关于GNOME里中文字体的问题。<p>先通过yum发现已经安装的字体列表。<p>#yum list *fonts* |more<p>然后一次卸载掉每个已经安装的字体，启动到GNOME中，用firefox打开常用的几个中文网页，发现以下两个字体文件的作用。<p>cjkunifonts-ukai  楷体<p>cjkunifonts-uming  宋体<p>于是卸载掉其它的字体，安装cjkunifonts-ukai，于是所有中文都是漂亮的楷体了；然后将cjkunifongt-uming，<br>系统上有了宋体。<p>2、Fedora升级到Rawhide后普通用户没法听到声音。<p>原来一直以为是驱动或者内核的问题，还因此downgrade到了fedora 7了。<p>今天早上偶尔发现用Soundcard Detection能够听到测试声音。于是确认声卡和内核都是好的。<p>于是从alsa上面找问题。发现用root帐户能够正常播放音乐并且使用正常的音量调节。<p>从网络上搜索到少数几个关于debian上同样现象的解决方案，都提到要在/etc/groups中将自己的帐户加到audio组中。<p>而fedora中并没有这个用户组。这个方案不可行。<p>又找到一篇中提到将/dev/dsp和/dev/audio/中的文件修改为622。因为没有/dev/audio，所以修改了/dev/dsp，而实际效果并不好。<p>下午又在弄的时候发现有个/dev/mixer的文件。早先弄的时候对mixer进行了搜索，见到了这个文件，这个文件的权限修改后普通用户能够对音量进行调节了。<p>因为刚开始用root调节音量的时候使用了alsamixer，应该音量调节的接口就是这个mixer文件了。<p>搜索的时候还发现几个关于mixer编程的话题，应该很有趣。<p><br>-- <br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3134898894860208222?l=lltaichi.blogspot.com' alt='' /></div>
 
+          <a href="/2007/10/08/linux-problems-solved-today-20071008.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -481,246 +516,14 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2007-06-24 00:00:00 +0800">24 Jun 2007</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2007/06/24/by-victoria.html" title="关于数码相机 by victoria" rel="bookmark">关于数码相机 by victoria</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <DIV>victoria   01:10:30<BR>。。。。。<BR>相机不是生活必备品<BR>不过却是奢侈品中很实用的一种<BR>摄像机对学生来说就不会那么必要了</DIV>  <DIV>&nbsp;</DIV>  <DIV>数码的更新很快你也知道<BR>所以怎么卖都是会赔钱的</DIV>  <DIV>&nbsp;</DIV>  <DIV>如果自己的内心实在压抑不住购买的狂热欲望<BR>那就买一款自己最喜欢的吧<BR>别管多少钱了，因为东西只要买到手里，总是会贬值的</DIV><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-414388299652017985?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2007/06/24/by-victoria.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
   
-  
-  
-    <div id="post-pagination" class="pagination pagination-centered">
-  <ul class="pages nav nav-pills">
-
-  
-    <li>
-    
-      <a href="/page16">Previous</a>
-    
-    </li>
-  
-
-  
-    <li class="page">
-      <a href="/">1</a>
-    </li>
-  
-
-  
-    
-    <li class="page">
-      <a href="/page2">2</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page3">3</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page4">4</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page5">5</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page6">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page8">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page11">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page16">16</a>
-    </li>
-    
-  
-    
-    <li class="page active">
-      <a href="#">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-
-  
-    <li>
-      <a href="/page18">Next</a>
-    </li>
-  
-
-  </ul>
-</div>
-
-
   
   </div>
 
   <div class='span3 sidebar'>
+
     <section>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
     <section>
@@ -731,6 +534,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
@@ -1654,12 +1461,15 @@
     
   
   </ul>
+  <a href="/atom.xml"><i class="icon-star"></i>RSS</a>
 </section>
 
 
     <section>
-      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
-    </section>
+<iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+
   </div>
 </div>
 
@@ -1675,22 +1485,6 @@
     </div> <!-- /container -->
 
     
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1658815-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
   <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   </body>

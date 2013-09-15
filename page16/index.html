@@ -30,6 +30,11 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
     <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
@@ -58,6 +63,12 @@
     
   
     
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
   
     
   
@@ -83,6 +94,12 @@
   
     
   
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
     
   
     
@@ -217,24 +234,42 @@
 
   <!-- Pagination links -->
   
-    <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/page15">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page17">Next &rarr;</a>
-  </li>
-
-</ul>
 
   
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2008-02-04 00:00:00 +0800">04 Feb 2008</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2008/02/04/freebsdpostfixfatal-open-database.html" title="FreeBSD邮件服务Postfix问题：“fatal: open database /etc/aliases.db”" rel="bookmark">FreeBSD邮件服务Postfix问题：“fatal: open database /etc/aliases.db”</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          FreeBSD邮件服务Postfix问题：&quot;fatal: open database /etc/aliases.db&quot;<br><a href="http://www.liulantao.com/blogs/liulantao/">http://www.liulantao.com/blogs/liulantao/</a>	[Mon Feb  4 18:43:54 CST 2008]<p>E: What does &quot;fatal: open database /etc/aliases.db&quot; mean?<br>C: &quot;fatal: open database /etc/aliases.db&quot; 意味着什么？<p>E: DB files are maintained by the Berkeley DB library. The above<br>message means one of the following things:<br>C: DB数据库文件由Berkeley DB链接库维护。以上的消息意味着以下的几种情况之一：<br>E:     * The existing file does not have the expected file format. The<br>cause is one of the following:<br>C: 	已存在的文件没有期望的文件格式。原因为以下情况之一：<br>E:           o The file was created by Berkeley DB version 1 and you<br>are using version 2 or 3 (or vice versa).<br>C: 		此文件由Berkeley DB版本1所创建，而你正在使用版本2或3（反之亦然）。<br>E:           o The file was written in &quot;btree&quot; format and Postfix<br>expects &quot;hash&quot; format (or vice versa).<br>C: 		文件以&quot;btree&quot;格式写就，而Postfix需要&quot;hash&quot;格式（反之亦然）。<br>E:       To fix the problem for Postfix execute the following command as root:<br>C: 	欲为Postfix修正此问题，以root用户运行以下命令：<br>              newaliases<br>E:       This creates the aliases.db in the format that Postfix expects.<br>C: 	这将以Postfix所期望的格式创建aliases.db。<p>E:     * Or the problem could be something completely different. If<br>the result of running newaliases is a zero-length aliases.db file,<br>then you probably suffer from the following problem.<br>C: 	或许问题恰好完全相反。如果运行newaliases的结果是一个空aliases.db文件，那么你可能遇到的是以下的问题。<br>E:           o Postfix was compiled with #include files for Berkeley<br>DB version X and was linked against object library files for Berkeley<br>DB version Y, where X and Y are different versions of the Berkeley DB<br>library.<br>C: 		Postfix编译时包含了Berkeley DB版本X的文件，而为Berkeley<br>DB版本Y链接为目标库文件，而X与Y为Berkeley DB的不同版本。<br>E:       The fix for this is to properly install the Berkeley DB<br>library. For example, RedHat version 7.0 uses the Berkeley DB version<br>3 object library by default, but no /usr/include/db.h file is<br>installed by default. In order to correctly build Postfix you must<br>install the db3-devel package.<br>C: 	解决此问题的方法是适当的安装Berkeley DB库。例如，Redhat版本7.0默认使用了Berkeley DB<br>版本3的目标库，却没有默认安装/usr/include/db.h文件。为了正确的建立Postfix，你必须安装db3-devel文件包。<br>E:       On a properly installed system, including the file &lt;db.h&gt; and<br>linking with -ldb should access files from the same Berkeley DB<br>library version.<br>C: 	在一个适当安装好的系统中，包含文件&lt;db.h&gt;并且链接以-ldb选项将会利用Berkeley DB相同版本的库文件。<p>参考位置：<a href="http://www.postfix.org/faq.html#noalias">http://www.postfix.org/faq.html#noalias</a><p>-- <br>刘兰涛 Liu Lantao<br>北京师范大学信息科学技术学院 College of Information Science and Technology, Beijing<br>Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-6657143921781226091?l=lltaichi.blogspot.com' alt='' /></div>
 
+          <a href="/2008/02/04/freebsdpostfixfatal-open-database.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -481,246 +516,14 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2007-10-08 00:00:00 +0800">08 Oct 2007</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2007/10/08/linux-problems-solved-today-20071008.html" title="Linux problems solved today - 20071008" rel="bookmark">Linux problems solved today - 20071008</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          Linux problems solved today - 20071008<p><br>1、关于GNOME里中文字体的问题。<p>先通过yum发现已经安装的字体列表。<p>#yum list *fonts* |more<p>然后一次卸载掉每个已经安装的字体，启动到GNOME中，用firefox打开常用的几个中文网页，发现以下两个字体文件的作用。<p>cjkunifonts-ukai  楷体<p>cjkunifonts-uming  宋体<p>于是卸载掉其它的字体，安装cjkunifonts-ukai，于是所有中文都是漂亮的楷体了；然后将cjkunifongt-uming，<br>系统上有了宋体。<p>2、Fedora升级到Rawhide后普通用户没法听到声音。<p>原来一直以为是驱动或者内核的问题，还因此downgrade到了fedora 7了。<p>今天早上偶尔发现用Soundcard Detection能够听到测试声音。于是确认声卡和内核都是好的。<p>于是从alsa上面找问题。发现用root帐户能够正常播放音乐并且使用正常的音量调节。<p>从网络上搜索到少数几个关于debian上同样现象的解决方案，都提到要在/etc/groups中将自己的帐户加到audio组中。<p>而fedora中并没有这个用户组。这个方案不可行。<p>又找到一篇中提到将/dev/dsp和/dev/audio/中的文件修改为622。因为没有/dev/audio，所以修改了/dev/dsp，而实际效果并不好。<p>下午又在弄的时候发现有个/dev/mixer的文件。早先弄的时候对mixer进行了搜索，见到了这个文件，这个文件的权限修改后普通用户能够对音量进行调节了。<p>因为刚开始用root调节音量的时候使用了alsamixer，应该音量调节的接口就是这个mixer文件了。<p>搜索的时候还发现几个关于mixer编程的话题，应该很有趣。<p><br>-- <br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-3134898894860208222?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2007/10/08/linux-problems-solved-today-20071008.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
   
-  
-  
-    <div id="post-pagination" class="pagination pagination-centered">
-  <ul class="pages nav nav-pills">
-
-  
-    <li>
-    
-      <a href="/page15">Previous</a>
-    
-    </li>
-  
-
-  
-    <li class="page">
-      <a href="/">1</a>
-    </li>
-  
-
-  
-    
-    <li class="page">
-      <a href="/page2">2</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page3">3</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page4">4</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page5">5</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page6">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page8">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page11">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page active">
-      <a href="#">16</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page17">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-
-  
-    <li>
-      <a href="/page17">Next</a>
-    </li>
-  
-
-  </ul>
-</div>
-
-
   
   </div>
 
   <div class='span3 sidebar'>
+
     <section>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
     <section>
@@ -731,6 +534,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
@@ -1654,12 +1461,15 @@
     
   
   </ul>
+  <a href="/atom.xml"><i class="icon-star"></i>RSS</a>
 </section>
 
 
     <section>
-      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
-    </section>
+<iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+
   </div>
 </div>
 
@@ -1675,22 +1485,6 @@
     </div> <!-- /container -->
 
     
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1658815-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
   <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   </body>

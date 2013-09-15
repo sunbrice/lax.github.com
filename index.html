@@ -30,6 +30,11 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
     <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
@@ -58,6 +63,12 @@
     
   
     
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
   
     
   
@@ -83,6 +94,12 @@
   
     
   
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
     
   
     
@@ -217,22 +234,88 @@
 
   <!-- Pagination links -->
   
-    <ul class="pager">
-
-  <li class="previous disabled">
-    <a href="#">&larr; Previous</a>
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page2">Next &rarr;</a>
-  </li>
-
-</ul>
 
   
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-09-15 00:00:00 +0800">15 Sep 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2013/09/15/update-net-ssh-kerberos-for-ruby--191.html" title="Ruby-1.9.1之后版本支持kerberos问题的解决思路" rel="bookmark">Ruby-1.9.1之后版本支持kerberos问题的解决思路</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>net-ssh是ruby平台上常用的一个库，用于远程登录服务器。在支持kerberos的系统中，可以使用net-ssh-kerberos这个第三方库来支持实现。
+随着近几年Ruby版本由1.8.x系列升级到1.9.x系列以及2.x系列，一系列兼容问题出现。</p>
 
+<p>关于具体原因的分析和部分解决方法如下。</p>
+
+<p>原因分析：
+net-ssh-kerberos内部使用DL来调用kerberos库。DL接口是Ruby-1.8.7以及之前版本中用来调用动态链接库的方法，而在Ruby-1.9.1之后这一接口被废弃——对于一门成熟的语言，这一接口改动相对较大，直接导致很多第三方库无法工作，net-ssh-kerberos也包含在内。</p>
+
+<p>临时解决办法是改用基于gssapi包装的net-ssh-krb。gssapi库采用了ffi方式，不受ruby版本升级到1.9.1之后的影响。
+具体代码示例：</p>
+
+<p>修改Gemfile
+    # Gemfile, add following lines.
+    gem &lsquo;net-ssh&rsquo;, :require =&gt; &lsquo;net/ssh&rsquo;</p>
+
+<pre><code># for ruby &lt;~ 1.8.7
+# gem 'net-ssh-kerberos', :git =&gt; 'https://github.com/Lax/net-ssh-kerberos.git', :branch =&gt; 'master', :require =&gt; 'net/ssh/kerberos'
+
+# for ruby ~&gt; 1.9.1
+gem 'net-ssh-krb', :git =&gt; 'https://github.com/Lax/net-ssh-kerberos.git', :branch =&gt; 'gssapi', :require =&gt; 'net/ssh/kerberos'
+</code></pre>
+
+<p>执行</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>程序代码</p>
+
+<pre><code>#!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler'
+Bundler.require
+
+host='10.0.0.1'
+username='root'
+
+Net::SSH.start(host, username, {:auth_methods =&gt; ["gssapi-with-mic"]}) do |ssh|
+  puts ssh.exec!('hostname')
+end
+</code></pre>
+
+<p>目前net-ssh-krb的开发版已经能够兼容Linux系统，而MacOSX系统上使用这个库还有一些问题。</p>
+
+<p>项目说明文档：
+http://blog.liulantao.com/net-ssh-kerberos/</p>
+
+          <a href="/2013/09/15/update-net-ssh-kerberos-for-ruby--191.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -767,257 +850,14 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-01-26 00:00:00 +0800">26 Jan 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2013/01/26/open-source-game-d0x3d.html" title="有趣的开源项目（二）：安全游戏[d0x3d!]" rel="bookmark">有趣的开源项目（二）：安全游戏[d0x3d!]</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<p><img src="/images/public/OSDC_Life_opengame-d0x3d-mini.jpg" alt="" /></p>
-
-<p>[d0x3d!]是一个有趣的开源游戏，以网络安全为题材，可以作为网络安全课程的辅助教育工具。</p>
-
-<p>游戏的玩法简单而有趣，几个人分成两组即可开始。其中，黑客团队的成员从网络的主机上收集数据，找出那些是重要的秘密信息；网络管理员则通过各种措施来防止你的行动。如果网络管理员发现威胁，他将可以将你的信息公开发布，这时候游戏就结束了。</p>
-
-<p>游戏提供一个收费版本，标价24.99美金。开源版本可以在github下载代码。</p>
-
-<ul>
-  <li>收费版本：<a href="https://www.thegamecrafter.com/games/-d0x3d-">购买</a></li>
-  <li>开源版本源代码：<a href="https://github.com/TableTopSecurity/d0x3d-the-game">github</a></li>
-  <li>原始介绍文章：<a href="http://linuxaria.com/recensioni/an-open-source-board-game-about-network-security-d0x3d?lang=en">linuxaria.com</a></li>
-</ul>
-
-          <a href="/2013/01/26/open-source-game-d0x3d.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
   
-  
-  
-    <div id="post-pagination" class="pagination pagination-centered">
-  <ul class="pages nav nav-pills">
-
-  
-    <li>
-      <a href="#">Previous</a>
-    </li>
-  
-
-  
-    <li class="page active">
-      <a href="#">1</a>
-    </li>
-  
-
-  
-    
-    <li class="page">
-      <a href="/page2">2</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page3">3</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page4">4</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page5">5</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page6">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page8">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page11">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page16">16</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page17">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-
-  
-    <li>
-      <a href="/page2">Next</a>
-    </li>
-  
-
-  </ul>
-</div>
-
-
   
   </div>
 
   <div class='span3 sidebar'>
+
     <section>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
     <section>
@@ -1028,6 +868,10 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
@@ -1951,12 +1795,15 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     
   
   </ul>
+  <a href="/atom.xml"><i class="icon-star"></i>RSS</a>
 </section>
 
 
     <section>
-      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
-    </section>
+<iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+
   </div>
 </div>
 
@@ -1972,22 +1819,6 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     </div> <!-- /container -->
 
     
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1658815-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
   <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   </body>

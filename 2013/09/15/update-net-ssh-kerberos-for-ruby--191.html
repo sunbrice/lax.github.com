@@ -3,8 +3,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>SELinux FAQ</title>
-    
+    <title>Ruby-1.9.1之后版本支持kerberos问题的解决思路</title>
+    <meta name="description" content="">
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -229,24 +229,68 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>SELinux FAQ </h1>
+  <h1>Ruby-1.9.1之后版本支持kerberos问题的解决思路 </h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <p><a href="http://docs.fedoraproject.org/en-US/Fedora/13/html/SELinux_FAQ/index.html#faq-entry-local.te">SELinux FAQ</a>.</p>
+    
+<p>net-ssh是ruby平台上常用的一个库，用于远程登录服务器。在支持kerberos的系统中，可以使用net-ssh-kerberos这个第三方库来支持实现。
+随着近几年Ruby版本由1.8.x系列升级到1.9.x系列以及2.x系列，一系列兼容问题出现。</p>
 
-<p>Fedora中创建基本的selinux module的步骤。</p>
+<p>关于具体原因的分析和部分解决方法如下。</p>
+
+<p>原因分析：
+net-ssh-kerberos内部使用DL来调用kerberos库。DL接口是Ruby-1.8.7以及之前版本中用来调用动态链接库的方法，而在Ruby-1.9.1之后这一接口被废弃——对于一门成熟的语言，这一接口改动相对较大，直接导致很多第三方库无法工作，net-ssh-kerberos也包含在内。</p>
+
+<p>临时解决办法是改用基于gssapi包装的net-ssh-krb。gssapi库采用了ffi方式，不受ruby版本升级到1.9.1之后的影响。
+具体代码示例：</p>
+
+<p>修改Gemfile
+    # Gemfile, add following lines.
+    gem &lsquo;net-ssh&rsquo;, :require =&gt; &lsquo;net/ssh&rsquo;</p>
+
+<pre><code># for ruby &lt;~ 1.8.7
+# gem 'net-ssh-kerberos', :git =&gt; 'https://github.com/Lax/net-ssh-kerberos.git', :branch =&gt; 'master', :require =&gt; 'net/ssh/kerberos'
+
+# for ruby ~&gt; 1.9.1
+gem 'net-ssh-krb', :git =&gt; 'https://github.com/Lax/net-ssh-kerberos.git', :branch =&gt; 'gssapi', :require =&gt; 'net/ssh/kerberos'
+</code></pre>
+
+<p>执行</p>
+
+<pre><code>$ bundle install
+</code></pre>
+
+<p>程序代码</p>
+
+<pre><code>#!/usr/bin/env ruby
+require 'rubygems'
+require 'bundler'
+Bundler.require
+
+host='10.0.0.1'
+username='root'
+
+Net::SSH.start(host, username, {:auth_methods =&gt; ["gssapi-with-mic"]}) do |ssh|
+  puts ssh.exec!('hostname')
+end
+</code></pre>
+
+<p>目前net-ssh-krb的开发版已经能够兼容Linux系统，而MacOSX系统上使用这个库还有一些问题。</p>
+
+<p>项目说明文档：
+http://blog.liulantao.com/net-ssh-kerberos/</p>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/Technology/2011/07/20/e6b58fe8a788e599a8e4bbbde9a29de7bb9fe8aea1-20110720.html" title="浏览器份额统计-20110720">&larr; Previous</a></li>
+        <li class="prev"><a href="/Technology/2013/06/13/why-can-rsync-rapidly-delete-400000-files.html" title="为什么rsync能够快速删除400000文件？">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/Technology/2011/09/11/gentoo.html" title="Gentoo安装准备知识概要">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
@@ -255,28 +299,8 @@
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>12 August 2011</span></div>
+    <div class="date"><span>15 September 2013</span></div>
 
-  
-    <h4>Tags</h4>
-    <ul class="tag_box">
-    
-    
-
-
-  
-     
-    	<li><a href="/tags.html#Fedora-ref">Fedora <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Linux-ref">Linux <span>6</span></a></li>
-     
-    	<li><a href="/tags.html#selinux-ref">selinux <span>1</span></a></li>
-    
-  
-
-
-
-    </ul>
     
   </div>
 </div>

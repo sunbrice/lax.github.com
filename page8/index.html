@@ -30,6 +30,11 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
     <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
@@ -58,6 +63,12 @@
     
   
     
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
   
     
   
@@ -83,6 +94,12 @@
   
     
   
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
     
   
     
@@ -217,24 +234,93 @@
 
   <!-- Pagination links -->
   
-    <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/page7">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page9">Next &rarr;</a>
-  </li>
-
-</ul>
 
   
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2010-07-19 19:13:23 +0800">19 Jul 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/07/19/e6af8fe4b880e4b8aae8a2abnginxe7aea1e79086e59198e5b081e7a681ipe79a84e794a8e688b7efbc8ce4b88ae8be88e5ad90e983bde698afe68a98e7bfbce79a84.html" title="每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使" rel="bookmark">每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>每一个被Nginx管理员封禁IP的用户，上辈子都是折翼的天使</p>
 
+<p>方案一、</p>
+
+<p>deny  120.7.0.1/16</p>
+
+<p>方案二、</p>
+
+<p>http {
+&hellip;&hellip;
+geo $ban {
+default         0;  # 默认关闭
+127.0.0.0/16    1;  # 针对网段打开；可以设置多行。
+}
+&hellip;&hellip;
+server {
+&hellip;&hellip;
+# 在Server或Location里设置
+location / {
+if ($ban = 1) {
+return 500;  # 返回500 code
+}
+&hellip;&hellip;
+}
+&hellip;&hellip;
+}</p>
+
+<p>&hellip;&hellip;
+}</p>
+
+<p>该配置使用了nginx的geo模块，该模块是nginx标准模块，默认编译是开启的。需要机器上安装有GeoIP支持库。
+了解更多点击http://wiki.nginx.org/NginxHttpGeoModule</p>
+
+          <a href="/Technology/2010/07/19/e6af8fe4b880e4b8aae8a2abnginxe7aea1e79086e59198e5b081e7a681ipe79a84e794a8e688b7efbc8ce4b88ae8be88e5ad90e983bde698afe68a98e7bfbce79a84.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#GeoIP-ref">GeoIP <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -686,264 +772,14 @@ make
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2010-04-21 00:00:00 +0800">21 Apr 2010</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2010/04/21/rubylog.html" title="补充：使用Ruby进行Log分析" rel="bookmark">补充：使用Ruby进行Log分析</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <br>补充：<br>使用str.split方法，分析同一个文件需要的时间：<br>lax@mib ~ $ time ruby accounting_total_reqs.rb <br>4820147812<br><br>real    0m8.272s<br>user    0m8.105s<br>sys    0m0.148s<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2376461025494498877?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/Technology/2010/04/21/rubylog.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
   
-     
-    	<li><a href="/tags.html#Ruby-ref">Ruby <span>2</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-  
-  
-    <div id="post-pagination" class="pagination pagination-centered">
-  <ul class="pages nav nav-pills">
-
-  
-    <li>
-    
-      <a href="/page7">Previous</a>
-    
-    </li>
-  
-
-  
-    <li class="page">
-      <a href="/">1</a>
-    </li>
-  
-
-  
-    
-    <li class="page">
-      <a href="/page2">2</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page3">3</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page4">4</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page5">5</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page6">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page active">
-      <a href="#">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page11">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page16">16</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page17">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-
-  
-    <li>
-      <a href="/page9">Next</a>
-    </li>
-  
-
-  </ul>
-</div>
-
-
   
   </div>
 
   <div class='span3 sidebar'>
+
     <section>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
     <section>
@@ -954,6 +790,10 @@ make
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
@@ -1877,12 +1717,15 @@ make
     
   
   </ul>
+  <a href="/atom.xml"><i class="icon-star"></i>RSS</a>
 </section>
 
 
     <section>
-      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
-    </section>
+<iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+
   </div>
 </div>
 
@@ -1898,22 +1741,6 @@ make
     </div> <!-- /container -->
 
     
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1658815-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
   <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   </body>

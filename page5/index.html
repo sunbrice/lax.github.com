@@ -30,6 +30,11 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
     <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
@@ -58,6 +63,12 @@
     
   
     
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
   
     
   
@@ -83,6 +94,12 @@
   
     
   
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
     
   
     
@@ -217,24 +234,78 @@
 
   <!-- Pagination links -->
   
-    <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/page4">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page6">Next &rarr;</a>
-  </li>
-
-</ul>
 
   
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-03-25 13:41:39 +0800">25 Mar 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" title="关于RubyGems/RUBYOPT【一】" rel="bookmark">关于RubyGems/RUBYOPT【一】</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>什么是RubyGems/RubyOPT？什么情况要设置RUBYOPT？</p>
 
+<p><strong>关于标准库，第三方库</strong></p>
+
+<p>编程语言的标准库，是该种语言的每种实现中都按例提供的库，大多数语言的标准库包含以下组件，以实现一些基本功能：</p>
+
+<p>1   算法 
+2   数据结构 
+3   与操作系统交互 </p>
+
+<p>ruby标准库可以在源码的lib目录中找到。可以看的ruby标准库包含从文件操作到网络库，从多语言支持到测试工具，从多线程到日期处理等，基本能满足简单使用的需要。</p>
+
+<p>除了标准库的功能，应用开发者希望共享一些代码，这些代码在特定场合经常使用，却没有或不适合加入标准库中，于是就产生约定了格式和使用方式的第三方库，方便管理，分享和搜索。</p>
+
+<p>你可以下载第三方代码，在自己的程序中通过完整的路径来引用相关功能。但是便捷性太差，一个包管理的框架成为必需品。rubygem在这种情况下出现。</p>
+
+<p>怎么确定是否使用rubygems或其它第三方库提供的软件包呢？Ruby中的一个环境变量起到了这个作用，这就是RUBYOPT变量。使用RUBYOPT变量的效果与在ruby命令行中增加参数是相同的。</p>
+
+          <a href="/Technology/Ruby/2012/03/25/e585b3e4ba8erubygemsrubyopte38090e4b880e38091.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -906,287 +977,14 @@ git commit &amp;&amp; git push
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-09-28 09:07:25 +0800">28 Sep 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/Ruby/2011/09/28/heroku-java-play-framework.html" title="Heroku开始支持Java，Play框架！" rel="bookmark">Heroku开始支持Java，Play框架！</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <h2 id="java-and-play-on-heroku">Java and Play! on Heroku</h2>
-
-<p><img src="https://i5.createsend1.com/ei/r/21/51F/D94/030742/csimport/play_4.png" alt="Java and Play! on Heroku" /></p>
-
-<p>At  Heroku, we believe you should be able to choose the best programming  language for your application. That&rsquo;s why we are transforming Heroku  into a <a href="http://rrurl.cn/i4pP6y">ploygot platform</a>. We are excited to announce that <a href="http://rrurl.cn/v1Jqm3">Java is now available</a> on Heroku as our fourth official language! We also want to introduce <a href="http://rrurl.cn/dD0Yd4">Play!, a Java based web framework</a> that is as easy and elegant as Rails for Ruby.</p>
-
-<p>以上为heroku官方的通知，在Ruby，Python，PHP，Node.js，Closure之后，heroku终于支持了Java语言。相信这一次升级会吸引更多的开发者使用heroku平台。</p>
-
-<p>heroku所带来的便捷部署方式，提升开发者效率，改善上线速度，提高程序员生产率和生活质量，一度受到广泛好评。近半年heroku升级速度加快，从单一的ruby平台过渡到多语言平台，一举进入主流的云服务行列。</p>
-
-<p>同时看到一个消息，facebook内置为开放平台用户在heroku上创建应用的功能，独立应用平台与内容平台将各施展所长。</p>
-
-
-          <a href="/Technology/Ruby/2011/09/28/heroku-java-play-framework.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
   
-     
-    	<li><a href="/tags.html#facebook-ref">facebook <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#heroku-ref">heroku <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#java-ref">java <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#play!-ref">play! <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#rack-ref">rack <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-  
-  
-    <div id="post-pagination" class="pagination pagination-centered">
-  <ul class="pages nav nav-pills">
-
-  
-    <li>
-    
-      <a href="/page4">Previous</a>
-    
-    </li>
-  
-
-  
-    <li class="page">
-      <a href="/">1</a>
-    </li>
-  
-
-  
-    
-    <li class="page">
-      <a href="/page2">2</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page3">3</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page4">4</a>
-    </li>
-    
-  
-    
-    <li class="page active">
-      <a href="#">5</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page6">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page8">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page11">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page16">16</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page17">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-
-  
-    <li>
-      <a href="/page6">Next</a>
-    </li>
-  
-
-  </ul>
-</div>
-
-
   
   </div>
 
   <div class='span3 sidebar'>
+
     <section>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
     <section>
@@ -1197,6 +995,10 @@ git commit &amp;&amp; git push
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
@@ -2120,12 +1922,15 @@ git commit &amp;&amp; git push
     
   
   </ul>
+  <a href="/atom.xml"><i class="icon-star"></i>RSS</a>
 </section>
 
 
     <section>
-      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
-    </section>
+<iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+
   </div>
 </div>
 
@@ -2141,22 +1946,6 @@ git commit &amp;&amp; git push
     </div> <!-- /container -->
 
     
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1658815-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
   <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   </body>

@@ -30,6 +30,11 @@
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
   -->
     <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
   </head>
 
   <body>
@@ -58,6 +63,12 @@
     
   
     
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
   
     
   
@@ -83,6 +94,12 @@
   
     
   
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
     
   
     
@@ -217,24 +234,42 @@
 
   <!-- Pagination links -->
   
-    <ul class="pager">
-
-  <li class="previous">
-  
-    <a href="/page10">&larr; Previous</a>
-  
-  </li>
-
-
-
-  <li class="next">
-    <a href="/page12">Next &rarr;</a>
-  </li>
-
-</ul>
 
   
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2009-08-25 00:00:00 +0800">25 Aug 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/08/25/google-sets-is-cool.html" title="Google Sets is cool!" rel="bookmark">Google Sets is cool!</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          Use Google Sets to expand a list of a few items, into a list with many items. For example let&#39;s suppose you want a set (or list) of Star Wars characters, but can only think of a few. Enter a the ones you can think of, and Google sets will return a whole list.<br> <br>links: <a href="http://labs.google.com/sets">http://labs.google.com/sets</a><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-6300252633817885750?l=sandshoots.blogspot.com' alt='' /></div>
 
+          <a href="/2009/08/25/google-sets-is-cool.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -481,246 +516,14 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-04-28 00:00:00 +0800">28 Apr 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/04/28/subversion.html" title="Subversion主干-分支开发的流程。" rel="bookmark">Subversion主干-分支开发的流程。</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          使用Subversion辅助开发，有一个重要的概念就是主干与分支。<br>采用主干与分支的开发方法，可以有几种不同的策略：<br>1、主干上开发，分支上发布。发布之后，如果分支有BUG（主干可能也是有的），则在分支上修改BUG。然后合并到主干。分支的发布 继续进行。这个一般适用于客户化软件工程的。<br> 2、主干保持一个最新的稳定版本，保证随时能提供稳定的发布版本。而所有的新功能、新技术实验全放在分支上去做开发，进行新技术的验证实验。等分支相对稳定以后，再合并到主干上形成稳定的发布版本。此 时就要更新主干，进行主干版本的升级。很多开源软件基本采取这种策略。<br> 3、还有一种就是这两者的混合，结合两者的优点，即保证随时可以有稳定的版本发布，又能保证客户化的版本分支开发<span href="http://bbs.iusesvn.com/tag.php?name=%E5%8A%9F%E8%83%BD" onclick="tagshow(event)" class="t_tag">功能</span>及其客 户化版本的维护。<br><br>下面介绍采用第2中策略的详细步骤和命令。<br>以trunk为主干目录，branches下为分支目录。在分支进行开发，稳定后合并入主干。<br><br>首先，从主干创建开发分支：<br>[lax@liulantao-com ~]$ svn cp <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk/</a> <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a> -m &quot;Creating branch: 20090428.&quot;<br> Committed revision 10.<br><br>然后，获取分支代码，进行新特性的开发工作。<br>[lax@liulantao-com ~]$ svn co <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a><br> <br>之后，则进入本地的www.myshu.org_20090428目录中进行开发，所有改动直接提交，直至新功能稳定并完成。<br>[lax@liulantao-com ~]$ cd www.myshu.org_20090428/<br>[lax@liulantao-com ~]$ [change the code]......<br>[lax@liulantao-com ~/www.myshu.org_20090248/]$ svn ci -m &quot;Changing something.&quot;<br clear="all"> <br>分支开发完成后，检查分支的历史，获得创建时所在的版本。<br>[lax@liulantao-com www.myshu.org_20090428]$ svn log --stop-on-copy -q <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a><br> ------------------------------------------------------------------------<br>r10 | lax | 2009-04-28 11:46:02 +0800 (Tue, 28 Apr 2009)<br>------------------------------------------------------------------------<br>数值最小的版本号是我们需要合并的版本。本例中是r10。记下这个数值。<br> <br>获取主干的代码。<br> [lax@liulantao-com ~]$ svn co <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/trunk</a><br> [lax@liulantao-com ~]$ cd trunk/<br><br>接着将开发分支合并入刚获取的主干代码上。<br>[lax@liulantao-com trunk/]$ svn merge -r 10:HEAD <a href="http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/">http://gnu.bnu.edu.cn:8000/repos/www.myshu.org/branches/www.myshu.org_20090428/</a><br> <br>然后查看合并后主干代码的状态。<br>[lax@liulantao-com trunk/]$ svn status<br><br>如果没有冲突(conflict)，则可以提交了新的主干了。<br>[lax@liulantao-com trunk/]$ svn ci -m &quot;Adding new features.&quot;<br><br>现在，主干已经形成一个新的状态。在整个过程中，主干的代码一直保持着稳定可用的状态，而分支代码则处于开发状态。<br> <br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-1769061075706569319?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2009/04/28/subversion.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
   
-  
-  
-    <div id="post-pagination" class="pagination pagination-centered">
-  <ul class="pages nav nav-pills">
-
-  
-    <li>
-    
-      <a href="/page10">Previous</a>
-    
-    </li>
-  
-
-  
-    <li class="page">
-      <a href="/">1</a>
-    </li>
-  
-
-  
-    
-    <li class="page">
-      <a href="/page2">2</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page3">3</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page4">4</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page5">5</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page6">6</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page7">7</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page8">8</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page9">9</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page10">10</a>
-    </li>
-    
-  
-    
-    <li class="page active">
-      <a href="#">11</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page12">12</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page13">13</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page14">14</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page15">15</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page16">16</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page17">17</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page18">18</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page19">19</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page20">20</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page21">21</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page22">22</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page23">23</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page24">24</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page25">25</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page26">26</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page27">27</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page28">28</a>
-    </li>
-    
-  
-    
-    <li class="page">
-      <a href="/page29">29</a>
-    </li>
-    
-  
-
-  
-    <li>
-      <a href="/page12">Next</a>
-    </li>
-  
-
-  </ul>
-</div>
-
-
   
   </div>
 
   <div class='span3 sidebar'>
+
     <section>
-      <img src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
+      <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
     </section>
 
     <section>
@@ -731,6 +534,10 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
     
   
     
@@ -1654,12 +1461,15 @@
     
   
   </ul>
+  <a href="/atom.xml"><i class="icon-star"></i>RSS</a>
 </section>
 
 
     <section>
-      <a class='pull-right' href="/atom.xml"><i class="icon-star"></i>RSS</a>
-    </section>
+<iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+
   </div>
 </div>
 
@@ -1675,22 +1485,6 @@
     </div> <!-- /container -->
 
     
-
-
-  <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-1658815-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-
-
   <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   </body>
