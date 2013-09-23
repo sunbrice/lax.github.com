@@ -238,6 +238,440 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2013-09-23 00:00:00 +0800">23 Sep 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2013/09/23/kernel-uek-3813-upgrade-notes.html" title="UEK R3升级手记" rel="bookmark">UEK R3升级手记</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>UEK是OracleLinux发布的内核版本，对内核增加了更多优化。最近发布了UEK R3。如果需要部署3.x系列内核，可以基于此版本进行测试升级了。</p>
+
+<p>主要的更新内容包括：</p>
+
+<ul>
+  <li>基于Linux主线版本3.8.13</li>
+  <li>虚拟化相关支持升级</li>
+  <li>btrfs升级（UEK R2中基于kernel 3.0，UEK R3基于kernel 3.8）</li>
+  <li>DTrace 0.4</li>
+  <li>cgroups和LXC更新。lxc-0.9.0-2.0.4同时发布</li>
+  <li>XEN改进</li>
+  <li>大量的驱动升级，涵盖存储设备、网络设备等</li>
+</ul>
+
+<p>重要改进：</p>
+
+<ul>
+  <li>ext4支持inode内存储小文件（通过-O inline_data）选项
+    mkfs.ext4 -O inline_data device
+针对已有的ext4文件系统
+    tune2fs -O inline_data device</li>
+  <li>XFS日志checksum</li>
+  <li>zero huge page以改善现有zero 4-KB page的性能</li>
+  <li>NUMA节点下内存分配的自动平衡</li>
+  <li>memory control group支持额外的参数
+    <ul>
+      <li>memory.kmem.failcnt</li>
+      <li>memory.kmem.limit_in_bytes</li>
+      <li>memory.kmem.max_usage_in_bytes</li>
+      <li>memory.kmem.usage_in_bytes</li>
+    </ul>
+  </li>
+  <li>SCSI error-handling超时值可以通过/sys/class/scsi_device/*/device/eh_timeout设置</li>
+  <li>通过mmap()的flags或shmget()的shmflg参数可以使用variable-sized huge page</li>
+  <li>TCP fast open (TFO)</li>
+  <li>watchdog定时器设备/dev/watchdog</li>
+</ul>
+
+<p>注意事项</p>
+
+<ul>
+  <li>I/O scheduler默认为deadline。RHEL中默认为cfq</li>
+</ul>
+
+<p>安装UEK R3。</p>
+
+<p>首先需要安装Oracle仓库。安装oracle仓库的方法参考<code>[](http://public-yum.oracle.com)</code>。或者以root身份执行以下命令</p>
+
+<pre><code>#CentOS 5
+cd /etc/yum.repos.d
+wget https://public-yum.oracle.com/public-yum-el5.repo
+
+#CentOS 6
+cd /etc/yum.repos.d
+wget https://public-yum.oracle.com/public-yum-ol6.repo
+</code></pre>
+
+<p>由于UEK R3还没有加入到正式版本中，所有需要手工设置使用oracle的beta仓库（目前属于测试阶段，以后可能会更改）</p>
+
+<pre><code>cd /etc/yum.repos.d
+wget http://public-yum.oracle.com/beta/public-yum-ol6-beta.repo
+sed -i s/enabled=0/enabled=1/g public-yum-ol6-beta.repo 或
+cat &gt;/etc/yum.repos.d/public-yum-ol6-beta.repo&lt;&lt;EOF
+[ol6_beta]
+name=Oracle Linux \$releasever Beta (\$basearch)
+baseurl=http://public-yum.oracle.com/repo/BETA/OracleLinux/OL6/uek3/\$basearch/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+gpgcheck=0
+enabled=1
+EOF
+</code></pre>
+
+<p>现在可以通过yum来安装uek3：
+    yum install -y kernel-uek-3.8.13-13.el6uek</p>
+
+<pre><code>[root@localhost yum.repos.d]# yum install kernel-uek-3.8.13-13.el6uek -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.btte.net
+ * epel: mirrors.hust.edu.cn
+ * extras: mirrors.btte.net
+ * updates: mirrors.hust.edu.cn
+Setting up Install Process
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package kernel-uek.x86_64 0:3.8.13-13.el6uek will be installed
+--&gt; Processing Dependency: kernel-firmware = 3.8.13-13.el6uek for package: kernel-uek-3.8.13-13.el6uek.x86_64
+--&gt; Running transaction check
+---&gt; Package kernel-uek-firmware.noarch 0:3.8.13-13.el6uek will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                            Arch                  Version                         Repository               Size
+========================================================================================================================
+Installing:
+ kernel-uek                         x86_64                3.8.13-13.el6uek                ol6_beta                 36 M
+Installing for dependencies:
+ kernel-uek-firmware                noarch                3.8.13-13.el6uek                ol6_beta                1.6 M
+
+Transaction Summary
+========================================================================================================================
+Install       2 Package(s)
+
+Total download size: 37 M
+Installed size: 151 M
+Downloading Packages:
+(1/2): kernel-uek-3.8.13-13.el6uek.x86_64.rpm                                                    |  36 MB     02:22     
+(2/2): kernel-uek-firmware-3.8.13-13.el6uek.noarch.rpm                                           | 1.6 MB     00:05     
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                   256 kB/s |  37 MB     02:29     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : kernel-uek-firmware-3.8.13-13.el6uek.noarch                                                          1/2 
+  Installing : kernel-uek-3.8.13-13.el6uek.x86_64                                                                   2/2 
+  Verifying  : kernel-uek-firmware-3.8.13-13.el6uek.noarch                                                          1/2 
+  Verifying  : kernel-uek-3.8.13-13.el6uek.x86_64                                                                   2/2 
+
+Installed:
+  kernel-uek.x86_64 0:3.8.13-13.el6uek                                                                                  
+
+Dependency Installed:
+  kernel-uek-firmware.noarch 0:3.8.13-13.el6uek                                                                         
+
+Complete!
+</code></pre>
+
+<p>现在可以在/boot目录下和/etc/grub/menu.lst里看到3.8.13版本的内核项。重启试试。</p>
+
+<pre><code>uname -a
+Linux localhost.localdomain 3.8.13-13.el6uek.x86_64 #1 SMP Wed Aug 21 14:28:36 PDT 2013 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+
+<p>还可以安装其它工具</p>
+
+<pre><code># yum install dtrace-utils
+# yum install lxc
+</code></pre>
+
+<p><a href="http://linux.oracle.com/RELEASE-NOTES-UEK3-BETA-en.html">Release Notes</a></p>
+
+
+          <a href="/Technology/2013/09/23/kernel-uek-3813-upgrade-notes.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-09-22 00:00:00 +0800">22 Sep 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2013/09/22/weekly-parallel-gem-installing-using-bundler.html" title="[Weekly]Parallel gem installing using bundler" rel="bookmark">[Weekly]Parallel gem installing using bundler</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>近期关注：</p>
+
+<h4 id="ruby-21gc">ruby 2.1将对GC进行改进</h4>
+<p>matz在baruco上宣布在ruby 2.1中将改进GC功能。这对于大规模部署ruby应用的企业来说，是个好消息。ruby官方版本（MRI）一直被人诟病，其中就包含GC方面的原因。而在此之前，大规模部署一般要借助于REE或者JRuby等第三方实现。</p>
+
+<p>Ruby的内存管理采用copy on write方式，亦即fork出的进程会与父进程共用一部分内存空间，除非对内存有改动。但是ruby进程会单独进行gc，导致不同进程会对共享内容进行扫描及改动，copy on write的效果没有发挥出来。</p>
+
+<p>http://www.infoq.com/news/2013/09/ruby-2-1-gc-revamp</p>
+
+<h4 id="bundlergems">Bundler开始支持并行安装gems</h4>
+<p>从bundler~&gt;1.4.0开始，Bundler将可以通过-jN选项来指定并行度，并发安装gems。经本人测试，对于标准的rails应用，初次bundle安装的速度提升接近一倍。</p>
+
+<p>测试过程</p>
+
+<pre><code>rvm gemset delete bundler-j1
+rvm gemset delete bundler-j8
+
+rvm gemset use bundler-j1 --create &amp;&amp; gem install bundler --pre &amp;&amp; cd /tmp/ &amp;&amp; git clone https://github.com/rails/rails.git rails-j1 &amp;&amp; cd rails-j1 &amp;&amp; time bundle install -j1
+rvm gemset use bundler-j8 --create &amp;&amp; gem install bundler --pre &amp;&amp; cd /tmp/ &amp;&amp; git clone https://github.com/rails/rails.git rails-j8 &amp;&amp; cd rails-j8 &amp;&amp; time bundle install -j8
+</code></pre>
+
+<p>结果(-j1):</p>
+
+<pre><code>➜  ~    rvm gemset use bundler-j1 --create &amp;&amp; gem install bundler --pre &amp;&amp; cd /tmp/ &amp;&amp; git clone https://github.com/rails/rails.git rails-j1 &amp;&amp; cd rails-j1 &amp;&amp; time bundle install -j1
+Using ruby-head with gemset bundler-j1
+Fetching: bundler-1.4.0.pre.2.gem (100%)
+Successfully installed bundler-1.4.0.pre.2
+Parsing documentation for bundler-1.4.0.pre.2
+Installing ri documentation for bundler-1.4.0.pre.2
+1 gem installed
+Cloning into 'rails-j1'...
+remote: Finding bitmap roots...
+remote: Counting objects: 383508, done.
+remote: Compressing objects: 100% (103485/103485), done.
+remote: Total 383508 (delta 277740), reused 382388 (delta 276656)
+Receiving objects: 100% (383508/383508), 94.56 MiB | 518 KiB/s, done.
+Resolving deltas: 100% (277740/277740), done.
+Fetching gem metadata from https://rubygems.org/.........
+Fetching gem metadata from https://rubygems.org/..
+Resolving dependencies...
+Using rake (10.1.0)
+Installing i18n (0.6.5)
+Installing json (1.8.0)
+Installing minitest (5.0.8)
+Installing atomic (1.1.14)
+Installing thread_safe (0.1.3)
+Installing tzinfo (0.3.37)
+Using activesupport (4.1.0.beta) from source at .
+Installing rack (1.5.2)
+Installing rack-test (0.6.2)
+Using actionpack (4.1.0.beta) from source at .
+Installing builder (3.1.4)
+Using activemodel (4.1.0.beta) from source at .
+Installing erubis (2.7.0)
+Using actionview (4.1.0.beta) from source at .
+Installing mime-types (1.25)
+Installing polyglot (0.3.3)
+Installing treetop (1.4.15)
+Installing mail (2.5.4)
+Using actionmailer (4.1.0.beta) from source at .
+Installing arel (4.0.0)
+Using activerecord (4.1.0.beta) from source at .
+Installing bcrypt-ruby (3.1.2)
+Installing benchmark-ips (1.2.0)
+Using bundler (1.4.0.pre.2)
+Installing coffee-script-source (1.6.3)
+Installing execjs (2.0.1)
+Installing coffee-script (2.2.0)
+Installing thor (0.18.1)
+Using railties (4.1.0.beta) from source at .
+Installing coffee-rails (4.0.0)
+Installing dalli (2.6.4)
+Installing hike (1.2.3)
+Installing jquery-rails (2.2.2)
+Installing mustache (0.99.4)
+Installing mini_portile (0.5.1)
+Installing nokogiri (1.6.0)
+Installing kindlerb (0.1.1)
+Installing metaclass (0.0.1)
+Installing mocha (0.14.0)
+Installing multi_json (1.8.0)
+Installing mysql (2.9.1)
+Installing mysql2 (0.3.13)
+Installing pg (0.17.0)
+Installing racc (1.4.9)
+Installing rack-cache (1.2)
+Installing tilt (1.4.1)
+Installing sprockets (2.10.0)
+Installing sprockets-rails (2.0.0)
+Using rails (4.1.0.beta) from source at .
+Installing rdoc (3.12.2)
+Installing redcarpet (2.2.2)
+Installing sdoc (0.3.20)
+Installing sqlite3 (1.3.8)
+Installing turbolinks (1.3.0)
+Installing uglifier (2.2.1)
+Installing w3c_validators (1.2)
+Installing yajl-ruby (1.1.0)
+Your bundle is complete!
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+Post-install message from rdoc:
+Depending on your version of ruby, you may need to install ruby rdoc/ri data:
+
+&lt;= 1.8.6 : unsupported
+ = 1.8.7 : gem install rdoc-data; rdoc-data --install
+ = 1.9.1 : gem install rdoc-data; rdoc-data --install
+&gt;= 1.9.2 : nothing to do! Yay!
+bundle install -j1  76.48s user 22.49s system 34% cpu 4:49.31 total
+</code></pre>
+
+<p>结果(-j8):</p>
+
+<pre><code>➜  ~    rvm gemset use bundler-j8 --create &amp;&amp; gem install bundler --pre &amp;&amp; cd /tmp/ &amp;&amp; git clone https://github.com/rails/rails.git rails-j8 &amp;&amp; cd rails-j8 &amp;&amp; time bundle install -j8
+Using ruby-head with gemset bundler-j8
+Fetching: bundler-1.4.0.pre.2.gem (100%)
+Successfully installed bundler-1.4.0.pre.2
+Parsing documentation for bundler-1.4.0.pre.2
+Installing ri documentation for bundler-1.4.0.pre.2
+1 gem installed
+Cloning into 'rails-j8'...
+remote: Finding bitmap roots...
+remote: Counting objects: 383508, done.
+remote: Compressing objects: 100% (103485/103485), done.
+remote: Total 383508 (delta 277740), reused 382388 (delta 276656)
+Receiving objects: 100% (383508/383508), 94.56 MiB | 489 KiB/s, done.
+Resolving deltas: 100% (277740/277740), done.
+Fetching gem metadata from https://rubygems.org/.........
+Fetching gem metadata from https://rubygems.org/..
+Resolving dependencies...
+Installing builder (3.1.4)
+Installing atomic (1.1.14)
+Using rake (10.1.0)
+Installing minitest (5.0.8)
+Installing i18n (0.6.5)
+Installing rack (1.5.2)
+Installing polyglot (0.3.3)
+Using bundler (1.4.0.pre.2)
+Installing erubis (2.7.0)
+Installing json (1.8.0)
+Installing coffee-script-source (1.6.3)
+Installing mime-types (1.25)
+Installing benchmark-ips (1.2.0)
+Installing arel (4.0.0)
+Installing tzinfo (0.3.37)
+Installing mustache (0.99.4)
+Installing mini_portile (0.5.1)
+Installing hike (1.2.3)
+Installing execjs (2.0.1)
+Installing multi_json (1.8.0)
+Installing dalli (2.6.4)
+Installing metaclass (0.0.1)
+Installing bcrypt-ruby (3.1.2)
+Installing thor (0.18.1)
+Installing racc (1.4.9)
+Installing tilt (1.4.1)
+Installing mysql2 (0.3.13)
+Installing mysql (2.9.1)
+Installing thread_safe (0.1.3)
+Installing redcarpet (2.2.2)
+Installing rack-test (0.6.2)
+Installing coffee-script (2.2.0)
+Installing sqlite3 (1.3.8)
+Installing rdoc (3.12.2)
+Installing uglifier (2.2.1)
+Installing treetop (1.4.15)
+Installing rack-cache (1.2)
+Using activesupport (4.1.0.beta) from source at .
+Using actionpack (4.1.0.beta) from source at .
+Using activemodel (4.1.0.beta) from source at .
+Using railties (4.1.0.beta) from source at .
+Using actionview (4.1.0.beta) from source at .
+Using activerecord (4.1.0.beta) from source at .
+Installing sprockets (2.10.0)
+Installing yajl-ruby (1.1.0)
+Installing mocha (0.14.0)
+Installing pg (0.17.0)
+Installing coffee-rails (4.0.0)
+Installing jquery-rails (2.2.2)
+Installing sprockets-rails (2.0.0)
+Installing sdoc (0.3.20)
+Installing turbolinks (1.3.0)
+Installing mail (2.5.4)
+Using actionmailer (4.1.0.beta) from source at .
+Using rails (4.1.0.beta) from source at .
+Installing nokogiri (1.6.0)
+Installing kindlerb (0.1.1)
+Installing w3c_validators (1.2)
+Your bundle is complete!
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+Post-install message from rdoc:
+Depending on your version of ruby, you may need to install ruby rdoc/ri data:
+
+&lt;= 1.8.6 : unsupported
+= 1.8.7 : gem install rdoc-data; rdoc-data --install
+= 1.9.1 : gem install rdoc-data; rdoc-data --install
+&gt;= 1.9.2 : nothing to do! Yay!
+bundle install -j8  77.96s user 22.92s system 59% cpu 2:49.20 total
+</code></pre>
+
+<p>从结果来看，CPU(user/system)时间变化不大，但是cpu利用率有明显提升，总消耗时间减少近一半。并发加快了总体安装的进程。</p>
+
+<p>http://robots.thoughtbot.com/post/59584648154/parallel-gem-installing-using-bundler?utm_source=rubyweekly&amp;utm_medium=email</p>
+
+          <a href="/2013/09/22/weekly-parallel-gem-installing-using-bundler.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2013-09-15 00:00:00 +0800">15 Sep 2013</abbr>
       </span>
       <h3 class="entry-title">
@@ -615,7 +1049,7 @@ stat64                                         35
      
     	<li><a href="/tags.html#Kernel-ref">Kernel <span>1</span></a></li>
      
-    	<li><a href="/tags.html#Linux-ref">Linux <span>6</span></a></li>
+    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
     
   
 
@@ -751,105 +1185,6 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-03-19 00:00:00 +0800">19 Mar 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2013/03/19/gerrit-review-system-management.html" title="Gerrit代码评审的权限管理" rel="bookmark">Gerrit代码评审的权限管理</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<p>在公司的部分团队推进了Git的应用，同时对Gerrit进行代码评审。从使用情况来看，团队成员比较认可这种工作模式。通过代码评审增加了开发团队成员的交流，促进了日常配合的积极性。</p>
-
-<p>在Gerrit日常管理中，首要的问题是对用户的权限进行分类设定。Gerrit提供了非常细致的权限管理接口，涵盖了项目管理的各个方面，官方文档也提供了一个<a href="http://gerrit-documentation.googlecode.com/svn/Documentation/2.5.2/access-control.html#_examples_of_typical_roles_in_a_project">完善的例子</a>。对每类用户设定一定的权限——每个权限又对应一定的责任，因此完全符合“权限越多，责任越多”的原则。</p>
-
-<p>从大的方面将用户分为3类  <br />
-*    系统管理员  <br />
-*    业务组管理员  <br />
-*    业务组    </p>
-
-<p>每个层次的用户可以管理对应的下级组的成员。比如业务组管理员，可以管理业务组成员，当时不能管理该业务组的管理员。所有业务组管理员由系统管理员组统一管理，且系统管理员的日常管理操作仅限于此。通过层次设定，平衡了两级管理员的工作量，也提供了一定的灵活性。</p>
-
-<p>对于实际项目的权限方面，系统管理员可以创建项目，初始化权限规则，并将项目的管理权限分配给指定的业务组管理员组。业务组管理员具备整个项目的全部管理权限，可以调整各种操作的控制权限，对于一些危险操作有全部权限。对应业务组成员默认有该项目的提交评审权限，且权限限定在一定范围内。</p>
-
-          <a href="/2013/03/19/gerrit-review-system-management.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-02-13 00:00:00 +0800">13 Feb 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2013/02/13/opera-shift-to-webkit.html" title="浏览器战争 Opera将改用WebKit引擎" rel="bookmark">浏览器战争 Opera将改用WebKit引擎</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<p>Opera今天宣布了3亿用户。但是更引人关注的不是这个数字，而是另一个消息：Opera将在新产品中改用WebKit引擎，弃用自家的Presto引擎。</p>
-
-<p>WebKit引擎是Safari和Chromium项目开发的成果，市场份额一直在稳定提升。在Android和iOS等智能设备平台以及PC平台上，WebKit引擎已经足够优秀。特别是WebKit在性能方面的改进，在此之前一直是Opera看重的方面。</p>
-
-<p>采用WebKit引擎后，Opera团队将把更多精力投入在开发新特性和用户友好的方案上。</p>
-
-<p>作为浏览器曾经的巨头之一，Opera在一大批基于Chrome的浏览器压力下，生存空间受到很大影响。而在移动浏览器方面，Opera的用户增长比较乐观。</p>
-
-<p>Opera并不会淘汰现有的移动产品如Opera Mobile和Opera Mini，而是推出独立品牌Opera Ice。本月在巴塞罗那召开的MWC（Mobile World Congress）上，Opera ICE将露面。</p>
-
-<ul>
-  <li><a href="http://www.opera.com/press/releases/2013/02/13/">Opera gears up at 300 million users</a></li>
-  <li><a href="http://my.opera.com/haavard/blog/2013/02/13/webkit">300 million users strong, Opera moves to WebKit</a></li>
-  <li><a href="http://www.mobileworldcongress.com">MWC 2013</a></li>
-</ul>
-
-          <a href="/Technology/2013/02/13/opera-shift-to-webkit.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -864,8 +1199,14 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
   <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
 </section>
 
-</section>
+<section>
   <iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+<section>
+	<ul>
+		<li><a href='http://mib.cc/cloud.html'>云导航</li>
+	</ul>
 </section>
 
 
@@ -877,6 +1218,14 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

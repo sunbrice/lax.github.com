@@ -238,6 +238,178 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2012-07-18 00:00:00 +0800">18 Jul 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/SysAdmin/2012/07/18/mirror-debian.html" title="Debian镜像攻略" rel="bookmark">Debian镜像攻略</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p><a href="http://www.debian.org/mirror/ftpmirror#how">Debian mirror官方文档</a></p>
+
+<p>由于Debian各个版本的软件包容量都比较大（平均每个版本50G左右），需要量力而行，做好容量规划，不想要的包尽量设置exclude参数来排除。</p>
+
+<p>官方文档提供的工具有bug，经询问已经修改，但是没有重新发布- -!囧</p>
+
+          <a href="/SysAdmin/2012/07/18/mirror-debian.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Debian-ref">Debian <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#mirror-ref">mirror <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#Shell-ref">Shell <span>2</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-07-13 00:00:00 +0800">13 Jul 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/SysAdmin/2012/07/13/hadoop-scripting-basics.html" title="Hadoop scripting basics (draft)" rel="bookmark">Hadoop scripting basics (draft)</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>Links:</p>
+
+<p><a href="http://hadoop.apache.org/">Hadoop Website</a></p>
+
+<p><a href="http://www.slideshare.net/acarlos1000/hadoop-basics-presentation">Hadoop at Yahoo!</a></p>
+
+<h1 id="setup">Setup</h1>
+
+<p>TODO</p>
+
+<h1 id="command-line-basics">Command line basics</h1>
+
+<h2 id="environment-variables">ENVIRONMENT VARIABLES</h2>
+
+<p>in ~/.bash_profile</p>
+
+<pre><code># User specific environment and startup programs
+JAVA_HOME=/opt/java
+HADOOP_HOME=/opt/hadoop
+HIVE_HOME=/opt/hive
+
+PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HIVE_HOME/bin:$PATH:$HOME/bin
+
+export PATH JAVA_HOME HADOOP_HOME
+</code></pre>
+
+<h2 id="hdfs---walk-around">HDFS - Walk around</h2>
+
+<pre><code>hadoop fs -ls /
+hadoop fs -du -h /data/
+hadoop fs -dus /user/_myname_/
+hadoop fs -tail /user/_myname_/my-test-file.txt
+</code></pre>
+
+<h2 id="submit-mapreduce-jobjar">Submit Map/Reduce Job(jar)</h2>
+
+<h2 id="job-tracker">Job Tracker</h2>
+
+<p>TODO</p>
+
+<h1 id="streaming">Streaming</h1>
+<p>Streaming(script)
+&mdash;&mdash;</p>
+
+<p>Usage:</p>
+
+<pre><code> hadoop jar $STREAMING_JAR -mapper "$MAPPER" -file $MAPPER_FILE -reducer "$REDUCER" -file $REDUCER_FILE -input $RAW -output $SUMMARY -numReduceTasks 1
+
+$STREAMING_JAR, $MAPPER_FILE, $REDUCER_FILE: files in local path.
+
+$MAPPER，$REDUCER: commands run by hadoop.
+
+$RAW, $SUMMARY: files in HDFS.
+</code></pre>
+
+<h2 id="streaming-examples">Streaming examples</h2>
+<p>EXAMPLES: streaming/wc-demo.sh</p>
+
+          <a href="/SysAdmin/2012/07/13/hadoop-scripting-basics.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Hadoop-ref">Hadoop <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Streaming-ref">Streaming <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2012-06-26 00:00:00 +0800">26 Jun 2012</abbr>
       </span>
       <h3 class="entry-title">
@@ -751,222 +923,6 @@ Daemonizing ./bin/smokeping ...
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-05-18 00:00:00 +0800">18 May 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" title="Android网络问题检查（使用TCPDUMP）" rel="bookmark">Android网络问题检查（使用TCPDUMP）</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>随着智能手机的增长，智能平台（Andorid，iOS）的装机量也在飞速增加。为开发者带来很大商机。</p>
-
-<p>开发者对android平台的重视，意味着支持部门也要与这个系统打更多的交道，技术人员需要将已有的经验迁移到新的平台中。在传统的PC web中，网络相关问题已经有比较完善的方法和流程来进行定位和追踪，而移动设备端的相关软件还需要进行整合与优化。</p>
-
-<p>最近遇到开发人员报告的问题，需要确定问题发生时网络通讯是否正常。为此测试设计了两种方案，分别用模拟器和实际设备配合网络工具进行网络状况调试和分析。</p>
-
-<h2 id="android-sdk">方案一 使用Android SDK包含的模拟器进行调试</h2>
-
-<h3 id="android-sdk-1">准备Android SDK环境</h3>
-
-<p>从Android开发者网站下载相应开发平台的<a href="http://developer.android.com/sdk/index.html">Android SDK</a>，我下载了Linux版SDK，版本为<a href="http://dl.google.com/android/android-sdk_r18-linux.tgz">r18</a>。</p>
-
-<p>如果是Windows平台，下载安装包直接双击即可，可以跳过本段。如果你和我一样用Linux，可按以下操作。</p>
-
-<p>以下假设安装目录为~/apps/，请根据情况创建目录或修改命令参数。</p>
-
-<p>解压</p>
-
-<pre><code>tar zxvf /path/to/android-sdk_r18-linux.tgz
-</code></pre>
-
-<p>将解压的文件移动到目标目录</p>
-
-<pre><code>mv android-sdk-linux/ ~/apps/android-sdk-linux
-</code></pre>
-
-<p>为方便使用，配置环境变量。在~/.bashrc中增加以下内容。</p>
-
-<pre><code># Android SDK
-ADT=$HOME/apps/android-sdk-linux
-PATH=${PATH}:${ADT}/tools:${ADT}/platform-tools
-</code></pre>
-
-<p>退出当前终端并重新登陆，或执行以下命令。</p>
-
-<pre><code>source ~/.bashrc
-</code></pre>
-
-<h3 id="sdk">用SDK安装所需的虚拟镜像</h3>
-<p>执行以下命令，带开Android SDK Manager。</p>
-
-<pre><code>android
-</code></pre>
-
-<p>选择安装Android SDK Tools和Android SDK Platfor-tools，选择安装Android 2.3.3下的SDK Platform和Google APIs。</p>
-
-<h3 id="section">创建虚拟设备</h3>
-<p>执行以下命令，带开Android Virtual Device Manager。</p>
-
-<pre><code>android avd
-</code></pre>
-
-<p>点击New，开始新建设备。输入设备名称为android，Target选择2.3.3，SD卡大小设置为512MiB。</p>
-
-<p>创建完毕。</p>
-
-<h3 id="apk">启动虚拟设备和相关工具，安装apk</h3>
-
-<pre><code>emulator -netfast -debug proxy @android
-
-sudo `which adb` start-server
-
-adb install xxx.apk
-</code></pre>
-
-<h3 id="section-1">开始调试</h3>
-
-<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
-
-<s>由于我们在启动模拟器时，指定了调试网络代理，因此操作软件时的网络交互可以在模拟器的终端下看到调试信息。</s>
-<p>&mdash;实际测试时使用了squid作为代理。重复测试发现没有重现输出内容，需要验证。</p>
-
-<h2 id="tcpdump">方案二 使用TCPDUMP进行实机测试</h2>
-
-<p>准备Android环境的方法前面已经介绍。</p>
-
-<h3 id="section-2">设备准备</h3>
-
-<p>原则上任何安装Android系统的手机、平板电脑都可以进行此次调试。由于本次测试需求，需要ROOT并开启开发者模式。操作方法在此不再做介绍（网上太多相关文章了）。</p>
-
-<p>我测试用的是一台HP TouchPad，安装CM9。</p>
-
-<h3 id="section-3">软件</h3>
-
-<p>下载<a href="http://www.eecs.umich.edu/~timuralp/tcpdump-arm">tcpdump-arm</a></p>
-
-<p>将tcpdump-arm传到设备上</p>
-
-<pre><code>adb push tcpdump-arm /data/local/
-</code></pre>
-
-<p>登入设备，设置文件权限</p>
-
-<pre><code>adb shell
-
-cd /data/local/
-
-chmod 777 tcpdump-arm
-</code></pre>
-
-<p>安装程序包</p>
-
-<pre><code>adb install xxx.apk
-</code></pre>
-
-<h3 id="section-4">开始调试</h3>
-
-<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
-
-<p>仍然使用电脑进入adb shell中，启动tcpdump-arm，开始抓取数据包。</p>
-
-<pre><code>./tcpdump-arm -s 1500 -n -w result.cap
-</code></pre>
-
-<p>以上命令使用-w参数，将抓包结果保存到文件，方便后续进行进一步分析。</p>
-
-<p>从设备中把结果文件复制出来</p>
-
-<pre><code>adb pull /data/local/result.cap ./
-</code></pre>
-
-<p>使用wireshark查看</p>
-
-<pre><code>wireshark result.cap
-</code></pre>
-
-          <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#android-ref">android <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#tcpdump-ref">tcpdump <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-05-13 00:00:00 +0800">13 May 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2012/05/13/hello_jekyll.html" title="Hello, jekyll" rel="bookmark">Hello, jekyll</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          Hello, Jekyll.
-
-把blog迁移到github。Cheer!
-
-          <a href="/2012/05/13/hello_jekyll.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -981,8 +937,14 @@ chmod 777 tcpdump-arm
   <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
 </section>
 
-</section>
+<section>
   <iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+<section>
+	<ul>
+		<li><a href='http://mib.cc/cloud.html'>云导航</li>
+	</ul>
 </section>
 
 
@@ -994,6 +956,14 @@ chmod 777 tcpdump-arm
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

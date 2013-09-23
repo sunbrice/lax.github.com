@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>UEK R3升级手记</title>
+    <meta name="description" content="">
+    <meta name="author" content="Liu Lantao">
+    <meta property="wb:webmaster" content="08beceac65f1ad4f" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/default.min.css">
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+
+  <div class="navbar-wrapper">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/">非常规思维研究所</a>
+          <ul class="nav">
+            <li><a href="/">首页</a></li>
+            
+            
+            
+
+
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/about_me.html">About ME</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/nerd_urls.html">Nerd URLs</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container">
+
+      <div class="content">
+        
+<div class="page-header">
+  <h1>UEK R3升级手记 </h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<p>UEK是OracleLinux发布的内核版本，对内核增加了更多优化。最近发布了UEK R3。如果需要部署3.x系列内核，可以基于此版本进行测试升级了。</p>
+
+<p>主要的更新内容包括：</p>
+
+<ul>
+  <li>基于Linux主线版本3.8.13</li>
+  <li>虚拟化相关支持升级</li>
+  <li>btrfs升级（UEK R2中基于kernel 3.0，UEK R3基于kernel 3.8）</li>
+  <li>DTrace 0.4</li>
+  <li>cgroups和LXC更新。lxc-0.9.0-2.0.4同时发布</li>
+  <li>XEN改进</li>
+  <li>大量的驱动升级，涵盖存储设备、网络设备等</li>
+</ul>
+
+<p>重要改进：</p>
+
+<ul>
+  <li>ext4支持inode内存储小文件（通过-O inline_data）选项
+    mkfs.ext4 -O inline_data device
+针对已有的ext4文件系统
+    tune2fs -O inline_data device</li>
+  <li>XFS日志checksum</li>
+  <li>zero huge page以改善现有zero 4-KB page的性能</li>
+  <li>NUMA节点下内存分配的自动平衡</li>
+  <li>memory control group支持额外的参数
+    <ul>
+      <li>memory.kmem.failcnt</li>
+      <li>memory.kmem.limit_in_bytes</li>
+      <li>memory.kmem.max_usage_in_bytes</li>
+      <li>memory.kmem.usage_in_bytes</li>
+    </ul>
+  </li>
+  <li>SCSI error-handling超时值可以通过/sys/class/scsi_device/*/device/eh_timeout设置</li>
+  <li>通过mmap()的flags或shmget()的shmflg参数可以使用variable-sized huge page</li>
+  <li>TCP fast open (TFO)</li>
+  <li>watchdog定时器设备/dev/watchdog</li>
+</ul>
+
+<p>注意事项</p>
+
+<ul>
+  <li>I/O scheduler默认为deadline。RHEL中默认为cfq</li>
+</ul>
+
+<p>安装UEK R3。</p>
+
+<p>首先需要安装Oracle仓库。安装oracle仓库的方法参考<code>[](http://public-yum.oracle.com)</code>。或者以root身份执行以下命令</p>
+
+<pre><code>#CentOS 5
+cd /etc/yum.repos.d
+wget https://public-yum.oracle.com/public-yum-el5.repo
+
+#CentOS 6
+cd /etc/yum.repos.d
+wget https://public-yum.oracle.com/public-yum-ol6.repo
+</code></pre>
+
+<p>由于UEK R3还没有加入到正式版本中，所有需要手工设置使用oracle的beta仓库（目前属于测试阶段，以后可能会更改）</p>
+
+<pre><code>cd /etc/yum.repos.d
+wget http://public-yum.oracle.com/beta/public-yum-ol6-beta.repo
+sed -i s/enabled=0/enabled=1/g public-yum-ol6-beta.repo 或
+cat &gt;/etc/yum.repos.d/public-yum-ol6-beta.repo&lt;&lt;EOF
+[ol6_beta]
+name=Oracle Linux \$releasever Beta (\$basearch)
+baseurl=http://public-yum.oracle.com/repo/BETA/OracleLinux/OL6/uek3/\$basearch/
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
+gpgcheck=0
+enabled=1
+EOF
+</code></pre>
+
+<p>现在可以通过yum来安装uek3：
+    yum install -y kernel-uek-3.8.13-13.el6uek</p>
+
+<pre><code>[root@localhost yum.repos.d]# yum install kernel-uek-3.8.13-13.el6uek -y
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirrors.btte.net
+ * epel: mirrors.hust.edu.cn
+ * extras: mirrors.btte.net
+ * updates: mirrors.hust.edu.cn
+Setting up Install Process
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package kernel-uek.x86_64 0:3.8.13-13.el6uek will be installed
+--&gt; Processing Dependency: kernel-firmware = 3.8.13-13.el6uek for package: kernel-uek-3.8.13-13.el6uek.x86_64
+--&gt; Running transaction check
+---&gt; Package kernel-uek-firmware.noarch 0:3.8.13-13.el6uek will be installed
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+========================================================================================================================
+ Package                            Arch                  Version                         Repository               Size
+========================================================================================================================
+Installing:
+ kernel-uek                         x86_64                3.8.13-13.el6uek                ol6_beta                 36 M
+Installing for dependencies:
+ kernel-uek-firmware                noarch                3.8.13-13.el6uek                ol6_beta                1.6 M
+
+Transaction Summary
+========================================================================================================================
+Install       2 Package(s)
+
+Total download size: 37 M
+Installed size: 151 M
+Downloading Packages:
+(1/2): kernel-uek-3.8.13-13.el6uek.x86_64.rpm                                                    |  36 MB     02:22     
+(2/2): kernel-uek-firmware-3.8.13-13.el6uek.noarch.rpm                                           | 1.6 MB     00:05     
+------------------------------------------------------------------------------------------------------------------------
+Total                                                                                   256 kB/s |  37 MB     02:29     
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : kernel-uek-firmware-3.8.13-13.el6uek.noarch                                                          1/2 
+  Installing : kernel-uek-3.8.13-13.el6uek.x86_64                                                                   2/2 
+  Verifying  : kernel-uek-firmware-3.8.13-13.el6uek.noarch                                                          1/2 
+  Verifying  : kernel-uek-3.8.13-13.el6uek.x86_64                                                                   2/2 
+
+Installed:
+  kernel-uek.x86_64 0:3.8.13-13.el6uek                                                                                  
+
+Dependency Installed:
+  kernel-uek-firmware.noarch 0:3.8.13-13.el6uek                                                                         
+
+Complete!
+</code></pre>
+
+<p>现在可以在/boot目录下和/etc/grub/menu.lst里看到3.8.13版本的内核项。重启试试。</p>
+
+<pre><code>uname -a
+Linux localhost.localdomain 3.8.13-13.el6uek.x86_64 #1 SMP Wed Aug 21 14:28:36 PDT 2013 x86_64 x86_64 x86_64 GNU/Linux
+</code></pre>
+
+<p>还可以安装其它工具</p>
+
+<pre><code># yum install dtrace-utils
+# yum install lxc
+</code></pre>
+
+<p><a href="http://linux.oracle.com/RELEASE-NOTES-UEK3-BETA-en.html">Release Notes</a></p>
+
+
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/2013/09/22/weekly-parallel-gem-installing-using-bundler.html" title="[Weekly]Parallel gem installing using bundler">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next disabled"><a>Next &rarr;</a>
+      
+      </ul>
+    </div>
+    <hr>
+  </div>
+  
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>23 September 2013</span></div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
+    
+  
+
+
+
+    </ul>
+    
+  </div>
+  <hr />
+  
+
+</div>
+
+
+
+      </div>
+
+      <footer>
+        <p>&copy; Liu Lantao 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+  <script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

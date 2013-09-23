@@ -238,6 +238,114 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2010-05-11 00:00:00 +0800">11 May 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/05/11/emergegcc.html" title="Emerge抱怨gcc不能工作啦！" rel="bookmark">Emerge抱怨gcc不能工作啦！</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          Emerge抱怨gcc不能工作啦！<br><br>平时gentoo自动更新，省心也省力。结果聪明反被聪明误，遇到了搞不清道不明的依赖关系，有个东西是装也装不上，卸也卸不下，只好动手挨着理出来。<br>一次舒爽的emerge --depclean之后，系统里多余的小家伙挨个儿离开了。<br>重启，再来试试revdep-rebuild（系统推荐的步骤是emerge --update --deep --newuse world, emerge --depclean, then revdep-rebuild）。<br> 不好，突然停住了，看看输出的提示，找到红绿交界的地方，看到如下文字：<br><br>-------code-------<br>checking whether the C compiler (gcc  ) works... no <br> configure: error: installation or configuration problem: C compiler <br> cannot create executables. <br clear="all">--------end-------<br><br>糟糕，我的GCC挂了？貌似刚才的操作没有惹到它老人家吧！<br><br>没办法，找找吧。<br><br>$ which gcc<br>发现它好端端的躺在/usr/bin/gcc，乖乖不得了。<br><br>看看配置吧，gcc-config -l一下，貌似这唯一的一条不是默认的选择。<br>------------------<br>lax@mib ~/empty/gentoo $ gcc-config -l<br>  [1] i686-pc-linux-gnu-4.4.3<br>------------------<br><br>试试修改一下：<br>$ sudo gcc-config 1<br> * Switching native-compiler to i686-pc-linux-gnu-4.4.3 ...                   [ ok ]<br><br>它OK，我也OK，再来Emerge一下，终于走下去啦。<br><br>-- <br> Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2870561956598449910?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/Technology/2010/05/11/emergegcc.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Gentoo-ref">Gentoo <span>4</span></a></li>
+     
+    	<li><a href="/tags.html#emerge-ref">emerge <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2010-04-21 00:00:00 +0800">21 Apr 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html" title="使用Ruby进行Log分析：放弃String.split，使用Regexp.match" rel="bookmark">使用Ruby进行Log分析：放弃String.split，使用Regexp.match</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          使用Ruby进行log分析，它的性能成为一个瓶颈。<br>传统在perl中通过split的方式进行字段抽取的工作，在ruby中性能变的极差。<br>对一个32万行的log文件进行统计，抽取其中一个字段进行累加。<br>原有采用split方式，脚本运行时间在12~13s，且CPU占用较高。这种情况下，进行实施数据分析的消耗巨大，无法大范围部署。<br>而让这一状况得以改观的是，采用Regexp.match(str)进行抽取，计算速度有了非常大的改善，在2s内完成了计划的任务。<br> <br>－－－－－－－－－－－－－－－<br>lax@mib ~ $ cat accounting_total_reqs.rb <br>#!/usr/bin/env ruby<br><br>f = File.open(&quot;NginxAccounting.log&quot;)<br>regex = Regexp.new(/req_total:(\d+)/)<br><br>tp = 0<br>while(f.gets)<br>    $_.scan(regex)<br>     tp += $1.to_i if $1<br>end<br>puts tp<br>－－－－－－－－－－－－－－－<br><br>采用str.scan(regex)，速度比较满意：<br>lax@mib ~ $ time ruby accounting_total_reqs.rb <br>12437322629<br><br>real    0m1.786s<br>user    0m1.753s<br>sys    0m0.031s<br> <br>调整为regex.match(str)方法后，速度又有少量提升：<br><br>lax@mib ~ $ time ruby 5.rb <br>12437322629<br><br>real    0m1.603s<br>user    0m1.570s<br>sys    0m0.031s<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-4221053633967927849?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Ruby-ref">Ruby <span>2</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2010-04-21 00:00:00 +0800">21 Apr 2010</abbr>
       </span>
       <h3 class="entry-title">
@@ -504,76 +612,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-09-25 00:00:00 +0800">25 Sep 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/09/25/what-is-test-driven-development-in-ruby.html" title="What is Test-Driven Development in Ruby?" rel="bookmark">What is Test-Driven Development in Ruby?</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          TDD steps:<br><br>1, Write a test that describes some shortcoming or missing feature in the code. <br><br>2, Run the tests.<br><br>3, Write just enough code to make this test pass. <br><br>4, Run the tests again. <br><br>5, Refactor.<br> <br>6, Write a test to define a new feature and start the process all over again.<br><br><br>Always remember:<br><br>1, Code doesn&#39;t exist yet until it&#39;s tested. <br><br>2, Run tests religiously. <br><br><br>see more:<br> 1, <a href="http://ruby.about.com/od/advancedruby/a/tdd.htm">http://ruby.about.com/od/advancedruby/a/tdd.htm</a><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-5639782625791163843?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/2009/09/25/what-is-test-driven-development-in-ruby.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-09-25 00:00:00 +0800">25 Sep 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/09/25/head-h-host-2031661789.html" title="curl -4 --head -H "Host 203.166.178.9" http://www.liulantao.com/images/lax_shetou.gif" rel="bookmark">curl -4 --head -H "Host 203.166.178.9" http://www.liulantao.com/images/lax_shetou.gif</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <br clear="all"><div>lax@homex ~ $ host <a href="http://www.liulantao.com">www.liulantao.com</a></div><div><a href="http://www.liulantao.com">www.liulantao.com</a> has address 203.166.178.9</div><div>lax@homex ~ $ curl -4 --head -H &quot;Host 203.166.178.9&quot; <a href="http://www.liulantao.com/images/lax_shetou.gif">http://www.liulantao.com/images/lax_shetou.gif</a></div> <div>HTTP/1.1 200 OK</div><div>Date: Fri, 25 Sep 2009 13:19:45 GMT</div><div>Server: Apache/2.0.52 (Red Hat)</div><div>Last-Modified: Sat, 07 Feb 2009 07:30:15 GMT</div><div>ETag: &quot;1208ae-16be-1bc9efc0&quot;</div><div> Accept-Ranges: bytes</div><div>Content-Length: 5822</div><div>Connection: close</div><div>Content-Type: image/gif</div><div><br></div>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-1476410669648052340?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/2009/09/25/head-h-host-2031661789.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -588,8 +626,14 @@
   <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
 </section>
 
-</section>
+<section>
   <iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+<section>
+	<ul>
+		<li><a href='http://mib.cc/cloud.html'>云导航</li>
+	</ul>
 </section>
 
 
@@ -601,6 +645,14 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

@@ -238,6 +238,217 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2011-10-19 19:21:03 +0800">19 Oct 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2011/10/19/nginx-log_format-abc.html" title="Nginx log_format设置ABC" rel="bookmark">Nginx log_format设置ABC</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>nginx作为反向代理服务器时，打开access_log可以用来查找后端的问题。</p>
+
+<p>默认的nginx.conf有一个log_format配置。这个配置对于普通的静态服务器有些帮助，但是作为代理，还需要做一些定制。</p>
+
+<blockquote>
+  <p>log_format  main  &lsquo;$host $remote_addr - $remote_user [$time_local] $request &lsquo;
+&lsquo;&ldquo;$status&rdquo; $body_bytes_sent &ldquo;$http_referer&rdquo; &lsquo;
+&lsquo;&ldquo;$http_user_agent&rdquo; &ldquo;$http_x_forwarded_for&rdquo;&rsquo;;</p>
+</blockquote>
+
+<p>我们使用nginx作为反向代理，代理后端部署的实际服务地址可能不止一个（一般情况下是这样）。我们要了解后端服务器的响应情况，就需要在log_format中增加几个变量。</p>
+
+<p>下面列出几个重要的变量：</p>
+
+<blockquote>
+  <p>$status  $upstream_status :  响应的状态码（响应正常还是出错了？）复习一下<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP CODE</a></p>
+</blockquote>
+
+<p>$request_time  $upstream_response_time :  关注性能必备！看看前天传输文件的时间，以及后台处理的时间。前者对了解网络状态有益，后者对了解服务性能有益。</p>
+
+<p>$remote_addr  $upstream_addr :  用户的IP地址，后端服务的IP地址</p>
+
+<p>$bytes_sent $body_bytes_sent  :  发送给用户端的数据量（包含HTTP头和不包含HTTP头）</p>
+
+<p>$host $request :  最重要的，搞定具体域名具体URL，不抓瞎。</p>
+
+<p>根据实际情况，把以上的变量组合放进log_format中。</p>
+
+          <a href="/Technology/2011/10/19/nginx-log_format-abc.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#log_format-ref">log_format <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2011-09-28 09:11:39 +0800">28 Sep 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2011/09/28/build-rack-based-application-on-heroku.html" title="Build Rack-based application on Heroku" rel="bookmark">Build Rack-based application on Heroku</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <h2 id="heroku">heroku</h2>
+
+<p>heroku是目前最方便使用的PaaS系统，是大部分开发者部署ruby服务的首选，基于git的部署工具带给它比google appengine更好的便捷性。</p>
+
+<p>在heroku创建一个rails程序是非常简单的，基本步骤（只是基本步骤，具体命令需要查rails和git的使用说明）：</p>
+
+<pre><code>rails create myapp
+heroku create
+cd myapp &amp;&amp; git init .
+git commit &amp;&amp; git push
+</code></pre>
+
+<p>搞出这样的开发流程，是造福广大程序员的伟大事业。</p>
+
+<h2 id="why-rack--datamapper-on-heroku">Why Rack + DataMapper on heroku</h2>
+
+<p>Rails + ActiveRecord可以算作一种标配，引领了Ruby开发的潮流。这次尝试Ruby off <del>Rails</del>，选用了Rack + DataMapper的组合。</p>
+
+<p>大部分ruby web框架都支持rack规范，如主流的rails、sinatra、merb。rack定义了一系列规范，类似java的servlet。遵循规范的结果，使得大量rack容器被开发出来。heroku目前默认的容器是thin。</p>
+
+<p>从heroku的文档中看出，heroku使用了postgresql数据库。对于大部分ruby程序而言，使用mysql或pgsql或sqlite都不会影响部署——因为引入数据库抽象层已成惯例，比如ActiveRecord、DataMapper和Sequeel等。</p>
+
+<h2 id="first-thing-first-rack">First thing first： 部署一个简单的Rack程序</h2>
+
+<p>在heroku上部署基于Rack的程序，也是非常简单的。</p>
+
+<p>最简单的config.ru内容如下</p>
+
+<p>map &ldquo;/&rdquo; do
+    run Proc.new {|env| [200, {&ldquo;Content-Type&rdquo; =&gt; &ldquo;text/html&rdquo;}, StringIO.new(&ldquo;sysadmin 0.1&rdquo;)] }
+ end</p>
+
+<p>本地直接用rackup即可执行。</p>
+
+<p>如果在heroku上部署，需要额外的Gemfile文件来指明服务器端需要的rubygem。最简单的Gemfile内容为：</p>
+
+<p>gem &lsquo;rack&rsquo;</p>
+
+<p>以上例子是一个最基本的Rack应用，将这两个文件提交后，通过git push到heroku，就能在http://myapp.heroku.com看到页面，显示&rdquo;sysadmin 0.1&rdquo;。
+到此最简单的部署完成。</p>
+
+<h2 id="setup-datamapper">Setup DataMapper</h2>
+
+<p>require &lsquo;data_mapper&rsquo;</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>DataMapper.setup(:default, ENV[&lsquo;DATABASE_URL&rsquo;]</td>
+      <td>&nbsp;</td>
+      <td>&lsquo;sqlite::memory:&rsquo;)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>class Tweet
+   include DataMapper::Resource</p>
+
+<p>property :id,   Serial
+   property :name, String
+   property :value, Text
+   property :created_at, DateTime
+ end</p>
+
+<p>DataMapper.finalize
+ DataMapper.auto_upgrade!</p>
+
+<p>经过这一操作，我们就有了一个class：Tweet，并且在数据库中有相应的表生成。一个基于DataMapper进行数据操作的应用就此诞生。</p>
+
+          <a href="/Technology/2011/09/28/build-rack-based-application-on-heroku.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#DataMapper-ref">DataMapper <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#heroku-ref">heroku <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#PaaS-ref">PaaS <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rack-ref">rack <span>2</span></a></li>
+     
+    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2011-09-28 09:07:25 +0800">28 Sep 2011</abbr>
       </span>
       <h3 class="entry-title">
@@ -373,7 +584,7 @@ emerge sys-kernel/gentoo-sources之后，在/usr/src/linux目录下执行make me
      
     	<li><a href="/tags.html#kernel-ref">kernel <span>2</span></a></li>
      
-    	<li><a href="/tags.html#Linux-ref">Linux <span>6</span></a></li>
+    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
      
     	<li><a href="/tags.html#Portage-ref">Portage <span>2</span></a></li>
      
@@ -434,7 +645,7 @@ emerge sys-kernel/gentoo-sources之后，在/usr/src/linux目录下执行make me
      
     	<li><a href="/tags.html#Fedora-ref">Fedora <span>1</span></a></li>
      
-    	<li><a href="/tags.html#Linux-ref">Linux <span>6</span></a></li>
+    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
      
     	<li><a href="/tags.html#selinux-ref">selinux <span>1</span></a></li>
     
@@ -567,7 +778,7 @@ iPad: 0.26% </p>
      
     	<li><a href="/tags.html#ipad-ref">ipad <span>1</span></a></li>
      
-    	<li><a href="/tags.html#Linux-ref">Linux <span>6</span></a></li>
+    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
      
     	<li><a href="/tags.html#macintosh-ref">macintosh <span>1</span></a></li>
      
@@ -663,124 +874,6 @@ $ rvm use 1.9.2
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-06-20 14:44:58 +0800">20 Jun 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/06/20/always-wrap-your-file-paths-in-quotes.html" title="Always wrap your file paths in quotes" rel="bookmark">Always wrap your file paths in quotes</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p><a href="https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6#diff-1">Commit a047be85247755cdbe0acce6f1dafc8beb84f2ac to MrMEEE/bumblebee - GitHub</a>.</p>
-
-<p>一个空格，导致血淋淋悲剧的发生，因引发了程序员们对于代码质量的反思。</p>
-
-<p>一个小项目的安装文件，做了小小的bugfix，具体为：</p>
-
-<blockquote>
-
-</blockquote>
-
-<blockquote>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>@@ -348,7 +348,7 @@ case "$DISTRO" in</code></p>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>-  rm -rf /usr /lib/nvidia-current/xorg/xorg</code></p>
-
-</blockquote>
-
-<blockquote>
-
-  <p><code>+  rm -rf /usr/lib/nvidia-current/xorg/xorg</code></p>
-
-</blockquote>
-
-<p>关于code review，大家的评论热烈非常。</p>
-
-
-          <a href="/Technology/2011/06/20/always-wrap-your-file-paths-in-quotes.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-06-17 12:43:12 +0800">17 Jun 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/06/17/e5bd97e6989fdnse4bc98e58c96e599a8.html" title="彗星DNS优化器" rel="bookmark">彗星DNS优化器</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>最近参与了不少联系用户的工作，发现DNS设置错误，导致访问网站有性能问题的情况比较多。</p>
-
-<p>指导用户手工修改DNS不是太难的工作，但是又要很有耐心帮忙做测试等等。实在是消耗时间。今天发现有用户在使用工具进行辅助完成这个工作，先分享出来。自己动手丰衣足食，很经济。</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>[彗星DNS优化器</td>
-      <td>彗星DNS优化器 1.20下载地址 - 华军软件园下载中心](http://zzidc.onlinedown.net/softdown/100870_2.htm).</td>
-    </tr>
-  </tbody>
-</table>
-
-          <a href="/Technology/2011/06/17/e5bd97e6989fdnse4bc98e58c96e599a8.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -795,8 +888,14 @@ $ rvm use 1.9.2
   <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
 </section>
 
-</section>
+<section>
   <iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+<section>
+	<ul>
+		<li><a href='http://mib.cc/cloud.html'>云导航</li>
+	</ul>
 </section>
 
 
@@ -808,6 +907,14 @@ $ rvm use 1.9.2
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

@@ -238,6 +238,222 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2012-05-18 00:00:00 +0800">18 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" title="Android网络问题检查（使用TCPDUMP）" rel="bookmark">Android网络问题检查（使用TCPDUMP）</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>随着智能手机的增长，智能平台（Andorid，iOS）的装机量也在飞速增加。为开发者带来很大商机。</p>
+
+<p>开发者对android平台的重视，意味着支持部门也要与这个系统打更多的交道，技术人员需要将已有的经验迁移到新的平台中。在传统的PC web中，网络相关问题已经有比较完善的方法和流程来进行定位和追踪，而移动设备端的相关软件还需要进行整合与优化。</p>
+
+<p>最近遇到开发人员报告的问题，需要确定问题发生时网络通讯是否正常。为此测试设计了两种方案，分别用模拟器和实际设备配合网络工具进行网络状况调试和分析。</p>
+
+<h2 id="android-sdk">方案一 使用Android SDK包含的模拟器进行调试</h2>
+
+<h3 id="android-sdk-1">准备Android SDK环境</h3>
+
+<p>从Android开发者网站下载相应开发平台的<a href="http://developer.android.com/sdk/index.html">Android SDK</a>，我下载了Linux版SDK，版本为<a href="http://dl.google.com/android/android-sdk_r18-linux.tgz">r18</a>。</p>
+
+<p>如果是Windows平台，下载安装包直接双击即可，可以跳过本段。如果你和我一样用Linux，可按以下操作。</p>
+
+<p>以下假设安装目录为~/apps/，请根据情况创建目录或修改命令参数。</p>
+
+<p>解压</p>
+
+<pre><code>tar zxvf /path/to/android-sdk_r18-linux.tgz
+</code></pre>
+
+<p>将解压的文件移动到目标目录</p>
+
+<pre><code>mv android-sdk-linux/ ~/apps/android-sdk-linux
+</code></pre>
+
+<p>为方便使用，配置环境变量。在~/.bashrc中增加以下内容。</p>
+
+<pre><code># Android SDK
+ADT=$HOME/apps/android-sdk-linux
+PATH=${PATH}:${ADT}/tools:${ADT}/platform-tools
+</code></pre>
+
+<p>退出当前终端并重新登陆，或执行以下命令。</p>
+
+<pre><code>source ~/.bashrc
+</code></pre>
+
+<h3 id="sdk">用SDK安装所需的虚拟镜像</h3>
+<p>执行以下命令，带开Android SDK Manager。</p>
+
+<pre><code>android
+</code></pre>
+
+<p>选择安装Android SDK Tools和Android SDK Platfor-tools，选择安装Android 2.3.3下的SDK Platform和Google APIs。</p>
+
+<h3 id="section">创建虚拟设备</h3>
+<p>执行以下命令，带开Android Virtual Device Manager。</p>
+
+<pre><code>android avd
+</code></pre>
+
+<p>点击New，开始新建设备。输入设备名称为android，Target选择2.3.3，SD卡大小设置为512MiB。</p>
+
+<p>创建完毕。</p>
+
+<h3 id="apk">启动虚拟设备和相关工具，安装apk</h3>
+
+<pre><code>emulator -netfast -debug proxy @android
+
+sudo `which adb` start-server
+
+adb install xxx.apk
+</code></pre>
+
+<h3 id="section-1">开始调试</h3>
+
+<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
+
+<s>由于我们在启动模拟器时，指定了调试网络代理，因此操作软件时的网络交互可以在模拟器的终端下看到调试信息。</s>
+<p>&mdash;实际测试时使用了squid作为代理。重复测试发现没有重现输出内容，需要验证。</p>
+
+<h2 id="tcpdump">方案二 使用TCPDUMP进行实机测试</h2>
+
+<p>准备Android环境的方法前面已经介绍。</p>
+
+<h3 id="section-2">设备准备</h3>
+
+<p>原则上任何安装Android系统的手机、平板电脑都可以进行此次调试。由于本次测试需求，需要ROOT并开启开发者模式。操作方法在此不再做介绍（网上太多相关文章了）。</p>
+
+<p>我测试用的是一台HP TouchPad，安装CM9。</p>
+
+<h3 id="section-3">软件</h3>
+
+<p>下载<a href="http://www.eecs.umich.edu/~timuralp/tcpdump-arm">tcpdump-arm</a></p>
+
+<p>将tcpdump-arm传到设备上</p>
+
+<pre><code>adb push tcpdump-arm /data/local/
+</code></pre>
+
+<p>登入设备，设置文件权限</p>
+
+<pre><code>adb shell
+
+cd /data/local/
+
+chmod 777 tcpdump-arm
+</code></pre>
+
+<p>安装程序包</p>
+
+<pre><code>adb install xxx.apk
+</code></pre>
+
+<h3 id="section-4">开始调试</h3>
+
+<p>在虚拟设备界面中选择安装的软件，进行应用的操作。</p>
+
+<p>仍然使用电脑进入adb shell中，启动tcpdump-arm，开始抓取数据包。</p>
+
+<pre><code>./tcpdump-arm -s 1500 -n -w result.cap
+</code></pre>
+
+<p>以上命令使用-w参数，将抓包结果保存到文件，方便后续进行进一步分析。</p>
+
+<p>从设备中把结果文件复制出来</p>
+
+<pre><code>adb pull /data/local/result.cap ./
+</code></pre>
+
+<p>使用wireshark查看</p>
+
+<pre><code>wireshark result.cap
+</code></pre>
+
+          <a href="/Technology/2012/05/18/android-network-diagnose-with-tcpdump.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#android-ref">android <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#tcpdump-ref">tcpdump <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-05-13 00:00:00 +0800">13 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2012/05/13/hello_jekyll.html" title="Hello, jekyll" rel="bookmark">Hello, jekyll</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          Hello, Jekyll.
+
+把blog迁移到github。Cheer!
+
+          <a href="/2012/05/13/hello_jekyll.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2012-03-25 13:41:39 +0800">25 Mar 2012</abbr>
       </span>
       <h3 class="entry-title">
@@ -766,217 +982,6 @@ access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-10-19 19:21:03 +0800">19 Oct 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/10/19/nginx-log_format-abc.html" title="Nginx log_format设置ABC" rel="bookmark">Nginx log_format设置ABC</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>nginx作为反向代理服务器时，打开access_log可以用来查找后端的问题。</p>
-
-<p>默认的nginx.conf有一个log_format配置。这个配置对于普通的静态服务器有些帮助，但是作为代理，还需要做一些定制。</p>
-
-<blockquote>
-  <p>log_format  main  &lsquo;$host $remote_addr - $remote_user [$time_local] $request &lsquo;
-&lsquo;&ldquo;$status&rdquo; $body_bytes_sent &ldquo;$http_referer&rdquo; &lsquo;
-&lsquo;&ldquo;$http_user_agent&rdquo; &ldquo;$http_x_forwarded_for&rdquo;&rsquo;;</p>
-</blockquote>
-
-<p>我们使用nginx作为反向代理，代理后端部署的实际服务地址可能不止一个（一般情况下是这样）。我们要了解后端服务器的响应情况，就需要在log_format中增加几个变量。</p>
-
-<p>下面列出几个重要的变量：</p>
-
-<blockquote>
-  <p>$status  $upstream_status :  响应的状态码（响应正常还是出错了？）复习一下<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP CODE</a></p>
-</blockquote>
-
-<p>$request_time  $upstream_response_time :  关注性能必备！看看前天传输文件的时间，以及后台处理的时间。前者对了解网络状态有益，后者对了解服务性能有益。</p>
-
-<p>$remote_addr  $upstream_addr :  用户的IP地址，后端服务的IP地址</p>
-
-<p>$bytes_sent $body_bytes_sent  :  发送给用户端的数据量（包含HTTP头和不包含HTTP头）</p>
-
-<p>$host $request :  最重要的，搞定具体域名具体URL，不抓瞎。</p>
-
-<p>根据实际情况，把以上的变量组合放进log_format中。</p>
-
-          <a href="/Technology/2011/10/19/nginx-log_format-abc.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#log_format-ref">log_format <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-09-28 09:11:39 +0800">28 Sep 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/09/28/build-rack-based-application-on-heroku.html" title="Build Rack-based application on Heroku" rel="bookmark">Build Rack-based application on Heroku</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <h2 id="heroku">heroku</h2>
-
-<p>heroku是目前最方便使用的PaaS系统，是大部分开发者部署ruby服务的首选，基于git的部署工具带给它比google appengine更好的便捷性。</p>
-
-<p>在heroku创建一个rails程序是非常简单的，基本步骤（只是基本步骤，具体命令需要查rails和git的使用说明）：</p>
-
-<pre><code>rails create myapp
-heroku create
-cd myapp &amp;&amp; git init .
-git commit &amp;&amp; git push
-</code></pre>
-
-<p>搞出这样的开发流程，是造福广大程序员的伟大事业。</p>
-
-<h2 id="why-rack--datamapper-on-heroku">Why Rack + DataMapper on heroku</h2>
-
-<p>Rails + ActiveRecord可以算作一种标配，引领了Ruby开发的潮流。这次尝试Ruby off <del>Rails</del>，选用了Rack + DataMapper的组合。</p>
-
-<p>大部分ruby web框架都支持rack规范，如主流的rails、sinatra、merb。rack定义了一系列规范，类似java的servlet。遵循规范的结果，使得大量rack容器被开发出来。heroku目前默认的容器是thin。</p>
-
-<p>从heroku的文档中看出，heroku使用了postgresql数据库。对于大部分ruby程序而言，使用mysql或pgsql或sqlite都不会影响部署——因为引入数据库抽象层已成惯例，比如ActiveRecord、DataMapper和Sequeel等。</p>
-
-<h2 id="first-thing-first-rack">First thing first： 部署一个简单的Rack程序</h2>
-
-<p>在heroku上部署基于Rack的程序，也是非常简单的。</p>
-
-<p>最简单的config.ru内容如下</p>
-
-<p>map &ldquo;/&rdquo; do
-    run Proc.new {|env| [200, {&ldquo;Content-Type&rdquo; =&gt; &ldquo;text/html&rdquo;}, StringIO.new(&ldquo;sysadmin 0.1&rdquo;)] }
- end</p>
-
-<p>本地直接用rackup即可执行。</p>
-
-<p>如果在heroku上部署，需要额外的Gemfile文件来指明服务器端需要的rubygem。最简单的Gemfile内容为：</p>
-
-<p>gem &lsquo;rack&rsquo;</p>
-
-<p>以上例子是一个最基本的Rack应用，将这两个文件提交后，通过git push到heroku，就能在http://myapp.heroku.com看到页面，显示&rdquo;sysadmin 0.1&rdquo;。
-到此最简单的部署完成。</p>
-
-<h2 id="setup-datamapper">Setup DataMapper</h2>
-
-<p>require &lsquo;data_mapper&rsquo;</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>DataMapper.setup(:default, ENV[&lsquo;DATABASE_URL&rsquo;]</td>
-      <td>&nbsp;</td>
-      <td>&lsquo;sqlite::memory:&rsquo;)</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>class Tweet
-   include DataMapper::Resource</p>
-
-<p>property :id,   Serial
-   property :name, String
-   property :value, Text
-   property :created_at, DateTime
- end</p>
-
-<p>DataMapper.finalize
- DataMapper.auto_upgrade!</p>
-
-<p>经过这一操作，我们就有了一个class：Tweet，并且在数据库中有相应的表生成。一个基于DataMapper进行数据操作的应用就此诞生。</p>
-
-          <a href="/Technology/2011/09/28/build-rack-based-application-on-heroku.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#DataMapper-ref">DataMapper <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#git-ref">git <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#heroku-ref">heroku <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#PaaS-ref">PaaS <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#rack-ref">rack <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -991,8 +996,14 @@ git commit &amp;&amp; git push
   <img width='160px' height='160px' src="/images/public/qrcode_for_gh_9329e4243e67_258.jpg" />
 </section>
 
-</section>
+<section>
   <iframe width="300" height="100" src="http://www.taobao.com/go/rgn/union/aliyun_ecs.php?size=300x100&pid=mm_46308197_0_0" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" name="alimamaifrm"></iframe>
+</section>
+
+<section>
+	<ul>
+		<li><a href='http://mib.cc/cloud.html'>云导航</li>
+	</ul>
 </section>
 
 
@@ -1004,6 +1015,14 @@ git commit &amp;&amp; git push
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     
