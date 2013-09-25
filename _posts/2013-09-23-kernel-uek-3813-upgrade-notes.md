@@ -45,7 +45,7 @@ UEK是OracleLinux发布的内核版本，对内核增加了更多优化。最近
 
 安装UEK R3。
 
-首先需要安装Oracle仓库。安装oracle仓库的方法参考```[](http://public-yum.oracle.com)```。或者以root身份执行以下命令
+首先需要安装Oracle仓库。安装oracle仓库的方法参考[http://public-yum.oracle.com](http://public-yum.oracle.com)。或者以root身份执行以下命令
 
     #CentOS 5
     cd /etc/yum.repos.d
@@ -64,7 +64,7 @@ UEK是OracleLinux发布的内核版本，对内核增加了更多优化。最近
     cat >/etc/yum.repos.d/public-yum-ol6-beta.repo<<EOF
     [ol6_beta]
     name=Oracle Linux \$releasever Beta (\$basearch)
-    baseurl=http://public-yum.oracle.com/repo/BETA/OracleLinux/OL6/uek3/\$basearch/
+    baseurl=http://public-yum.oracle.com/beta/repo/OracleLinux/OL6/uek3/\$basearch/
     gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
     gpgcheck=0
     enabled=1

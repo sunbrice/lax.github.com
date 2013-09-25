@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[Weekly]Parallel gem installing using bundler"
+title: "[Weekly]Ruby2.1 GC改进;Bundler并行安装"
 description: ""
 categories: []
 tags: []
@@ -12,7 +12,7 @@ tags: []
 ####   ruby 2.1将对GC进行改进
 matz在baruco上宣布在ruby 2.1中将改进GC功能。这对于大规模部署ruby应用的企业来说，是个好消息。ruby官方版本（MRI）一直被人诟病，其中就包含GC方面的原因。而在此之前，大规模部署一般要借助于REE或者JRuby等第三方实现。
 
-Ruby的内存管理采用copy on write方式，亦即fork出的进程会与父进程共用一部分内存空间，除非对内存有改动。但是ruby进程会单独进行gc，导致不同进程会对共享内容进行扫描及改动，copy on write的效果没有发挥出来。
+MRI和Rubinius的内存管理采用copy on write方式，亦即fork出的进程会与父进程共用一部分内存空间，除非对内存有改动。但是ruby进程进行GCd的方式是mark-and-sweep，导致对内存中的对象进行扫描及标记。首次进行GC时，copy on write的效果被抵消。
 
 http://www.infoq.com/news/2013/09/ruby-2-1-gc-revamp
 
