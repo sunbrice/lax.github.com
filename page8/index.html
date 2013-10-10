@@ -238,6 +238,136 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2010-09-30 00:00:00 +0800">30 Sep 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/09/30/taobao-filesystemtfs.html" title="Taobao FileSystem（TFS）开源发布了" rel="bookmark">Taobao FileSystem（TFS）开源发布了</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          TFS新近发布出来了，代码量不小，抽个时间研究下。<br>taobao定制了不少功能，也有很多通用功能不能支持（比如自定义文件名），做迁移前需要考察它是否支持某些常用的特性。<br><br><a href="http://code.taobao.org/svn/tfs/">http://code.taobao.org/svn/tfs/</a><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/portal" target="_blank">http://www.liulantao.com/portal</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-7609411476171531609?l=sandshoots.blogspot.com' alt='' /></div>
+
+          <a href="/Technology/2010/09/30/taobao-filesystemtfs.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#TFS-ref">TFS <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2010-08-11 19:36:00 +0800">11 Aug 2010</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2010/08/11/twittere79a84e5bfabe9809fe7a88be5ba8fe983a8e7bdb2.html" title="Twitter的快速程序部署" rel="bookmark">Twitter的快速程序部署</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>Twitter早期的更新采用Capistrano和Git，每次程序更新时间与服务起数目呈线性关系。当服务器数量迅速增加时，更新       效率开始成为问题。
+基于中心代码库，更新时代码库压力较大。通过增加Git库的副本，可以缓解问题，但是从长期看，需要持续进行Git库扩展。</p>
+
+<p>后来，Twitter引入去中心化的方案，在程序更新中采用BitTorrent，将更新时间从40分钟降低到12秒！</p>
+
+<p>Capistrano： Ruby世界流行的一个部署框架，在实际服务器上执行任务。
+Git：代码管理。
+Murder：启动BTtracker，创建seeds，文件传输等任务。
+BitTornado：对BitTorrent改造，更适合DataCenter内部高质量的网络环境。</p>
+
+<h1 id="murder-fast-datacenter-code-deploys-using-------bittorrent">Murder: Fast datacenter code deploys using       BitTorrent</h1>
+
+<h2 id="thursday-july-15-2010">Thursday, July 15, 2010</h2>
+
+<p>Twitter has thousands of servers. What makes having           boatloads of servers particularly annoying though is that we           need to quickly get multiple iterations of code and binaries           onto all of them on a regular basis. We used to have a           git-based deploy system where we’d just instruct our           front-ends to download the latest code from our main git           machine and serve that. Unfortunately, once we got past a few           hundred servers, things got ugly. We recognized that this           problem was not unlike many of the scaling problems we’ve had           and dealt with in the past though &ndash; we were suffering the           symptoms of a centralized system.</p>
+
+<p>By sitting beside a particularly vocal Release Engineer, I           received first-hand experience of the frustration caused by           slow deploys. We needed a way to dramatically speed things up.           I thought of some quick hacks to get this fixed: maybe           replicate the git repo or maybe shard it so everyone isn’t           hitting the same thing at once. Most of these           quasi-centralized solutions will still require re-replicating           or re-sharding again in the near future though (especially at           our growth). It was time for something completely different,           something decentralized, something more like.. <a href="http://bittorrent.com/">BitTorrent</a>.. running           inside of our datacenter to quickly copy files around. Using           the file-sharing protocol, we launched a side-project called           Murder and after a few days (and especially nights) of nervous           full-site tinkering, it turned a 40 minute deploy process into           one that lasted just 12 seconds!</p>
+
+<p>Murder (which by the way is the name for a <a href="http://en.wikipedia.org/wiki/List_of_collective_nouns_for_birds">flock             of crows</a>) is a combination of scripts written in Python           and Ruby to easily deploy large binaries throughout your           company’s datacenter(s). It takes advantage of the fact that           the environment in a datacenter is somewhat different from           regular internet connections: low-latency access to servers,           high bandwidth, no NAT/Firewall issues, no ISP traffic           shaping, only trusted peers, etc. This let us come up with a           list of optimizations on top of BitTornado to make BitTorrent           not only reasonable, but also effective on our internal           network. Since at the time we used Capistrano for signaling           our servers to perform tasks, Murder also includes a           Capistrano deploy strategy to make it easy for existing users           of Capistrano to convert their file distribution to be           decentralized. The final component is the work Matt Freels (@<a href="http://twitter.com/mf">mf</a>) did in bundling           everything into an easy to install ruby gem. This further           helped get Murder to be usable for more deploy tasks at           Twitter.</p>
+
+<p>Reference：
+<a href="http://engineering.twitter.com/2010/07/murder-fast-datacenter-code-deploys.html">http://engineering.twitter.com/2010/07/murder-fast-datacenter-code-deploys.html</a>
+Murder：（Python/Ruby）<a href="http://github.com/lg/murder">http://github.com/lg/murder</a></p>
+
+          <a href="/Technology/2010/08/11/twittere79a84e5bfabe9809fe7a88be5ba8fe983a8e7bdb2.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#deploy-ref">deploy <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#twitter-ref">twitter <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2010-07-19 19:14:58 +0800">19 Jul 2010</abbr>
       </span>
       <h3 class="entry-title">
@@ -662,148 +792,6 @@ ping -f – l 1500 www.renren.com
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2010-06-08 00:00:00 +0800">08 Jun 2010</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2010/06/08/varnish-setup-in-steps.html" title="Varnish Setup in Steps" rel="bookmark">Varnish Setup in Steps</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>配置与编译</p>
-
-<pre><code>./autogen.sh
-./configure
-make
-</code></pre>
-
-<p>测试</p>
-
-<pre><code>cd bin/varnishtest &amp;&amp; ./varnishtest tests/*.vtc
-</code></pre>
-
-<p>安装</p>
-
-<pre><code>make install
-</code></pre>
-
-<p>启动</p>
-
-<pre><code>/data/varnish/sbin/varnishd -a 0.0.0.0:80 -s file,/data/vcache/varnish_cache.data,20g -f /data/varnish/etc/vcl.conf -p thread_pool_max=1500 -p thread_pools=8 -p listen_depth=512 -P /data/varnish/sbin/varnish.pid
-</code></pre>
-
-<p>重新载入</p>
-
-<pre><code>kill -HUP `cat /data/varnish/sbin/varnish.pid`
-</code></pre>
-
-<p>关闭</p>
-
-<pre><code>killall varnishd
-</code></pre>
-
-<p>&ndash; <br />Liu Lantao<br />EMAIL: liulantao ( at ) gmail ( dot ) com ; <br />WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br />  &lt;div class="blogger-post-footer"&gt;<img width="1" height="1" src="https://blogger.googleusercontent.com/tracker/31667564-2499494717203567834?l=sandshoots.blogspot.com" alt="" />&lt;/div&gt;</p>
-
-          <a href="/Technology/2010/06/08/varnish-setup-in-steps.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#Varnish-ref">Varnish <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2010-06-02 00:00:00 +0800">02 Jun 2010</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2010/06/02/flex-hello-world-example.html" title="Flex Hello-world example." rel="bookmark">Flex Hello-world example.</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          Flex开发与普通的页面开发之间，道理基本相通：<br>网页有html，Flex有mxml，并且都有相应的可视化设计工具（Dreamweaver和Flash Builder，有趣的是这两个工具现在都归Adobe公司）；<br>网页开发有&lt;script&gt;标签，Flex开发有&lt;mx:Script&gt;标签；<br>网页开发的产物通过浏览器进行工作，Flex开发的产物通过flash插件工作；<br>网页开发中有ajax的模式，Flex开发使用了RPC调用。<br> <br>reference: <a href="http://learn.adobe.com/wiki/display/Flex/2d.+Tutorial">http://learn.adobe.com/wiki/display/Flex/2d.+Tutorial</a><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2733623665972320298?l=sandshoots.blogspot.com' alt='' /></div>
-
-          <a href="/Technology/2010/06/02/flex-hello-world-example.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#Flex-ref">Flex <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#Flash-ref">Flash <span>2</span></a></li>
-     
-    	<li><a href="/tags.html#MXML-ref">MXML <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -837,6 +825,14 @@ make
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

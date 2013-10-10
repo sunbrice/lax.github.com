@@ -69,6 +69,8 @@ http://blog.liulantao.com/page27/index.html
 http://blog.liulantao.com/page28/index.html
 http://blog.liulantao.com/page29/index.html
 
+http://blog.liulantao.com/Technology/2013/10/10/an-example-of-map-reduce-in-ruby.html
+http://blog.liulantao.com/2013/09/24/hhkb.html
 http://blog.liulantao.com/Technology/2013/09/23/kernel-uek-3813-upgrade-notes.html
 http://blog.liulantao.com/2013/09/22/weekly-parallel-gem-installing-using-bundler.html
 http://blog.liulantao.com/2013/09/15/update-net-ssh-kerberos-for-ruby--191.html

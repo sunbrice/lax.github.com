@@ -238,6 +238,76 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2009-04-15 00:00:00 +0800">15 Apr 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/04/15/principles-behind-agile-manifesto.html" title="Principles behind the Agile Manifesto" rel="bookmark">Principles behind the Agile Manifesto</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <div style="text-align: center;"><b>Principles behind the Agile Manifesto</b><br><br><br>We follow these principles:<br><br>Our highest priority is to satisfy the customer<br>through early and continuous delivery<br>of valuable software.<br> <br>Welcome changing requirements, even late in<br>development. Agile processes harness change for<br>the customer&#39;s competitive advantage.<br><br>Deliver working software frequently, from a<br>couple of weeks to a couple of months, with a<br> preference to the shorter timescale.<br><br>Business people and developers must work<br>together daily throughout the project.<br><br>Build projects around motivated individuals.<br>Give them the environment and support they need,<br> and trust them to get the job done.<br><br>The most efficient and effective method of<br>conveying information to and within a development<br>team is face-to-face conversation.<br><br>Working software is the primary measure of progress.<br> <br>Agile processes promote sustainable development.<br>The sponsors, developers, and users should be able<br>to maintain a constant pace indefinitely.<br><br>Continuous attention to technical excellence<br>and good design enhances agility.<br> <br>Simplicity--the art of maximizing the amount<br>of work not done--is essential.<br><br>The best architectures, requirements, and designs<br>emerge from self-organizing teams.<br><br>At regular intervals, the team reflects on how<br> to become more effective, then tunes and adjusts<br>its behavior accordingly. <br clear="all"></div><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5513500096263419137?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2009/04/15/principles-behind-agile-manifesto.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2009-04-07 00:00:00 +0800">07 Apr 2009</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2009/04/07/svnsshruby-on-rails.html" title="使用SVN+SSH，同步Ruby On Rails代码的脚本" rel="bookmark">使用SVN+SSH，同步Ruby On Rails代码的脚本</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          版本库和开发都在自己的笔记本上进行，而服务器则通过svn来同步代码。<br>每次在服务器上测试都需要运行一系列的命令，并且由于无线网络使用DHCP取得动态ip，每次都要修改。这个过程很麻烦，所以写一个简单的脚本完成这个任务。<br><br>基本思路很简单：<br>首先修改hosts文件（为svn update时提供方便，即使使用动态ip，也可以每次通过主机名来访问），<br>然后通过svn+ssh来获取代码，<br>之后则进行初步的设定，配置数据库文件，<br> 最后则执行数据库迁移，并且启动script/server。<br>---------------------------------------------<br>[lax@gnu ~]$ cat svn_ssh_from_lax <br>sudo vi /etc/hosts<br>svn co svn+ssh://lax/LAX/_DEV_/_SVN_/repos/<a href="http://www.myshu.org/trunk">www.myshu.org/trunk</a> www.myshu.org.devel_trunk<br> cd www.myshu.org.devel_trunk/ &amp;&amp; cp config/database.yml.orig config/database.yml<br>vi config/database.yml &amp;&amp; rake db:drop &amp;&amp; rake db:create &amp;&amp; rake db:migrate &amp;&amp; ruby script/server<br> ---------------------------------------------<br clear="all"><br>只需<br>$ sh svn_ssh_from_lax<br>即可运行此脚本来完成任务。<br><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4115259286010733722?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2009/04/07/svnsshruby-on-rails.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2009-03-04 00:00:00 +0800">04 Mar 2009</abbr>
       </span>
       <h3 class="entry-title">
@@ -446,76 +516,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-01-19 00:00:00 +0800">19 Jan 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/01/19/rake-railsfreezegems-version222.html" title="# rake rails:freeze:gems VERSION=2.2.2" rel="bookmark"># rake rails:freeze:gems VERSION=2.2.2</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <ol class="dp-bash" start="1"><li class=""><div style="width: 422px;" class="">rake&nbsp;rails:freeze:gems&nbsp;<span class="vars">VERSION=</span><span>2.2.2&nbsp; </span></div></li></ol><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4666702678549991852-4620965334961364128?l=liulantao.blogspot.com' alt='' /></div>
-
-          <a href="/2009/01/19/rake-railsfreezegems-version222.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2009-01-17 00:00:00 +0800">17 Jan 2009</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2009/01/17/ror-development-with-radrails-in.html" title="ROR development with RadRails in Eclipse" rel="bookmark">ROR development with RadRails in Eclipse</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          安装Eclips。<br>菜单：Help - Software Updates - Available Software - Add Sites, <a href="http://radrails.sourceforge.net/update">http://radrails.sourceforge.net/update</a>,  <a href="http://updatesite.rubypeople.org/release">http://updatesite.rubypeople.org/release</a><br> ------------参考文章-------------------<br>installing RadRails on Eclipse ...........<br><br>I could not find a proper answer when i wanted to install RadRails on eclipse . This is how it is done , .... in the Eclipse menu go to<br> Help--&gt;Software Updates --&gt; Find and Install....<br>then in the pop - up window which appears ,..<br>Search for new features to install<br>and then click next and then u will have to add 2 new remote sites, .. the details for the sites are the ones which were very difficult to obtain , they are<br> site 1 :<br>Name :RadRails<br>URL : <a href="http://radrails.sourceforge.net/update">http://radrails.sourceforge.net/update</a><br>site 2 :<br>Name :RDT<br>URL : <a href="http://updatesite.rubypeople.org/release">http://updatesite.rubypeople.org/release</a><br> then click on finish , u are almost done with the installation , u have to just follow the instructions from here on to finish the installation .<br clear="all"><br>Original link：<a href="http://satisheerpini.blogspot.com/2008/05/installing-radrails-on-eclipse.html">http://satisheerpini.blogspot.com/2008/05/installing-radrails-on-eclipse.html</a><br> -------------------------------<br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> ------<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2713110014899246446?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2009/01/17/ror-development-with-radrails-in.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -549,6 +549,14 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

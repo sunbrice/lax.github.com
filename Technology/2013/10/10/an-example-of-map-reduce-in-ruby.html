@@ -3,8 +3,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>补充：使用Ruby进行Log分析</title>
-    
+    <title>Ruby中的map方法和reduce方法</title>
+    <meta name="description" content="">
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -229,22 +229,71 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>补充：使用Ruby进行Log分析 </h1>
+  <h1>Ruby中的map方法和reduce方法 </h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <br>补充：<br>使用str.split方法，分析同一个文件需要的时间：<br>lax@mib ~ $ time ruby accounting_total_reqs.rb <br>4820147812<br><br>real    0m8.272s<br>user    0m8.105s<br>sys    0m0.148s<br><br clear="all"><br>-- <br>Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2376461025494498877?l=sandshoots.blogspot.com' alt='' /></div>
+    
+<p>有同学问到一个问题</p>
+
+<pre><code>1
+2
+3
+4
+5
+6
+...
+
+每3行加起来，结果为
+
+6
+15 
+...
+</code></pre>
+
+<p>这个问题，处理过程分为两步，先将输入的数字每三个分为一组，然后对每组执行累加，输出结果。</p>
+
+<p>传统面向过程的写法需要进行多次循环，有一些判断条件。读者可以自行写一下，用任何语言实现。</p>
+
+<p>这两个过程，第一步叫做分块，对每一个元素进行操作；第二步则是将结果合并后输出结果。数学上的名字叫map和reduce。看到这个名字你肯定想到了hadoop——没错，就是那个map和reduce，只不过hadoop做了一些工程上的优化。
+关于map/reduce，如果不了解，可以参考(这里)[http://www.haskell.org/haskellwiki/MapReduce_as_a_monad]和(这里)[http://en.wikipedia.org/wiki/MapReduce]。</p>
+
+<p>Ruby中有相应的方法，属于Enumerable模块，对于支持Enumerable的类（如Array）可以直接使用。</p>
+
+<p>直接写出答案如下：</p>
+
+<pre><code># 首先从分块，执行map操作；然后对每个map内部执行reduce
+num_list = (1..100)
+num_list.each_slice(3).map {|b| b.reduce(:+)}
+</code></pre>
+
+<p>细心的你会发现这与hadoop的概念有些差异，reduce方法的对象不是map的结果集。没错，这个reduce是在map内部执行的。</p>
+
+<p>其实，map和reduce对应于对数据集的两种操作，map/reduce风格只是这两种操作组合使用的一个特例，reduce是可以独立于map而单独使用的。</p>
+
+<p>再来看一个hadoop风格reduce的例子</p>
+
+<pre><code># puts是reduce执行的方法
+num_list.each_slice(3).map {|b| b.reduce(:+)}.reduce(nil, :puts)
+</code></pre>
+
+<p>体会一下差异。</p>
+
+<p>再来看一个例子：
+    # 求平方和
+    num_list = (1..100)
+    (1..100).reduce {|total, element| total += element * element}     =&gt; 338350</p>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/Technology/2010/02/23/gentoo-setup-scim-in-gnome.html" title="Gentoo: setup scim in GNOME">&larr; Previous</a></li>
+        <li class="prev"><a href="/2013/09/24/hhkb.html" title="HHKB">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/Technology/2010/04/21/rubylogstringsplitregexpmatch.html" title="使用Ruby进行Log分析：放弃String.split，使用Regexp.match">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
@@ -253,7 +302,7 @@
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>21 April 2010</span></div>
+    <div class="date"><span>10 October 2013</span></div>
 
   
     <h4>Tags</h4>
@@ -265,6 +314,10 @@
   
      
     	<li><a href="/tags.html#Ruby-ref">Ruby <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#map-ref">map <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#reduce-ref">reduce <span>1</span></a></li>
     
   
 

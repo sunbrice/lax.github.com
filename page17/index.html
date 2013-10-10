@@ -238,6 +238,76 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2007-11-25 00:00:00 +0800">25 Nov 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/11/25/blog-post.html" title="国立北京师范大学校歌" rel="bookmark">国立北京师范大学校歌</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          前年社团文化节开幕式的时候合唱了这首歌，歌词和配的曲子，让人感觉很有历史责任感。<br>闲话不多说，歌词奉上：<p>------------------------------<br>国立北京师范大学校歌<br>范源廉 作歌<br>冯孝思 作曲<br>------------------------------<p>往者文化世所荣<br>将来事业更无穷<br>开来继往 师道贯其中<br>师道 师道 谁兴立<br>责无旁贷在藐躬<p>皇皇兮首都<br>巍巍兮学府<br>一堂相聚志相同<br>朝研夕讨乐融融<br>宏我教化<br>昌我民治<br>共矢此愿务成功<p>------------------------------------------------------------<br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<p>---------- 转载本网站所有文章，请注明出处 ---------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-4762123815007214058?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2007/11/25/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2007/11/13/fluxbox.html" title="fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案" rel="bookmark">fluxbox标题栏、任务栏、菜单中文字体显示问题的解决方案</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          关于如何设置菜单，请参考网络上其他朋友的文档。<br>本文主要介绍设置fluxbox中菜单、任务栏、标题栏中显示中文字体的方法。实现平台：fedora 8。<p>一、请确认你安装了中文的字体。<br>方法1、<br>首先在终端运行fc-list命令：<br>&lt;code&gt;<br>[lax@liulantao .fluxbox]$ fc-list<br>&lt;/code&gt;<br>从中找到支持中文的字体，记下字体名字：<br>&lt;code&gt;<br>AR PL ZenKai Uni,文鼎PL中楷Uni:style=Medium<br>AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni,文鼎PL细上海宋Uni:style=Regular<br>&lt;/code&gt;<br>本文使用的就是AR PL ZenKai Uni，即文鼎PL中楷Uni。<br>如果要使用其它字体，替换成相应的名称。<br>方法2、<br>打开firefox，点击View - &amp;gt; Preferences -&amp;gt; Content ，看Default<br>font一项，里面也有字体名称（可能不如方法一中的直观），名字中包含Kai、Sun的大多是中文字体。<p>二、修改所使用风格的配置文件。如果是自定义风格，修改定义文件；如果风格的名称为Operation（默认风格之一），则修改fluxbox目录下styles文件夹里的Operation：<br>[lax@liulantao .fluxbox]$ sudo vi /usr/share/fluxbox/styles/Operation<br>Password:  ******<p>找到下面一行：<br>&lt;code&gt;<br>window.font:                    lucidasans-10<br>&lt;/code&gt;<br>注释掉window.font行，修改为：<br>&lt;code&gt;<br>#window.font:                    lucidasans-10<br>window.font:                    AR PL ZenKai Uni-10<br>&lt;/code&gt;<p>保存退出，reload config或者重新启动fluxbox就可以看到窗口的标题栏能够用设置的字体（AR PL ZenKai Uni，10号）显示中文了。<p>设置其它位置的字体，可以修改相应的font。<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-2941371565744535162?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2007/11/13/fluxbox.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2007-11-13 00:00:00 +0800">13 Nov 2007</abbr>
       </span>
       <h3 class="entry-title">
@@ -446,76 +516,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2007-08-10 00:00:00 +0800">10 Aug 2007</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2007/08/10/blog-post.html" title="北美留学的奖学金选择" rel="bookmark">北美留学的奖学金选择</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          北美留学的奖学金选择<br>       作者简介：王少华，上海新东方SAT基础词汇、GRE词汇、GMAT语法主讲教师，2004年度集团优秀教师。浙江大学工学学士，管理学硕士。对单词的记忆有深入的研究。曾获GRE满分2400分，GMAT考试770分。<p><br>      这两年随着赴美留学的签证回暖，越来越多的莘莘学子们把美国重新作为他们留学的第一选择。这与去美国留学的诸多优势是紧密相关的：美国有着世界上最好的大学；美国的教学设施最为先进，教授最为优秀；世界上最好的企业大部分总部都在美国，从美国的研究生院毕业之后可以留下来工作，而且美国有着世界上极为公平的竞争体系；而除了这些之外，还有一个不可忽视的很重要的原因：美国大学所给的奖学金无疑是世界上最为丰厚的。在这里我们就想给大家介绍一下去美国留学你可以获得哪些金融上的资助。<p>          首先从大方向来看，去美国可以获得的financial aid可以分为三种。第一种叫做non-service<br>scholarship, 顾名思义这种奖学金是不需要干活就能够拿钱的，因此它无疑应该作为大家的第一选择。这种奖学金又可以细分为以下三类。第一类叫做fellowship，它是真正意义上的全奖，很多著名大学的fellowship可以高达一年四到五万美元，其中两到三万美元帮你自动交学费，还有两到三万美元发给你当生活费。所以如果申请到这种奖学金的话，基本上经济方面就没有问题了。五年博士读下来，不仅自己不需要花一分钱，而且如果你花钱不是很厉害的话，还可以攒下相当可观数目的一笔钱。但就是因为这种钱最好，所以它也最难拿。基本上中国学生出国拿到fellowship的比例是很低的，因为这种奖学金基本上都是按校来评定而不是按系来评定的，比方说学校获得了一笔基金fund，他就把全校最为优秀的学生给找出来，把这笔钱发给他们，所以和你竞争的是整个学校的学生，获得的难度就会比较大，但是大家一定要力争拿这种奖学金。第二类不需要提供服务就能够拿钱的奖学金叫做scholarship，这种钱一般是机构或者企业所给的，数量不会很多。其实我们在读本科时也经常可以遇到这种奖学金，比如说象花旗银行奖学金，宝洁奖学金，INTEL奖学金等，钱的数额都是不高的，仅凭这些钱很难完成在美国的学业。但是没有人会嫌钱少，所以这种奖学金大家也应该争取获得。在每类奖学金的前面都有一个方框，大家可以看到框就打勾。有些同学会害怕如果这种奖学金也打勾了说明自己比较容易被满足，学校就直接给自己scholarship而不给fellowship了，其实不然。因为美国的奖学金都是按一档一档来评定的，首先教授把所有申请fellowship的同学分在一类，把里面最优秀的同学选出来，发给他们fellowship，然后再把没有获得fellowship的同学调到下一挡，选择获取scholarship，所以大家应该每个框都打勾，每种奖学金都应该争取。第三类叫做<br>tuition waver，也就是把你的学费给免掉，一般来说在美国留学的主要支出就是学费和生活费，而这两项在数额上一般是对半开的。由于一年的学费一般需要两万到三万美元，因此获得这种奖学金也可以节省一笔不小的开支。<p>      第二种大方向叫做service-assistantship，这种奖学金就需要干活了。它又可以细分为两类，一个叫做TA也就是teaching<br>assistantship助教，另外一个叫做 RA也就是 research assistantship助研。TA一般比较轻松一点,<br>中国学生拿的比例不高, 因为它对口语的要求比较高。一般来说TA经常要教的一门课是calculus,<br>所以数学好的同学在这方面会占有一定的优势。当然如果你不能教calculus的话，批批本子或者监督一下考试也是可以算TA的。想要拿TA的同学要注意的是如果你参加老托福考试最好再去参加一个TSE考试来证明自己的口语能力，如果参加新托福考试的话尽量把口语的单项成绩考得高一点，这样会对申请TA有很大的帮助。RA的话就比较辛苦了，经常一周要干四十多个小时的活，而且给的钱从单位小时数目来看就并不是很多。如果从将来发展的角度来看，两种奖学金就各有优劣了。首先拿RA来讲，它的优点是可以尽早进实验室，这样对以后写论文会很有好处，而缺点在于拿这种钱的话在研一就把导师给定好了，以后如果发现这个老师不是很适合自己的话就比较难以更换。而TA的优缺点恰好相反，由于第一年是不进实验室的，因此可以在研一先观望一年，看看哪个导师在学术上有较大的发展空间，或者哪个导师对中国学生相对不错，以后在选导师可以选他，然而就是因为晚进实验室，因此对于研究能力的提高没有好处。从钱的总数来看TA和RA<br>的数量则是差不多的，而且这两种奖学金你只能拿一个，是不可能两个都拿的。一般来说TA和RA任拿一个再加上tuition<br>waver在数额上就等于fellowship了，因为tuition<br>waver把学费给免了，TA和RA则解决生活费。一般来说中国学生所讲的全奖其实在很大比例上都是TA和RA加上tuition<br>waver，因为fellowship是非常难拿的。此外申请TA和RA的同学都要好好准备interview，因为现在给interview的机会越来越多了，一般来说理科生不大要求interview，因为比较好申请，只要GPA够高，GRE和TOEFL成绩还可以，就直接给奖学金了，但工科，商科和文科的同学经常会要求interview。具体说来interview可以分为两类，一类叫做face<br>to face, 也就是面对面直接进行面试，这种面试里教授会直接从美国飞过来，在北京或者上海这种城市里选择一个宾馆住下来，让大家过去面试。而第二种则是<br>telephone用电话进行面试，考虑到成本的原因这种面试现在占了较大的比例。大家在申请后对于教授经常会问的常见的问题要做好准备，以便教授突然从美国打来电话面试时可以做到有备而答。<p>          第三个方向叫做loan也就是贷款，一般来说申请普通的研究生院是很难申请这种贷款的，它比较适合于申请读MBA或者法学院的学生。其实MBA也不是一定没有奖学金，如果是排名TOP<br>10的学校当然没什么奖学金了，去这些学校读书都是进行一项投资，以后出来是可以获得高薪的，美国人不可能让你有这么好的事情，一方面又给你奖学金，一方面又让你出来以后轻松赚大钱。但如果是排名三十名之后的学校尤其是一些州立大学也可以申请到奖学金。但是MBA的奖学金一般只是提供tuition<br>waver也就是把学费给免掉，生活费还是得自己承担，大概两年会需要四到五万美元。对于申请美国最好的商学院和法学院的同学一般都可以考虑贷款，因为只要你申请到这些学校了，贷款的可能性是很大的，这些牛校对自己的学生很有信心，觉得从自己学校毕业出来的学生以后都会是一些成功人士，所以还清贷款是没有问题的。而且一般贷款的还款期限也比较长，许多学校都高达十年二十年，导致毕业后每年只需要还一到两万美元，对于从这些大学毕业的商科和法律的学生是绝对能够承担的，所以大家可以力争多获得一些贷款。<p>          介绍完奖学金的种类后我们再看看其他一些相关的东西。大家要注意拿奖学金的难易程度和所申请的专业也有很大的关系。一般来说商科的很多专业都是很难申请到奖学金的，比如说Financial<br>engineering, accounting,<br>marketing都很难拿到奖学金，而理工科的同学比如象数学系，物理系和化学系的同学只要GPA够高，GRE和TOEFL成绩还可以，都有拿<br>fellowship的希望。经济类很难申请，这几年去美国牛校的人不多，包括北大的经济研究中心，清华和复旦的经济系这几年的申请情况都不容乐观，但只要你各方面够优秀，申请成功以后拿奖学金的比例还是挺高的。拿文科来讲，fellowship的难度是比较大的，当然要看你具体申请什么方向，比如申请传媒难度就比较大，这个专业基本上很少给fellowship，但这两年的RA有增多的趋势，因此有兴趣的同学可以朝这个方向予以更多的关注。而文科里面一些比较冷门的专业比如东亚研究或者社会学拿全奖的可能性就大多了，但出来后工作情况就要差一点。其实对于不同专业拿奖学金在难易程度上有很大区别大家也要有正确的认识，同学们完全不要因为进了个好拿奖的专业就沾沾自喜，也不要因为自己进了个很难拿奖的专业就怨天尤人。其实大家可以反过来考虑这个问题，为什么有些专业不给奖学金呢，因为它是热门专业，美国人也很喜欢读，出来后工作好找而且年薪很高，读这种专业是当作一种投资的，它自然就不给你奖学金了。而为什么还有些专业提供丰富的奖学金呢，因为这些专业出来后不大好找工作，或者读的难度太大，美国人也不大爱读，这才会提供奖学金来吸引海外学生过去读。想通了这一点大家在申请奖学金时的心态就会比较平和了。<p>          此外申请奖学金的时间也有一定的讲究。由于美国绝大部分大学的deadline可以分为三档，也就是十二月一日，一月十五日和二月十五日，所以中国同学一般在十一月初和十二月底之间需要把材料寄出，而拿录取通知书的时间一直要到第二年的三月以及五月，因此从寄材料开始到拿入学通知书当中会有整整六个月，这六个月大家千万不要停止申请工作，还是有很多方法可以帮你拿奖学金的。比如大四的同学可以多去找一些本系的教授，看看自己能不能帮他们做一些项目，或者结合自己的毕业论文好好做一些研究方面的工作，力争可以在核心期刊上发表一篇英文的paper,<br>如果有一篇paper在手或者研究方面有什么比较重大的进展的话，就马上可以和对方学校的教授获得联系，给他展示成果了。因为真正的最后一批录取通知书要到五月份才发，所以在你的不懈努力之下当中发生什么事情都是有可能的。比如教授在十二月份原来打算给你个四分之一奖的，但是后来在三月份看了你最新的研究进展之后，就马上改变了对你的看法，转而决定给你fellowship了，又或者原来是准备仅仅给你录取通知书而不给你奖学金的，但看到你的努力之后给你一个RA了，这种情况都是屡见不鲜的，所以大家在申请的后期千万不要放弃对于奖学金的执着追求。<p>          这几年美国给奖学金的比例呈现出递级增加的趋势，而且签证的通过率也已大幅度增加。大家可以抓住这难得的时机，结合自己的实际情况，选择奖学金去美国进行深造<p>-- <br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8665708038848459186?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2007/08/10/blog-post.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2007-07-18 00:00:00 +0800">18 Jul 2007</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2007/07/18/blog-post_18.html" title="如果天天都是那个家伙的生日？" rel="bookmark">如果天天都是那个家伙的生日？</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          那个家伙的生日。<br />(2007.7.18)<p>自己生日都会想不起来，还要大家提醒，真崇拜自己，干脆塑个像回家对自己烧香好了。<br />与蚊子亲吻了一夜，没睡觉。于是大早晨特有精神，5点半冲到京师广场赏荷花。荷花也有盛开的，粉嘟嘟煞是好看。心中暗自琢磨要是小姑娘也在学校，一起赏荷花的意境又将如何。真是可惜了无此佳人陪伴，同去的宿舍哥们显然让花仙子们失望了，于是一盆盆全是无精打采，叶黄体瘦，叶顶娇滴滴的水珠也不见踪影，真干涩又无聊一群伙伴们。<br />这几天的怪天气，让人受不了，于是受我等轻蔑言论几旬之后，老天突然一个<br />响雷，然后又一个响雷，接着又一个响雷……如此几番，伴随着弱弱的闪电，让人脸面一凉脚面一凉心底也一凉的水珠就砸了下来。<br />小学起老师就教导我们不要在大树底下避雨，可是到现在仍琢磨不透其中的道理。几番思想斗争之后终于决定换个地方，冲向了主楼下。<br />雨中漫步的浪漫，在主楼下的天棚下被演绎着。爷爷奶奶叔叔阿姨们在这里，慢慢绕着圈子走──外面下着雨，这边漫着步。<br />等到了开饭时间，雨还在下；再等等，还是没看出雨小一点儿的迹象；讨论一下，决定冒雨冲回去。<br />于是俩傻瓜终于证明自己想法的幼稚，在主楼到教九的正中央屈服了。只好硬着头皮到教九前面，陪一个早起读书的美女坐着。<br />无奈懒桃儿哥哥的色心此刻丢在了某盆荷花里，而赏雨雅兴又大发。于是乎，看着眼前几棵树参天，烟蒙蒙雾蒙蒙中，如同静谧的森林深处。其时天仍黑，躲过枝头叶间，可以看到灰白的天空。片片梧桐叶，飞临草地间，栖身小道上。<br />过了一会儿教九开门，进去坐坐。感慨的这学期结束了第一次起大早亲近教室，寻找坐在第一排的感觉。想到将来，考虑学业，回家还是出国，或者随大家一起去考研，都已不是久远的事情了。<br />最后还是等雨歇时刻未至，不耐烦冲回来，完成了这半年或者一年唯一一次宿舍集体早餐。一觉醒来，凉风如斯，家还要回？</p><p>--<br />EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br />WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br />------</p><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5378801319659678795?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2007/07/18/blog-post_18.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -549,6 +549,14 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

@@ -238,6 +238,76 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2008-10-13 00:00:00 +0800">13 Oct 2008</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2008/10/13/2008.html" title="2008年国庆相册-与父母在天安门、王府井" rel="bookmark">2008年国庆相册-与父母在天安门、王府井</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <div dir="ltr"><a href="http://home.5jia1.com/uchome/space.php?uid=365190&amp;do=album&amp;id=367230">http://home.5jia1.com/uchome/space.php?uid=365190&amp;do=album&amp;id=367230</a><br clear="all"><br>-- <br>Liu Lantao<br> College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br></div> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8309195539077700149?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2008/10/13/2008.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2008-10-08 00:00:00 +0800">08 Oct 2008</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2008/10/08/squid.html" title="基于多端口控制的Squid二级代理设置方法" rel="bookmark">基于多端口控制的Squid二级代理设置方法</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <div dir="ltr">基于端口的二级代理 by&nbsp;Liu&nbsp;Lantao<br>转载请注明出处<a href="http://www.liulantao.com">www.liulantao.com</a><br><br>学校的网络限制了免费访问的范围，校园网以外的内容访问很不方便。有了一台代理服务器G之后，平时的上网问题可以解决了。过程如图<br>+--------------+-----------------+<br>个人电脑------代理G-----------外网<br> <br>可是G在学校机房里，访问的ip范围受到限制。于是想到改造上面的方式，通过设置二级代理的方式来访问那些受限网站。<br>这个解决方案的结构很简单(假设增加的代理L端口为80)：<br>+-------------+-------------+-------------+<br>个人电脑-----代理G-------代理L:80-------受限ip<br><br>因为通过了代理P，访问速度会受到影响，所以不希望一直使用它。于是要保留两个访问通路。<br> 两个通路通过不同端口来区别。传统的3128端口不做改变，而增加一个自定义的19999端口。<br>+-------------+-----------------+<br> 个人电脑----代理G:3128------外网<br> +-------------+-------------------+-------------+<br> 个人电脑----代理G:19999----代理L:80-------受限ip<br><br>下面是在默认配置文件增加的内容，其中第一部分是3128端口直接连接的设置，第二部分是19999端口二级代理的设置：<br>#######################<br># Part I<br>acl lax src <a href="http://172.16.120.1/24">172.16.120.1/24</a><br>http_access allow lax<br> <br>#######################<br># Part II<br>http_port 19999<br>acl out-lax myport 19999<br>cache_peer <a href="http://www.liulantao.com">www.liulantao.com</a> parent 80 0 no-query<br>cache_peer_access <a href="http://www.liulantao.com">www.liulantao.com</a> allow out-lax<br> cache_peer_access <a href="http://www.liulantao.com">www.liulantao.com</a> deny !lax<br>#######################<br><br>如果有任何问题，发邮件给我。<br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br> EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> </div> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-5162608152246984047?l=lltaichi.blogspot.com' alt='' /></div>
+
+          <a href="/2008/10/08/squid.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2008-09-30 00:00:00 +0800">30 Sep 2008</abbr>
       </span>
       <h3 class="entry-title">
@@ -446,76 +516,6 @@
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2008-05-05 00:00:00 +0800">05 May 2008</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2008/05/05/windowsxpdcomlaunch.html" title="WindowsXP连接无线网络必须开启DcomLaunch服务" rel="bookmark">WindowsXP连接无线网络必须开启DcomLaunch服务</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          如果要开机自动连接无线网络，必须设置下面的服务为自动启动：<br>Service name:	DcomLaunch<br>Dispaly name:	DCOM Server Process Launcher<br>Description:	Provides launch functionality for DCOM services.<br>Path to executable:	C:\WINDOWS\system32\svchost -k DcomLaunch<p>此服务可以保存以往的身份认证设置，如果不启动此服务，则无法完成无线网络身份认证。<p>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8944221541603604796?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2008/05/05/windowsxpdcomlaunch.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2008-03-19 00:00:00 +0800">19 Mar 2008</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2008/03/19/0051.html" title="凌晨00：51的短信" rel="bookmark">凌晨00：51的短信</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          凌晨00：51的短信：<p>&lt;i&gt;希望你睡了，并关机...原谅我此时的碎碎念...一直睡不着，担心家里，担心妈妈...突然好像回家...不知所措...无能为力...毫无办法...&lt;/i&gt;<p><br>突然的变故考验每个人的神经，逍遥自在的闲散之都一下子改变了节奏。阴影笼罩在当地，弥散到与这城市有关系的每个人的心中。刚经历过雪灾，大家的心情来不及放松，就又卷入另一起风波。每次我们都在心中默默祝福，亲身经历这些事件的人们都能平平安安。远方的亲人们在支持你们，一定要坚强冷静，只要大家团结起来，度过这场危机的日子就不远了。<p><br>这一代领导人从刚上台就经历了&quot;非典&quot;的考验，后来又经历多次政治、经济和军事的危机，积累了不少的经验。刚刚过去的&quot;南方雪灾&quot;事件中他们的表现是让我们满意的。<p><br>奥运年的到来，注定会有更多的挑衅。这些挑战，已经不是单靠政府就能解决的，而是迫切需要全中国人民来共同面对，一起克服困难。发扬&quot;万众一心，众志成城&quot;的精神，增强凝聚力，对于解决这些困难将起到决定性的作用。<p><br>我对中国人有信心！<p>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-1628193841426621479?l=lltaichi.blogspot.com' alt='' /></div>
-
-          <a href="/2008/03/19/0051.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -549,6 +549,14 @@
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

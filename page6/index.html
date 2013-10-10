@@ -238,6 +238,154 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2011-12-22 00:45:27 +0800">22 Dec 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2011/12/22/load-balancer-for-cdn-cache-cluster.html" title="关于选择缓存集群负载均衡调度算法的一些想法" rel="bookmark">关于选择缓存集群负载均衡调度算法的一些想法</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>最近两天我维护的一组缓存服务器遇到一些情况。在处理过程中对集群的调度算法进行了一些思考。欢迎各位看官拍砖。</p>
+
+<p>先说一下背景。</p>
+
+<p>这个缓存集群有30多台缓存节点，缓存目标是大小为2-5k的图片文件。</p>
+
+<p>最早的部署方案是将这些缓存节点分成六组（G1-G6），每组4-6个节点。根据文件名特征，将每个文件对应到六组之一；而在组内则采取轮询的方式选择节点进行访问，比较随机。
+访问文件在选择的节点中MISS时，选择的缓存节点会从源站或同组内其它节点读取文件，放入自己的缓存，并返回给查询方。
+当节点访问出错时（如DOWN机，断网等），文件访问的发起方被轮询算法调度到同组的另外一个节点。
+这种方案会造成同组内保存了同一文件的多个副本，这既是好事有事坏事：好的方面是能解决单个缓存节点失效的问题；不好的方面是重复文件使集群的空间利用率不高，对源站造成一定的压力。</p>
+
+<p>之后开始实施了一种改进方案，在负载均衡器中使用一致性哈希算法进行调度。一致性哈希的简单原理为：
+1、所有缓存节点通过一种哈希算法计算，根据哈希值被分布到一个虚拟的环上，每个缓存节点对应环中的一个节点（改进的算法中会生成多个节点，以提高随机性）；
+2、将查询的文件名使用相同的哈希算法计算，得到索引值；
+3、使用索引值在环上查找。如果索引值正好是一个节点的值，则直接选择对应的缓存节点；否则从索引值所在位置顺着环的方向寻找下一个缓存节点。
+4、根据上一步选择的结果，对相应缓存节点进行文件存取操作。</p>
+
+<p>根据实际部署需求我们在一个开源的负载均衡模块进行开发。由于缓存节点的能力基本均等，我们通过多组测试选择了更好的哈希算法来提高均衡性，防止个别节点过热；为了处理节点失效的情形，我们开发了响应的调度功能，当某个缓存节点失效时，环上相邻缓存节点会被选择。</p>
+
+<p>至此，这种方案的雏形就完成了。既能解决有效利用容量的需求，又能处理节点失效。由于使用一致性哈希后不在需要进行分组管理，这种方案也带来运维成本的降低。</p>
+
+<p>（未完）
+&raquo;多个负载均衡器的情况下，缓存失效时的调度算法</p>
+
+          <a href="/Technology/2011/12/22/load-balancer-for-cdn-cache-cluster.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#CDN-ref">CDN <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#一致性哈希-ref">一致性哈希 <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#缓存-ref">缓存 <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#负载均衡-ref">负载均衡 <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2011-11-23 09:22:44 +0800">23 Nov 2011</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2011/11/23/pypy-1-7-released.html" title="PyPy 1.7 released" rel="bookmark">PyPy 1.7 released</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>pypy是一个高效的python解释器。由于采用了JIT编译器，它的速度快于传统的解释器。</p>
+
+<p>据称这次发布的PyPy 1.7的整体性能性能比1.6提升30%。</p>
+
+<p>用python重新了JSON编码器。新的编码器性能二倍于CPython中C扩展，比1.6版本性能提升高达20倍！</p>
+
+<p><a href="http://www.liulantao.com/portal/2011/11/23/pypy-1-7-released/pypy/"><img src="http://www.liulantao.com/portal/wp-content/uploads/2011/11/pypy.jpg" alt="" /></a></p>
+
+<p>还有一些其它改变，如numpypy。有些特性列入了1.8版本的计划中，包括PowerPC和ARM处理器的JIT汇编器后端。</p>
+
+<p><a href="https://lwn.net/Articles/468661/">PyPy 1.7 released [LWN.net]</a>.</p>
+
+          <a href="/Technology/2011/11/23/pypy-1-7-released.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#pypy-ref">pypy <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#python-ref">python <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2011-10-19 19:21:03 +0800">19 Oct 2011</abbr>
       </span>
       <h3 class="entry-title">
@@ -724,156 +872,6 @@ emerge sys-kernel/gentoo-sources之后，在/usr/src/linux目录下执行make me
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-06-30 21:42:17 +0800">30 Jun 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/06/30/e6938de4bd9ce7b3bbe7bb9fe6af94e4be8be7bb9fe8aea1-20110630.html" title="操作系统比例统计.20110630" rel="bookmark">操作系统比例统计.20110630</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>近日对某SNS网站用户的操作系统情况进行统计，结果如下：</p>
-
-<p>Windows：96.15%
-其中：
-  Windows XP (Windows NT 5.1)    63.98%
-  Windows 2003 (Windows NT 5.2)    0.09%
-  Windows Vista (Windows NT 6.0)    3.74%
-  Windows 7 (Windows NT 6.1)    28.32%</p>
-
-<p>Macintosh: 1.06%
-Linux: 0.13%
-iPad: 0.26% </p>
-
-<p>others: 少量</p>
-
-          <a href="/Technology/2011/06/30/e6938de4bd9ce7b3bbe7bb9fe6af94e4be8be7bb9fe8aea1-20110630.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#ipad-ref">ipad <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
-     
-    	<li><a href="/tags.html#macintosh-ref">macintosh <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#windows-ref">windows <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#统计-ref">统计 <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-06-21 12:39:07 +0800">21 Jun 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/Ruby/2011/06/21/rvm-ruby-version-manager.html" title="RVM: Ruby Version Manager" rel="bookmark">RVM: Ruby Version Manager</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p><a href="https://rvm.beginrescueend.com/">RVM: Ruby Version Manager - RVM Ruby Version Manager - Documentation</a>.</p>
-
-<p>管理Ruby版本的工具，可以帮助开发者在各个版本的Ruby之间进行快速切换，便于进行程序测试工作，也便于在生产环境中实现多版本程序共存。</p>
-
-<p>你一定受够了服务器上默认版本与本地开发环境版本不一致的痛苦，试一下吧。</p>
-
-<p>Setup steps:</p>
-
-<pre><code>$ echo insecure &gt;&gt; .curlrc
-$ curl -L https://get.rvm.io | bash -s stable --ruby
-</code></pre>
-
-<p>Usage:</p>
-
-<pre><code>$ rvm list
-$ rvm use system
-$ rvm use 1.9.2
-</code></pre>
-
-<p>另外，python也有类似工具(virtualenv)。</p>
-
-          <a href="/Technology/Ruby/2011/06/21/rvm-ruby-version-manager.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
-     
-    	<li><a href="/tags.html#rvm-ref">rvm <span>3</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -907,6 +905,14 @@ $ rvm use 1.9.2
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

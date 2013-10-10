@@ -238,6 +238,128 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2013-05-14 00:00:00 +0800">14 May 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2013/05/14/awk-sort-keys.html" title="awk统计脚本中的排序方法" rel="bookmark">awk统计脚本中的排序方法</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>最近在使用awk工具进行统计时，经常需要用的哈希来保存临时结果，同时在输出前需要根据哈希的key来进行排序。</p>
+
+<p>以前在awk脚本采取的方式是先通过asorti对key进行一次排序，生成一个排序的key列表，然后遍历这个列表，进行输出操作。这个过程会增加几行代码，同时使得代码的可读性下降，不易理解。</p>
+
+<p>awk在排序这方面的文档是比较缺乏的，在翻阅资料是发现，设置环境变量WHINY_USERS=1，可以使遍历任何哈希时根据key的排序顺序进行。这种方式减少了代码量，不过需要提前设置环境变量。
+Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USERS=1来传递环境变量。</p>
+
+<p>注：awk中哈希的key默认是字符串类型，排序基于字符串顺序。考虑0,1,12,2,21的顺序。</p>
+
+          <a href="/Technology/2013/05/14/awk-sort-keys.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#awk-ref">awk <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-03-28 00:00:00 +0800">28 Mar 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2013/03/28/digweb-peercdn-concurrency-x-2.html" title="[阅读] 基于P2P的CDN / Go vs Erlang并发模型" rel="bookmark">[阅读] 基于P2P的CDN / Go vs Erlang并发模型</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<h3 id="peercdnhttppeercdncom"><a href="http://peercdn.com">PeerCDN</a></h3>
+
+<p>利用P2P进行文件分发不是什么新鲜事，但是在Web环境引入P2P仍然有很多挑战。PeerCDN团队正在进行相关技术的研发。该项目期望通过P2P技术为网站提供稳定、便捷、低成本的内容分发方案。</p>
+
+<p>任何支持WebRTC的浏览器可以支持这种技术，这比之前需要安装额外软件的技术是一个显著的进步。网站页面中只需要加入一行javascript代码。</p>
+
+<p>PeerCDN的专注点应该是大文件（视频，音频，图片），而对于海量小文件则可能会力不从心。</p>
+
+<p><a href="http://peercdn.com">PeerCDN</a></p>
+
+<h3 id="solving-the-wrong-problemhttpjoearmsgithubcom20130328solving-the-wrong-problemhtml"><a href="http://joearms.github.com/2013/03/28/solving-the-wrong-problem.html">Solving the wrong problem</a></h3>
+
+<p>漫长的计算机发展史，芯片规模扩展和时钟频率提升是一个主旋律，奠定了摩尔定律的基础。摩尔定律对软件发展的意义在于，大部分串行执行的程序，可以获得越来越短的执行时间。</p>
+
+<p>从2004年开始，芯片的发展有了微妙的变化：芯片规模仍然越来越大，开始增加更多的核心，而同时时钟频率并没有继续提升。这种情况颠覆了对软件开发的一些基本的认识。</p>
+
+<p>有现实的例子为证，当一个单线程的C程序遇到支持多线程的Erlang程序，性能高下不再是底层预言获胜，而是能够利用多核提升效率的一方。</p>
+
+<p><a href="http://joearms.github.com/2013/03/28/solving-the-wrong-problem.html">Joe Armstrong的Solving the wrong problem</a></p>
+
+<h3 id="concurrency-models-go-vs-erlanghttpjoneisenmepost38188396218"><a href="http://joneisen.me/post/38188396218">Concurrency Models: Go vs Erlang</a></h3>
+
+<p>一个新手对比了Go和Erlang这两种支持并发的语言。Go采用goroutine，有共享内存，因此在多核上扩展，通过channel方式传递消息，需要进行手工的错误处理；Erlang采用进程模型，不能共享内存，因此可以做多机扩展，通过mailbox方式传递消息，语言自身支持异常，通过OTP实现各种稳定性部署。</p>
+
+<p><a href="http://joneisen.me/post/38188396218">Concurrency Models: Go vs Erlang</a></p>
+
+
+          <a href="/2013/03/28/digweb-peercdn-concurrency-x-2.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2013-03-19 00:00:00 +0800">19 Mar 2013</abbr>
       </span>
       <h3 class="entry-title">
@@ -757,128 +879,6 @@ git checkout gh-pages
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-01-18 00:00:00 +0800">18 Jan 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2013/01/18/funny-opensource-projects.html" title="有趣的开源项目（一）：Octpress/ktap" rel="bookmark">有趣的开源项目（一）：Octpress/ktap</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<ul id="markdown-toc">
-  <li><a href="#octopresshttpsgithubcomimathisoctopress"><a href="https://github.com/imathis/octopress">Octopress</a></a></li>
-  <li><a href="#ktaphttpsgithubcomktapktap"><a href="https://github.com/ktap/ktap">ktap</a></a></li>
-</ul>
-
-<h1 id="octopresshttpsgithubcomimathisoctopress"><a href="https://github.com/imathis/octopress">Octopress</a></h1>
-
-<p>这是又一个基于jekyll的博客程序，类似Jekyll-Bootstrap。和JB相比，默认界面风格更有传统blog系统的韵味，对于代码的支持也宣称做的更好，实在是众多码农码神的利器。</p>
-
-<p>Octopress is Jekyll blogging at its finest.</p>
-
-<ul>
-  <li>Octopress sports a clean responsive theme written in semantic HTML5, focused on readability and friendliness toward mobile devices.</li>
-  <li>Code blogging is easy and beautiful. Embed code (with Solarized styling) in your posts from gists, jsFiddle or from your filesystem.</li>
-  <li>Third party integration is simple with built-in support for Twitter, Pinboard, Delicious, GitHub Repositories, Disqus Comments and Google Analytics.</li>
-  <li>It&rsquo;s easy to use. A collection of rake tasks simplifies development and makes deploying a cinch.</li>
-  <li>Ships with great plug-ins some original and others from the Jekyll community — tested and improved.</li>
-</ul>
-
-<h1 id="ktaphttpsgithubcomktapktap"><a href="https://github.com/ktap/ktap">ktap</a></h1>
-
-<p>与DTrace、SystemTap类似的追踪程序，用于对系统和程序的调用栈进行追踪调试。目前这个软件还在开发的初始阶段。</p>
-
-
-          <a href="/Technology/2013/01/18/funny-opensource-projects.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#ktap-ref">ktap <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-01-12 00:00:00 +0800">12 Jan 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2013/01/12/weibo-update-20130107-20130113.html" title="微博更新记录 20130107-20130113" rel="bookmark">微博更新记录 20130107-20130113</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<p>本周内核方面值得关注的两个改进：mempressure cgroup（内存用尽之前，内核通知应用程序释放内存http://t.cn/zjB4Ahc）和zswap（内存用尽发生后，swap i/o有一层内存缓冲，减少实际磁盘操作 http://t.cn/zjB4AhV）
-1月11日15:54來自未通过审核应用</p>
-
-<p>不能赞成更多啦 //@Laruence 其实学Linux Shell, 最最重要的就是领会: &ldquo;各司其职, 协同合作, 解决问题. &ldquo; , 所谓各司其职, 就是学习那些最最基本不过的命令, 他们都很简单, 好像不能解决你的实际问题. 所谓协同合作, 就是理解&rdquo;|&rdquo;的设计, 每一个工具只要关注自己的部分,组合起来却威力无穷. 这个也是软件设计的一个基本思想.
-1月10日10:34來自新浪微博</p>
-
-<p>看京剧，发现能看懂剧情了。记得年轻时去看戏从来不关心戏台上老生的咿咿呀呀，满心思都是旁边的小玩具小人书和小零食，偶尔跑到后台凑热闹。。。#爱藕丝#
-1月8日22:09來自未通过审核应用</p>
-
-<p>继Android、Ubuntu之后，Open webOS也运行在了Google Nexus 7上，在其它项目的基础上，Simon &ldquo;morphis&rdquo; Busch用一周时间完成。N7成为近期各家基于Linux的操作系统社区的宠儿http://t.cn/zjmvlTu #爱藕丝#
-1月7日10:27來自未通过审核应用</p>
-
-          <a href="/2013/01/12/weibo-update-20130107-20130113.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -912,6 +912,14 @@ git checkout gh-pages
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

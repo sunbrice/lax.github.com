@@ -238,6 +238,183 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2013-10-10 00:00:00 +0800">10 Oct 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2013/10/10/an-example-of-map-reduce-in-ruby.html" title="Ruby中的map方法和reduce方法" rel="bookmark">Ruby中的map方法和reduce方法</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>有同学问到一个问题</p>
+
+<pre><code>1
+2
+3
+4
+5
+6
+...
+
+每3行加起来，结果为
+
+6
+15 
+...
+</code></pre>
+
+<p>这个问题，处理过程分为两步，先将输入的数字每三个分为一组，然后对每组执行累加，输出结果。</p>
+
+<p>传统面向过程的写法需要进行多次循环，有一些判断条件。读者可以自行写一下，用任何语言实现。</p>
+
+<p>这两个过程，第一步叫做分块，对每一个元素进行操作；第二步则是将结果合并后输出结果。数学上的名字叫map和reduce。看到这个名字你肯定想到了hadoop——没错，就是那个map和reduce，只不过hadoop做了一些工程上的优化。
+关于map/reduce，如果不了解，可以参考(这里)[http://www.haskell.org/haskellwiki/MapReduce_as_a_monad]和(这里)[http://en.wikipedia.org/wiki/MapReduce]。</p>
+
+<p>Ruby中有相应的方法，属于Enumerable模块，对于支持Enumerable的类（如Array）可以直接使用。</p>
+
+<p>直接写出答案如下：</p>
+
+<pre><code># 首先从分块，执行map操作；然后对每个map内部执行reduce
+num_list = (1..100)
+num_list.each_slice(3).map {|b| b.reduce(:+)}
+</code></pre>
+
+<p>细心的你会发现这与hadoop的概念有些差异，reduce方法的对象不是map的结果集。没错，这个reduce是在map内部执行的。</p>
+
+<p>其实，map和reduce对应于对数据集的两种操作，map/reduce风格只是这两种操作组合使用的一个特例，reduce是可以独立于map而单独使用的。</p>
+
+<p>再来看一个hadoop风格reduce的例子</p>
+
+<pre><code># puts是reduce执行的方法
+num_list.each_slice(3).map {|b| b.reduce(:+)}.reduce(nil, :puts)
+</code></pre>
+
+<p>体会一下差异。</p>
+
+<p>再来看一个例子：
+    # 求平方和
+    num_list = (1..100)
+    (1..100).reduce {|total, element| total += element * element}     =&gt; 338350</p>
+
+          <a href="/Technology/2013/10/10/an-example-of-map-reduce-in-ruby.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#Ruby-ref">Ruby <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#map-ref">map <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#reduce-ref">reduce <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-09-24 00:00:00 +0800">24 Sep 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2013/09/24/hhkb.html" title="HHKB" rel="bookmark">HHKB</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>作为每天使用电脑敲代码的程(chun)序(diao)员(si)，颈椎、肩膀和手部是职业病的多发区域。本着继续工作<i><s>五十</s></i> <i><b>二十</b></i>年的精神，需要谨慎对待自己的健康状况。</p>
+
+<p>由于最近几个月手部（手指、手腕）出现持续酸疼的状况，因此对于键盘有所关注。MBP所带键盘键程较短，不太符合本人手感；且边缘的按键距离较远，对于常用vim的情况会有很多不必要的整体移动。因此主要关注能弥补这些缺陷的键盘。</p>
+
+<p>月初看了HHKB，在几个论坛上看到几个转让，发现二手市场上HHKB是非常紧俏，因此考虑走海淘的渠道。
+在<a href="http://www.amazon.jp">日本亚马逊</a>看中<a href="http://www.amazon.co.jp/Hacking-Keyboard-Professional2-Type-S-白／無刻印（英語配列）/dp/B008GXT6SK/ref=sr_1_2?ie=UTF8&amp;qid=1380027323&amp;sr=8-2&amp;keywords=Happy+Hacking+Keyboard+Professional2+Type-S+白／無刻印（英語配列）">Happy Hacking Keyboard Professional2 Type-S 白／無刻印（英語配列）</a>，9月6号下午通过萌购下单，价格1902，代购费99，快递费168，合计2169元人民币。整个流程比较顺利，16号在北京收到快递，开始受虐与享受的历程。</p>
+
+<p><img src="http://v.xnimg.cn/fmn060/20130925/0845/main_uwXC_653200005a78118c.jpg" alt="包装箱" /></p>
+
+<p><img src="http://v.xnimg.cn/fmn064/20130925/0845/main_qKUz_3288000063621260.jpg" alt="好奇的喵星人" /></p>
+
+<p><img src="http://v.xnimg.cn/fmn059/20130925/0845/main_k1nC_61e400005a8a118f.jpg" alt="键盘包装盒" /></p>
+
+<p>和MBP对比</p>
+
+<p><img src="http://v.xnimg.cn/fmn065/20130925/0845/main_nEz8_32b8000063631260.jpg" alt="和MBP对比" /></p>
+
+<p><img src="http://v.xnimg.cn/fmn062/20130925/0845/main_glCd_6cdb00005ac31190.jpg" alt="连接线" /></p>
+
+<p>使用几天以来，有几点感受：</p>
+
+<p>对于常用Unix系统来说，需要一款按键布局合理的键盘，常用键（比如ctrl/esc）尽量靠近中心区域。
+HHKB的布局定制功能比较实用。键盘布局有4种，我设定了Macintosh布局。BS和DEL键互换对于多数人来说推荐开启，其它键可以按默认。由于键数少于普通键盘，很多功能需要配合Fn使用。为了辅助记忆键盘布局，我打印了一张<a href="https://dl.dropboxusercontent.com/u/49147948/HHKB.pdf">键盘布局(hhkb.pdf)</a>放在旁边便于随时查阅。</p>
+
+<p>OSX的快捷键要熟记，事半功倍。常用编辑器如Vim和TextMate同理，经常用PS等设计类软件的同学应该更能体会到快捷键的乐趣。</p>
+
+<p>与Pro2比起来，Type-S手感偏软，不过差异还不明显。Type-S号称的静音效果是相对Pro2来说的，其实声音还是比较大。</p>
+
+<p>补充几条健康办公的tips：</p>
+
+<ul>
+  <li>不要长时间坐在办公桌前，2小时安排一次站立。</li>
+  <li>座椅高度。座椅高度以适合肘部接触桌面为宜。</li>
+  <li>屏幕高度。身体坐直时，以眼睛正好能平视屏幕大部分区域为宜。</li>
+  <li>秋季干燥，座位旁最好有空气加湿器。</li>
+</ul>
+
+          <a href="/2013/09/24/hhkb.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2013-09-23 00:00:00 +0800">23 Sep 2013</abbr>
       </span>
       <h3 class="entry-title">
@@ -297,7 +474,7 @@
 
 <p>安装UEK R3。</p>
 
-<p>首先需要安装Oracle仓库。安装oracle仓库的方法参考<code>[](http://public-yum.oracle.com)</code>。或者以root身份执行以下命令</p>
+<p>首先需要安装Oracle仓库。安装oracle仓库的方法参考<a href="http://public-yum.oracle.com">http://public-yum.oracle.com</a>。或者以root身份执行以下命令</p>
 
 <pre><code>#CentOS 5
 cd /etc/yum.repos.d
@@ -316,7 +493,7 @@ sed -i s/enabled=0/enabled=1/g public-yum-ol6-beta.repo 或
 cat &gt;/etc/yum.repos.d/public-yum-ol6-beta.repo&lt;&lt;EOF
 [ol6_beta]
 name=Oracle Linux \$releasever Beta (\$basearch)
-baseurl=http://public-yum.oracle.com/repo/BETA/OracleLinux/OL6/uek3/\$basearch/
+baseurl=http://public-yum.oracle.com/beta/repo/OracleLinux/OL6/uek3/\$basearch/
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle
 gpgcheck=0
 enabled=1
@@ -438,7 +615,7 @@ Linux localhost.localdomain 3.8.13-13.el6uek.x86_64 #1 SMP Wed Aug 21 14:28:36 P
         <abbr class="published" title="2013-09-22 00:00:00 +0800">22 Sep 2013</abbr>
       </span>
       <h3 class="entry-title">
-        <a href="/2013/09/22/weekly-parallel-gem-installing-using-bundler.html" title="[Weekly]Parallel gem installing using bundler" rel="bookmark">[Weekly]Parallel gem installing using bundler</a>
+        <a href="/2013/09/22/weekly-parallel-gem-installing-using-bundler.html" title="[Weekly]Ruby2.1 GC改进;Bundler并行安装" rel="bookmark">[Weekly]Ruby2.1 GC改进;Bundler并行安装</a>
       </h3>
       <p class="alt-font tight">
         <span>
@@ -453,7 +630,7 @@ Linux localhost.localdomain 3.8.13-13.el6uek.x86_64 #1 SMP Wed Aug 21 14:28:36 P
 <h4 id="ruby-21gc">ruby 2.1将对GC进行改进</h4>
 <p>matz在baruco上宣布在ruby 2.1中将改进GC功能。这对于大规模部署ruby应用的企业来说，是个好消息。ruby官方版本（MRI）一直被人诟病，其中就包含GC方面的原因。而在此之前，大规模部署一般要借助于REE或者JRuby等第三方实现。</p>
 
-<p>Ruby的内存管理采用copy on write方式，亦即fork出的进程会与父进程共用一部分内存空间，除非对内存有改动。但是ruby进程会单独进行gc，导致不同进程会对共享内容进行扫描及改动，copy on write的效果没有发挥出来。</p>
+<p>MRI和Rubinius的内存管理采用copy on write方式，亦即fork出的进程会与父进程共用一部分内存空间，除非对内存有改动。但是ruby进程进行GCd的方式是mark-and-sweep，导致对内存中的对象进行扫描及标记。首次进行GC时，copy on write的效果被抵消。</p>
 
 <p>http://www.infoq.com/news/2013/09/ruby-2-1-gc-revamp</p>
 
@@ -1063,128 +1240,6 @@ stat64                                         35
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-05-14 00:00:00 +0800">14 May 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2013/05/14/awk-sort-keys.html" title="awk统计脚本中的排序方法" rel="bookmark">awk统计脚本中的排序方法</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<p>最近在使用awk工具进行统计时，经常需要用的哈希来保存临时结果，同时在输出前需要根据哈希的key来进行排序。</p>
-
-<p>以前在awk脚本采取的方式是先通过asorti对key进行一次排序，生成一个排序的key列表，然后遍历这个列表，进行输出操作。这个过程会增加几行代码，同时使得代码的可读性下降，不易理解。</p>
-
-<p>awk在排序这方面的文档是比较缺乏的，在翻阅资料是发现，设置环境变量WHINY_USERS=1，可以使遍历任何哈希时根据key的排序顺序进行。这种方式减少了代码量，不过需要提前设置环境变量。
-Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USERS=1来传递环境变量。</p>
-
-<p>注：awk中哈希的key默认是字符串类型，排序基于字符串顺序。考虑0,1,12,2,21的顺序。</p>
-
-          <a href="/Technology/2013/05/14/awk-sort-keys.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#awk-ref">awk <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-03-28 00:00:00 +0800">28 Mar 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/2013/03/28/digweb-peercdn-concurrency-x-2.html" title="[阅读] 基于P2P的CDN / Go vs Erlang并发模型" rel="bookmark">[阅读] 基于P2P的CDN / Go vs Erlang并发模型</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<h3 id="peercdnhttppeercdncom"><a href="http://peercdn.com">PeerCDN</a></h3>
-
-<p>利用P2P进行文件分发不是什么新鲜事，但是在Web环境引入P2P仍然有很多挑战。PeerCDN团队正在进行相关技术的研发。该项目期望通过P2P技术为网站提供稳定、便捷、低成本的内容分发方案。</p>
-
-<p>任何支持WebRTC的浏览器可以支持这种技术，这比之前需要安装额外软件的技术是一个显著的进步。网站页面中只需要加入一行javascript代码。</p>
-
-<p>PeerCDN的专注点应该是大文件（视频，音频，图片），而对于海量小文件则可能会力不从心。</p>
-
-<p><a href="http://peercdn.com">PeerCDN</a></p>
-
-<h3 id="solving-the-wrong-problemhttpjoearmsgithubcom20130328solving-the-wrong-problemhtml"><a href="http://joearms.github.com/2013/03/28/solving-the-wrong-problem.html">Solving the wrong problem</a></h3>
-
-<p>漫长的计算机发展史，芯片规模扩展和时钟频率提升是一个主旋律，奠定了摩尔定律的基础。摩尔定律对软件发展的意义在于，大部分串行执行的程序，可以获得越来越短的执行时间。</p>
-
-<p>从2004年开始，芯片的发展有了微妙的变化：芯片规模仍然越来越大，开始增加更多的核心，而同时时钟频率并没有继续提升。这种情况颠覆了对软件开发的一些基本的认识。</p>
-
-<p>有现实的例子为证，当一个单线程的C程序遇到支持多线程的Erlang程序，性能高下不再是底层预言获胜，而是能够利用多核提升效率的一方。</p>
-
-<p><a href="http://joearms.github.com/2013/03/28/solving-the-wrong-problem.html">Joe Armstrong的Solving the wrong problem</a></p>
-
-<h3 id="concurrency-models-go-vs-erlanghttpjoneisenmepost38188396218"><a href="http://joneisen.me/post/38188396218">Concurrency Models: Go vs Erlang</a></h3>
-
-<p>一个新手对比了Go和Erlang这两种支持并发的语言。Go采用goroutine，有共享内存，因此在多核上扩展，通过channel方式传递消息，需要进行手工的错误处理；Erlang采用进程模型，不能共享内存，因此可以做多机扩展，通过mailbox方式传递消息，语言自身支持异常，通过OTP实现各种稳定性部署。</p>
-
-<p><a href="http://joneisen.me/post/38188396218">Concurrency Models: Go vs Erlang</a></p>
-
-
-          <a href="/2013/03/28/digweb-peercdn-concurrency-x-2.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -1218,6 +1273,14 @@ Hadoop的Streaming方式执行脚本，可以通过添加选项-cmdenv WHINY_USE
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     
