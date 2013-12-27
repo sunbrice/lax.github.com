@@ -214,6 +214,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -235,6 +239,103 @@
   <!-- Pagination links -->
   
 
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-12-27 00:00:00 +0800">27 Dec 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2013/12/27/background-of-log_unescape-in-tengine_nginx.html" title="Nginx中log变量及Tengine的log_unescape" rel="bookmark">Nginx中log变量及Tengine的log_unescape</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<h3 id="nginx">Nginx变量</h3>
+<p>Nginx的log模块是很多人做日志输出的首选切入点。</p>
+
+<p>Nginx默认<code>access_log</code>语法写入服务器本地路径或NFS，用于以后的汇总分析；在此基础上，Tengine增强了日志目标，可以通过组合管道功能或syslog接口进行远程集中日志存储。  </p>
+
+<p>log功能的核心是变量。灵活而全面的变量定义是Nginx日志模块的优势体现。在2011年时曾经整理过一些<a href="http://mib.cc/technology/2011/10/19/nginx-log_format-abc.html"><code>核心变量的意义</code></a>，主要是第一种类型的核心变量。最近两年核心模块进行过比较大的变动，涌现出比较多的优秀第三方模块，也出现了Tengine/OpenResty这样优秀的第三方发行版，变量的定义大大丰富。</p>
+
+<p>Nginx变量包括：  </p>
+
+<ol>
+  <li>核心模块提供了足够的变量定义(<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#variables"><code>Embedded Variables</code></a>)；  </li>
+  <li>通过rewrite模块的set语法自定义变量（<a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#set"><code>rewrite#set</code></a>）；  </li>
+  <li>第三方模块提供额外的变量定义(使用ngx_http_add_variable设置一系列ngx_http_variable_t的变量)；  </li>
+  <li>通过第三方模块做变量内容变换/改写(如<a href="https://github.com/agentzh/set-misc-nginx-module">agentzh/set-misc-nginx-module</a>)。  </li>
+</ol>
+
+<p>在这种情况下做一个<code>变量大全</code>需要一定的工作量，根据实际使用情况去查阅各类模块的文档是个捷径。如果有人整理过也请告诉我。</p>
+
+<h3 id="logunescape">log_unescape</h3>
+<p>在实际使用中会遇到一个问题关于日志中被转义的字符，比如输出一段json数据，其中的引号会被转义。这种转义规则参考了<a href="http://httpd.apache.org/docs/2.2/mod/mod_log_config.html#format-notes">apache httpd的习惯</a>。早在2008年就有<a href="http://web.archiveorange.com/archive/v/yKUXMZ4X6eg17Nln5WJq">讨论</a>。Nginx官方社区对此问题的态度是继续保留转义。</p>
+
+<p>在实际使用中，查看和处理转义过的字符串带来一些负担，在权衡中选择不做转义也经常是<em>一种</em>选择。Tengine在2012年将<code>log_unescape</code>的功能加入，可以打开/关闭转义功能，或者仅针对ASCII字符，方便大规模日志处理。</p>
+
+<p>当然escape问题并不只出现在log阶段，比如<a href="http://trac.nginx.org/nginx/ticket/262">这里</a>，解决方法也不一定都是修改nginx代码或配置——在分析端做转义处理也是一种可行的思路。</p>
+
+          <a href="/2013/12/27/background-of-log_unescape-in-tengine_nginx.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2013-10-13 00:00:00 +0800">13 Oct 2013</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/2013/10/13/godaddy-35-percent-referral-code-WOWRUBYIST.html" title="GoDaddy 35% 优惠码" rel="bookmark">GoDaddy 35% 优惠码</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<p>使用这个邀请码在GoDaddy注册域名，可以获得35%的优惠。</p>
+
+<p>WOWRUBYIST</p>
+
+          <a href="/2013/10/13/godaddy-35-percent-referral-code-WOWRUBYIST.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -1132,114 +1233,6 @@ stat64                                         35
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-05-21 00:00:00 +0800">21 May 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2013/05/21/online-books-for-programmers.html" title="推荐给程序员的在线文档" rel="bookmark">推荐给程序员的在线文档</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<h3 id="statistical-formulas-for-programmershttpwwwevanmillerorgstatistical-formulas-for-programmershtml"><a href="http://www.evanmiller.org/statistical-formulas-for-programmers.html">Statistical Formulas For Programmers</a></h3>
-
-<p><a href="https://github.com/evanmiller">Evan Miller</a>是个多才多艺的程序员，曾经写过<a href="http://www.evanmiller.org/nginx-modules-guide.html">Emiller&rsquo;s Guide to Nginx Module Development</a>和<a href="http://www.evanmiller.org/nginx-modules-guide-advanced.html">Emiller&rsquo;s Advanced Topics In Nginx Module Development</a>。
-最近他写了一系列关于数据、统计方面的文章，这篇Statistical Formulas For Programmers是其中的一篇。</p>
-
-<h3 id="modern-gpuhttpnvlabsgithubiomoderngpu"><a href="http://nvlabs.github.io/moderngpu/">Modern GPU</a></h3>
-<p>现代GPU编程的设计模式。可以利用这个文档作为入门学习和工作参考。
-电子书的源码可以在<a href="https://github.com/NVlabs/moderngpu">github</a>下载。</p>
-
-          <a href="/Technology/2013/05/21/online-books-for-programmers.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2013-05-20 00:00:00 +0800">20 May 2013</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2013/05/20/local-root-vulnerability-in-the-kernel.html" title="Linux kernel本地提权漏洞修复" rel="bookmark">Linux kernel本地提权漏洞修复</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          
-<p>Kernel中爆出一个重大的提权漏洞，kernel-2.6.37以上版本几乎都受到影响。由于Redhat会从高版本内核backport一些特性，因此RHEL6自带的2.6.32内核也受影响，同时CentOS、Oracle等基于RHEL的版本都受影响。</p>
-
-<p>漏洞爆出后，Redhat及时更新了RHEL内核，CentOS等迅速跟进。如果你的服务器上用到这些版本内核，请尽快检查一下。</p>
-
-<ul>
-  <li><a href="https://lwn.net/Articles/550678/">Local root vulnerability in the kernel</a></li>
-  <li><a href="http://fucksheep.org/~sd/warez/semtex.c">semtex.c</a></li>
-</ul>
-
-          <a href="/Technology/2013/05/20/local-root-vulnerability-in-the-kernel.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#Kernel-ref">Kernel <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Linux-ref">Linux <span>7</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -1273,6 +1266,14 @@ stat64                                         35
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

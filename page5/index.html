@@ -214,6 +214,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -235,6 +239,185 @@
   <!-- Pagination links -->
   
 
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-06-13 00:00:00 +0800">13 Jun 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/SysAdmin/2012/06/13/smokeping.html" title="使用smokeping监控网络质量" rel="bookmark">使用smokeping监控网络质量</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p><a href="http://oss.oetiker.ch/smokeping">smokeping</a>是一款网络质量检测软件，用perl写成，使用rrdtool保存数据。</p>
+
+<p>它的优势是轻量，易于安装，可定制性强。</p>
+
+<h3 id="section">安装过程</h3>
+
+<p>下载安装包：<a href="http://oss.oetiker.ch/smokeping/pub/">下载页面</a></p>
+
+<p>写作此文时最新版本为2.6.8。</p>
+
+<p>解压后进入目录，执行命令</p>
+
+<pre><code>./setup/build-perl-modules.sh /opt/smokeping-2.6.8/thirdparty
+
+./configure
+</code></pre>
+
+<p>如果提示有模块安装失败，可以从CPAN安装。</p>
+
+<pre><code>perl -MCPAN -e 'install FCGI'
+</code></pre>
+
+<p>确保configure成功后，执行</p>
+
+<pre><code>qmake install
+</code></pre>
+
+<p>创建必要的目录</p>
+
+<pre><code>cd /opt/smokeping-2.6.8/ &amp;&amp; mkdir cache var data
+</code></pre>
+
+<p>安装rrdtool，httpd和mod_fcgid</p>
+
+<pre><code>rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm
+
+yum install rrdtool httpd mod_fcgid -y
+</code></pre>
+
+<p>配置httpd。创建配置文件/etc/httpd/conf.d/smokeping.conf，内容如下</p>
+
+<pre><code>alias	/smokeping/cache	/opt/smokeping-2.6.8/cache/
+alias	/smokeping	/opt/smokeping-2.6.8/htdocs/
+
+&lt;Directory /opt/smokeping-2.6.8/cache/&gt;
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+&lt;Directory /opt/smokeping-2.6.8/htdocs/&gt;
+    #SetHandler fcgid-script
+    Options +ExecCGI
+
+    Order allow,deny
+    Allow from all
+&lt;/Directory&gt;
+</code></pre>
+
+<p>修复cache目录权限，否则查看页面会报错。</p>
+
+<pre><code>chown apache /opt/smokeping-2.6.8/cache/
+</code></pre>
+
+<p>启动smokeping</p>
+
+<pre><code>[root@lax-iPad smokeping-2.6.8]# ./bin/smokeping
+Note: logging to syslog as local0/info.
+Daemonizing ./bin/smokeping ...
+</code></pre>
+
+<p>启动httpd</p>
+
+<pre><code># service httpd start
+</code></pre>
+
+<p>在浏览器中查看</p>
+
+<pre><code>http://localhost/smokeping/smokeping.fcgi.dist
+</code></pre>
+
+          <a href="/SysAdmin/2012/06/13/smokeping.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#smokeping-ref">smokeping <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#rrdtool-ref">rrdtool <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
+        <abbr class="published" title="2012-05-23 00:00:00 +0800">23 May 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/2012/05/23/teaming-network-device.html" title="Teaming" rel="bookmark">Teaming</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          <p>Read documents bellow.</p>
+
+<p><a href="https://github.com/jpirko/libteam">libteam@github</a></p>
+
+<p><a href="http://lwn.net/Articles/467280/">lwn</a></p>
+
+<p><a href="www.pirko.cz/teamdev.pp.pdf">Jiri Pirko&rsquo;s PDF</a></p>
+
+<p><a href="http://www.h-online.com/open/features/Kernel-Log-Coming-in-3-3-Part-1-Networking-1421959.html">Kernel Log: Coming in 3.3 (Part 1) - Networking</a></p>
+
+<p><a href="http://kernelnewbies.org/Linux_3.3">kernelnewbies.org</a></p>
+
+          <a href="/Technology/2012/05/23/teaming-network-device.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+            </ul>
+          </span>
+          
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
   
     <div class="full">
       <span class="date full-date">
@@ -755,248 +938,6 @@ chmod 777 tcpdump-arm
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-02-25 00:06:29 +0800">25 Feb 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/Ruby/2012/02/25/ruby-c-cxx-extention.html" title="在Ruby中利用C/C++代码：为Ruby开发扩展" rel="bookmark">在Ruby中利用C/C++代码：为Ruby开发扩展</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>在一个程序里使用多种语言进行开发，出发点有若干种：</p>
-
-<ul>
-  <li>为了性能，嵌入低级语言的代码进行优化。</li>
-  <li>为了开发效率，嵌入高级语言减少代码行数。</li>
-  <li>重用一些成熟的工具和库文件。</li>
-  <li>DSL简化配置，降低维护成本。</li>
-</ul>
-
-<p>最近因为要重用一段C++代码，遇到了原来代码逻辑比较复杂的问题。新项目是一段测试程序，首选是一种解释语言。想在脚本中重用这些功能，完全重写的代价比较高，需要花费精力理清原来程序的逻辑。好在输入和输出的内容都很简单，而Ruby提供了可以方便利用的接口，写一个功能扩展来调用旧的C++代码似乎是一个说得过去的选择。</p>
-
-<p>C++的接口为：</p>
-
-<pre><code>std::string PrivateUtil::getInfo(std::string);
-</code></pre>
-
-<p>首先创建一个文件private_util.cc，包含头文件ruby.h</p>
-
-<pre><code>#include &lt;ruby.h&gt;
-#include "album_util.h"
-</code></pre>
-
-<p>然后声明所有要实现的功能，与ruby脚本通讯：</p>
-
-<pre><code>VALUE getInfo(VALUE input_str);
-</code></pre>
-
-<p>下一步，开始进入模块功能注册，也是这个文件的核心。定义一个Ruby的Module，名字为PrivateUtil；另外定义一个getInfo的方法，并且用刚才声明的getInfo与之对应。</p>
-
-<pre><code>extern "C" void Init_foo()
-{
-    VALUE private_util = rb_define_module("PrivateUtil");
-    rb_define_module_function(private_util, "getInfo", RUBY_METHOD_FUNC(getInfo), 2);
-}
-</code></pre>
-
-<p>现在可以去实现getInfo的具体逻辑了。getInfo的实现也很简单，调用了旧代码的接口，返回一个ruby_str即可。这个返回值需要是ruby的数据类型，以便在脚本中直接使用。</p>
-
-<pre><code>VALUE getInfo(VALUE input_str)
-{
-    return ruby_str_new2(PrivateUtil::getInfo(input_str));
-}
-</code></pre>
-
-<p>到此步骤，c++文件基本完成。</p>
-
-<p>下面开始，建立extconf.rb</p>
-
-<pre><code>require 'mkmf'
-$libs = '-lstdc++'
-create_makefile 'private_util'
-</code></pre>
-
-<p>执行</p>
-
-<pre><code>ruby extconf.rb &amp;&amp; make
-</code></pre>
-
-<p>自动生成一个Makefile文件。make后生成了可供ruby脚本调用的so文件：private_util.so。</p>
-
-<p>直接在ruby中调用private_util:</p>
-
-<pre><code>irb &gt; require 'private_util'
-true
-irb &gt; PrivateUtils::getInfo("abc")
-"abc"
-</code></pre>
-
-<p>如果想在系统全局使用，可以执行make install，这样就能在其它脚本里方面调用。</p>
-
-<p>欢迎交流使用心得。http://www.liulantao.com/</p>
-
-          <a href="/Technology/Ruby/2012/02/25/ruby-c-cxx-extention.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-              <li><a href="/categories.html#Ruby-ref" title="Ruby" rel="category tag">Ruby</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#C++-ref">C++ <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#ruby-ref">ruby <span>5</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2011-12-28 17:49:58 +0800">28 Dec 2011</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/Technology/2011/12/28/tengine-evnote.html" title="Tengine试用手记" rel="bookmark">Tengine试用手记</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>taobao技术团队最近把<a href="http://tengine.taobao.org">Tengine</a>开放出来了。</p>
-
-<p>Tengine基于目前很流行的Nginx，在Nginx基础上整合了一些第三方模块，并加入taobao团队研发的一些模块。由于Nginx有设计精美的模块机制，使得整合与模块开发非常方便，在此之前taobao团队开放的另一个项目openresty就是在Nginx基础上完成的。</p>
-
-<p>最新版本的tengine基于nginx-1.0.10稳定版（最新的nginx稳定版是1.0.11）。我在试用时加入了人人网系统运维团队开发的<a href="https://github.com/xiaonei/ngx_http_consistent_hash">ngx_http_accounting_module</a>和<a href="https://github.com/xiaonei/ngx_http_accounting_module">http_upstream_consistent_hash_module</a>，并按照部署需求进行了RPM包的制作，这个流程与Nginx官方版本一致性很高，几乎不用做修改就能整合到现在的工作流。</p>
-
-<p>可以看出为适应大规模运维的需求，tengine对nginx做了一些修改：</p>
-
-<ul>
-  <li>
-    <p>access_log/error_log支持file/pipe/syslog</p>
-  </li>
-  <li>
-    <p>worker_processes和worker_cpu_affinity自动设置</p>
-  </li>
-  <li>
-    <p>expires_by_types</p>
-  </li>
-  <li>
-    <p>stub_status增加了响应时间</p>
-  </li>
-  <li>
-    <p>sysguard</p>
-  </li>
-  <li>
-    <p>limit_req和forbid_action</p>
-  </li>
-</ul>
-
-<p>我们关注一下log部分的变化。</p>
-
-<p>tengine对log部分做了较大改变，在原有的文件作为输出目标基础上，增加了syslog和pipe功能。syslog作为日志输出，在nginx-0.6.35时就有过一个patch，但是由于种种原因被拒绝加入官方代码（这可能也是taobao撇开nginx.org另立山头的原因之一）。</p>
-
-<p>syslog的配置语法为：</p>
-
-<pre><code>access_log  syslog:user::debug  main;
-
-access_log  syslog:user::192.168.10.10:514  main;
-</code></pre>
-
-<p>配置之后需要对syslogd的配置文件做一些修改。虽然部署很方便，但是syslog的方案比较鸡肋，因为现在已经有比较多的更“现代”的方法来进行分布式数据的收集，比如scribe。</p>
-
-<p>使用pipe方式则可以方便地与scribe等系统进行整合。</p>
-
-<p>测试中我使用了更简单的一个方案：通过netcat将管道中的日志发送到远程日志收集端。</p>
-
-<p>配置文件是这样的：</p>
-
-<pre><code># 将日志实时发送到远程主机192.168.10.10的8000端口，使用TCP协议
-access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
-</code></pre>
-
-<p>在此我选用了便于脚本化且功能强大的netcat。你也可以把其它工具来进行整合，比如与gzip组合使用，进行压缩以降低传输的流量。</p>
-
-<p>pipe方式的日志方式，使得无数想法成为可能，大大提高了运维的灵活性。</p>
-
-<p>关于提到的其它特性更详细的使用说明，可以参考<a href="http://tengine.taobao.org">Tengine</a>官方网站的文档。</p>
-
-<p>欢迎留言交流。<a href="http://www.renren.com/g/277881218">@我#renren.com</a> <a href="http://weibo.com/1653644220">@我#weibo.com</a></p>
-
-          <a href="/Technology/2011/12/28/tengine-evnote.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#NC-ref">NC <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#Nginx-ref">Nginx <span>5</span></a></li>
-     
-    	<li><a href="/tags.html#Tengine-ref">Tengine <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -1030,6 +971,14 @@ access_log   "pipe:/usr/bin/nc  192.168.10.10  8000" main;
     
     
       <li><a href="/archive.html#archive_2013">2013</a></li>
+    
+  
+    
+    
+    
+  
+    
+    
     
   
     

@@ -214,6 +214,10 @@
   
     
   
+    
+  
+    
+  
 
 
 
@@ -236,29 +240,24 @@
   <div class="span8">
     <p>nginx作为反向代理服务器时，打开access_log可以用来查找后端的问题。</p>
 
-<p>默认的nginx.conf有一个log_format配置。这个配置对于普通的静态服务器有些帮助，但是作为代理，还需要做一些定制。</p>
+<p>默认的nginx.conf有一个<code>log_format</code>配置。这个配置对于普通的静态服务器有些帮助，但是作为代理，还需要做一些定制。</p>
 
-<blockquote>
-  <p>log_format  main  &lsquo;$host $remote_addr - $remote_user [$time_local] $request &lsquo;
-&lsquo;&ldquo;$status&rdquo; $body_bytes_sent &ldquo;$http_referer&rdquo; &lsquo;
-&lsquo;&ldquo;$http_user_agent&rdquo; &ldquo;$http_x_forwarded_for&rdquo;&rsquo;;</p>
-</blockquote>
+<pre><code>log_format	main	'$host $remote_addr - $remote_user [$time_local] $request '
+			'"$status" $body_bytes_sent "$http_referer" '
+			'"$http_user_agent" "$http_x_forwarded_for"';
+</code></pre>
 
 <p>我们使用nginx作为反向代理，代理后端部署的实际服务地址可能不止一个（一般情况下是这样）。我们要了解后端服务器的响应情况，就需要在log_format中增加几个变量。</p>
 
 <p>下面列出几个重要的变量：</p>
 
-<blockquote>
-  <p>$status  $upstream_status :  响应的状态码（响应正常还是出错了？）复习一下<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">HTTP CODE</a></p>
-</blockquote>
-
-<p>$request_time  $upstream_response_time :  关注性能必备！看看前天传输文件的时间，以及后台处理的时间。前者对了解网络状态有益，后者对了解服务性能有益。</p>
-
-<p>$remote_addr  $upstream_addr :  用户的IP地址，后端服务的IP地址</p>
-
-<p>$bytes_sent $body_bytes_sent  :  发送给用户端的数据量（包含HTTP头和不包含HTTP头）</p>
-
-<p>$host $request :  最重要的，搞定具体域名具体URL，不抓瞎。</p>
+<ul>
+  <li><code>$status</code>  <code>$upstream_status</code> :  响应的状态码（响应正常还是出错了？）复习一下<a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html"><code>HTTP CODE</code></a>  </li>
+  <li><code>$request_time</code>  <code>$upstream_response_time</code> :  关注性能必备！看看前天传输文件的时间，以及后台处理的时间。前者对了解网络状态有益，后者对了解服务性能有益。  </li>
+  <li><code>$remote_addr</code>  <code>$upstream_addr</code> :  用户的IP地址，后端服务的IP地址  </li>
+  <li><code>$bytes_sent</code> <code>$body_bytes_sent</code>  :  发送给用户端的数据量（包含HTTP头和不包含HTTP头）  </li>
+  <li><code>$host</code> <code>$request</code> :  最重要的，搞定具体域名具体URL，不抓瞎。</li>
+</ul>
 
 <p>根据实际情况，把以上的变量组合放进log_format中。</p>
 
