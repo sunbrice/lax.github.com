@@ -71,6 +71,7 @@ http://blog.liulantao.com/page28/index.html
 http://blog.liulantao.com/page29/index.html
 http://blog.liulantao.com/page30/index.html
 
+http://blog.liulantao.com/Technology/2014/01/26/graphite-setup-notes.html
 http://blog.liulantao.com/2013/12/27/background-of-log_unescape-in-tengine_nginx.html
 http://blog.liulantao.com/2013/10/13/godaddy-35-percent-referral-code-WOWRUBYIST.html
 http://blog.liulantao.com/Technology/2013/10/10/an-example-of-map-reduce-in-ruby.html

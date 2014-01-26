@@ -242,6 +242,89 @@
   
     <div class="full">
       <span class="date full-date">
+        <abbr class="published" title="2012-09-14 00:00:00 +0800">14 Sep 2012</abbr>
+      </span>
+      <h3 class="entry-title">
+        <a href="/Technology/Linux/2012/09/14/edac.html" title="EDAC" rel="bookmark">EDAC</a>
+      </h3>
+      <p class="alt-font tight">
+        <span>
+          
+        </span>
+      </p>
+      <div class="row">
+        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
+          
+<h1 id="edac-overview">EDAC Overview</h1>
+<p>EDAC (Error Detection and Correction) is a set of Linux kernel modules for handling hardware-related errors. </p>
+
+<p>Its major focus has been ECC memory error handling, however it also detects and reports PCI bus parity errors. </p>
+
+<p>EDAC通过sysfs方式获得硬件的信息。检测到问题时，在syslog中可以看到这样的日志：</p>
+
+<pre><code>kernel: EDAC MC1: CE row 0, channel 0, label "": Corrected error (Socket=1 channel=0 dimm=0)
+</code></pre>
+
+<p>有一个叫做edac-util的工具，可以用来查看更详细的状态报表。</p>
+
+<pre><code>$ edac-util -r
+mc1: csrow0: ch0: 43722040 Corrected Errors
+</code></pre>
+
+<p>上面的输出表示有较多的可修复错误（Corrected Errors - CE）被发现。</p>
+
+<p>edac-util的安装，在RHEL或CentOS上，可以通过yum安装：</p>
+
+<pre><code>yum install edac-util -y
+</code></pre>
+
+<h1 id="links">Links</h1>
+
+<p>[http://www.kernel.org/doc/Documentation/edac.txt EDAC - Error Detection And Correction]</p>
+
+<p>[http://bluesmoke.sourceforge.net EDAC Project]</p>
+
+          <a href="/Technology/Linux/2012/09/14/edac.html" class="read_more span2 pull-right">[ Read More ]</a>
+          <div class="clear"></div>
+        </div>
+        <div class="span3">
+          
+          <span>
+            Posted in&nbsp;
+            <ul>
+            
+              <li><a href="/categories.html#Technology-ref" title="Technology" rel="category tag">Technology</a></li>
+            
+              <li><a href="/categories.html#Linux-ref" title="Linux" rel="category tag">Linux</a></li>
+            
+            </ul>
+          </span>
+          
+          
+            <h4>Tags</h4>
+            <ul class="tag_box">
+            
+            
+
+
+  
+     
+    	<li><a href="/tags.html#EDAC-ref">EDAC <span>1</span></a></li>
+    
+  
+
+
+
+            </ul>
+           
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="rule"><hr/></div>
+  
+    <div class="full">
+      <span class="date full-date">
         <abbr class="published" title="2012-09-06 00:00:00 +0800">06 Sep 2012</abbr>
       </span>
       <h3 class="entry-title">
@@ -916,72 +999,6 @@ ln -s rsync-centos rsync-centos-6.2
     </div>
     <div class="rule"><hr/></div>
   
-    <div class="full">
-      <span class="date full-date">
-        <abbr class="published" title="2012-06-19 00:00:00 +0800">19 Jun 2012</abbr>
-      </span>
-      <h3 class="entry-title">
-        <a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" title="GNOME3多显示器配置" rel="bookmark">GNOME3多显示器配置</a>
-      </h3>
-      <p class="alt-font tight">
-        <span>
-          
-        </span>
-      </p>
-      <div class="row">
-        <div class="span8 entry-content full-content" style='background-color: #FFF; padding: 10px;'>
-          <p>gnome3多显示器默认只有mirror模式工作正常。使用扩展模式，则导致整个屏幕横跨两个显示器，工具条和窗口被拆分。</p>
-
-<p>经检查资料，发现需要配置USE flag： xinerama。</p>
-
-<pre><code># File: /etc/make.conf
-
-USE="$USE xinerama"
-</code></pre>
-
-<p>修改后需要重新emerge一下已安装的软件包，之后重启X</p>
-
-<p><a href="http://en.gentoo-wiki.com/wiki/X.Org/Dual_Monitors#Xinerama">Xinerama</a></p>
-
-          <a href="/SysAdmin/2012/06/19/gnome-shell-xinerama.html" class="read_more span2 pull-right">[ Read More ]</a>
-          <div class="clear"></div>
-        </div>
-        <div class="span3">
-          
-          <span>
-            Posted in&nbsp;
-            <ul>
-            
-              <li><a href="/categories.html#SysAdmin-ref" title="SysAdmin" rel="category tag">SysAdmin</a></li>
-            
-            </ul>
-          </span>
-          
-          
-            <h4>Tags</h4>
-            <ul class="tag_box">
-            
-            
-
-
-  
-     
-    	<li><a href="/tags.html#gnome-shell-ref">gnome-shell <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#xinerama-ref">xinerama <span>1</span></a></li>
-    
-  
-
-
-
-            </ul>
-           
-        </div>
-      </div>
-      <div class="clear"></div>
-    </div>
-    <div class="rule"><hr/></div>
-  
   
   
   </div>
@@ -1010,6 +1027,12 @@ USE="$USE xinerama"
     <section>
   <h1>归档</h1>
   <ul id="archive_posts">
+  
+    
+    
+    
+      <li><a href="/archive.html#archive_2014">2014</a></li>
+    
   
     
     

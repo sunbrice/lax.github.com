@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Nginx中log变量及Tengine的log_unescape</title>
+    <title>Graphite安装笔记</title>
     <meta name="description" content="">
     <meta name="author" content="Liu Lantao">
     <meta property="wb:webmaster" content="08beceac65f1ad4f" />
@@ -233,46 +233,100 @@
       <div class="content">
         
 <div class="page-header">
-  <h1>Nginx中log变量及Tengine的log_unescape </h1>
+  <h1>Graphite安装笔记 </h1>
 </div>
 
 <div class="row">
   <div class="span8">
     
-<h3 id="nginx">Nginx变量</h3>
-<p>Nginx的log模块是很多人做日志输出的首选切入点。</p>
+<p>graphite是个不错的监控系统，不过文档真的很烂。之前 @ARGV 写过一篇<a href="http://chenlinux.com/2013/04/03/install-graphite/">blog</a>介绍了debian系统上的安装过程。</p>
 
-<p>Nginx默认<code>access_log</code>语法写入服务器本地路径或NFS，用于以后的汇总分析；在此基础上，Tengine增强了日志目标，可以通过组合管道功能或syslog接口进行远程集中日志存储。  </p>
+<p>由于安装过程在最新版有一些变化，所以将我最近手动安装的过程整理出来，希望对你有帮助。</p>
 
-<p>log功能的核心是变量。灵活而全面的变量定义是Nginx日志模块的优势体现。在2011年时曾经整理过一些<a href="http://mib.cc/technology/2011/10/19/nginx-log_format-abc.html"><code>核心变量的意义</code></a>，主要是第一种类型的核心变量。最近两年核心模块进行过比较大的变动，涌现出比较多的优秀第三方模块，也出现了Tengine/OpenResty这样优秀的第三方发行版，变量的定义大大丰富。</p>
+<p>整个过程采用的系统是CentOS 6.4 x86_64。软件仓库配置了EPEL。</p>
 
-<p>Nginx变量包括：  </p>
+<h1 id="section">安装过程记录</h1>
 
-<ol>
-  <li>核心模块提供了足够的变量定义(<a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#variables"><code>Embedded Variables</code></a>)；  </li>
-  <li>通过rewrite模块的set语法自定义变量（<a href="http://nginx.org/en/docs/http/ngx_http_rewrite_module.html#set"><code>rewrite#set</code></a>）；  </li>
-  <li>第三方模块提供额外的变量定义(使用ngx_http_add_variable设置一系列ngx_http_variable_t的变量)；  </li>
-  <li>通过第三方模块做变量内容变换/改写(如<a href="https://github.com/agentzh/set-misc-nginx-module">agentzh/set-misc-nginx-module</a>)。  </li>
-</ol>
+<h2 id="yum">yum安装</h2>
 
-<p>在这种情况下做一个<code>变量大全</code>需要一定的工作量，根据实际使用情况去查阅各类模块的文档是个捷径。如果有人整理过也请告诉我。</p>
+<p>其实<a href="https://fedoraproject.org/wiki/EPEL">EPEL仓库</a>中已经有graphite的安装包。设置EPEL仓库，用yum直接安装即可。</p>
 
-<h3 id="logunescape">log_unescape</h3>
-<p>在实际使用中会遇到一个问题关于日志中被转义的字符，比如输出一段json数据，其中的引号会被转义。这种转义规则参考了<a href="http://httpd.apache.org/docs/2.2/mod/mod_log_config.html#format-notes">apache httpd的习惯</a>。早在2008年就有<a href="http://web.archiveorange.com/archive/v/yKUXMZ4X6eg17Nln5WJq">讨论</a>。Nginx官方社区对此问题的态度是继续保留转义。</p>
+<pre><code>yum --enablerepo=epel install graphite-web python-carbon -y
+</code></pre>
 
-<p>在实际使用中，查看和处理转义过的字符串带来一些负担，在权衡中选择不做转义也经常是<em>一种</em>选择。Tengine在2012年将<code>log_unescape</code>的功能加入，可以打开/关闭转义功能，或者仅针对ASCII字符，方便大规模日志处理。</p>
+<h2 id="section-1">手工安装</h2>
 
-<p>当然escape问题并不只出现在log阶段，比如<a href="http://trac.nginx.org/nginx/ticket/262">这里</a>，解决方法也不一定都是修改nginx代码或配置——在分析端做转义处理也是一种可行的思路。</p>
+<h3 id="section-2">准备工作目录</h3>
+
+<pre><code>mkdir -p ~/graphite_setup &amp;&amp; cd ~/graphite_setup
+</code></pre>
+
+<h3 id="whisper">安装whisper</h3>
+
+<pre><code>git clone https://github.com/graphite-project/whisper.git
+cd whisper &amp;&amp; sudo python setup.py install &amp;&amp; cd -
+</code></pre>
+
+<h3 id="carbon">安装carbon</h3>
+
+<pre><code>git clone https://github.com/graphite-project/carbon.git
+cd carbon &amp;&amp; python setup.py install &amp;&amp; cd -
+cd /opt/graphite/conf
+cp carbon.conf.example carbon.conf 
+cp storage-schemas.conf.example storage-schemas.conf 根据需求调整carbon.conf中的配置。
+</code></pre>
+
+<h3 id="graphite-web">安装graphite-web</h3>
+
+<pre><code>git clone https://github.com/graphite-project/graphite-web.git
+cd graphite-web &amp;&amp; python check-dependencies.py
+ 
+#如果报告依赖问题，需要安装对应的软件包
+yum install pycairo django pytz pyparsing django-tagging python-memcached python-ldap twisted txamqp python-rrdtool -y
+
+sudo python setup.py install 
+
+cd /opt/graphite/webapp/graphite/
+cp local_settings.py.example local_settings.py
+</code></pre>
+
+<p>务必重新设置SECRET_KEY，根据需要调整TIME_ZONE和其它参数。</p>
+
+<pre><code>PYTHONPATH=/opt/graphite/webapp/ django-admin syncdb --settings=graphite.settings
+</code></pre>
+
+<h3 id="section-3">制造一些测试数据</h3>
+
+<pre><code>cd /opt/graphite/examples/
+python example-client.py
+</code></pre>
+
+<p>或者用脚本模拟也写随机数据</p>
+
+<pre><code>ruby -e 'puts "test.op.random_seq #{rand(100)} #{Time.now.to_i}"' | nc 127.0.0.1 2003
+</code></pre>
+
+<h3 id="web-">启动web 服务</h3>
+
+<pre><code>cp /opt/graphite/examples/example-graphite-vhost.conf /etc/httpd/conf.d/
+service httpd restart
+</code></pre>
+
+<h2 id="section-4">安装文档参考</h2>
+
+<pre><code># 安装文档的更新 https://github.com/graphite-project/graphite-web/blob/master/INSTALL
+# https://github.com/graphite-project/graphite-web
+</code></pre>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/2013/10/13/godaddy-35-percent-referral-code-WOWRUBYIST.html" title="GoDaddy 35% 优惠码">&larr; Previous</a></li>
+        <li class="prev"><a href="/2013/12/27/background-of-log_unescape-in-tengine_nginx.html" title="Nginx中log变量及Tengine的log_unescape">&larr; Previous</a></li>
       
         <li><a href="/archive.html">Archive</a></li>
       
-        <li class="next"><a href="/Technology/2014/01/26/graphite-setup-notes.html" title="Graphite安装笔记">Next &rarr;</a></li>
+        <li class="next disabled"><a>Next &rarr;</a>
       
       </ul>
     </div>
@@ -281,8 +335,24 @@
   
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>27 December 2013</span></div>
+    <div class="date"><span>26 January 2014</span></div>
 
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#Graphite-ref">Graphite <span>1</span></a></li>
+    
+  
+
+
+
+    </ul>
     
   </div>
   <hr />

@@ -5,10 +5,97 @@
         <description>非常规思维研究所 - Liu Lantao</description>
         <link>http://blog.liulantao.com</link>
         <link>http://blog.liulantao.com</link>
-        <lastBuildDate>2014-01-02T15:44:33+08:00</lastBuildDate>
-        <pubDate>2014-01-02T15:44:33+08:00</pubDate>
+        <lastBuildDate>2014-01-26T11:11:22+08:00</lastBuildDate>
+        <pubDate>2014-01-26T11:11:22+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Graphite安装笔记</title>
+                <description>
+&lt;p&gt;graphite是个不错的监控系统，不过文档真的很烂。之前 @ARGV 写过一篇&lt;a href=&quot;http://chenlinux.com/2013/04/03/install-graphite/&quot;&gt;blog&lt;/a&gt;介绍了debian系统上的安装过程。&lt;/p&gt;
+
+&lt;p&gt;由于安装过程在最新版有一些变化，所以将我最近手动安装的过程整理出来，希望对你有帮助。&lt;/p&gt;
+
+&lt;p&gt;整个过程采用的系统是CentOS 6.4 x86_64。软件仓库配置了EPEL。&lt;/p&gt;
+
+&lt;h1 id=&quot;section&quot;&gt;安装过程记录&lt;/h1&gt;
+
+&lt;h2 id=&quot;yum&quot;&gt;yum安装&lt;/h2&gt;
+
+&lt;p&gt;其实&lt;a href=&quot;https://fedoraproject.org/wiki/EPEL&quot;&gt;EPEL仓库&lt;/a&gt;中已经有graphite的安装包。设置EPEL仓库，用yum直接安装即可。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;yum --enablerepo=epel install graphite-web python-carbon -y
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;手工安装&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;准备工作目录&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;mkdir -p ~/graphite_setup &amp;amp;&amp;amp; cd ~/graphite_setup
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;whisper&quot;&gt;安装whisper&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/graphite-project/whisper.git
+cd whisper &amp;amp;&amp;amp; sudo python setup.py install &amp;amp;&amp;amp; cd -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;carbon&quot;&gt;安装carbon&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/graphite-project/carbon.git
+cd carbon &amp;amp;&amp;amp; python setup.py install &amp;amp;&amp;amp; cd -
+cd /opt/graphite/conf
+cp carbon.conf.example carbon.conf 
+cp storage-schemas.conf.example storage-schemas.conf 根据需求调整carbon.conf中的配置。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;graphite-web&quot;&gt;安装graphite-web&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/graphite-project/graphite-web.git
+cd graphite-web &amp;amp;&amp;amp; python check-dependencies.py
+ 
+#如果报告依赖问题，需要安装对应的软件包
+yum install pycairo django pytz pyparsing django-tagging python-memcached python-ldap twisted txamqp python-rrdtool -y
+
+sudo python setup.py install 
+
+cd /opt/graphite/webapp/graphite/
+cp local_settings.py.example local_settings.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;务必重新设置SECRET_KEY，根据需要调整TIME_ZONE和其它参数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PYTHONPATH=/opt/graphite/webapp/ django-admin syncdb --settings=graphite.settings
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;制造一些测试数据&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /opt/graphite/examples/
+python example-client.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;或者用脚本模拟也写随机数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ruby -e &#39;puts &quot;test.op.random_seq #{rand(100)} #{Time.now.to_i}&quot;&#39; | nc 127.0.0.1 2003
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;web-&quot;&gt;启动web 服务&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;cp /opt/graphite/examples/example-graphite-vhost.conf /etc/httpd/conf.d/
+service httpd restart
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;安装文档参考&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;# 安装文档的更新 https://github.com/graphite-project/graphite-web/blob/master/INSTALL
+# https://github.com/graphite-project/graphite-web
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+                <link>http://blog.liulantao.com/Technology/2014/01/26/graphite-setup-notes.html</link>
+                <guid>http://blog.liulantao.com/Technology/2014/01/26/graphite-setup-notes</guid>
+                <pubDate>2014-01-26T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Nginx中log变量及Tengine的log_unescape</title>
