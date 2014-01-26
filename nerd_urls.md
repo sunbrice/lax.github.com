@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Nerd URLs"
+title: "资料"
 description: ""
 group: "navigation"
 ---
