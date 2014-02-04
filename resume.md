@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "About ME"
-description: ""
+title: 关于
+description: "关于作者的信息"
 group: "navigation"
 ---
 {% include JB/setup %}
