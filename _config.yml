@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://blog.liulantao.liu
+title: 非常规思维研究所
+subtitle: Idea, Code, Life
+author: Liu Lantao
 simple_search: http://google.com/search
 description:
 
@@ -27,7 +27,7 @@ email:
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
 root: /
-permalink: /blog/:year/:month/:day/:title/
+permalink: /blog/:year/:year-:month-:day-:title.html
 source: source
 destination: public
 plugins: plugins
@@ -63,13 +63,13 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # ----------------------- #
 
 # Github repositories
-github_user:
+github_user: Lax
 github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
 
 # Twitter
-twitter_user:
+twitter_user: liulantao
 twitter_tweet_button: true
 
 # Google +1
@@ -93,8 +93,10 @@ delicious_count: 3
 disqus_short_name:
 disqus_show_comment_count: false
 
+weibo_uid: 1653644220
+
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: UA-1658815-1
 
 # Facebook Like
 facebook_like: false

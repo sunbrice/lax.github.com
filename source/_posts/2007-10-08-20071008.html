@@ -1,0 +1,7 @@
+---
+layout: post
+name: '20071008'
+title: Linux problems solved today c2 - 20071008
+time: 2007-10-08 18:35:00.000000000 +08:00
+---
+Linux problems solved today c2 - 20071008<br>0 Comments<p>利用/etc/rc.d/rc.local，开机挂载文件系统。<p>[lax@localhost ~]$ cat /etc/rc.d/rc.local<br>#!/bin/sh<br>#<br># This script will be executed *after* all the other init scripts.<br># You can put your own initialization stuff in here if you don&#39;t<br># want to do the full Sys V style init stuff.<p>touch /var/lock/subsys/local<p># mount Fedora-7-i386-DVD.iso -by lax-<br>echo $&#39;\n&#39;<br>echo &quot;=========================&quot;;<br>echo &quot;Mounting F-7-i386-DVD.iso&quot;;<br>echo &quot;=========================&quot;;<br>mount /mnt/6d/fedora/F-7-i386-DVD.iso<br>/mnt/7var/Server/ftp/pub/soft-open.source/fedora/lax-F-7-i386-DVD.iso/<br>-t iso9660 -o loop;<br>echo $&#39;\n&#39;;<br>echo &quot;=========================&quot;;<br>echo &quot;    Mounting Finished    &quot;;<br>echo &quot;=========================&quot;;<br>df -h;<br># mount succeed.<p><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) liulantao ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8333601072246431499?l=lltaichi.blogspot.com' alt='' /></div>
