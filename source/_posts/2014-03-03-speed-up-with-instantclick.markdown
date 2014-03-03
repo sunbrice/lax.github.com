@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用InstantClick加速页面切换"
+title: "使用InstantClick提升链接打开速度"
 date: 2014-03-03 12:11:32 +0800
 comments: true
 categories: 
