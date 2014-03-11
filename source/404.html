@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<div class="blog-index">
+  <h3>糟糕，没有找到这个页面！</h3>
+  <h4>看看其它的文章吧。</h4>
+  <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8"></script>
+</div>
+<aside class="sidebar">
+  {% if site.blog_index_asides.size %}
+    {% include_array blog_index_asides %}
+  {% else %}
+    {% include_array default_asides %}
+  {% endif %}
+</aside>
