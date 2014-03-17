@@ -24,6 +24,7 @@ footer: true
 
      *    Blogs (Person)
         *    [Steve Souders](http://stevesouders.com)
+        *    [Pete Keen](https://www.petekeen.net)
 
      *    Blogs (Group)
         *    [Fastly Blog](http://www.fastly.com/blog)
