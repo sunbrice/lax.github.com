@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "使用RubyMotion 5分钟开发iOS应用"
+title: "5分钟开发iOS应用-使用RubyMotion"
 date: 2014-04-25 13:53:49 +0800
 comments: true
 categories: 
