@@ -3,7 +3,8 @@ layout: post
 title: "使用InstantClick提升链接打开速度"
 date: 2014-03-03 12:11:32 +0800
 comments: true
-categories: 
+categories: Technology
+
 ---
 
 博客页面总是慢吞吞，这样的体验大概是每个博客作者都不愿意看到的。
