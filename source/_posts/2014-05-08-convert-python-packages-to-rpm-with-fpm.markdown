@@ -4,7 +4,7 @@ title: "使用软件包神器fpm将Python包转为RPM包"
 date: 2014-05-08 11:56:15 +0800
 comments: true
 categories: Technology
-
+commentIssueId: 2
 ---
 
 在[之前的一篇文章](http://mib.cc/blog/2012/2012-05-21-package-management-with-fpm.html)中介绍过使用fpm制作rpm包，相信实践过的同学已经见识过fpm的威力。

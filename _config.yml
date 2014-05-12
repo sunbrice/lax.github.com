@@ -93,7 +93,11 @@ delicious_count: 3
 disqus_short_name:
 disqus_show_comment_count: false
 
+# Weibo Comments
 weibo_uid: 1653644220
+
+# Github Comments
+github_comments_repo: "Lax/lax.github.com"
 
 # Google Analytics
 google_analytics_tracking_id: UA-1658815-1

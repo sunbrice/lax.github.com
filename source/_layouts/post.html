@@ -30,6 +30,9 @@ single: true
   {% include weibo.html %}
 </comments>
 {% endif %}
+{% if page.comments != false and site.github_comments_repo and page.commentIssueId %}
+  {% include github_comments.html %}
+{% endif %}
 {% if site.disqus_short_name and page.comments == true %}
   <section>
     <h1>Comments</h1>
