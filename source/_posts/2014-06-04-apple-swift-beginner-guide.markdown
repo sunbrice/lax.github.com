@@ -27,13 +27,17 @@ Swift在iOS 8发布的时候推向市场，用来取代现有的Objective-C语�
 *    《[The Swift Programming Language](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/)》
 *    Kindle/EPUB/PDF版本： http://pan.baidu.com/s/1sjO4Ab7
 
-### 非官方文档（英文）
-TODO
+*    [Introducing Swift](https://developer.apple.com/swift/)
+
+### 非官方文档与社区（英文）
+
+*    [StackOverflow上的Swift讨论](http://stackoverflow.com/questions/tagged/swift-language)
 
 ### 博客与翻译（中文）
 
 有网友第一时间开始了官方文档的翻译工作，相信近期将由更多文档和教程出现。
 
+*    《Swift编程语言》（翻译）http://numbbbbb.github.io/the-swift-programming-language-in-chinese/
 *    《来自苹果的编程语言——Swift简介》http://zh.lucida.me/blog/an-introduction-to-swift/
 *    《Apple Swift编程语言入门教程》 http://gashero.iteye.com/blog/2075324
 
