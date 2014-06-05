@@ -25,11 +25,12 @@ single: true
     </p>
   </footer>
 </article>
-{% if site.weibo_uid and page.comments != false %}
+<!-- UY BEGIN -->
 <comments>
-  {% include weibo.html %}
+  <div id="uyan_frame"></div>
+  <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1936498"></script>
 </comments>
-{% endif %}
+<!-- UY END -->
 {% if page.comments != false and site.github_comments_repo and page.commentIssueId %}
   {% include github_comments.html %}
 {% endif %}
