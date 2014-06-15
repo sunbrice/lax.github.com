@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Nerd URLs"
+title: "Links"
 description: "收集的一些文档"
 date: 2014-02-26 19:00
 permalink: /links/
