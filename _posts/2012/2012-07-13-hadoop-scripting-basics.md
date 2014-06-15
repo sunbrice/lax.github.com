@@ -61,7 +61,11 @@ Streaming(script)
 
 Usage:
 
-     hadoop jar $STREAMING_JAR -mapper "$MAPPER" -file $MAPPER_FILE -reducer "$REDUCER" -file $REDUCER_FILE -input $RAW -output $SUMMARY -numReduceTasks 1
+     hadoop jar $STREAMING_JAR \
+     -mapper "$MAPPER" -file $MAPPER_FILE \
+     -reducer "$REDUCER" -file $REDUCER_FILE \
+     -input $RAW -output $SUMMARY \
+     -numReduceTasks 1
 
     $STREAMING_JAR, $MAPPER_FILE, $REDUCER_FILE: files in local path.
 
