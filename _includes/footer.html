@@ -49,6 +49,23 @@
             <span class="username">{{ site.twitter_username }}</span>
           </a>
         </li>{% endif %}
+        <li>
+          <a href="{{ site.url }}{{ site.atom_path }}">
+            <span class="icon">
+              atom
+            </span>
+          </a>
+          <a href="{{ site.url }}{{ site.feed_path }}">
+            <span class="icon">
+              feed
+            </span>
+          </a>
+          <a href="{{ site.url }}{{ site.rss_path }}">
+            <span class="icon">
+              rss
+            </span>
+          </a>
+        </li>
       </ul>
     </div>
 

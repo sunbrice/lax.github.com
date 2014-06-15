@@ -6,7 +6,6 @@ baseurl: ""
 url: http://blog.liulantao.com
 twitter_username: liulantao
 github_username: Lax
-production_url: http://blog.liulantao.com
 
 author:
   name: Liu Lantao
