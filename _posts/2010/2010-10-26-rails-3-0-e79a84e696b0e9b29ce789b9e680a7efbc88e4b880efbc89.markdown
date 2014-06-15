@@ -1,0 +1,26 @@
+---
+date: '2010-10-26 23:19:03'
+layout: post
+slug: rails-3-0-%e7%9a%84%e6%96%b0%e9%b2%9c%e7%89%b9%e6%80%a7%ef%bc%88%e4%b8%80%ef%bc%89
+status: publish
+title: Rails 3.0 的新鲜特性（一）
+wordpress_id: '30'
+categories:
+- Technology
+---
+
+Rails正式发布了3.0版本，更新过一次后，现在已经有3.0.1了。
+
+3.0系列，与传统2.2系列的差异非常大。这些变化包括：
+
+1、简化的rails命令，替代了原来script/*，rails工具更加一致；
+
+2、基于bundle的gem管理，将依赖管理通过配置文件Gemfile的方式实现，比vender/plugin更容易进行管理；
+
+3、改进的FormHelper；
+
+4、默认支持跨站防御；
+
+5、易定制的route配置文件。
+
+在rails 3.0.1发布之后，一系列辅助工具如passenger等都顺利的配合rails3，为程序员进行大规模版本迁移提供了便利。
