@@ -16,31 +16,31 @@ tags:
 
 方案一、
 
-deny  120.7.0.1/16
+    deny  120.7.0.1/16;
 
 方案二、
 
-http {
-......
-geo $ban {
-default         0;  # 默认关闭
-127.0.0.0/16    1;  # 针对网段打开；可以设置多行。
-}
-......
-server {
-......
-# 在Server或Location里设置
-location / {
-if ($ban = 1) {
-return 500;  # 返回500 code
-}
-......
-}
-......
-}
-
-......
-}
+    http {
+        ......
+        geo $ban {
+            default         0;  # 默认关闭
+            127.0.0.0/16    1;  # 针对网段打开；可以设置多行。
+        }
+        ......
+        server {
+            ......
+            # 在Server或Location里设置
+            location / {
+                if ($ban = 1) {
+                    return 500;  # 返回500 code
+                }
+                ......
+            }
+            ......
+        }
+    
+        ......
+    }
 
 该配置使用了nginx的geo模块，该模块是nginx标准模块，默认编译是开启的。需要机器上安装有GeoIP支持库。
 了解更多点击http://wiki.nginx.org/NginxHttpGeoModule
