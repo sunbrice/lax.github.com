@@ -12,23 +12,25 @@ footer: true
 
 *    News & Information & Life*
      *    WebSites
-        *    [LWN.net](https://lwn.net)
-        *    [Lifehacker](http://lifehacker.com)
-        *    [Hacker News](http://news.ycombinator.com)
-        *    [ARK &copy;Intel](http://ark.intel.com)
-             Intel官方的硬件型号资料库，是设备选型的重要参考资料。
-        *    [AnandTech](http://www.anandtech.com)&& Architecture
-
-     *  Online Books
-        *    [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
-        *    [海量运维、运营规划之道](http://www.itkoala.com)
+          *    [LWN.net](https://lwn.net)
+          *    [Lifehacker](http://lifehacker.com)
+          *    [Hacker News](http://news.ycombinator.com)
+          *    [ARK &copy;Intel](http://ark.intel.com)
+               Intel官方的硬件型号资料库，是设备选型的重要参考资料。
+          *    [AnandTech](http://www.anandtech.com)&& Architecture
 
      *    Blogs (Person)
-        *    [Steve Souders](http://stevesouders.com)
-        *    [Pete Keen](https://www.petekeen.net)
+          *    [Steve Souders](http://stevesouders.com)
+          *    [Pete Keen](https://www.petekeen.net)
 
      *    Blogs (Group)
-        *    [Fastly Blog](http://www.fastly.com/blog)
+          *    [Fastly Blog](http://www.fastly.com/blog)
+
+     *    Online Books
+          *    [RubyMotion Tutorial](http://rubymotion-tutorial.com) Make iOS Apps With Ruby
+          *    [The Architecture of Open Source Applications](http://aosabook.org/en/index.html)
+          *    [Nginx开发从入门到精通](http://tengine.taobao.org/book/index.html)
+          *    [海量运维、运营规划之道](http://www.itkoala.com)
 
 *    System Admin
 
