@@ -4,7 +4,10 @@ email: liulantao (at) gmail.com
 description: "Idea, Code, Life 思考的点点滴滴"
 baseurl: ""
 url: http://blog.liulantao.com
+production_url: http://blog.liulantao.com
 
+author:
+  name: Liu Lantao
 github_user: Lax
 twitter_user: liulantao
 
@@ -15,3 +18,6 @@ markdown: kramdown
 permalink: pretty
 
 permalink: /blog/:year/:year-:month-:day-:title.html
+rss_path: /rss.xml
+atom_path: /atom.xml
+feed_path: /feed.xml
