@@ -1,0 +1,7 @@
+---
+layout: post
+name: freebsdfluxbox
+title: freebsd+fluxbox中文输入法不能启动的设置方法
+time: 2008-01-10 14:45:00.000000000 +08:00
+---
+freebsd+fluxbox中文输入法不能启动的设置方法<br>------<br>我用的是freebsd+fluxbox，当然其它环境也有类似的配置。<p>通过ports安装，网上也有不少介绍。安装过程很简单了，进入各个目录make install clean。<br>需要安装的有x11/xorg，x11-wm/fluxbox，chinese/scim。<p>正确配置xorg.conf，确保正常启动图形界面。不要这个文件是能够启动的，但是会有鼠标之类的不可用。配置过程是比较玄妙的一件事情，一般不能启动的时候都是和显卡有关的驱动加载问题，我运行xorgconfig配置之后，显卡成了vga了，死活提示启动有问题。后来手动修改为vesa才可以。看造化吧，因为我在中英文的论坛中搜索答案的时候发现关于这个文件的文章不是很够用。<p>下面就是和输入法有关的了。先启动图形界面，打开一个term运行scim -d，如果有反应则说明安装成功了，然后就可以在~/.xinitrc中添加<br>------<br>scim -d &amp;<br>exec fluxbox<br>------<br>正常情况下可以看到任务栏上的输入法图标了。但是很让人郁闷的是，没法在任何程序中调用它。<p>运行locale命令，查看输出结果，如果LC_CTYPE未被设置，则需要需要手动设置。<br>如果是csh/tcsh，则运行setenv LC_CTYPE zh_CN.UTF-8，<br>如果是sh/bash，则运行export LC_CYTPE=zh_CN.UTF-8。<br>如果不想每次都手动设定，可以修改~/.cshrc（或~/.bashrc，看你用哪个shell了）<br>------<br>lax@liulantao-com&gt;  echo &quot;setenv LC_CTYPE zh_CN.UTF-8&quot; &gt;&gt; ~/.cshrc<p>lax@liulantao-com$   echo &quot;export LC_CYTPE=zh_CN.UTF-8&quot; &gt;&gt; ~/.bashrc<br>------<br>经测试，这个变量设置之后就能够正确启动输入法了。<p>-- <br>作者：刘兰涛  Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br>转载请注明出处。<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-7753736560692750141?l=lltaichi.blogspot.com' alt='' /></div>
