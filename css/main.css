@@ -260,6 +260,14 @@ a:visited { color: #205caa; }
 
 .post pre.terminal code { background-color: #333; }
 
+/* Archives */
+#blog-archives h2:first-child { margin-top: 0; padding-top: 0; }
+#blog-archives h2 { margin-bottom: .3em; font-weight: normal; display: inline-block; position: relative; top: -1px; float: left; }
+#blog-archives article { padding-left: 4.5em; padding-bottom: .7em; }
+#blog-archives h1 { font-size:1.5em; color: #222; margin-bottom: .3em; }
+#blog-archives time { position: absolute; text-align: right; left: 0em; top: 1.8em; font-size: .9em; line-height: 1.2em; color:#aaa; }
+#blog-archives time .month { text-transform:uppercase; display:inline-block; }
+
 /* Syntax highlighting styles */
 /* ----------------------------------------------------------*/
 
