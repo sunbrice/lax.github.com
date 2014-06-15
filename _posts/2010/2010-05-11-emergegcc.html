@@ -1,0 +1,9 @@
+---
+layout: post
+name: emergegcc
+title: Emerge抱怨gcc不能工作啦！
+time: 2010-05-11 22:19:00.000000000 +08:00
+categories: [Technology]
+tags: [Gentoo,emerge]
+---
+Emerge抱怨gcc不能工作啦！<br><br>平时gentoo自动更新，省心也省力。结果聪明反被聪明误，遇到了搞不清道不明的依赖关系，有个东西是装也装不上，卸也卸不下，只好动手挨着理出来。<br>一次舒爽的emerge --depclean之后，系统里多余的小家伙挨个儿离开了。<br>重启，再来试试revdep-rebuild（系统推荐的步骤是emerge --update --deep --newuse world, emerge --depclean, then revdep-rebuild）。<br> 不好，突然停住了，看看输出的提示，找到红绿交界的地方，看到如下文字：<br><br>-------code-------<br>checking whether the C compiler (gcc  ) works... no <br> configure: error: installation or configuration problem: C compiler <br> cannot create executables. <br clear="all">--------end-------<br><br>糟糕，我的GCC挂了？貌似刚才的操作没有惹到它老人家吧！<br><br>没办法，找找吧。<br><br>$ which gcc<br>发现它好端端的躺在/usr/bin/gcc，乖乖不得了。<br><br>看看配置吧，gcc-config -l一下，貌似这唯一的一条不是默认的选择。<br>------------------<br>lax@mib ~/empty/gentoo $ gcc-config -l<br>  [1] i686-pc-linux-gnu-4.4.3<br>------------------<br><br>试试修改一下：<br>$ sudo gcc-config 1<br> * Switching native-compiler to i686-pc-linux-gnu-4.4.3 ...                   [ ok ]<br><br>它OK，我也OK，再来Emerge一下，终于走下去啦。<br><br>-- <br> Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-2870561956598449910?l=sandshoots.blogspot.com' alt='' /></div>

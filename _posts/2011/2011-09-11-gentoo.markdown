@@ -1,0 +1,36 @@
+---
+date: '2011-09-11 11:27:40'
+layout: post
+slug: gentoo
+status: publish
+title: Gentoo安装准备知识概要
+wordpress_id: '93'
+categories:
+- Technology
+tags:
+- Gentoo
+- kernel
+- Linux
+- Portage
+- USE
+---
+
+算来使用Linux作为桌面系统，连续下来已经达到5年，如果算上第一次下载刻盘并安装红帽，已经超过8年了。
+这些时间中，一半是在Fedora系统上，几个月时间在用Freebsd、debian，以及短暂的使用ubuntu等。有一年时间在使用Gentoo，也是目前觉得最稳定的发行版。
+
+使用Gentoo，虽然每次emerge安装软件都需要进行编译，但是这些都与其它现代发行版的包管理工具没有使用难度方面的差异。
+
+但是使用Gentoo作为桌面的第一个壁垒是内核编译。没有声音，图形不正常等现象，问题的核心大都在内核选项配置。虽然Gentoo.org的文档水平一流，但是选择正确的内核编译选项仍然需要提前做很多功课。
+
+第一门功课是了解硬件型号。
+你可以找回电脑的配置单，可以从其它正常工作的系统里查一下。当然一般情况下只需要记下主要硬件的品牌即可。需要关注的硬件列表包含：CPU，网卡、显卡，声卡，键盘鼠标，摄像头及其它外设。
+
+第二门功课是了解内核配置方法。
+emerge sys-kernel/gentoo-sources之后，在/usr/src/linux目录下执行make menuconfig命令。
+在Device Drivers中选择你的硬件对应的驱动，如果不清楚型号可以把同品牌的驱动都选上。
+一些配置的默认值与电脑的实际情况不同，需要修改。如CPU的个数，就需要按照实际情况修改。这点要小心，我前几天就遇到个问题，最后才发现是CPU个数少配置了2个。
+
+第三门功课是学习make.conf中USE的配置方法。
+在/usr/portage/profiles/use.desc中有所有USE标签的介绍。系统范围的USE标签在make.conf文件中配置，对单个软件有效的USE标签在/etc/portage/package.use中。
+
+了解这些之后，可以安装软件啦。桌面建议安装gnome-light。

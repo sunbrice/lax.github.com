@@ -1,0 +1,15 @@
+---
+date: '2011-06-17 12:43:12'
+layout: post
+slug: '%e5%bd%97%e6%98%9fdns%e4%bc%98%e5%8c%96%e5%99%a8'
+status: publish
+title: 彗星DNS优化器
+wordpress_id: '65'
+categories: [Technology]
+---
+
+最近参与了不少联系用户的工作，发现DNS设置错误，导致访问网站有性能问题的情况比较多。
+
+指导用户手工修改DNS不是太难的工作，但是又要很有耐心帮忙做测试等等。实在是消耗时间。今天发现有用户在使用工具进行辅助完成这个工作，先分享出来。自己动手丰衣足食，很经济。
+
+[彗星DNS优化器|彗星DNS优化器 1.20下载地址 - 华军软件园下载中心](http://zzidc.onlinedown.net/softdown/100870_2.htm).

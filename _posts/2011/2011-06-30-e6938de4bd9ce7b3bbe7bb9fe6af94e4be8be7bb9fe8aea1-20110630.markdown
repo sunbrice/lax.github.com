@@ -1,0 +1,32 @@
+---
+date: '2011-06-30 21:42:17'
+layout: post
+slug: '%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f%e6%af%94%e4%be%8b%e7%bb%9f%e8%ae%a1-20110630'
+status: publish
+title: 操作系统比例统计.20110630
+wordpress_id: '64'
+categories: [Technology]
+tags:
+- ipad
+- Linux
+- macintosh
+- windows
+- 统计
+---
+
+近日对某SNS网站用户的操作系统情况进行统计，结果如下：
+
+Windows：96.15%
+其中：
+  Windows XP (Windows NT 5.1)    63.98%
+  Windows 2003 (Windows NT 5.2)    0.09%
+  Windows Vista (Windows NT 6.0)    3.74%
+  Windows 7 (Windows NT 6.1)    28.32%
+
+
+Macintosh: 1.06%
+Linux: 0.13%
+iPad: 0.26% 
+
+
+others: 少量
