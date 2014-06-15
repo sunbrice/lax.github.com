@@ -5,21 +5,21 @@ permalink: /about/
 tags: résumé
 ---
 
-I'm Liu Lantao, a full-time systems-engineer living in Běijīng.
+I'm **Liu Lantao**, a full-time systems-engineer living in *Běijīng*.
 I'm also a part-time iOS developer.
 
-I use git, vim, textmate, and I prefer Gentoo and Fedora to Ubuntu.
+I use `git`, `vim`, `textmate`, and I prefer `Gentoo` and `Fedora` to `Ubuntu`.
 
-I've been programming ```ruby``` for 6+ years, with 9+ years of Linux admin experience, and developing software on Linux for about 5 years.
+I've been programming `ruby` for 6+ years, with some 9+ years of `Linux` adminstrater experience, and developing software on Linux for about 5 years.
 
 ### skills
 
 *   System adminstration
 *   Linux kernel tuning and troubleshooting
+*   `Nginx`, `Squid` and `LVS`
 *   Ruby/shell progamming
-*   Nginx, Squid and LVS
 *   iOS and andriod performance issue debug.
-*   knowledge about javascript, python, php, object-c, etc.
+*   know javascript, python, php, object-c, etc.
 
 ### projects
 
@@ -27,23 +27,23 @@ I've been programming ```ruby``` for 6+ years, with 9+ years of Linux admin expe
 
 *    [ngx_http_accounting_module](https://github.com/Lax/ngx_http_accounting_module)
 
-     Add traffic stat function to nginx. Useful for http accounting based on nginx configuration logic ( server / location / or anything else).
+     Add traffic stat function to `nginx`. Useful for http accounting based on nginx configuration logic ( server / location / or anything else).
 
 *    [xulwalker](https://github.com/Lax/xulwalker)
 
-     xulwalker is a browser-server. its an automated webpage monitor environment based on xulrunner.
+     xulwalker is a browser-server. its an automated webpage monitor environment based on `xulrunner`.
 
 *    [roles](https://github.com/Lax/roles)
 
-     Simple (and stupid) Puppet ENC Server. Developed in Dajie.com.
+     Simple (and stupid) `Puppet` `ENC` Server. Developed at Dajie.com.
 
 *    [iOS-Swift-Demos](https://github.com/Lax/iOS-Swift-Demos)
 
-     Resources for developer on the topic of swift language.
+     Resources for developers on the topic of Apple's `swift` language.
 
 *    [ngx_http_mrb_hello_module](https://github.com/Lax/ngx_http_mrb_hello_module)
 
-     Embed the Power of mruby into NGINX. An 'Hello world' demo for mruby+nginx.
+     *Embed the Power of mruby into NGINX*. An 'Hello world' demo for `mruby`+`nginx`.
 
 *    [Matrix](https://github.com/Lax/matrix)
 
