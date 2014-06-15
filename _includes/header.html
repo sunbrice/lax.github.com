@@ -18,7 +18,9 @@
       </a>
       <div class="trigger">
         {% for page in site.pages %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          {% if page.title != null and page.page_hidden != true %}
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          {% endif %}
         {% endfor %}
       </div>
     </nav>
