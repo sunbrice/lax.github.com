@@ -14,16 +14,18 @@ tags:
 教你监控Nginx服务：文件上传服务log配置
 
 
-log_format upload ‘[$time_local] $status $host $upstream_addr $upstream_response_time $request_time $remote_addr $request_length $bytes_sent’;
-access_log logs/upload.log upload;
+    log_format upload ‘[$time_local] $status $host $upstream_addr $upstream_response_time '
+                      '$request_time $remote_addr $request_length $bytes_sent’;
+    access_log logs/upload.log upload;
 
 变量说明：
-$time_local  本地时间
-$status           状态码
-$host              主机名
-$upstream_addr    后端地址
-$upstream_response_time   后端响应时间
-$request_time         请求时间
-$remote_addr         用户地址
-$request_length     请求长度
-$bytes_sent             返回长度
+
+*    $time_local  本地时间
+*    $status           状态码
+*    $host              主机名
+*    $upstream_addr    后端地址
+*    $upstream_response_time   后端响应时间
+*    $request_time         请求时间
+*    $remote_addr         用户地址
+*    $request_length     请求长度
+*    $bytes_sent             返回长度
