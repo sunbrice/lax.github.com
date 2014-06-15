@@ -75,18 +75,20 @@ I've been programming ```ruby``` for 6+ years, with 9+ years of Linux admin expe
 
 ### job experience
 
-*   2009.6 to 2013.12 : renren.com - system engineer, senior system engineer, technical manager
+*   2014.01 - now : dajie.com - Senior System Operation Manager
+    *   Systems operation architecture
+    *   Develop/optimize server software
+    *   some work on MIS/OA
+
+*   2009.06 - 2013.12 : renren.com - system engineer, senior system engineer, technical manager
     *   Develop website monitor systems based on nagios, xulrunner, rrdtools
     *   Realtime real-user-performance measurement tools and analyze with hadoop, establish QoS standards system.
     *   Build large scale CDN systems for renren.com with Nginx, Squid and other technologis.
     *   Online system performance tuning and troubleshooting
     *   Leading a team of system engineer, provide system support to Dev teams.
 
-*   2014.01 till now : dajie.com - Senior System Operation Manager
-    *   System operation and MIS
-
 ### education
-*   2005.9 Beijing Normal University - Bachelor of Computer Science
+*   2005.9 - 2009.06 : Beijing Normal University - Bachelor of Computer Science
 
 ### contact
 
