@@ -7,6 +7,8 @@ url: http://blog.liulantao.com
 twitter_username: liulantao
 github_username: Lax
 
+comment_uyan_uid: 1936498
+
 # Build settings
 markdown: kramdown
 permalink: pretty
