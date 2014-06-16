@@ -270,6 +270,8 @@ a:visited { color: #205caa; }
 #blog-archives article footer { padding: 0; margin: 0; vertical-align: baseline; }
 article > footer { padding-bottom: 2.5em; margin-top: 2em; }
 
+#related ul.posts li { margin-bottom: .4em; }
+
 /* Syntax highlighting styles */
 /* ----------------------------------------------------------*/
 
