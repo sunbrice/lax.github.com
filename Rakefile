@@ -9,7 +9,7 @@ task :gen do
   system "jekyll build --lsi"
 
   puts "### Git commit"
-  system "cd ./_site && git add . && git diff HEAD && git commit -a"
+  system "cd ./_site && git add . && git diff HEAD; git commit -a"
 end
 
 desc "Deploy to github"
