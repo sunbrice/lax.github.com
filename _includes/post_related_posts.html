@@ -1,10 +1,8 @@
-<hr />
-<section>
-  <ul id="related_posts">
-    {% for post in site.related_posts limit: site.releated_posts_limit %}
-      <li class="post">
-        <a href="{{ root_url }}{{ post.url }}" data-instant>{{ post.title }}</a>
-      </li>
+<div id="related">
+  <h2 class="subheader">Related Posts <small>They might be useful</small></h2>
+  <ul class="posts">
+    {% for post in site.related_posts limit:site.releated_posts_limit %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url | prepend: site.baseurl | prepend: site.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
-</section>
+</div>
