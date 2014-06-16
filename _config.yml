@@ -23,4 +23,6 @@ rss_path: /rss.xml
 atom_path: /atom.xml
 feed_path: /feed.xml
 
-exclude: [Rakefile]
+releated_posts_limit: 5
+
+exclude: [Rakefile, Gemfile, Gemfile.lock]
