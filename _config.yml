@@ -22,3 +22,5 @@ permalink: /blog/:year/:year-:month-:day-:title.html
 rss_path: /rss.xml
 atom_path: /atom.xml
 feed_path: /feed.xml
+
+exclude: [Rakefile]
