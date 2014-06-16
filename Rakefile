@@ -3,13 +3,13 @@ task :gen do
   raise "### Site Dir(_site/) not found!" unless File.directory?("./_site")
 
   puts "### Clear _site/"
-  system "cd ./_site && git rm -q -r ./"
+  system "cd ./_site && git rm -q -r -f ./"
 
   puts "## Generating Site with Jekyll"
-  system "jekyll build"
+  system "jekyll build --lsi"
 
   puts "### Git commit"
-  system "cd ./_site && git add . && git commit -am 'Generated at #{Time.now}' && git show"
+  system "cd ./_site && git add . && git diff HEAD && git commit -a"
 end
 
 desc "Deploy to github"
@@ -26,5 +26,5 @@ end
 
 desc "Preview"
 task :preview do
-  system "jekyll serve"
+  system "jekyll serve --lsi"
 end
