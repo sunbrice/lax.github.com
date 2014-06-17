@@ -1,0 +1,77 @@
+- name: News & Information & Life*
+  meta: false
+  data:
+    - name: WebSites
+      meta: false
+      data:
+        - name: LWN.net
+          link: http://lwn.net
+        - name: Lifehacker
+          link: http://lifehacker.com
+        - name: Hacker News
+          link: http://news.ycombinator.com
+        - name: ARK ©Intel
+          link: http://ark.intel.com
+          desc: Intel官方的硬件型号资料库，是设备选型的重要参考资料。
+        - name: AnandTech && Architecture
+          link: http://www.anandtech.com
+    - name: Blogs (Person)
+      meta: false
+      data:
+        - name: Steve Souders
+          link: http://stevesouders.com
+        - name: Pete Keen
+          link: https://www.petekeen.net
+    - name: Blogs (Group)
+      meta: false
+      data:
+        - name: Fastly Blog
+          link: http://www.fastly.com/blog
+    - name: Online Books
+      meta: false
+      data:
+        - name: RubyMotion Tutorial
+          link: http://rubymotion-tutorial.com
+          desc: Make iOS Apps With Ruby
+        - name: The Architecture of Open Source Applications
+          link: http://aosabook.org/en/index.html
+        - name: Nginx开发从入门到精通
+          link: http://tengine.taobao.org/book/index.html
+        - name: 海量运维、运营规划之道
+          link: http://www.itkoala.com
+- name: System Admin
+  meta: false
+  data:
+    - name: 辅助工具
+      meta: false
+      data:
+        - name: FnordMetric
+          link: http://fnordmetric.io
+          desc: highly customizable real-time analytics dashboards
+        - name: Gollum
+          link: https://github.com/github/gollum
+        - name: Markdown @wikipedia
+          link: http://en.wikipedia.org/wiki/Markdown
+- name: Hacks && Tips
+  meta: false
+  data:
+    - name: Linux
+      meta: false
+      data:
+        - name: No Single Points of Failure
+          link: http://techblog.mdsol.com/2014/06/16/no_single_points_failure.html
+          desc: Check-list for Systems HA Architecture
+        - name: rm -rf remains
+          link: http://lambdaops.com/rm-rf-remains
+    - name: DevTools
+      meta: false
+      data:
+        - name: VIM纵向编辑模式
+          link: http://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html
+- name: Online Book Store
+  meta: false
+  data:
+    - name: PragProg
+      link: http://pragprog.com
+    - name: Amazon
+      link: http://www.amazon.com
