@@ -25,6 +25,8 @@
     - name: Blogs (Group)
       meta: false
       data:
+        - name: Facebook Engineering Blog
+          link: https://code.facebook.com/posts/
         - name: Fastly Blog
           link: http://www.fastly.com/blog
     - name: Online Books

@@ -64,6 +64,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jekyll
+  jekyll (~> 2.0.3)
   jekyll-sitemap
   rb-gsl
