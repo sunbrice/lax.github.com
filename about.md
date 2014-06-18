@@ -5,7 +5,8 @@ permalink: /about/
 tags: résumé
 ---
 
-I'm **Liu Lantao**, a full-time systems-engineer living in *Běijīng*.
+I'm **<span itemprop="name">Liu Lantao</span>**, a full-time systems-engineer living in *<span itemprop="address">Běijīng</span>*.
+
 I'm also a part-time iOS developer.
 
 I use `git`, `vim`, `textmate`, and I prefer `Gentoo` and `Fedora` to `Ubuntu`.
