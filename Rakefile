@@ -17,7 +17,8 @@ task :deploy do
   raise "### Site git dir(_site/.git/) not found!" unless File.directory?("./_site/.git")
 
   puts "### Git push"
-  system "cd _site && git push"
+  system "cd _site && git push origin master"
+  system "cd _site && git push gitcafe master:gitcafe-pages"
 end
 
 desc "Generate website and deploy"
