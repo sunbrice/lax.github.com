@@ -5,6 +5,7 @@
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% if site.subtitle %} | {{ site.subtitle }}{% endif %}</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="{{ site.description }}">
+    <link rel="shortcut icon" type="image/x-icon" href="http://blog.liulantao.com/favicon.ico">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
     <link href="{{ site.atom_path | prepend: site.baseurl | prepend: site.url }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
