@@ -12,7 +12,8 @@ author:
   name: Liu Lantao
 
 comment_uyan_uid: 1936498
-google_analytics_tracking_id: UA-1658815-1
+google_analytics_tracking_id: UA-1658815-3
+google_analytics_tracking_name: liulantao.com
 
 # Build settings
 markdown: kramdown
