@@ -20,6 +20,7 @@
       data:
         - name: Steve Souders
           link: http://stevesouders.com
+          desc: Steve Souders是Web性能优化（WPO）方面的领袖人物，曾在Yahoo!，Google主导性能优化。目前在Fastly。
         - name: Pete Keen
           link: https://www.petekeen.net
         - name: Steve Hanov
