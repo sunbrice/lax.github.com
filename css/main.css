@@ -60,6 +60,21 @@ a:visited { color: #205caa; }
   z-index: 1;
 }
 
+.site-subtitle,
+.site-subtitle:hover,
+.site-subtitle:visited {
+  display: block;
+  color: #333;
+  font-size: 16px;
+  letter-spacing: -1px;
+  float: left;
+  line-height: 56px;
+  position: relative;
+  z-index: 1;
+  vertical-align: baseline;
+  margin-left: 12px;
+}
+
 .site-nav {
   float: right;
   line-height: 56px;
