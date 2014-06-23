@@ -30,3 +30,4 @@ exclude: [Rakefile, Gemfile, Gemfile.lock]
 
 gems:
   - jekyll-sitemap
+  - jekyll-redirect-from
