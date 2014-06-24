@@ -15,6 +15,8 @@
           desc: Intel官方的硬件型号资料库，是设备选型的重要参考资料。
         - name: AnandTech && Architecture
           link: http://www.anandtech.com
+        - name: Computer History Museum
+          link: http://www.computerhistory.org
     - name: Blogs (Person)
       meta: false
       data:
