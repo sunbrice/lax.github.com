@@ -99,6 +99,9 @@
         - name: 三斗室
           link: http://chenlinux.com
           desc: 饶琛琳
+        - name: 人人都是DBA
+          link: http://rrdba.cn
+          desc: 刘启荣老师
     - name: 友情链接 - 其它
       meta: false
       data:
