@@ -1,0 +1,16 @@
+---
+layout: page
+title: "Documents"
+description: "整理的一些文档"
+permalink: /documents/
+comments: true
+sharing: true
+footer: true
+---
+
+<ul>{% for page in site.pages %}{% if page.title != null and page.page_hidden == true and page.document_tags and page.document_tags.size > 0 %}
+    <li>
+    <a class="document-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+    {% for tag in page.document_tags %}<code>{{ tag }}</code>{% endfor %}
+    </li>{% endif %}{% endfor %}
+</ul>
