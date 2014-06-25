@@ -51,19 +51,13 @@
           link: http://tengine.taobao.org/book/index.html
         - name: 海量运维、运营规划之道
           link: http://www.itkoala.com
-- name: System Admin
-  meta: false
-  data:
-    - name: 辅助工具
+    - name: Online Book Store
       meta: false
       data:
-        - name: FnordMetric
-          link: http://fnordmetric.io
-          desc: highly customizable real-time analytics dashboards
-        - name: Gollum
-          link: https://github.com/github/gollum
-        - name: Markdown @wikipedia
-          link: http://en.wikipedia.org/wiki/Markdown
+        - name: PragProg
+          link: http://pragprog.com
+        - name: Amazon
+          link: http://www.amazon.com
 - name: Hacks && Tips
   meta: false
   data:
@@ -80,10 +74,35 @@
       data:
         - name: VIM纵向编辑模式
           link: http://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html
-- name: Online Book Store
+    - name: System Admin
+      meta: false
+      data:
+        - name: 辅助工具
+          meta: false
+          data:
+            - name: FnordMetric
+              link: http://fnordmetric.io
+              desc: highly customizable real-time analytics dashboards
+            - name: Gollum
+              link: https://github.com/github/gollum
+            - name: Markdown @wikipedia
+              link: http://en.wikipedia.org/wiki/Markdown
+- name: Misc
   meta: false
   data:
-    - name: PragProg
-      link: http://pragprog.com
-    - name: Amazon
-      link: http://www.amazon.com
+    - name: 友情链接 - 同事
+      meta: false
+      data:
+        - name: lark's cloud
+          link: http://www.lark.net.cn
+          desc: 王剑
+        - name: 三斗室
+          link: http://chenlinux.com
+          desc: 饶琛琳
+    - name: 友情链接 - 其它
+      meta: false
+      data:
+        - name: Andy的博客
+          link: http://blog.andyliu.net
+        - name: Demon
+          link: http://demonc.com
