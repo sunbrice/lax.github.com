@@ -78,6 +78,8 @@
           link: http://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html
         - name: Best of Vim Tips
           link: http://zzapper.co.uk/vimtips.html
+        - name: VIM Tips Blog
+          link: http://www.vimtips-blog.com
     - name: System Admin
       meta: false
       data:
