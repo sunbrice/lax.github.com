@@ -106,4 +106,4 @@ puts Base64.decode64(info)"
 {% endhighlight %}
 
 
-[résumé](/resume/)
+[résumé/en](/resume/) | [简历/中文pdf](/resume/liulantao-resume-2014.pdf)
