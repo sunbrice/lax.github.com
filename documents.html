@@ -10,7 +10,8 @@ footer: true
 
 <ul>{% for page in site.pages %}{% if page.title != null and page.page_hidden == true and page.document_tags and page.document_tags.size > 0 %}
     <li>
-    <a class="document-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-    {% for tag in page.document_tags %}<code>{{ tag }}</code>{% endfor %}
+      <a class="document-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+      {% for tag in page.document_tags %}<code>{{ tag }}</code>{% endfor %}{% if page.description %}<br />
+      {{ page.description }}{% endif %}
     </li>{% endif %}{% endfor %}
 </ul>

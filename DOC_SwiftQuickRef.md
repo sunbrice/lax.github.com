@@ -5,6 +5,7 @@ permalink: /SwiftQuickRef/
 tags: [Swift, QuickRef]
 page_hidden: true
 document_tags: [Swift, QuickRef]
+description: Swift学习笔记与备忘，还有一些想法和总结，方便速查。
 ---
 
 ### Xcode6
