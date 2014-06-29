@@ -7,7 +7,7 @@ page_hidden: true
 document_tags: [Swift]
 description: 整理的一些Swift语言学习资源，希望对大家有帮助。QQ交流群32958950 申请时请说明身份。
 ---
-# [Swift学习资源](https://github.com/Lax/iOS-Swift-Demos/wiki)
+# [Swift学习资源](http://blog.liulantao.com/SwiftBeginnersGuide/)
 [最新内容请查看Wiki](https://github.com/Lax/iOS-Swift-Demos/wiki)
 
 
@@ -60,6 +60,8 @@ Swift在iOS 8发布的时候推向市场，用来取代现有的Objective-C语�
 *    http://swift.sh
 *    http://swift-china.org
 *    CocoaChina的[Swift讨论区](http://www.cocoachina.com/bbs/thread.php?fid=57)
+*    QQ群
+     *     iOS开发者-开始Swift，群号：32958950，申请时请说明身份。
 
 
 #### 翻译
@@ -145,7 +147,7 @@ Apple同时发布了3个示例程序，用于初窥Swift开发的项目。
 
 *    [iOS 7.1 to iOS 8.0 API Differences](https://developer.apple.com/library/prerelease/ios/releasenotes/General/iOS80APIDiffs/index.html)
 *    [App Extensions Increase Your Impact](https://developer.apple.com/library/prerelease/ios/documentation/General/Conceptual/ExtensibilityPG/index.html)
-
+*    [Swift学习资源](http://blog.liulantao.com/SwiftBeginnersGuide/) 新手的Swift学习资料汇总，比较详细总结了常用的资源。
 
 ### 因为重名躺枪的Swift
 
