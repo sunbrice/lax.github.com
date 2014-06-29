@@ -31,6 +31,8 @@
           link: http://stevehanov.ca
         - name: Meta-X86
           link: http://meta-x86.blogspot.jp
+        - name: METABLOG
+          link: http://blog.metaobject.com
     - name: Blogs (Group)
       meta: false
       data:
