@@ -98,6 +98,9 @@
               link: https://github.com/github/gollum
             - name: Markdown @wikipedia
               link: http://en.wikipedia.org/wiki/Markdown
+            - name: Epoch
+              link: https://github.com/fastly/epoch
+              desc: A real-time charting library, based on d3. comments https://news.ycombinator.com/item?id=7948560
 - name: Misc
   meta: false
   data:
