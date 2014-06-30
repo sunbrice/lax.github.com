@@ -82,6 +82,11 @@ Jekyll 最近引入 [Data Files][] 功能，用来满足保存数据的需求。
 如果你有更好的想法欢迎留言交流。
 
 
+参考文档：
+
+*    [jekyll文档中关于Data Files的说明](http://jekyllrb.com/docs/datafiles/)
+*    [文章相关源代码](https://github.com/Lax/lax.github.com/commit/3caa16daa0c258a50fcdf56c6018dfeecfa0950c)
+
 [Data Files]: <http://jekyllrb.com/docs/datafiles/> "Data Files"
 [links.html]: <https://github.com/Lax/lax.github.com/blob/lax.github.com-jekyllrb/_pages/links.html> "links.html"
 [data_links.html]: <https://github.com/Lax/lax.github.com/blob/lax.github.com-jekyllrb/_includes/data_links.html> "_includes/data_links.html"
