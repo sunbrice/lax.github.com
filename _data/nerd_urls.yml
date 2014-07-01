@@ -38,6 +38,8 @@
       data:
         - name: Facebook Engineering Blog
           link: https://code.facebook.com/posts/
+        - name: Google Research Blog
+          link: http://googleresearch.blogspot.jp/search?view=sidebar
         - name: Code as Craft
           link: http://codeascraft.com
           desc: Blog of Etsy team
