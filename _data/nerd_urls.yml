@@ -70,6 +70,11 @@
 - name: Hacks && Tips
   meta: false
   data:
+    - name: iOS
+      meta: false
+      data:
+        - name: We ❤ Swift
+          link: http://www.weheartswift.com
     - name: Linux
       meta: false
       data:

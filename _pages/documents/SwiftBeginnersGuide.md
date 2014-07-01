@@ -45,7 +45,7 @@ Swift在iOS 8发布的时候推向市场，用来取代现有的Objective-C语�
 *    [Swift Impressions](http://www.evanmiller.org/swift-impressions.html) by Evan Miller
 
 
-*    http://www.weheartswift.com
+*    [We ❤ Swift](http://www.weheartswift.com)
 
 
 
