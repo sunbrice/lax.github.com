@@ -85,6 +85,8 @@
           desc: Check-list for Systems HA Architecture
         - name: rm -rf remains
           link: http://lambdaops.com/rm-rf-remains
+        - name: Unix tricks by Carlos Fenollosa
+          link: http://cfenollosa.com/misc/tricks.txt
     - name: DevTools
       meta: false
       data:
@@ -110,6 +112,11 @@
             - name: Epoch
               link: https://github.com/fastly/epoch
               desc: A real-time charting library, based on d3. comments https://news.ycombinator.com/item?id=7948560
+    - name: Security
+      meta: false
+      data:
+        - name: 裤子
+          link: http://www.hackerdream.net/category/share/kuzi
 - name: Misc
   meta: false
   data:
