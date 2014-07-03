@@ -1,4 +1,6 @@
+{% if site.comments != false and page.comments != false %}
 <comments>
 {% include post_comment_uyan.html %}
 {% include post_comment_disqus.html %}
 </comments>
+{% endif %}
