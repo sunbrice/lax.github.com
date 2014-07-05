@@ -159,14 +159,14 @@ a:visited { color: #205caa; }
 /* Home styles */
 /* ----------------------------------------------------------*/
 
-.home h1 { margin-bottom: 25px; }
+.home h1 { margin-bottom: 25px; font-size: 24px; letter-spacing: -1.75px; line-height: 1; font-weight: 300; }
 
 .posts { list-style-type: none; }
 
-.posts li { margin-bottom: 30px; }
+.posts li { margin-bottom: 20px; background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAABCAYAAACsXeyTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQIHWNIS0sr/v//PwMMDzY+ADqMahlW4J91AAAAAElFTkSuQmCC') bottom left repeat-x; }
 
 .posts .post-link {
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: -1px;
   line-height: 1;
 }
@@ -175,6 +175,9 @@ a:visited { color: #205caa; }
   display: block;
   font-size: 15px;
   color: #818181;
+  float: left;
+  margin-right: 12px;
+  margin-left: 1.8em;
 }
 
 
@@ -209,7 +212,7 @@ a:visited { color: #205caa; }
 .post-content h6 {
   line-height: 1;
   font-weight: 300;
-  margin: 40px 0 20px;
+  margin: 22px 0 20px;
 }
 
 .post-content h2 {
@@ -289,6 +292,7 @@ a:visited { color: #205caa; }
 #blog-archives time .month { text-transform:uppercase; display:inline-block; }
 #blog-archives article footer { padding: 0; margin: 0; vertical-align: baseline; }
 article > footer { padding-bottom: 2.5em; margin-top: 2em; }
+article > footer > span.categories { margin-left: 1.8em; }
 
 #related { clear: both; margin-top: 40px; }
 #related ul.posts li { margin-bottom: .4em; }
