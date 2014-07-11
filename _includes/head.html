@@ -4,7 +4,9 @@
     <meta name="google-site-verification" content="nbadZjFSg9HTG-wGudhj-qFFFEAxOSpvhSkiQxYrsU4" />
     <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}{% if site.subtitle %} | {{ site.subtitle }}{% endif %}</title>
     <meta name="viewport" content="width=device-width">
-    <meta name="description" content="{{ site.description }}">
+    <meta name="description" content="{% if site.meta.description %}{{ site.meta.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="{{ site.meta.keywords }}">
+    <link rel="author" href="{{ site.meta.author }}">
     <link rel="shortcut icon" type="image/x-icon" href="http://blog.liulantao.com/favicon.ico">
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
