@@ -101,8 +101,7 @@ pdWxhbnRhbwogIFdlaWJvOiBodHRwOi8vd2VpYm8uY29tLzE2NTM2NDQyMjAv
 cHJvZmlsZQogIFFROiAxMDMwNzQKICBTaXRlczoKICAtIGh0dHA6Ly9ibG9nL
 mxpdWxhbnRhby5jb20KICAtIGh0dHA6Ly9taWIuY2MK}
 
-require 'base64'
-puts Base64.decode64(info)"
+puts info.unpack('m')[0]"
 {% endhighlight %}
 
 
