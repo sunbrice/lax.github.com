@@ -17,6 +17,8 @@
           link: http://www.anandtech.com
         - name: Computer History Museum
           link: http://www.computerhistory.org
+        - name: Linux Kernel Newbies
+          link: http://kernelnewbies.org
     - name: Blogs (Person)
       meta: false
       data:
@@ -87,6 +89,9 @@
           link: http://lambdaops.com/rm-rf-remains
         - name: Unix tricks by Carlos Fenollosa
           link: http://cfenollosa.com/misc/tricks.txt
+        - name: Sysadmin Casts
+          link: http://sysadmincasts.com
+          desc: Simple bite sized sysadmin screencasts (released weekly)
     - name: DevTools
       meta: false
       data:
@@ -96,6 +101,8 @@
           link: http://zzapper.co.uk/vimtips.html
         - name: VIM Tips Blog
           link: http://www.vimtips-blog.com
+        - name: Anti-Patterns in Python Programming
+          link: http://lignos.org/py_antipatterns/
     - name: System Admin
       meta: false
       data:
@@ -134,6 +141,12 @@
         - name: 人人都是DBA
           link: http://rrdba.cn
           desc: 刘启荣老师
+    - name: 友情链接 - 技术
+      meta: false
+      data:
+        - name: 刘宇
+          link: http://bubbyroom.com
+          desc: 《Puppet实战》
     - name: 友情链接 - 其它
       meta: false
       data:
