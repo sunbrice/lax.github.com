@@ -103,6 +103,8 @@
           link: http://www.vimtips-blog.com
         - name: Anti-Patterns in Python Programming
           link: http://lignos.org/py_antipatterns/
+        - name: Execute Ruby Script Online
+          link: http://www.compileonline.com/execute_ruby_online.php
     - name: System Admin
       meta: false
       data:
