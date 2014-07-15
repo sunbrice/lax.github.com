@@ -6,6 +6,9 @@
       data:
         - name: LWN.net
           link: http://lwn.net
+        - name: High Scalability
+          link: http://highscalability.com
+          desc: Building bigger, faster, more reliable websites.
         - name: Lifehacker
           link: http://lifehacker.com
         - name: Hacker News
@@ -64,13 +67,18 @@
           link: http://tengine.taobao.org/book/index.html
         - name: 海量运维、运营规划之道
           link: http://www.itkoala.com
-    - name: Online Book Store
+        - name: Java Programming Tutorials
+          link: http://hajsofjavatutorial.blogspot.com
+    - name: Online Store
       meta: false
       data:
         - name: PragProg
           link: http://pragprog.com
         - name: Amazon
           link: http://www.amazon.com
+        - name: GoDaddy
+          link: https://www.godaddy.com?isc=WOWRUBYIST
+          desc: 域名注册，SSL证书等。使用referral code 'WOWRUBYIST'享受35%优惠
 - name: Hacks && Tips
   meta: false
   data:

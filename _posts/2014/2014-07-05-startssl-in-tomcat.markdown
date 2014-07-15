@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tomcat中配置HTTPS证书"
+title: "Tomcat中配置SSL证书"
 subtitle: "以StartSSL为例"
 date: 2014-07-05 10:24:56 +0800
 comments: true
