@@ -55,7 +55,7 @@
         - name: How I Start
           link: http://www.howistart.org
           desc: How I Start is a mix between a collection of development tutorials and The Setup. The purpose is to both fill a gap in tutorials and give a peek at how some of the top developers do their work.
-    - name: Online Books
+    - name: Online Books / Tutorial
       meta: false
       data:
         - name: RubyMotion Tutorial
@@ -160,6 +160,8 @@
     - name: 友情链接 - 其它
       meta: false
       data:
+        - name: IT干货网
+          link: http://mkmd.cn
         - name: Andy的博客
           link: http://blog.andyliu.net
         - name: Demon
