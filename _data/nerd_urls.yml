@@ -131,6 +131,11 @@
               desc: A real-time charting library, based on d3. comments https://news.ycombinator.com/item?id=7948560
             - name: Scrapy
               link: http://doc.scrapy.org/en/latest/index.html
+    - name: Data
+      meta: false
+      data:
+        - name: Stanford Network Analysis Project
+          link: https://snap.stanford.edu/data/
     - name: Security
       meta: false
       data:
@@ -157,11 +162,13 @@
         - name: 刘宇
           link: http://bubbyroom.com
           desc: 《Puppet实战》
+        - name: 叶玎玎
+          link: http://yedingding.com
     - name: 友情链接 - 其它
       meta: false
       data:
         - name: IT干货网
-          link: http://mkmd.cn
+          link: http://iftti.com
         - name: Andy的博客
           link: http://blog.andyliu.net
         - name: Demon
