@@ -22,6 +22,9 @@
           link: http://www.computerhistory.org
         - name: Linux Kernel Newbies
           link: http://kernelnewbies.org
+        - name: Heavybit
+          link: http://www.heavybit.com
+          desc: a community for developer-focused entrepreneurs
     - name: Blogs (Person)
       meta: false
       data:
@@ -100,6 +103,9 @@
         - name: Sysadmin Casts
           link: http://sysadmincasts.com
           desc: Simple bite sized sysadmin screencasts (released weekly)
+        - name: 1 second per second is harder than it sounds
+          link: https://rachelbythebay.com/w/2014/06/14/time/
+          desc: Keeping clock synced is hard.
     - name: DevTools
       meta: false
       data:
