@@ -20,6 +20,7 @@ net-ssh-kerberos内部使用DL来调用kerberos库。DL接口是Ruby-1.8.7以及
 具体代码示例：
 
 修改Gemfile
+
     # Gemfile, add following lines.
     gem 'net-ssh', :require => 'net/ssh'
 	
