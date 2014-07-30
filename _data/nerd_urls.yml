@@ -121,6 +121,9 @@
           link: http://lignos.org/py_antipatterns/
         - name: Execute Ruby Script Online
           link: http://www.compileonline.com/execute_ruby_online.php
+        - name: nope.c
+          link: http://nopedotc.com
+          desc: nope.c is a light flyweight platform for creating lightning fast and scalable network applications using C language.
     - name: System Admin
       meta: false
       data:

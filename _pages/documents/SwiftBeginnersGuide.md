@@ -8,6 +8,9 @@ document_tags: [Swift]
 description: 整理的一些Swift语言学习资源，希望对大家有帮助。QQ交流群32958950 申请时请说明身份。
 ---
 # [Swift学习资源](http://blog.liulantao.com/SwiftBeginnersGuide/)
+
+![Swift](https://devimages.apple.com.edgekey.net/home/images/home-hero-swift-hero.png)
+
 [最新内容请查看Wiki](https://github.com/Lax/iOS-Swift-Demos/wiki)
 
 
