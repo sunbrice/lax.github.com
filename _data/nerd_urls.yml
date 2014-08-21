@@ -108,6 +108,8 @@
           desc: Keeping clock synced is hard.
         - name: Tracking down a kernel bug with git bisect
           link: http://blog.oddbit.com/2014/07/21/tracking-down-a-kernel-bug-wit/
+        - name: LLVM
+          link: http://llvm.org/docs/index.html
     - name: DevTools
       meta: false
       data:
