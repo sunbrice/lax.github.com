@@ -85,6 +85,11 @@
 - name: Hacks && Tips
   meta: false
   data:
+    - name: Culture
+      meta: false
+      data:
+        - name: What is a Hacker?
+          link: http://www.cs.berkeley.edu/~bh/hacker.html
     - name: iOS
       meta: false
       data:
