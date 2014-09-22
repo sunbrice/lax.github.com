@@ -149,6 +149,8 @@
               desc: A real-time charting library, based on d3. comments https://news.ycombinator.com/item?id=7948560
             - name: Scrapy
               link: http://doc.scrapy.org/en/latest/index.html
+            - name: Apache Mesos
+              link: http://mesos.apache.org
     - name: Data
       meta: false
       data:
