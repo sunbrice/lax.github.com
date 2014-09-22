@@ -95,6 +95,8 @@
       data:
         - name: We ❤ Swift
           link: http://www.weheartswift.com
+        - name: shu223/iOS8-Sampler
+          link: https://github.com/shu223/iOS8-Sampler
     - name: Linux
       meta: false
       data:
