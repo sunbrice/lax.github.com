@@ -117,6 +117,9 @@
           link: http://blog.oddbit.com/2014/07/21/tracking-down-a-kernel-bug-wit/
         - name: LLVM
           link: http://llvm.org/docs/index.html
+        - name: Netflix/exhibitor
+          link: https://github.com/Netflix/exhibitor
+          desc: ZooKeeper co-process for instance monitoring, backup/recovery, cleanup and visualization.
     - name: DevTools
       meta: false
       data:
