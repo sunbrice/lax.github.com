@@ -120,6 +120,8 @@
         - name: Netflix/exhibitor
           link: https://github.com/Netflix/exhibitor
           desc: ZooKeeper co-process for instance monitoring, backup/recovery, cleanup and visualization.
+        - name: Linux Gazette
+          link: http://linuxgazette.net
     - name: DevTools
       meta: false
       data:
