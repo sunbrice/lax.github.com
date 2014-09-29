@@ -41,6 +41,8 @@
           link: http://meta-x86.blogspot.jp
         - name: METABLOG
           link: http://blog.metaobject.com
+        - name: Schneier on Security
+          link: https://www.schneier.com
     - name: Blogs (Group)
       meta: false
       data:
