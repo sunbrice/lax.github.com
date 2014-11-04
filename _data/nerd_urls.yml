@@ -50,6 +50,8 @@
           link: https://code.facebook.com/posts/
         - name: Google Research Blog
           link: http://googleresearch.blogspot.jp/search?view=sidebar
+        - name: The Netflix Tech Blog
+          link: http://techblog.netflix.com
         - name: Code as Craft
           link: http://codeascraft.com
           desc: Blog of Etsy team
