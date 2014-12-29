@@ -91,6 +91,10 @@
 - name: Hacks && Tips
   meta: false
   data:
+    - name: Theory
+      meta: false
+        - name: Raft - Understandable Distributed Consensus
+          link: http://thesecretlivesofdata.com/raft/
     - name: Culture
       meta: false
       data:
