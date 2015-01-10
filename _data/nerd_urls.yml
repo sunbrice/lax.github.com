@@ -93,6 +93,7 @@
   data:
     - name: Theory
       meta: false
+      data:
         - name: Raft - Understandable Distributed Consensus
           link: http://thesecretlivesofdata.com/raft/
     - name: Culture
