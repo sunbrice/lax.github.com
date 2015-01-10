@@ -15,3 +15,63 @@ tags: [awk]
 `Hadoop`的`Streaming`方式执行脚本，可以通过添加选项`-cmdenv WHINY_USERS=1`来传递环境变量。
 
 注：`awk`中哈希的key默认是字符串类型，排序基于字符串顺序。考虑0,1,12,2,21的顺序。
+
+
+### 更新 UPDATED [20150110]
+
+`awk` 版本4之后，去掉了对 `WHINY_USERS` 的支持。替代方法是在 `BEGIN` 阶段设置全局的设置：`PPROCINFO["sorted_in"]`。
+
+如：
+
+    BEGIN {
+      PPROCINFO["sorted_in"] ＝ "@ind_str_asc"
+    }
+
+可选的值有：
+
+*   "@unsorted"
+    不排序
+
+*   "@ind_str_asc" / "@ind_str_desc"
+    index按字符串顺序
+
+*   "@ind_num_asc" / "@ind_num_desc"
+    index数字顺序
+
+*   "@val_type_asc" / "@val_type_desc"
+    value类型排序（升序：数字 < 字符串 < 数组）
+
+*   "@val_str_asc" / "@val_str_desc"
+    value按字符串顺序
+
+*   "@val_num_asc" / "@val_num_desc"
+    value按数字顺序
+
+
+举个例子：
+
+    echo '1
+    2
+    3
+    4
+    5
+    1
+    2
+    3
+    5
+    7
+    3
+    2
+    1
+    1' | awk 'BEGIN { PROCINFO["sorted_in"] = "@ind_num_asc" } { a[$1] += 1 } END {for(n in a){ print n } }'     
+
+输出：
+
+    1
+    2
+    3
+    4
+    5
+    7
+
+*   https://www.gnu.org/software/gawk/manual/html_node/Controlling-Scanning.html
