@@ -43,6 +43,8 @@
           link: http://blog.metaobject.com
         - name: Schneier on Security
           link: https://www.schneier.com
+        - name: Pid Eins
+          link: http://0pointer.net/blog/
     - name: Blogs (Group)
       meta: false
       data:
