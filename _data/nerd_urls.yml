@@ -138,6 +138,8 @@
     - name: DevTools
       meta: false
       data:
+        - name: Getting Git Right
+          link: https://www.atlassian.com/git/
         - name: VIM纵向编辑模式
           link: http://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html
         - name: Best of Vim Tips
