@@ -25,6 +25,9 @@
         - name: Heavybit
           link: http://www.heavybit.com
           desc: a community for developer-focused entrepreneurs
+        - name: Papers We Love
+          link: http://paperswelove.org
+          desc: Papers We Love is a repository of academic computer science papers and a community who loves reading them.
     - name: Blogs (Person)
       meta: false
       data:
