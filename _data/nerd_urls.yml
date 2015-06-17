@@ -51,6 +51,8 @@
     - name: Blogs (Group)
       meta: false
       data:
+        - name: GitHub Engineering
+          link: http://githubengineering.com/
         - name: Facebook Engineering Blog
           link: https://code.facebook.com/posts/
         - name: Google Research Blog
