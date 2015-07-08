@@ -25,6 +25,7 @@ google_analytics_tracking_name: liulantao.com
 # Build settings
 markdown: kramdown
 permalink: pretty
+lsi: true
 
 permalink: /blog/:year/:year-:month-:day-:title.html
 rss_path: /rss.xml

@@ -8,7 +8,7 @@ task :gen do
   system "cd ./_site && git rm -q -r -f ./"
 
   puts "## Generating Site with Jekyll"
-  system "jekyll build --lsi"
+  system "bundle exec jekyll build"
 end
 
 desc "Commit generated site"
@@ -32,5 +32,5 @@ end
 
 desc "Preview"
 task :preview do
-  system "jekyll serve --lsi"
+  system "bundle exec jekyll serve"
 end
