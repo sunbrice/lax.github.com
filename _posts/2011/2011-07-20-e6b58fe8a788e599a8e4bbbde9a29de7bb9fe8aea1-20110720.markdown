@@ -1,0 +1,23 @@
+---
+date: '2011-07-20 11:39:40'
+layout: post
+slug: '%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720'
+status: publish
+title: 浏览器份额统计-20110720
+wordpress_id: '72'
+categories:
+- Technology
+tags:
+- browser
+- WebKit
+---
+
+2011年7月20日最新发布，根据某SNS网站用户群统计。
+
+[![](http://www.liulantao.com/portal/wp-content/uploads/2011/06/browser.2.jpg)](http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-2/)[![](http://www.liulantao.com/portal/wp-content/uploads/2011/06/browser.3.jpg)](http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-3/)
+
+浏览器内核，IE7是大赢家。使用360浏览器的用户，更倾向于安装较新的浏览器核心。
+
+[![](http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.7.jpg)](http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-7/)[![](http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.6.jpg)](http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-6/)多核浏览器，webkit份额过半，优势明显。
+
+[![](http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.9.jpg)](http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-9/)[![](http://www.liulantao.com/portal/wp-content/uploads/2011/07/browser.8.jpg)](http://www.liulantao.com/portal/2011/07/20/%e6%b5%8f%e8%a7%88%e5%99%a8%e4%bb%bd%e9%a2%9d%e7%bb%9f%e8%ae%a1-20110720/browser-8/)

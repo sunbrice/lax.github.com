@@ -1,0 +1,9 @@
+---
+layout: post
+name: c
+title: C++构造函数私有的有趣问题
+time: 2010-02-11 17:00:00.000000000 +08:00
+categories: [Technology]
+tags: [C]
+---
+C++构造函数私有的有趣问题<br><br>很多情况下，一个类的构造函数是按照public权限作为接口，当构造对象时默认来执行一些初始化功能。但是当构造函数出现在private中时，对类进行实例化时，会无法取得构造函数的权限，于是不能通过这种方式构造对象实例。疑问出现了：如果不能通过构造函数对类进行实例化，那么这个类还有用处吗？<br><br>其实，构造函数私有并不违背C++的语法规则，我们也大可不必为这个问题担心。解决之道呢，一般来说有两种方法。<br> 第一种方法，使用class的static成员来进行实例化工作。因为他们独立于class的对象，所以不必实例化也能够使用它来进行一些private操作，当然就可以调用那个害羞的构造函数。<br>第二种方法，当然可以通过一些朋友们来绕过这个权限控制，也就是我们都很熟悉的友元函数/友元类。<br><br>追究原因，因为这类class不能被任意调用创建实例，于是适合构造一些需要进行对象控制的类。<br clear="all"><br>-- <br> Liu Lantao<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br> <div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/31667564-823527332954063861?l=sandshoots.blogspot.com' alt='' /></div>

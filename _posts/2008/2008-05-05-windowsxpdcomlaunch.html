@@ -1,0 +1,7 @@
+---
+layout: post
+name: windowsxpdcomlaunch
+title: WindowsXP连接无线网络必须开启DcomLaunch服务
+time: 2008-05-05 20:38:00.000000000 +08:00
+---
+如果要开机自动连接无线网络，必须设置下面的服务为自动启动：<br>Service name:	DcomLaunch<br>Dispaly name:	DCOM Server Process Launcher<br>Description:	Provides launch functionality for DCOM services.<br>Path to executable:	C:\WINDOWS\system32\svchost -k DcomLaunch<p>此服务可以保存以往的身份认证设置，如果不启动此服务，则无法完成无线网络身份认证。<p>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ;<br>WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/6152326-8944221541603604796?l=lltaichi.blogspot.com' alt='' /></div>
