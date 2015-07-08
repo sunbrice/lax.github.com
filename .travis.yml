@@ -1,0 +1,14 @@
+language: ruby
+
+rvm:
+  - 2.1
+
+script: jekyll build && htmlproof ./_site
+
+branches:
+  only:
+  - lax.github.io-github-pages
+  - master
+env:
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true

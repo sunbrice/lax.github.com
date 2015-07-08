@@ -1,0 +1,80 @@
+# GitHub Overrides
+safe: true
+lsi: false
+#source: your top-level directory
+
+# GitHub Defaults
+highlighter: pygments
+#github: [Repository metadata] # https://help.github.com/articles/repository-metadata-on-github-pages/
+
+# Site Defaults
+#defaults:
+
+permalink:     pretty
+paginate: 24
+paginate_path: /blog/page:num/
+timezone: Asia/Shanghai
+encoding: utf-8
+future: true
+excerpt_separator: <!--more-->
+exclude:
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - _site/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: "default"
+
+#######################
+# Site settings
+title: Peek Poke
+subtitle: 刘兰涛的技术博客
+email: liulantao (at) gmail.com
+description: "Idea, Code, Life 思考的点点滴滴"
+meta:
+  description: "一个关注iOS开发的Ruby开发者，主要工作内容却是系统运维。喜欢用数据和专业的眼光来解释现象，坚持用事实说话的践行者。"
+  keywords: "系统运维, Ruby, iOS开发, Apple Swift Language Tutorial, Puppet, Jekyll, awk, CocoaPods"
+  author: "https://plus.google.com/+LiuLantao"
+baseurl: ""
+url: http://blog.liulantao.com
+twitter_username: liulantao
+github_username: Lax
+googleplus_username: LiuLantao
+
+author:
+  name: Liu Lantao
+
+comments: true
+comment_uyan_uid: 1936498
+comment_disqus_shortname: peekpoke
+google_analytics_tracking_id: UA-1658815-3
+google_analytics_tracking_name: liulantao.com
+
+# Build settings
+markdown: kramdown
+
+permalink: /blog/:year/:year-:month-:day-:title.html
+rss_path: /rss.xml
+atom_path: /atom.xml
+feed_path: /feed.xml
+
+releated_posts_limit: 3
+
+
+
+gems:
+  - jekyll-sitemap
+  - jekyll-redirect-from
