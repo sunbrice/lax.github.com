@@ -1,3 +1,5 @@
+task :default => :gen
+
 desc "Generate jekyll site"
 task :gen do
   raise "### Site Dir(_site/) not found!" unless File.directory?("./_site")
