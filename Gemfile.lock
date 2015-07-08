@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/jekyll/classifier-reborn.git
+  revision: 94a98474b2f96b9a38850787e584e68dd28aec69
+  specs:
+    classifier-reborn (2.0.3)
+      fast-stemmer (~> 1.0)
+
+GIT
   remote: git://github.com/jekyll/jekyll.git
   revision: 90514b3536c2a6d6dfc379b91bd1252c3bc09dad
   specs:
@@ -18,6 +25,7 @@ GEM
     celluloid (0.16.0)
       timers (~> 4.0.0)
     colorator (0.1)
+    fast-stemmer (1.0.2)
     ffi (1.9.10)
     gsl (1.16.0.6)
     hitimes (1.2.2)
@@ -55,6 +63,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  classifier-reborn!
   iconv
   jekyll!
   jekyll-redirect-from
