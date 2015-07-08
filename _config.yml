@@ -34,7 +34,7 @@ feed_path: /feed.xml
 
 releated_posts_limit: 3
 
-exclude: [Rakefile, Gemfile, Gemfile.lock]
+exclude: [Rakefile, Gemfile, Gemfile.lock, vendor]
 
 gems:
   - jekyll-sitemap
