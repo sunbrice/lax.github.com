@@ -9,7 +9,10 @@ task :gen do
 
   puts "## Generating Site with Jekyll"
   system "jekyll build --lsi"
+end
 
+desc "Commit generated site"
+task :commit_site do
   puts "### Git commit"
   system "cd ./_site && git add . && git diff HEAD; git commit -a"
 end
