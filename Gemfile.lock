@@ -1,5 +1,5 @@
 GEM
-  remote: http://ruby.taobao.org/
+  remote: https://rubygems.org/
   specs:
     blankslate (2.1.2.4)
     celluloid (0.15.2)
@@ -74,3 +74,6 @@ DEPENDENCIES
   jekyll-sitemap
   nokogiri
   rb-gsl
+
+BUNDLED WITH
+   1.10.5
