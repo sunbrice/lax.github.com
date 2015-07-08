@@ -85,6 +85,8 @@
           link: http://www.itkoala.com
         - name: Java Programming Tutorials
           link: http://hajsofjavatutorial.blogspot.com
+        - name: Embedded Linux Wiki
+          link: http://elinux.org
     - name: Online Store
       meta: false
       data:
