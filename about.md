@@ -3,7 +3,6 @@ layout: page
 title: About
 permalink: /about/
 tags: résumé
-redirect_from: "/resume/"
 ---
 
 I'm **<span itemprop="name">Liu Lantao</span>**, a full-time systems-engineer living in *<span itemprop="address">Běijīng</span>*.
@@ -105,4 +104,4 @@ puts info.unpack('m')[0]"
 {% endhighlight %}
 
 
-[résumé/en](/resume/) | [简历/中文pdf](/resume/liulantao-resume-2014.pdf)
+[résumé/en](/about/) | [简历/中文pdf](/resume/liulantao-resume-2014.pdf)
