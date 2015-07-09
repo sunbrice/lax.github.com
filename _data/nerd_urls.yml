@@ -1,0 +1,231 @@
+- name: News & Information & Life*
+  meta: false
+  data:
+    - name: WebSites
+      meta: false
+      data:
+        - name: LWN.net
+          link: http://lwn.net
+        - name: High Scalability
+          link: http://highscalability.com
+          desc: Building bigger, faster, more reliable websites.
+        - name: Lifehacker
+          link: http://lifehacker.com
+        - name: Hacker News
+          link: http://news.ycombinator.com
+        - name: ARK ©Intel
+          link: http://ark.intel.com
+          desc: Intel官方的硬件型号资料库，是设备选型的重要参考资料。
+        - name: AnandTech && Architecture
+          link: http://www.anandtech.com
+        - name: Computer History Museum
+          link: http://www.computerhistory.org
+        - name: Linux Kernel Newbies
+          link: http://kernelnewbies.org
+        - name: Heavybit
+          link: http://www.heavybit.com
+          desc: a community for developer-focused entrepreneurs
+        - name: Papers We Love
+          link: http://paperswelove.org
+          desc: Papers We Love is a repository of academic computer science papers and a community who loves reading them.
+    - name: Blogs (Person)
+      meta: false
+      data:
+        - name: Steve Souders
+          link: http://stevesouders.com
+          desc: Steve Souders是Web性能优化（WPO）方面的领袖人物，曾在Yahoo!，Google主导性能优化。目前在Fastly。
+        - name: Pete Keen
+          link: https://www.petekeen.net
+        - name: Joe Armstrong
+          link: http://joearms.github.io
+        - name: Steve Hanov
+          link: http://stevehanov.ca
+        - name: Meta-X86
+          link: http://meta-x86.blogspot.jp
+        - name: METABLOG
+          link: http://blog.metaobject.com
+        - name: Schneier on Security
+          link: https://www.schneier.com
+        - name: Pid Eins
+          link: http://0pointer.net/blog/
+    - name: Blogs (Group)
+      meta: false
+      data:
+        - name: GitHub Engineering
+          link: http://githubengineering.com/
+        - name: Facebook Engineering Blog
+          link: https://code.facebook.com/posts/
+        - name: Google Research Blog
+          link: http://googleresearch.blogspot.jp/search?view=sidebar
+        - name: The Netflix Tech Blog
+          link: http://techblog.netflix.com
+        - name: Code as Craft
+          link: http://codeascraft.com
+          desc: Blog of Etsy team
+        - name: Airbnb Engineering - Nerds
+          link: http://nerds.airbnb.com
+        - name: Fastly Blog
+          link: http://www.fastly.com/blog
+        - name: How I Start
+          link: http://www.howistart.org
+          desc: How I Start is a mix between a collection of development tutorials and The Setup. The purpose is to both fill a gap in tutorials and give a peek at how some of the top developers do their work.
+        - name: Intersec Teck Talk
+          link: https://techtalk.intersec.com
+    - name: Online Books / Tutorial
+      meta: false
+      data:
+        - name: RubyMotion Tutorial
+          link: http://rubymotion-tutorial.com
+          desc: Make iOS Apps With Ruby
+        - name: The Architecture of Open Source Applications
+          link: http://aosabook.org/en/index.html
+        - name: Nginx开发从入门到精通
+          link: http://tengine.taobao.org/book/index.html
+        - name: 海量运维、运营规划之道
+          link: http://www.itkoala.com
+        - name: Java Programming Tutorials
+          link: http://hajsofjavatutorial.blogspot.com
+        - name: Embedded Linux Wiki
+          link: http://elinux.org
+    - name: Online Store
+      meta: false
+      data:
+        - name: PragProg
+          link: http://pragprog.com
+        - name: Amazon
+          link: http://www.amazon.com
+        - name: GoDaddy
+          link: https://www.godaddy.com?isc=WOWRUBYIST
+          desc: 域名注册，SSL证书等。使用referral code 'WOWRUBYIST'享受35%优惠
+- name: Hacks && Tips
+  meta: false
+  data:
+    - name: Theory
+      meta: false
+      data:
+        - name: Raft - Understandable Distributed Consensus
+          link: http://thesecretlivesofdata.com/raft/
+    - name: Culture
+      meta: false
+      data:
+        - name: What is a Hacker?
+          link: http://www.cs.berkeley.edu/~bh/hacker.html
+    - name: iOS
+      meta: false
+      data:
+        - name: We ❤ Swift
+          link: http://www.weheartswift.com
+        - name: shu223/iOS8-Sampler
+          link: https://github.com/shu223/iOS8-Sampler
+    - name: Linux
+      meta: false
+      data:
+        - name: No Single Points of Failure
+          link: http://techblog.mdsol.com/2014/06/16/no_single_points_failure.html
+          desc: Check-list for Systems HA Architecture
+        - name: rm -rf remains
+          link: http://lambdaops.com/rm-rf-remains
+        - name: Unix tricks by Carlos Fenollosa
+          link: http://cfenollosa.com/misc/tricks.txt
+        - name: Sysadmin Casts
+          link: http://sysadmincasts.com
+          desc: Simple bite sized sysadmin screencasts (released weekly)
+        - name: 1 second per second is harder than it sounds
+          link: https://rachelbythebay.com/w/2014/06/14/time/
+          desc: Keeping clock synced is hard.
+        - name: Tracking down a kernel bug with git bisect
+          link: http://blog.oddbit.com/2014/07/21/tracking-down-a-kernel-bug-wit/
+        - name: LLVM
+          link: http://llvm.org/docs/index.html
+        - name: Netflix/exhibitor
+          link: https://github.com/Netflix/exhibitor
+          desc: ZooKeeper co-process for instance monitoring, backup/recovery, cleanup and visualization.
+        - name: Linux Gazette
+          link: http://linuxgazette.net
+    - name: DevTools
+      meta: false
+      data:
+        - name: Getting Git Right
+          link: https://www.atlassian.com/git/
+        - name: VIM纵向编辑模式
+          link: http://www.ibm.com/developerworks/cn/linux/l-cn-vimcolumn/index.html
+        - name: Best of Vim Tips
+          link: http://zzapper.co.uk/vimtips.html
+        - name: VIM Tips Blog
+          link: http://www.vimtips-blog.com
+        - name: Anti-Patterns in Python Programming
+          link: http://lignos.org/py_antipatterns/
+        - name: Execute Ruby Script Online
+          link: http://www.compileonline.com/execute_ruby_online.php
+        - name: nope.c
+          link: http://nopedotc.com
+          desc: nope.c is a light flyweight platform for creating lightning fast and scalable network applications using C language.
+    - name: System Admin
+      meta: false
+      data:
+        - name: 辅助工具
+          meta: false
+          data:
+            - name: FnordMetric
+              link: http://fnordmetric.io
+              desc: highly customizable real-time analytics dashboards
+            - name: Gollum
+              link: https://github.com/github/gollum
+            - name: Markdown @wikipedia
+              link: http://en.wikipedia.org/wiki/Markdown
+            - name: Epoch
+              link: https://github.com/fastly/epoch
+              desc: A real-time charting library, based on d3. comments https://news.ycombinator.com/item?id=7948560
+            - name: Scrapy
+              link: http://doc.scrapy.org/en/latest/index.html
+            - name: Apache Mesos
+              link: http://mesos.apache.org
+    - name: Data
+      meta: false
+      data:
+        - name: Stanford Network Analysis Project
+          link: https://snap.stanford.edu/data/
+    - name: Security
+      meta: false
+      data:
+        - name: 裤子
+          link: http://www.hackerdream.net/category/share/kuzi
+- name: Misc
+  meta: false
+  data:
+    - name: 友情链接 - 同事
+      meta: false
+      data:
+        - name: lark's cloud
+          link: http://www.lark.net.cn
+          desc: 王剑
+        - name: 三斗室
+          link: http://chenlinux.com
+          desc: 饶琛琳
+        - name: 人人都是DBA
+          link: http://rrdba.cn
+          desc: 刘启荣老师
+    - name: 友情链接 - 技术
+      meta: false
+      data:
+        - name: 刘宇
+          link: http://bubbyroom.com
+          desc: 《Puppet实战》
+        - name: 叶玎玎
+          link: http://yedingding.com
+    - name: 友情链接 - 其它
+      meta: false
+      data:
+        - name: IT干货网
+          link: http://iftti.com
+        - name: Andy的博客
+          link: http://blog.andyliu.net
+        - name: Demon
+          link: http://demonc.com
+        - name: KDr2
+          link: http://kdr2.com
+        - name: 郑泽鑫博客
+          link: http://zhengzexin.com
+        - name: 北落师门
+          link: http://hong.im/?from=lax
+          desc: 弓长十二，师弟

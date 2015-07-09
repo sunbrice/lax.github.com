@@ -11,7 +11,7 @@ highlighter: pygments
 #defaults:
 
 permalink:     pretty
-paginate: 24
+paginate: 60
 paginate_path: /blog/page:num/
 timezone: Asia/Shanghai
 encoding: utf-8

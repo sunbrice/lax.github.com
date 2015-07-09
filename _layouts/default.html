@@ -11,6 +11,8 @@
 
    <!-- Homepage CSS -->
    <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <link rel="stylesheet" href="/css/main.css" type="text/css" />
 </head>
 <body>
 
@@ -21,33 +23,55 @@ var WRInitTime=(new Date()).getTime();
 <!-- ClickTale end of Top part -->
 
 <div class="site">
-  <div class="title">
-    <a href="{{ site.github.url }}">{{ site.github.owner_name }}</a>
-    <a class="extra" href="/">Home</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-title" href="{{ site.github.url }}/">{{ site.title }}</a>
+      <a class="site-subtitle" href="{{ site.github.url }}/">{{ site.subtitle }}</a>
+      <nav class="site-nav">
+
+        <div class="trigger">
+          <a class="extra" href="/">Home</a>
+          {% for page in site.pages %}
+            {% if page.title and page.page_hidden != true %}<a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>{% endif %}
+          {% endfor %}
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-content">
+    <div class="wrap">
+      {{ content }}
+    </div>
   </div>
 
-  {{ content }}
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2 class="footer-heading">{{ site.title }}</h2>
+      <div class="footer-col-3 column">
+        <p class="text">{{ site.description }}</p>
+      </div>
 
-  <div class="footer">
-    <div class="contact">
-      <p>
-        {{ site.github.owner_name }}<br />
-      </p>
+      <div class="contact">
+        <p>
+          {{ site.github.owner_name }}<br />
+        </p>
+      </div>
+      <div class="contact">
+        <p>
+          <a href="{{ site.github.owner_url }}">{{ site.github.owner_url }}</a><br />
+        </p>
+      </div>
+      <div class="rss">
+        <a href="{{ site.github.url }}/atom.xml">
+          <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+        </a>
+      </div>
     </div>
-    <div class="contact">
-      <p>
-        <a href="{{ site.github.owner_url }}">{{ site.github.owner_url }}</a><br />
-      </p>
-    </div>
-    <div class="rss">
-      <a href="{{ site.github.url }}/atom.xml">
-        <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
-      </a>
-    </div>
-  </div>
+  </footer>
 </div>
 
-<a href="{{ site.github.owner_url }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+<a href="{{ site.github.owner_url }}"><img style="position: absolute; top: 0; right: 0; border: 0;" src="/images/forkme_right_red_aa0000.png" alt="Fork me on GitHub!" /></a>
 
 <!-- Google Analytics -->
 <script type="text/javascript">
