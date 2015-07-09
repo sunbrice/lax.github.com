@@ -44,6 +44,13 @@ defaults:
     values:
       unpublished: true
 
+repository: Lax/lax.github.com
+gems: ['jekyll-github-metadata']
+
+# Site Settings
+comments: true
+comment_uyan_uid: 1936498
+
 #######################
 # Site settings
 title: Peek Poke
@@ -78,9 +85,3 @@ atom_path: /atom.xml
 feed_path: /feed.xml
 
 releated_posts_limit: 3
-
-
-
-gems:
-  - jekyll-sitemap
-  - jekyll-redirect-from
