@@ -18,20 +18,19 @@ Boot Logo 是什么？ 系统启动时在启动信息上方显示的图形，需
 
 今天下午想到这个问题，顺手翻了一下 fbdev 相关的代码，终于找到了出处作为依据。话不多说了，上代码。
 
+{% highlight c %} # drivers/video/fbdev/core/fbmem.c
 
-    # drivers/video/fbdev/core/fbmem.c
+int fb_show_logo(struct fb_info *info, int rotate)
+{
+    int y;
 
-    int fb_show_logo(struct fb_info *info, int rotate)
-    {
-        int y;
+    y = fb_show_logo_line(info, rotate, fb_logo.logo, 0,
+    num_online_cpus());
+    y = fb_show_extra_logos(info, y, rotate);
 
-        y = fb_show_logo_line(info, rotate, fb_logo.logo, 0,
-        num_online_cpus());
-        y = fb_show_extra_logos(info, y, rotate);
-
-        return y;
-    }
-
+    return y;
+}
+{% endhighlight %}
 
 相关代码可以查看这里：
 [http://lxr.free-electrons.com/source/drivers/video/fbdev/core/fbmem.c#L663](http://lxr.free-electrons.com/source/drivers/video/fbdev/core/fbmem.c#L663)
