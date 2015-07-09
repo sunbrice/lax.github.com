@@ -44,9 +44,6 @@ defaults:
     values:
       unpublished: true
 
-repository: Lax/lax.github.com
-gems: ['jekyll-github-metadata']
-
 # Site Settings
 comments: true
 comment_uyan_uid: 1936498
