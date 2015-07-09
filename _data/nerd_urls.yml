@@ -190,6 +190,7 @@
       data:
         - name: 裤子
           link: http://www.hackerdream.net/category/share/kuzi
+          disabled: true
 - name: Misc
   meta: false
   data:
@@ -199,6 +200,7 @@
         - name: lark's cloud
           link: http://www.lark.net.cn
           desc: 王剑
+          disabled: true
         - name: 三斗室
           link: http://chenlinux.com
           desc: 饶琛琳
@@ -220,6 +222,7 @@
           link: http://iftti.com
         - name: Andy的博客
           link: http://blog.andyliu.net
+          disabled: true
         - name: Demon
           link: http://demonc.com
         - name: KDr2

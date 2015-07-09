@@ -1,8 +1,18 @@
-<ul>{% for node in include.nodes %}
-	<li>{% if node.meta == false and node.data %}
+<ul>
+{% for node in include.nodes %}
+	<li>
+	{% if node.meta == false and node.data %}
 		{{ node.name }}
-		{% include data_links.html nodes=node.data %}{% else %}
-		<a href="{{ node.link }}">{{ node.name }}</a>{% if node.desc %}
-		{{ node.desc }}{% endif %}
-	{% endif %}</li>{% endfor %}
+		{% include data_links.html nodes=node.data %}
+	{% else %}
+		{% if node.disabled %}
+			<span title="{{ node.link }}">{{ node.name }}</span>
+			{% if node.desc %}{{ node.desc }}{% endif %}
+		{% else %}
+			<a href="{{ node.link }}" title="{{ node.link }}">{{ node.name }}</a>
+			{% if node.desc %}{{ node.desc }}{% endif %}
+		{% endif%}
+	{% endif %}
+	</li>
+{% endfor %}
 </ul>
