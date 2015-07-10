@@ -19,7 +19,7 @@ taobao技术团队最近把[Tengine](http://tengine.taobao.org)开放出来了�
 
 Tengine基于目前很流行的Nginx，在Nginx基础上整合了一些第三方模块，并加入taobao团队研发的一些模块。由于Nginx有设计精美的模块机制，使得整合与模块开发非常方便，在此之前taobao团队开放的另一个项目openresty就是在Nginx基础上完成的。
 
-最新版本的tengine基于nginx-1.0.10稳定版（最新的nginx稳定版是1.0.11）。我在试用时加入了人人网系统运维团队开发的[ngx_http_accounting_module](https://github.com/xiaonei/ngx_http_consistent_hash)和[http_upstream_consistent_hash_module](https://github.com/xiaonei/ngx_http_accounting_module)，并按照部署需求进行了RPM包的制作，这个流程与Nginx官方版本一致性很高，几乎不用做修改就能整合到现在的工作流。
+最新版本的tengine基于nginx-1.0.10稳定版（最新的nginx稳定版是1.0.11）。我在试用时加入了人人网系统运维团队开发的[ngx_http_accounting_module](https://github.com/renren/ngx_http_consistent_hash)和[http_upstream_consistent_hash_module](https://github.com/renren/ngx_http_accounting_module)，并按照部署需求进行了RPM包的制作，这个流程与Nginx官方版本一致性很高，几乎不用做修改就能整合到现在的工作流。
 
 可以看出为适应大规模运维的需求，tengine对nginx做了一些修改：
 

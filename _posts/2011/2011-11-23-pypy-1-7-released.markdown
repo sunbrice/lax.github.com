@@ -19,7 +19,7 @@ pypy是一个高效的python解释器。由于采用了JIT编译器，它的速�
 用python重新了JSON编码器。新的编码器性能二倍于CPython中C扩展，比1.6版本性能提升高达20倍！
 
 
-[![](http://www.liulantao.com/portal/wp-content/uploads/2011/11/pypy.jpg)](http://www.liulantao.com/portal/2011/11/23/pypy-1-7-released/pypy/)
+[![How fast is PyPy?](http://www.liulantao.com/portal/wp-content/uploads/2011/11/pypy.jpg)](http://www.liulantao.com/portal/2011/11/23/pypy-1-7-released/pypy/)
 
 
 还有一些其它改变，如numpypy。有些特性列入了1.8版本的计划中，包括PowerPC和ARM处理器的JIT汇编器后端。
