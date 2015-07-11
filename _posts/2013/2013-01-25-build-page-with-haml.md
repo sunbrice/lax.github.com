@@ -6,7 +6,7 @@ categories: [Ruby]
 tags: []
 ---
 
-![](http://haml.info/images/img-hero-boat.png)  
+![Haml boat](http://haml.info/images/img-hero-boat.png)  
 
 
 ## 前言

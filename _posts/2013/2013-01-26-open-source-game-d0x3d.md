@@ -6,7 +6,7 @@ categories: []
 tags: []
 ---
 
-![](/images/2013/OSDC_Life_opengame-d0x3d-mini.jpg)
+![d0x3d](/images/2013/OSDC_Life_opengame-d0x3d-mini.jpg)
 
 [d0x3d!]是一个有趣的开源游戏，以网络安全为题材，可以作为网络安全课程的辅助教育工具。
 
