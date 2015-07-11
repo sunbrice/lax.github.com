@@ -83,13 +83,10 @@ var pageTracker = _gat._getTracker("{{ google_analytics_tracking_id }}");
 pageTracker._trackPageview();
 </script>
 <!-- Google Analytics end -->
-
 </body>
 </html>{% if site.github %}<!--
 environment: {{ site.github.environment }}
 build_revision: {{ site.github.build_revision }}
 url: {{ site.github.url }}
-{% for item in site.github.versions %}
-{{ item[0] }} : {{ item[1] }}
-{% endfor %}
--->{% endif %}
+{% for item in site.github.versions %}{{ item[0] }} : {{ item[1] }}
+{% endfor %}-->{% endif %}
