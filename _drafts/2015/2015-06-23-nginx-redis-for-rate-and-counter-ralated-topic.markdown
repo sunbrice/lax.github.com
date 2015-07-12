@@ -7,34 +7,37 @@ categories: [Technology]
 tags: [Nginx, Redis, Lua]
 ---
 
-### 访问频率控制的需求现状
+### 前言：关于 HTTP 频率控制
 
 在使用了负载均衡设施的网站中，对 HTTP 请求做访问控制（频率控制）是个经常遇到的需求。
-频率控制的主要目的，传统应用场景中要___保护后端系统___。
-在多租户的云服务上，通过频率控制__对不同租户的资源使用量做有效分配__，避免相互影响访问质量。
 
-`Nginx` 比较早的版本即有相关频率控制功能。
+频率控制的主要目的，传统应用场景中要***保护后端系统***。
 
-常用的有两个模块：
+在多租户的云服务上，通过频率控制**对不同租户的资源使用量进行有效分配**，从而避免相互影响访问质量。
+
+`Nginx` 是现在最常见的负载均衡软件，比较早的版本即有频率控制功能。
+
+Nginx 中通常采用模块的形式提供各种功能，频率控制方面常用的有两个模块：
 
 *    [ngx_http_limit_req_module](http://nginx.org/en/docs/http/ngx_http_limit_req_module.html)
 
-针对一个定义的 key，控制`请求处理频率`。(nginx-0.7.21 版本实现)
+针对指定的 key，限制`请求处理频率`。
 
 *    [ngx_http_limit_conn_module](http://nginx.org/en/docs/http/ngx_http_limit_conn_module.html)
 
-针对一个定义的 key，控制`同时连接数`。
+针对指定的 key，限制`同时连接数`。
 
 这两个模块是按秒或分的时间精度来限制，使用 `10r/s` 或 `1r/m` 这种方式能够比较容易配置。
 `Tengine` 改进了频率控制相关功能，但是仍然简单粗暴，支持的策略比较少，难以满足个性化的时间窗口需要。。
 
 另外，以上2个模块针对进程级别做控制，多个 Nginx 部署之间不共享数据。
+
 实际部署中，`Nginx` 作为负载均衡设施，一般会部署多台组成集群。
-这时的需求是对这个集群进行保护，不是对单个server的访问限制，所以基于单机的限制有了明显的局限性。
+这时的目的是对这个集群进行保护，不是对单个server的访问限制，所以基于单机的限制有了明显的局限性。
 
-### 频率控制系统的实现目标
+### 频率控制系统的设计目标
 
-设计一个频率控制系统，我们有以下实现目标：
+这样一个频率控制系统，我们有以下设计目标：
 
 1.  状态数据共享
 
@@ -75,21 +78,11 @@ tags: [Nginx, Redis, Lua]
 基于负载均衡层的流控系统，可以串联部署在负载均衡后端，作为应用层的代理，也可以并联部署在负载均衡后端旁路。
 我们采用了旁路的方式来部署。
 
-架构图： TODO
+架构图：
 
- LB
- |
- ----
- NGINX
- Redis
- ----
- |
- APP server
- |  |  |
- Queue Cache DB
+![Loadbalancer Ratelimit](/images/diagram/loadbalancer-ratelimit-architecture.png)
 
-
-#### 组建失败保护：
+#### 组件失败保护：
 
 * Nginx 作为基础服务，有前端 keepalived 提供故障转移
 * Lua 作为配置的一部分，上线前经过测试环境的单元测试验证
@@ -97,21 +90,98 @@ tags: [Nginx, Redis, Lua]
 
 ### 关键配置
 
-#### 1. 使用 `nginx` 的 `map` 功能或 `location regex` 规范化 metric name
+#### 1. 规范化频率控制的键
 
-#### 2. counter incr操作
+针对每个请求URL，使用 `nginx` 的 `map` 功能或 `location regex` 进行提取，并规范化为限制规则使用的键名。
 
-#### 3. 多时间维度
+{% highlight nginx %}
+location ~* ^/(?P<org_name>[0-9a-zA-Z-_]+)/(?P<app_name>[0-9a-zA-Z-]+)/users$
+{
+	set $ratelimit_metric "$org_name#$app_name#users"
 
-#### 4. 保存与读取 limit 上限设置
+	proxy_pass http://backend_rest_servers;
+}
+{% endhighlight %}
 
-#### 5. 利用 [Redis Pipelining](http://redis.io/topics/pipelining)
-同一次请求会产生多个 redis 操作，没有前后依赖关系，使用 redis 的 batch 方式减少交互
+我们将 URL 中提取的信息使用 `set` 语法拼接，将它保存在 `$ratelimit_metric` 变量作为频率控制的键，
+
+
+#### 2. 加载 lua
+
+lua 基础功能需要在 nginx 编译阶段指定选项。如果当前版本不支持 lua 功能，需要重新编译，并在编译时至指定 `--with-lua` 选项。
+
+    ./configure --with-lua
+
+实现逻辑时需要访问 `redis`，因此还需要加载 lua 的 redis 库。
+
+    lua_package_path "lua/lua-resty-redis/lib/?.lua;;";
+
+加载我们实现逻辑的 lua 脚本，之后的所有逻辑操作都在这个文件中完成。
+
+    access_by_lua_file 'limit-with-redis.lua';
+
+#### 3. 初始化 redis 连接
+
+{% highlight lua %}
+local redis = require "resty.redis"
+local red = redis:new()
+
+red:set_timeout(1000)
+
+local ok, err = red:connect("127.0.0.1", 6379)
+if not ok then
+	-- ngx.say("failed to connect: ", err)
+	return
+end
+{% endhighlight %}
+
+#### 4. counter incr操作
+
+{% highlight lua %}
+local counter_key = ngx.var.ratelimit_metric
+-- ngx.say("counter key: ", counter_key)
+
+count, err = red:incr(counter_key)
+if not count then
+	-- ngx.say("failed to incr: ", err)
+	return
+end
+{% endhighlight %}
+
+
+#### 5. 根据键值控制访问
+{% highlight lua %}
+if count > 100 then
+	ngx.status = 503
+	--ngx.say("fooc: ", ok)
+	ngx.say("rate limit: ", count, " > ", 100)
+	ngx.exit(ngx.HTTP_SERVICE_UNAVAILABLE)
+end
+{% endhighlight %}
 
 #### 6. 与 Redis 保持长连接
 
-### 效果
+{% highlight lua %}
+local ok, err = red:set_keepalive(100000, 20)
+if not ok then
+	-- ngx.say("failed to set keepalive: ", err)
+	return
+end
+{% endhighlight %}
+
+#### 7. 多时间维度
+
+#### 8. 保存与读取 limit 上限设置
+
+#### 9. 利用 [Redis Pipelining](http://redis.io/topics/pipelining)
+同一次请求会产生多个 redis 操作，没有前后依赖关系，使用 redis 的 batch 方式减少交互
+
+
+
+### 效果评估
+
 #### 功能与性能评估
+
 在客户端使用 `ab` 模拟请求，关注的方面：
 
 * nginx `响应时间`的对比（proxy and static）
