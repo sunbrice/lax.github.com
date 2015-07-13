@@ -112,15 +112,20 @@ lua 基础功能需要在 nginx 编译阶段指定选项。如果当前版本不
 
     ./configure --with-lua
 
-实现逻辑时需要访问 `redis`，因此还需要加载 lua 的 redis 库。
+实现逻辑时需要访问 `redis`，因此还需要加载 lua 的 redis 库：[lua-resty-redis](https://github.com/openresty/lua-resty-redis)。
+
+在配置文件的 `http` 上下文部分加一行配置：
 
     lua_package_path "lua/lua-resty-redis/lib/?.lua;;";
 
-加载我们实现逻辑的 lua 脚本，之后的所有逻辑操作都在这个文件中完成。
+然后加载我们实现逻辑的 lua 脚本，之后的所有逻辑操作都在这个文件中完成。
 
-    access_by_lua_file 'limit-with-redis.lua';
+    access_by_lua_file 'ratelimit-with-redis.lua';
 
 #### 3. 初始化 redis 连接
+
+首先加载 lua 的 redis 库，设置合理的超时时间。
+当连接失败时，则直接从限流逻辑中跳出。
 
 {% highlight lua %}
 local redis = require "resty.redis"
@@ -136,6 +141,8 @@ end
 {% endhighlight %}
 
 #### 4. counter incr操作
+
+对于每一次客户请求，都需要去更新指定的 key。
 
 {% highlight lua %}
 local counter_key = ngx.var.ratelimit_metric
