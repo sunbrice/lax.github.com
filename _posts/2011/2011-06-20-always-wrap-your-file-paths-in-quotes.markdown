@@ -9,7 +9,7 @@ categories:
 - Technology
 ---
 
-[Commit a047be85247755cdbe0acce6f1dafc8beb84f2ac to MrMEEE/bumblebee - GitHub](https://github.com/MrMEEE/bumblebee/commit/a047be85247755cdbe0acce6#diff-1).
+[Commit a047be85247755cdbe0acce6f1dafc8beb84f2ac to MrMEEE/bumblebee - GitHub](https://github.com/MrMEEE/bumblebee-Old-and-abbandoned/commit/a047be85247755cdbe0acce6#diff-1).
 
 一个空格，导致血淋淋悲剧的发生，因引发了程序员们对于代码质量的反思。
 

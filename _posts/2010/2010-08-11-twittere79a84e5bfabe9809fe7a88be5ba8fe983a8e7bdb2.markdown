@@ -64,5 +64,5 @@ Murder (which by the way is the name for a [flock             of crows](http://e
 
 
 Reference：
-[http://engineering.twitter.com/2010/07/murder-fast-datacenter-code-deploys.html](http://engineering.twitter.com/2010/07/murder-fast-datacenter-code-deploys.html)
+[https://blog.twitter.com/2010/murder-fast-datacenter-code-deploys-using-bittorrent](https://blog.twitter.com/2010/murder-fast-datacenter-code-deploys-using-bittorrent)
 Murder：（Python/Ruby）[http://github.com/lg/murder](http://github.com/lg/murder)

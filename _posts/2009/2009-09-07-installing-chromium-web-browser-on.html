@@ -4,4 +4,78 @@ name: installing-chromium-web-browser-on
 title: Installing Chromium Web Browser on Fedora 11.
 time: 2009-09-07 22:38:00.000000000 +08:00
 ---
-[lax@homex ~]$ sudo vim /etc/yum.repos.d/chromium.repo <br>[chromium]<br>name=Chromium Test Packages<br>baseurl=<a href="http://spot.fedorapeople.org/chromium/F$releasever/">http://spot.fedorapeople.org/chromium/F$releasever/</a><br> enabled=0<br>gpgcheck=0<br><br>[lax@homex ~]$ sudo yum install *chromium* --enablerepo=chromium<br>Loaded plugins: aliases, fastestmirror, refresh-packagekit<br>Loading mirror speeds from cached hostfile<br> * fedora: <a href="http://ftp.cuhk.edu.hk">ftp.cuhk.edu.hk</a><br>  * rpmfusion-free: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br> * rpmfusion-free-updates: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br> * rpmfusion-nonfree: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br>  * rpmfusion-nonfree-updates: <a href="http://mirrors.cat.pdx.edu">mirrors.cat.pdx.edu</a><br> * updates: <a href="http://ftp.cuhk.edu.hk">ftp.cuhk.edu.hk</a><br>Setting up Install Process<br>Resolving Dependencies<br>--&gt; Running transaction check<br> ---&gt; Package chromium.i586 0:4.0.204.0-0.1.20090827svn24640.fc11 set to be updated<br>--&gt; Processing Dependency: libv8.so.1 for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br>--&gt; Processing Dependency: libminizip.so.1 for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br> --&gt; Processing Dependency: nss-mdns(x86-32) for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br>--&gt; Running transaction check<br>---&gt; Package minizip.i586 0:1.2.3-22.fc11 set to be updated<br>---&gt; Package nss-mdns.i586 0:0.10-7.fc11 set to be updated<br> ---&gt; Package v8.i586 0:1.3.8-1.20090827svn2777.fc11 set to be updated<br>--&gt; Finished Dependency Resolution<br><br>Dependencies Resolved<br><br>================================================================================<br>  Package     Arch    Version                                  Repository   Size<br>================================================================================<br>Installing:<br> chromium    i586    4.0.204.0-0.1.20090827svn24640.fc11      chromium     15 M<br> Installing for dependencies:<br> minizip     i586    1.2.3-22.fc11                            fedora       25 k<br> nss-mdns    i586    0.10-7.fc11                              fedora       25 k<br> v8          i586    1.3.8-1.20090827svn2777.fc11             chromium    914 k<br> <br>Transaction Summary<br>================================================================================<br>Install      4 Package(s)         <br>Update       0 Package(s)         <br>Remove       0 Package(s)         <br> <br>Total download size: 16 M<br>Is this ok [y/N]: y<br>Downloading Packages:<br>(1/4): chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586 |  15 MB     02:15     <br>(2/4): minizip-1.2.3-22.fc11.i586.rpm                    |  25 kB     00:01     <br> (3/4): nss-mdns-0.10-7.fc11.i586.rpm                     |  25 kB     00:00     <br>(4/4): v8-1.3.8-1.20090827svn2777.fc11.i586.rpm          | 914 kB     00:09     <br>--------------------------------------------------------------------------------<br> Total                                           100 kB/s |  16 MB     02:43     <br>Running rpm_check_debug<br>Running Transaction Test<br>Finished Transaction Test<br>Transaction Test Succeeded<br>Running Transaction<br>   Installing     : v8-1.3.8-1.20090827svn2777.fc11.i586                     1/4 <br>  Installing     : minizip-1.2.3-22.fc11.i586                               2/4 <br>  Installing     : nss-mdns-0.10-7.fc11.i586                                3/4 <br>   Installing     : chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586        4/4 <br><br>Installed:<br>  chromium.i586 0:4.0.204.0-0.1.20090827svn24640.fc11                           <br><br>Dependency Installed:<br>  minizip.i586 0:1.2.3-22.fc11                 nss-mdns.i586 0:0.10-7.fc11      <br>   v8.i586 0:1.3.8-1.20090827svn2777.fc11      <br><br>Complete!<br><br clear="all"><br>-- <br>Liu Lantao<br>College of Information Science and Technology, Beijing Normal University<br>EMAIL: liulantao ( at ) gmail ( dot ) com ; <br> WEBSITE: <a href="http://www.liulantao.com/">http://www.liulantao.com/</a> .<br>------<br> <!------END------>
+[lax@homex ~]$ sudo vim /etc/yum.repos.d/chromium.repo <br>
+[chromium]<br>
+name=Chromium Test Packages<br>
+baseurl=http://spot.fedorapeople.org/chromium/F$releasever/<br> 
+enabled=0<br>
+gpgcheck=0<br><br>
+
+[lax@homex ~]$ sudo yum install *chromium* --enablerepo=chromium<br>
+Loaded plugins: aliases, fastestmirror, refresh-packagekit<br>
+Loading mirror speeds from cached hostfile<br> 
+* fedora: ftp.cuhk.edu.hk<br>  
+* rpmfusion-free: mirrors.cat.pdx.edu<br> 
+* rpmfusion-free-updates: mirrors.cat.pdx.edu<br> 
+* rpmfusion-nonfree: mirrors.cat.pdx.edu<br>  
+* rpmfusion-nonfree-updates: mirrors.cat.pdx.edu<br> 
+* updates: ftp.cuhk.edu.hk<br>
+Setting up Install Process<br>Resolving Dependencies<br>
+--&gt; Running transaction check<br> 
+---&gt; Package chromium.i586 0:4.0.204.0-0.1.20090827svn24640.fc11 set to be updated<br>
+--&gt; Processing Dependency: libv8.so.1 for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br>
+--&gt; Processing Dependency: libminizip.so.1 for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br> 
+--&gt; Processing Dependency: nss-mdns(x86-32) for package: chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586<br>
+--&gt; Running transaction check<br>
+---&gt; Package minizip.i586 0:1.2.3-22.fc11 set to be updated<br>
+---&gt; Package nss-mdns.i586 0:0.10-7.fc11 set to be updated<br> 
+---&gt; Package v8.i586 0:1.3.8-1.20090827svn2777.fc11 set to be updated<br>
+--&gt; Finished Dependency Resolution<br><br>
+
+Dependencies Resolved<br><br>
+
+================================================================================<br>  
+Package     Arch    Version                                  Repository   Size<br>
+================================================================================<br>
+Installing:<br> 
+chromium    i586    4.0.204.0-0.1.20090827svn24640.fc11      chromium     15 M<br> 
+Installing for dependencies:<br> 
+minizip     i586    1.2.3-22.fc11                            fedora       25 k<br> 
+nss-mdns    i586    0.10-7.fc11                              fedora       25 k<br> 
+v8          i586    1.3.8-1.20090827svn2777.fc11             chromium    914 k<br> <br>
+
+Transaction Summary<br>
+================================================================================<br>
+Install      4 Package(s)         <br>
+Update       0 Package(s)         <br>
+Remove       0 Package(s)         <br> <br>
+
+Total download size: 16 M<br>
+Is this ok [y/N]: y<br>
+Downloading Packages:<br>
+(1/4): chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586 |  15 MB     02:15     <br>
+(2/4): minizip-1.2.3-22.fc11.i586.rpm                    |  25 kB     00:01     <br> 
+(3/4): nss-mdns-0.10-7.fc11.i586.rpm                     |  25 kB     00:00     <br>
+(4/4): v8-1.3.8-1.20090827svn2777.fc11.i586.rpm          | 914 kB     00:09     <br>
+--------------------------------------------------------------------------------<br> 
+Total                                           100 kB/s |  16 MB     02:43     <br>
+Running rpm_check_debug<br>
+Running Transaction Test<br>
+Finished Transaction Test<br>
+Transaction Test Succeeded<br>
+Running Transaction<br>   
+Installing     : v8-1.3.8-1.20090827svn2777.fc11.i586                     1/4 <br>  
+Installing     : minizip-1.2.3-22.fc11.i586                               2/4 <br>  
+Installing     : nss-mdns-0.10-7.fc11.i586                                3/4 <br>   
+Installing     : chromium-4.0.204.0-0.1.20090827svn24640.fc11.i586        4/4 <br><br>
+
+Installed:<br>  
+chromium.i586 0:4.0.204.0-0.1.20090827svn24640.fc11                           <br><br>
+
+Dependency Installed:<br>  
+minizip.i586 0:1.2.3-22.fc11                 nss-mdns.i586 0:0.10-7.fc11      <br>   
+v8.i586 0:1.3.8-1.20090827svn2777.fc11      <br><br>
+
+Complete!<br><br clear="all"><br>-- 
+
+
