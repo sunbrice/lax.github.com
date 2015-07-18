@@ -14,7 +14,7 @@ tags: [Ruby, Tools, TravisCI, RubyGems]
 
 本文介绍了 `to_yaml` 的开发过程中如何采用 `TDD` 方法开发功能，以及用到的免费服务 `GitHub` / `TravisCI` / `RubyGems`。
 
-## 背景
+### 背景
 
 先从最近使用的 `ElasticSearch` 说起。
 作为通用的日志收集、分析与展示的工具集，`ELK` 工具栈已经相当普及。
@@ -26,7 +26,7 @@ ES 输出 `JSON` 数据内容比较多，即使使用 `?pretty` 参数，仍然�
 使用 `YAML` 格式能够在很大程度上缓解空间的问题。
 基于这个想法，做了一个简单的工具出来，发布在了 [RubyGems.org](https://rubygems.org)。
 
-## 初步想法
+### 初步想法
 
 在实际使用 `JSON` 时，希望的是能直接将接口输出内容直接转换为 `YAML` 格式。
 如这样的形式：
@@ -38,9 +38,9 @@ ES 输出 `JSON` 数据内容比较多，即使使用 `?pretty` 参数，仍然�
 
 使用 `gem` 发布还有一个好处：可以利用 `ruby` 的开发工具，如 `bundle`、`rspec` 等，来发布质量可控的软件。
 
-## 开始动手
+### 开始动手
 
-### 创建一个 `gem` 框架目录。
+#### 创建 `gem` 框架目录
 
 现阶段最简单的工具是 `bundle gem`。
 
@@ -74,7 +74,7 @@ Initializing git repo in /private/tmp/to_yaml
 
 现在我们已经有了基本的框架。
 
-### **代码未动，测试先行**
+#### **代码未动，测试先行**
 
 查看 `Rakefile` 内容如下
 
@@ -121,7 +121,7 @@ end
 
 不过这是一个好的开头，我们有了明确的目标：让测试成功。
 
-### 创建命令行
+#### 创建命令行
 
 在 `to_yaml.gemspec` 中，通过 `spec.executables` 指定了可执行文件的路径为 `./exe/` 目录。
 
@@ -161,7 +161,7 @@ Finished in 0.77046 seconds (files took 0.09961 seconds to load)
 
 太棒了，测试用例全部成功。
 
-### 测试，**AGAIN**
+#### 测试，**AGAIN**
 
 目前为止的测试还在靠手工驱动执行。
 而在实践中，则需要**将持续构建整合进开发流程**，所有状态都**可以追溯**，并能**及时反馈构建结果**。
@@ -183,12 +183,12 @@ Finished in 0.77046 seconds (files took 0.09961 seconds to load)
 从 `travis-ci` 页面，我们看到已经创建了第一次构建 [Build #1](https://travis-ci.org/Lax/to_yaml/builds/71275189)。
 很幸运，这次构建到结果也成功了！
 
-### 发布
+#### 发布
 
 `rake release` 可以自动创建一个发布 tag，将代码 push 到 `github`。
 并 build 出 to_yaml.gem，通过 `gem push` 发布到 rubygems.org。
 
-## 使用
+### 使用
 
 下次使用时，直接 `gem install to_yaml`，既可以在 `PATH` 中搜索到 `to_yaml` 执行程序。
 
@@ -205,7 +205,9 @@ about: /about
 Pro!: http://getjsonip.com
 {% endhighlight %}
 
-## 总结展望
+很清爽，有木有！
+
+### 总结展望
 
 本文介绍的是一个极简工具的开发过程，希望你能感受到测试驱动开发所发挥的作用。
 
