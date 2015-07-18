@@ -3,10 +3,6 @@ language: ruby
 rvm:
   - 2.1
 
-script:
-  - bundle exec jekyll build
-  - bundle exec htmlproof ./_site
-
 branches:
   only:
   - lax.github.io-github-pages
