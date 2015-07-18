@@ -213,21 +213,31 @@ a:visited { color: #205caa; }
   line-height: 1;
   font-weight: 300;
   margin: 22px 0 20px;
+  font-weight: bold;
 }
 
 .post-content h2 {
   font-size: 32px;
   letter-spacing: -1.25px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(238, 238, 238);
 }
 
 .post-content h3 {
   font-size: 26px;
   letter-spacing: -1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(238, 238, 238);
 }
 
 .post-content h4 {
   font-size: 20px;
   letter-spacing: -1px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(238, 238, 238);
 }
 
 .post-content blockquote {
@@ -243,27 +253,24 @@ a:visited { color: #205caa; }
 .post-content ul,
 .post-content ol { padding-left: 20px; }
 
-.post pre,
-.post code {
-  border: 1px solid #d5d5e9;
-  background-color: #eef;
+.post ul,
+.post ol { margin-left: 1.35em; }
+
+.post pre {
+  border: 1px solid #eef;
+  background-color: rgb(246, 248, 248);
   padding: 8px 12px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  font-size: 15px;
   overflow:scroll;
+  font-size: -2px;
 }
-
-.post code { padding: 1px 5px; }
-
-.post ul,
-.post ol { margin-left: 1.35em; }
-
-.post pre code {
+.post code {
+  color: #333;
+  background-color: rgb(246, 248, 248);
   border: 0;
-  padding-right: 0;
-  padding-left: 0;
+  padding: 1px 5px;
 }
 
 /* terminal */
