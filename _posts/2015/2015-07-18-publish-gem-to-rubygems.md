@@ -4,6 +4,7 @@ title: "测试驱动开发 Ruby 命令行工具实战"
 description: ""
 categories: [Technology]
 tags: [Ruby, Tools, TravisCI, RubyGems]
+excerpt_separator: <!--excerpt-->
 ---
 
 **TL;DR;**
@@ -13,6 +14,8 @@ tags: [Ruby, Tools, TravisCI, RubyGems]
 `TDD` 的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码确定需要编写什么产品代码。
 
 `to_yaml` 是一款命令行工具，*将 `JSON` 输入转为 `YAML` 文本输出*。
+
+<!--excerpt-->
 
 ### 背景
 
