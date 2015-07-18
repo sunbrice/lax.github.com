@@ -7,12 +7,12 @@ tags: [Ruby, Tools, TravisCI, RubyGems]
 ---
 
 **TL;DR;**
+本文介绍了 `to_yaml` 的开发过程中如何采用 `TDD` 方法开发功能，以及用到的免费服务 `GitHub` / `TravisCI` / `RubyGems`。
+
 `TDD` (测试驱动开发)是敏捷开发中的一项核心实践和技术，也是一种设计方法论。
 `TDD` 的原理是在开发功能代码之前，先编写单元测试用例代码，测试代码确定需要编写什么产品代码。
 
 `to_yaml` 是一款命令行工具，*将 `JSON` 输入转为 `YAML` 文本输出*。
-
-本文介绍了 `to_yaml` 的开发过程中如何采用 `TDD` 方法开发功能，以及用到的免费服务 `GitHub` / `TravisCI` / `RubyGems`。
 
 ### 背景
 
