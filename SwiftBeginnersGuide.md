@@ -126,14 +126,12 @@ Swift在iOS 8发布的时候推向市场，用来取代现有的Objective-C语�
 Apple同时发布了3个示例程序，用于初窥Swift开发的项目。
 
 *    Lister: A Productivity App Built in Swift
-[apple](https://developer.apple.com/library/prerelease/ios/samplecode/Lister-Swift/Introduction/Intro.html)
-/
 [github](https://github.com/Lax/iOS-Swift-Demos/tree/master/Lister)
 
 *    UICatalog: Creating and Customizing UIKit Controls in Swift
 [apple](https://developer.apple.com/library/ios/samplecode/UICatalog/Introduction/Intro.html)
 /
-[github](https://github.com/Lax/iOS-Swift-Demos/tree/master/UICatalogCreatingandCustomizingUIKitControlsinSwift)
+[github](https://github.com/Lax/iOS-Swift-Demos/tree/master/UICatalog)
 
 *    Adventure: Building a SpriteKit Game Using Swift
 [apple](https://developer.apple.com/library/mac/samplecode/Adventure-Swift/Introduction/Intro.html)
@@ -141,8 +139,6 @@ Apple同时发布了3个示例程序，用于初窥Swift开发的项目。
 [github](https://github.com/Lax/iOS-Swift-Demos/tree/master/Adventure)
 
 *    GestureRecognizers: Using standard UIGestureRecognizers in Swift
-[apple](https://developer.apple.com/library/prerelease/ios/samplecode/GestureRecognizers/Introduction/Intro.html)
-/
 [github](https://github.com/Lax/iOS-Swift-Demos/tree/master/GestureRecognizersUsingstandardUIGestureRecognizers)
 
 
