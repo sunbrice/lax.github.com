@@ -88,7 +88,7 @@ tags:
 
 ### 软件
 
-下载[tcpdump-arm](http://www.eecs.umich.edu/~timuralp/tcpdump-arm)
+下载 `tcpdump-arm` (previous download link is break: http://www.eecs.umich.edu/~timuralp/tcpdump-arm)，或者自行编译 (参考 http://omappedia.org/wiki/USB_Sniffing_with_tcpdump)。
 
 将tcpdump-arm传到设备上
 

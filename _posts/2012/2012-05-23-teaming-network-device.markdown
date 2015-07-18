@@ -11,7 +11,7 @@ Read documents bellow.
 
 [lwn](http://lwn.net/Articles/467280/)
 
-[Jiri Pirko's PDF](www.pirko.cz/teamdev.pp.pdf)
+[Jiri Pirko's PDF](http://www.pirko.cz/teamdev.pp.pdf)
 
 [Kernel Log: Coming in 3.3 (Part 1) - Networking](http://www.h-online.com/open/features/Kernel-Log-Coming-in-3-3-Part-1-Networking-1421959.html)
 

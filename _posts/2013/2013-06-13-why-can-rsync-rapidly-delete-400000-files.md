@@ -9,9 +9,11 @@ tags: [rsync, rm, DTrace, dtruss, SystemTap]
 
 ### 背景
 
-Quora上一篇文章[★How can someone rapidly delete 400,000 files?](http://www.quora.com/File-Systems/How-can-someone-rapidly-delete-400-000-files)提到通过rsync能够快速删除大量文件，之后在[Linux技巧：一次删除一百万个文件的最快方法](http://web.itivy.com/article-797-1.html)这篇文章里做了一个详细的评测，对于rm/find/rsync等诸多方法的性能做了对比。
+Quora上一篇文章[★How can someone rapidly delete 400,000 files?](http://www.quora.com/File-Systems/How-can-someone-rapidly-delete-400-000-files)提到通过rsync能够快速删除大量文件，之后在《Linux技巧：一次删除一百万个文件的最快方法》这篇文章里做了一个详细的评测，对于rm/find/rsync等诸多方法的性能做了对比。
 
-对于出现性能的差异，应该属于预料中的结果。为了验证这个现象，我模拟了Quora原提问的要求，创建了40万个文件，分别用rm和rsync进行删除操作，对syscall做统计。为了简化条件，这写文件全部是空文件（使用包含内容的文件对结果不会造成明显差异，有兴趣可以重试一下）。
+对于出现性能的差异，应该属于预料中的结果。
+为了验证这个现象，我模拟了Quora原提问的要求，创建了40万个文件，分别用rm和rsync进行删除操作，对syscall做统计。
+为了简化条件，这写文件全部是空文件（使用包含内容的文件对结果不会造成明显差异，有兴趣可以重试一下）。
 
 统计syscall使用了dtruss工具，这是MacOSX上提供的syscall调试工具，基于DTrace。Linux上可以使用SystemTap来代替。
 
@@ -133,7 +135,7 @@ Quora上一篇文章[★How can someone rapidly delete 400,000 files?](http://ww
     *   命令执行前期，rsync开启了一片共享内存，通过mmap方式加载目录信息。
     *   只做目录同步，不需要针对单个文件做unlink。
 
-另外，在[其他人的评测](http://web.itivy.com/article-797-1.html)里，rm的上下文切换比较多，会造成System CPU占用较多——对于文件系统的操作，简单增加并发数并不总能提升操作速度。
+另外，在其他人的评测里，rm的上下文切换比较多，会造成System CPU占用较多——对于文件系统的操作，简单增加并发数并不总能提升操作速度。
 
 ### 总结
 

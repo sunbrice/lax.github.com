@@ -86,7 +86,7 @@ Configure and build
 
 macruby
 -------
-[MacRuby](http://macruby.org) is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies. 
+[MacRuby](https://github.com/MacRuby/MacRuby) is an implementation of Ruby 1.9 directly on top of Mac OS X core technologies. 
 
 Install with rvm 
 

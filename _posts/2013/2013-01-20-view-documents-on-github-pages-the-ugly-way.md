@@ -8,13 +8,14 @@ tags: [github, rvm, jekyll]
 
 ## 背景
 
-由于[抢票插件事件](https://github.com/iccfish/12306_ticket_helper/issues/16)，近期github pages不能正常访问。作为一个普通码农，严重依赖部署在github的项目，这些项目也几乎都以github pages提供文档。缺乏文档确实很不方便，各地的有证与无证码农们已经在weibo等渠道表达不满。
+由于`抢票插件事件`<s>https://github.com/iccfish/12306_ticket_helper/issues/16</s>，近期github pages不能正常访问。作为一个普通码农，严重依赖部署在github的项目，这些项目也几乎都以github pages提供文档。缺乏文档确实很不方便，各地的有证与无证码农们已经在weibo等渠道表达不满。
 
 抱怨归抱怨，仍然要想办法看到这些文档，为周末生活找点儿乐趣——**尤其今天这雪后的雾霾天气**。
 
 ## 方法
 
-Github pages使用的是一套基于Jekyll的模版系统，原则上只要把各项目的文档源码checkout到本地，重新生成一遍即可。幸运的是这些项目仍可以访问。
+Github pages使用的是一套基于Jekyll的模版系统，原则上只要把各项目的文档源码checkout到本地，重新生成一遍即可。
+幸运的是这些项目仍可以访问。
 
 以bootstrap库为例来说明一下。
 
@@ -36,7 +37,7 @@ Github pages使用的是一套基于Jekyll的模版系统，原则上只要把�
     open http://127.0.0.1:4000
 
 
-jekyll是一个ruby工具，你需要先安装ruby和rubygems。
+`jekyll` 是一个ruby工具，你需要先安装 `ruby` 和 `rubygems`。
 
 安装RVM:
 

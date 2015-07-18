@@ -26,11 +26,11 @@ PeerCDN的专注点应该是大文件（视频，音频，图片），而对于�
 
 [Joe Armstrong的Solving the wrong problem](http://joearms.github.com/2013/03/28/solving-the-wrong-problem.html)
 
-### [Concurrency Models: Go vs Erlang](http://joneisen.me/post/38188396218)
+### [Concurrency Models: Go vs Erlang](http://joneisen.tumblr.com/post/38188396218/concurrency-models-go-vs-erlang)
 
 一个新手对比了Go和Erlang这两种支持并发的语言。Go采用goroutine，有共享内存，因此在多核上扩展，通过channel方式传递消息，需要进行手工的错误处理；Erlang采用进程模型，不能共享内存，因此可以做多机扩展，通过mailbox方式传递消息，语言自身支持异常，通过OTP实现各种稳定性部署。
 
-[Concurrency Models: Go vs Erlang](http://joneisen.me/post/38188396218)
+[Concurrency Models: Go vs Erlang](http://joneisen.tumblr.com/post/38188396218/concurrency-models-go-vs-erlang)
 
 
 

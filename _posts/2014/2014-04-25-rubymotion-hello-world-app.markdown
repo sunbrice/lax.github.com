@@ -100,7 +100,7 @@ Ruby运行环境。RubyMotion用到了rake等工具，推荐使用rvm来安装ru
 
 第一次运行会编译项目的代码，需要等待一段时间。之后能看到iOS模拟器启动。
 
-这时候的应用只是一个黑色的屏幕，没有任何文字说明和页面提示。Shell此时进入[交互模式](http://www.rubymotion.com/developer-center/articles/debugging/)。
+这时候的应用只是一个黑色的屏幕，没有任何文字说明和页面提示。Shell此时进入[交互模式](http://www.rubymotion.com/developers/guides/manuals/cocoa/debugging/)。
 
 怎么样，这种感觉，有没有想到初恋的Rails？
 

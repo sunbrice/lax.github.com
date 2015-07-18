@@ -18,4 +18,4 @@ gnome3多显示器默认只有mirror模式工作正常。使用扩展模式，�
 
 修改后需要重新emerge一下已安装的软件包，之后重启X
 
-[Xinerama](http://en.gentoo-wiki.com/wiki/X.Org/Dual_Monitors#Xinerama)
+[Xinerama](http://www.gentoo-wiki.info/HOWTO_Dual_Monitors#Using_Xinerama)
