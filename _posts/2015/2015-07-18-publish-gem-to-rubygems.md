@@ -4,7 +4,6 @@ title: "测试驱动开发 Ruby 命令行工具实战"
 description: ""
 categories: [Technology]
 tags: [Ruby, Tools, TravisCI, RubyGems]
-excerpt_separator: <!--excerpt-->
 ---
 
 **TL;DR;**

@@ -16,7 +16,7 @@ paginate_path: /blog/page:num/
 timezone: Asia/Shanghai
 encoding: utf-8
 future: true
-excerpt_separator: <!--more-->
+excerpt_separator: <!--excerpt-->
 exclude:
   - Rakefile
   - Gemfile

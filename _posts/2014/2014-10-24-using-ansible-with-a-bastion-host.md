@@ -9,6 +9,8 @@ tags: [Linux, Ansible]
 
 有一种常见的网络安全模式是阻止私有网络外部对应用服务器的所有连接（指除了业务数据外其它的连接，如后台管理系统和内部业务系统。译者注），然后使用 [DMZ](http://en.wikipedia.org/wiki/DMZ_%28computing%29) 区域中的 [堡垒机](http://en.wikipedia.org/wiki/Bastion_host) 来选择性的将到服务器的流量加入白名单。
 
+<!--excerpt-->
+
 我们有这样的一个服务器池，只允许来自特定 IP 地址的 SSH 流量。这些服务器还由 [Ansible](http://www.ansible.com/) 通过 SSH 方式程序化的来管理。
 
 堡垒机方式导致 Ansible 不能直接与应用服务器通讯，因此需要找到通过堡垒机代理 SSH 连接的方法。
