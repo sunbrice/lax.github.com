@@ -27,7 +27,7 @@ nginx作为反向代理服务器时，打开access_log可以用来查找后端�
 下面列出几个重要的变量：
 
 
-*   ```$status```  ```$upstream_status``` :  响应的状态码（响应正常还是出错了？）复习一下[```HTTP CODE```](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html)  
+*   ```$status```  ```$upstream_status``` :  响应的状态码（响应正常还是出错了？）复习一下[```HTTP CODE```](https://www.ietf.org/rfc/rfc2616.txt)  
 *   ```$request_time```  ```$upstream_response_time``` :  关注性能必备！看看前天传输文件的时间，以及后台处理的时间。前者对了解网络状态有益，后者对了解服务性能有益。  
 *   ```$remote_addr```  ```$upstream_addr``` :  用户的IP地址，后端服务的IP地址  
 *   ```$bytes_sent``` ```$body_bytes_sent```  :  发送给用户端的数据量（包含HTTP头和不包含HTTP头）  

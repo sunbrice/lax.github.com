@@ -214,6 +214,6 @@ Pro!: http://getjsonip.com
 本文介绍的是一个极简工具的开发过程，希望你能感受到测试驱动开发所发挥的作用。
 
 作者在实际项目中也尽可能实践 `TDD` 方法，发布的工具如 [aliyun.gem](https://github.com/Lax/aliyun) (一个阿里云API的客户端) 也采用了类似流程。
-甚至[本博客](https://blog.liulantao.com)也引入了 travis-ci 做持续构建和测试，确保内容中引用的图片和链接无死链。
+甚至[本博客](http://blog.liulantao.com)也引入了 travis-ci 做持续构建和测试，确保内容中引用的图片和链接无死链。
 
 如果你对本文描述的内容感兴趣，欢迎发布评论来交流。
